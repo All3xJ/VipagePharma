@@ -18,15 +18,12 @@ public class LoginController{
 	private Button login;
 
 	@FXML
-    void onLoginClicked(MouseEvent event) throws IOException{
+    void onLoginClicked(MouseEvent event) throws IOException{	// sono nella schermata di login. se preme pulsante "login" allora:
 		System.out.println(username.getText());
 		System.out.println(password.getText());
-        App.setRoot("Home");
+        App.setRoot("Home"); // se sono giuste le credenziali mi porta alla home
     }
 
-	@FXML
-    void onVisualizzaPrenotazioniClicked(MouseEvent event) throws IOException{
-        App.setRoot("ListaPrenotazioni");	// ho messo nel controller di ListaPrenotazioni (quindi ListaPrenotazioniController) un initialize che letteralmente esegue roba che voglio
-    }
+	
 
 }

@@ -47,7 +47,7 @@
 				   <Image url="file:/home/allexj/Desktop/ing_del_softw/codice/VipagePharma/vipagepharma/src/main/resources/com/vipagepharma/22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
 				</image>
 			 </ImageView>
-            <Button layoutX="241.0" layoutY="131.0" mnemonicParsing="false" onMouseClicked="#onVisualizzaPrenotazioniClicked" text="Visualizza prenotazioni" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="241.0" />
+            <Button fx:id="home" layoutX="241.0" layoutY="131.0" mnemonicParsing="false" onMouseClicked="#onVisualizzaPrenotazioniClicked" text="Visualizza prenotazioni" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="241.0" />
             <Button layoutX="241.0" layoutY="186.0" mnemonicParsing="false" text="Prenota farmaci" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="241.0" />
             <Button layoutX="241.0" layoutY="243.0" mnemonicParsing="false" text="Scarico farmaci" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="241.0" />
          </children>

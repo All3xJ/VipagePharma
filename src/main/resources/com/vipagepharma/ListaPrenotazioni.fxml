@@ -48,11 +48,10 @@
                   <Image url="@22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <TableView fx:id="prenotazioni_table" layoutX="105.0" layoutY="108.0" prefHeight="200.0" prefWidth="435.0">
+            <TableView fx:id="prenotazioni_table" layoutX="39.0" layoutY="93.0" prefHeight="258.0" prefWidth="562.0">
               <columns>
                 <TableColumn fx:id="id_column" prefWidth="97.0" text="ID" />
                 <TableColumn fx:id="dataconsegna_column" prefWidth="112.66665649414062" text="Data consegna" />
-                  <TableColumn fx:id="modifica_column" prefWidth="75.0" />
                   <TableColumn fx:id="annulla_column" prefWidth="75.0" />
                   <TableColumn fx:id="carico_column" prefWidth="75.0" />
               </columns>
