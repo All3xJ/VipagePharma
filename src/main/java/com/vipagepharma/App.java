@@ -19,7 +19,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("Login"), 640, 480);
         stage.setScene(scene);
-        stage.show();
+        stage.show();	
     }
 
 	// questo è il metodo che gli altri .java richiamano passando la stringa del nome del fxml che si vuole avere
