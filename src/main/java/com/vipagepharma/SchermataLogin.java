@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class SchermataInizialeLogin{
+public class SchermataLogin{
 
 	@FXML
 	private TextField username;	// il nome della variabile deve essere lo stesso dell'FXXXXXXID di Scene Builder
