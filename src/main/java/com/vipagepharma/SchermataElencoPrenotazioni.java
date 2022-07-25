@@ -20,7 +20,7 @@ import javafx.util.Callback;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class ListaPrenotazioniController implements Initializable{
+public class SchermataElencoPrenotazioni implements Initializable{
 
 	@FXML
 	private TextField username;	// il nome della variabile deve essere lo stesso dell'FXXXXXXID di Scene Builder
