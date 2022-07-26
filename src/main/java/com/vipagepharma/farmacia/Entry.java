@@ -1,4 +1,4 @@
-package com.vipagepharma;
+package com.vipagepharma.farmacia;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

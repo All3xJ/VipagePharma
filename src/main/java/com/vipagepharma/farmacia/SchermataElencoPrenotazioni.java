@@ -1,7 +1,8 @@
-package com.vipagepharma;
+package com.vipagepharma.farmacia;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,8 +18,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 
 public class SchermataElencoPrenotazioni implements Initializable{
 

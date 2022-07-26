@@ -1,6 +1,8 @@
-package com.vipagepharma;
+package com.vipagepharma.farmacia;
 
 import java.io.IOException;
+
+import com.vipagepharma.farmacia.App;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
