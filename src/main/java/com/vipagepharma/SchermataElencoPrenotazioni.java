@@ -118,6 +118,7 @@ public class SchermataElencoPrenotazioni implements Initializable{
 		comp.getChildren().add(phoneNumber);
 		
 		Scene stageScene = new Scene(comp, 300, 300);
+		stageScene.getRoot().setStyle("-fx-font-family: 'Arial'");
 		newStage.setScene(stageScene);
 		newStage.show();
 		}
