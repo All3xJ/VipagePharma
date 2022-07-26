@@ -49,10 +49,10 @@
                   <Image url="@22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <TextField fx:id="username" layoutX="249.0" layoutY="136.0" text="ID:" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="239.0" />
-            <TextField fx:id="password" layoutX="249.0" layoutY="175.0" text="Password:" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="239.0" />
-            <Button fx:id="login" layoutX="281.0" layoutY="211.0" mnemonicParsing="false" onMouseClicked="#onLoginClicked" prefHeight="25.0" prefWidth="79.0" text="Login" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="280.0" />
-            <Button id="rescue_passwd" layoutX="325.0" layoutY="314.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Registrati" AnchorPane.leftAnchor="325.0" AnchorPane.rightAnchor="220.0" />
+            <TextField fx:id="username" layoutX="249.0" layoutY="135.0" text="ID:" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="239.0" />
+            <TextField fx:id="password" layoutX="249.0" layoutY="170.0" text="Password:" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="239.0" />
+            <Button fx:id="login" layoutX="281.0" layoutY="205.0" mnemonicParsing="false" onMouseClicked="#onLoginClicked" prefHeight="25.0" prefWidth="79.0" text="Login" AnchorPane.leftAnchor="281.0" AnchorPane.rightAnchor="280.0" />
+            <Button id="rescue_passwd" layoutX="325.0" layoutY="314.0" mnemonicParsing="false" onMouseClicked="#onRegistrazioneClicked" prefHeight="25.0" prefWidth="95.0" text="Registrati" AnchorPane.leftAnchor="325.0" AnchorPane.rightAnchor="220.0" />
             <Text layoutX="184.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hai dimenticato la password?" />
             <Button layoutX="354.0" layoutY="273.0" mnemonicParsing="false" text="Reimposta password" />
             <Text layoutX="213.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non sei registrato?" />

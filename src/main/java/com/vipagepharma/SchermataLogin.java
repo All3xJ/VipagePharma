@@ -24,6 +24,10 @@ public class SchermataLogin{
         App.setRoot("SchermataPrincipale"); // se sono giuste le credenziali mi porta alla home
     }
 
+	@FXML
+	void onRegistrazioneClicked(MouseEvent event) throws IOException{
+		App.setRoot("SchermataRegistrazione");
+	}
 	
 
 }
