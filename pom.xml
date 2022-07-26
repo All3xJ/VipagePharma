@@ -33,7 +33,7 @@
 						<manifest>
 						  <addClasspath>true</addClasspath>
 						  <classpathPrefix>lib/</classpathPrefix>
-						  <mainClass>com.vipagepharma.App</mainClass>
+						  <mainClass>com.vipagepharma.farmacia.App</mainClass>
 						</manifest>
 					  </archive>
                 </configuration>
@@ -48,7 +48,7 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.vipagepharma.App</mainClass>
+                            <mainClass>com.vipagepharma.farmacia.App</mainClass>
                         </configuration>
                     </execution>
                 </executions>
