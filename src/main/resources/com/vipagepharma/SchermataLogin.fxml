@@ -64,7 +64,7 @@
                   <Font name="Arial" size="13.0" />
                </font></Button>
             <Button id="rescue_passwd" alignment="CENTER" layoutX="331.0" layoutY="314.0" mnemonicParsing="false" onMouseClicked="#onRegistrazioneClicked" prefHeight="25.0" prefWidth="95.0" text="Registrati" AnchorPane.leftAnchor="331.0" AnchorPane.rightAnchor="214.0" />
-            <Text layoutX="169.275390625" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hai dimenticato la password?" AnchorPane.leftAnchor="169.275390625" AnchorPane.rightAnchor="310.91845703125">
+            <Text layoutX="164.275390625" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hai dimenticato la password?" AnchorPane.leftAnchor="164.275390625" AnchorPane.rightAnchor="315.91845703125">
                <font>
                   <Font name="Arial" size="13.0" />
                </font></Text>
