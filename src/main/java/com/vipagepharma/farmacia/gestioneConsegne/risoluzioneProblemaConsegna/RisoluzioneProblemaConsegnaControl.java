@@ -1,4 +1,4 @@
 package com.vipagepharma.farmacia.gestioneConsegne.risoluzioneProblemaConsegna;
 
-public class risoluzioneProblemaConsegnaControl {
+public class RisoluzioneProblemaConsegnaControl {
 }
