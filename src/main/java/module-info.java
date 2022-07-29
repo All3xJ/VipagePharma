@@ -10,4 +10,6 @@ module com.vipagepharma {
     opens com.vipagepharma.farmacia.autenticazione.login to javafx.fxml;
     exports com.vipagepharma.farmacia.autenticazione.registrazione;
     opens com.vipagepharma.farmacia.autenticazione.registrazione to javafx.fxml;
+    exports com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni;
+    opens com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni to javafx.fxml;
 }
