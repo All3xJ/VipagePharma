@@ -69,7 +69,10 @@
                   <Font name="Arial" size="13.0" />
                </font></Text>
             <Button alignment="CENTER" layoutX="347.0" layoutY="273.0" mnemonicParsing="false" text="Reimposta password" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="161.0" />
-            <Text layoutX="213.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non sei registrato?" AnchorPane.leftAnchor="213.0" AnchorPane.rightAnchor="325.29150390625" />
+            <Text layoutX="210.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non sei registrato?" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="330.89013671875">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font></Text>
          </children>
          <VBox.margin>
             <Insets />
