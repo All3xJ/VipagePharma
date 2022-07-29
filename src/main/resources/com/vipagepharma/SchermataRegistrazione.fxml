@@ -51,10 +51,10 @@
                   <Image url="@22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <TextField layoutX="242.0" layoutY="120.0" text="Nome" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0" />
-            <TextField layoutX="242.0" layoutY="155.0" text="Email" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0" />
-            <TextField layoutX="242.0" layoutY="188.0" text="Password" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0" />
-            <TextField layoutX="242.0" layoutY="225.0" text="Conferma password" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0" />
+            <TextField layoutX="242.0" layoutY="120.0" promptText="Nome" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0" />
+            <TextField layoutX="242.0" layoutY="155.0" promptText="Email" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0" />
+            <TextField layoutX="242.0" layoutY="188.0" promptText="Password" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0" />
+            <TextField layoutX="242.0" layoutY="225.0" promptText="Conferma password" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0" />
             <Button alignment="CENTER" layoutX="285.0" layoutY="265.0" mnemonicParsing="false" text="Registrati" AnchorPane.leftAnchor="285.0" AnchorPane.rightAnchor="285.0" />
       </children>
     </AnchorPane>
