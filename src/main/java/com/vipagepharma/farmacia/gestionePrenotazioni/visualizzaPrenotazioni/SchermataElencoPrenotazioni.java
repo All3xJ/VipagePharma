@@ -1,4 +1,4 @@
-package com.vipagepharma.farmacia.gestionePrenotazioni;
+package com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni;
 
 import java.net.URL;
 import java.util.ResourceBundle;
