@@ -39,7 +39,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.SchermataElencoPrenotazioni">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.SchermataElencoPrenotazioni">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
@@ -50,10 +50,10 @@
             </ImageView>
             <TableView fx:id="prenotazioni_table" layoutX="39.0" layoutY="93.0" prefHeight="258.0" prefWidth="562.0">
               <columns>
-                <TableColumn fx:id="id_column" prefWidth="97.0" text="ID" />
-                <TableColumn fx:id="dataconsegna_column" prefWidth="112.66665649414062" text="Data consegna" />
-                  <TableColumn fx:id="annulla_column" prefWidth="75.0" />
-                  <TableColumn fx:id="carico_column" prefWidth="75.0" />
+                <TableColumn fx:id="id_column" prefWidth="110.0" text="ID prenotazione" />
+                  <TableColumn fx:id="annulla_column" prefWidth="104.0" text="Farmaco" />
+                <TableColumn fx:id="dataconsegna_column" prefWidth="104.0" text="Data consegna" />
+                  <TableColumn fx:id="carico_column" prefWidth="74.0" />
               </columns>
             </TableView>
          </children>

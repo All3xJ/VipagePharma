@@ -1,8 +1,10 @@
-package com.vipagepharma.farmacia;
+package com.vipagepharma.farmacia.autenticazione.login;
 
 import java.io.IOException;
 
 import com.vipagepharma.farmacia.App;
+import com.vipagepharma.farmacia.autenticazione.login.LoginControl;
+import com.vipagepharma.farmacia.autenticazione.registrazione.RegistrazioneControl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -23,13 +25,14 @@ public class SchermataLogin{
     void onLoginClicked(MouseEvent event) throws IOException{	// sono nella schermata di login. se preme pulsante "login" allora:
 		System.out.println(username.getText());
 		System.out.println(password.getText());
-        App.setRoot("SchermataPrincipale"); // se sono giuste le credenziali mi porta alla home
+		LoginControl logCtrl = new LoginControl(username,password);
+		logCtrl.start();
+        //App.setRoot("SchermataPrincipale"); // se sono giuste le credenziali mi porta alla home
     }
 
 	@FXML
 	void onRegistrazioneClicked(MouseEvent event) throws IOException{
-		App.setRoot("SchermataRegistrazione");
+		RegistrazioneControl regCtrl = new RegistrazioneControl();
+		regCtrl.start();
 	}
-	
-
 }

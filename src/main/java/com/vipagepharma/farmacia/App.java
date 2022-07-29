@@ -24,7 +24,7 @@ public class App extends Application {
     }
 
 	// questo è il metodo che gli altri .java richiamano passando la stringa del nome del fxml che si vuole avere
-    static void setRoot(String fxml) throws IOException {
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
         scene.getRoot().setStyle("-fx-font-family: 'Arial'");
     }

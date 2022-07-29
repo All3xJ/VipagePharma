@@ -1,4 +1,4 @@
-package com.vipagepharma;
+package com.vipagepharma.farmacia.autenticazione.registrazione;
 
 import java.io.IOException;
 import javafx.fxml.FXML;

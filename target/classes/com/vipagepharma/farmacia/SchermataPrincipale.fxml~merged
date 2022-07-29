@@ -32,30 +32,28 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.SchermataElencoPrenotazioni">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.SchermataPrincipale">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <ImageView fitHeight="121.0" fitWidth="122.0" layoutX="30.0" layoutY="-12.0">
-               <image>
-                  <Image url="@22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
-               </image>
-            </ImageView>
-            <TableView fx:id="prenotazioni_table" layoutX="39.0" layoutY="93.0" prefHeight="258.0" prefWidth="562.0">
-              <columns>
-                <TableColumn fx:id="id_column" prefWidth="110.0" text="ID prenotazione" />
-                  <TableColumn fx:id="annulla_column" prefWidth="104.0" text="Farmaco" />
-                <TableColumn fx:id="dataconsegna_column" prefWidth="104.0" text="Data consegna" />
-                  <TableColumn fx:id="carico_column" prefWidth="74.0" />
-              </columns>
-            </TableView>
+            <Button fx:id="home" layoutX="241.0" layoutY="109.0" mnemonicParsing="false" onMouseClicked="#onVisualizzaPrenotazioniClicked" text="Visualizza prenotazioni " AnchorPane.bottomAnchor="266.0" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="109.0" />
+            <Button alignment="CENTER" layoutX="241.0" layoutY="159.0" mnemonicParsing="false" text="Ricerca farmaci" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="241.0" />
+            <Button layoutX="241.0" layoutY="209.0" mnemonicParsing="false" text="Scarico farmaci" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="241.0" />
+            <ImageView fitHeight="145.0" fitWidth="142.0" layoutX="15.0" layoutY="-13.0">
+				<image>
+				   <Image url="@22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
+				</image>
+			 </ImageView>
+            <Button layoutX="241.0" layoutY="259.0" mnemonicParsing="false" text="Modifica contratti" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="241.0" />
+            <Button layoutX="286.0" layoutY="330.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="65.0" text="home" />
+            <Button layoutX="150.0" layoutY="340.0" mnemonicParsing="false" text="Indietro" />
+            <Button alignment="CENTER" layoutX="422.0" layoutY="340.0" mnemonicParsing="false" text="logout" />
          </children>
       </AnchorPane>
    </children>
