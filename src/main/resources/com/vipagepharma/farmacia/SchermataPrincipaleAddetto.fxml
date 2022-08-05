@@ -37,21 +37,37 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button alignment="CENTER" layoutX="290.0" layoutY="330.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="60.0" text="Home" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="290.0" />
-            <Button layoutX="150.0" layoutY="340.0" mnemonicParsing="false" text="Indietro" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="150.0" />
-            <Button alignment="CENTER" layoutX="430.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Logout" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="150.0" />
+            <Button fx:id="buttonHome" alignment="CENTER" contentDisplay="CENTER" layoutX="282.0" layoutY="333.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="76.0" style="-fx-background-radius: 5px; -fx-border-radius: 5;" text="Home" textAlignment="CENTER" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="282.0" AnchorPane.rightAnchor="282.0">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font></Button>
+            <Button fx:id="buttonIndietro" alignment="CENTER" layoutX="61.0" layoutY="333.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" style="-fx-background-radius: 5px; -fx-border-radius: 5;" text="Indietro" textAlignment="CENTER" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="61.0">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font></Button>
+            <Button fx:id="buttonLogout" alignment="CENTER" layoutX="491.0" layoutY="333.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" style="-fx-background-radius: 5px; -fx-border-radius: 5;" text="Logout" textAlignment="CENTER" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="61.0">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font></Button>
             <ImageView fitHeight="150.0" fitWidth="251.0" layoutX="8.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <Button alignment="CENTER" layoutX="228.0" layoutY="147.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="184.0" text="Visualizza segnalazioni" />
-            <Button alignment="CENTER" layoutX="228.0" layoutY="188.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="184.0" text="Visualizza storico consegne" />
+            <Button fx:id="bottoneVisualizzaSegnalzioni" alignment="CENTER" layoutX="218.0" layoutY="156.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="207.0" style="-fx-background-radius: 5px; -fx-border-radius: 5;" text="Visualizza segnalazioni">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button fx:id="bottoneVisualizzaStorico" alignment="CENTER" layoutX="217.0" layoutY="210.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="207.0" style="-fx-background-radius: 5px; -fx-border-radius: 5;" text="Visualizza storico consegne">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
       </children>
     </AnchorPane>
   </children>
