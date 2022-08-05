@@ -1,12 +1,12 @@
-package com.vipagepharma.farmacia.autenticazione.login;
+package com.vipagepharma.addettoAzienda.autenticazione.login;
 
-import java.io.IOException;
-import com.vipagepharma.farmacia.App;
-import com.vipagepharma.farmacia.autenticazione.registrazione.RegistrazioneControl;
+import com.vipagepharma.addettoAzienda.autenticazione.registrazione.RegistrazioneControl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+
+import java.io.IOException;
 
 public class SchermataLogin{
 

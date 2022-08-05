@@ -1,4 +1,4 @@
-package com.vipagepharma.farmacia.autenticazione.login;
+package com.vipagepharma.addettoAzienda.autenticazione.login;
 
 import com.vipagepharma.farmacia.App;
 import javafx.scene.control.TextField;
