@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
   Copyright (c) 2015, 2019, Gluon and/or its affiliates.
   All rights reserved. Use is subject to license terms.
@@ -42,20 +41,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.SchermataLogin">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.autenticazione.login.SchermataLogin">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="467.0" prefWidth="711.0" VBox.vgrow="ALWAYS">
          <children>
             <ImageView fitHeight="121.0" fitWidth="122.0" layoutX="30.0" layoutY="-12.0">
                <image>
-                  <Image url="@22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
+                  <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <TextField fx:id="username" layoutX="249.0" layoutY="125.0" text="ID" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="227.0">
+            <TextField fx:id="username" layoutX="249.0" layoutY="125.0" promptText="ID" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="227.0">
                <font>
                   <Font name="Arial" size="13.0" />
                </font></TextField>
-            <TextField fx:id="password" layoutX="249.0" layoutY="166.0" text="Password" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="227.0">
+            <TextField fx:id="password" layoutX="249.0" layoutY="166.0" promptText="Password" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="227.0">
                <font>
                   <Font name="Arial" size="13.0" />
                </font></TextField>
@@ -64,7 +63,7 @@
                   <Font name="Arial" size="13.0" />
                </font></Button>
             <Button id="rescue_passwd" alignment="CENTER" layoutX="331.0" layoutY="314.0" mnemonicParsing="false" onMouseClicked="#onRegistrazioneClicked" prefHeight="25.0" prefWidth="95.0" text="Registrati" AnchorPane.leftAnchor="331.0" AnchorPane.rightAnchor="214.0" />
-            <Text layoutX="169.275390625" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hai dimenticato la password?" AnchorPane.leftAnchor="169.275390625" AnchorPane.rightAnchor="310.91845703125">
+            <Text layoutX="164.275390625" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hai dimenticato la password?" AnchorPane.leftAnchor="164.275390625" AnchorPane.rightAnchor="315.91845703125">
                <font>
                   <Font name="Arial" size="13.0" />
                </font></Text>

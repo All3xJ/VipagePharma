@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
   Copyright (c) 2015, 2019, Gluon and/or its affiliates.
   All rights reserved. Use is subject to license terms.
@@ -48,7 +47,7 @@
          <children>
             <ImageView fitHeight="121.0" fitWidth="122.0" layoutX="30.0" layoutY="-12.0">
                <image>
-                  <Image url="@22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
+                  <Image url="@../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
             <TextField fx:id="username" layoutX="249.0" layoutY="125.0" promptText="ID" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="227.0">

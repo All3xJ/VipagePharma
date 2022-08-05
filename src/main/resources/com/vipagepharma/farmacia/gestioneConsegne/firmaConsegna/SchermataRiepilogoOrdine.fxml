@@ -49,18 +49,18 @@
             <Button alignment="CENTER" layoutX="430.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Logout" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="150.0" />
             <ImageView fitHeight="150.0" fitWidth="251.0" layoutX="8.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
+                  <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <TableView layoutX="127.0" layoutY="107.0" prefHeight="72.0" prefWidth="387.0">
+            <Button alignment="CENTER" layoutX="290.0" layoutY="249.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Firma" />
+            <TableView layoutX="143.0" layoutY="117.0" prefHeight="74.0" prefWidth="355.0">
               <columns>
-                <TableColumn prefWidth="91.0" text="ID ordine" />
-                <TableColumn prefWidth="96.0" text="ID farmacia" />
-                  <TableColumn minWidth="20.0" prefWidth="128.0" text="Data di consegna" />
-                  <TableColumn prefWidth="71.0" text="Quantità" />
+                <TableColumn prefWidth="84.0" text="ID consegna" />
+                <TableColumn prefWidth="89.0" text="ID farmacia" />
+                  <TableColumn prefWidth="111.0" text="Data di consegna" />
+                  <TableColumn prefWidth="70.0" text="Quantità" />
               </columns>
             </TableView>
-            <Button layoutX="278.0" layoutY="215.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Firma" />
       </children>
     </AnchorPane>
   </children>
