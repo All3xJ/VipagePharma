@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
   Copyright (c) 2015, 2019, Gluon and/or its affiliates.
   All rights reserved. Use is subject to license terms.
@@ -47,30 +48,36 @@
          <children>
             <ImageView fitHeight="121.0" fitWidth="122.0" layoutX="30.0" layoutY="-12.0">
                <image>
-                  <Image url="@../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
+                  <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <TextField fx:id="username" layoutX="249.0" layoutY="125.0" promptText="ID" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="227.0">
+            <TextField id="IdTextField" fx:id="username" layoutX="249.0" layoutY="125.0" promptText="ID" style="-fx-background-radius: 5; -fx-border-radius: 5;" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="227.0">
                <font>
-                  <Font name="Arial" size="13.0" />
+                  <Font name="Arial" size="15.0" />
                </font></TextField>
-            <TextField fx:id="password" layoutX="249.0" layoutY="166.0" promptText="Password" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="227.0">
+            <TextField fx:id="password" layoutX="249.0" layoutY="161.0" promptText="Password" style="-fx-background-radius: 5; -fx-border-radius: 5;" AnchorPane.leftAnchor="249.0" AnchorPane.rightAnchor="227.0">
                <font>
-                  <Font name="Arial" size="13.0" />
+                  <Font name="Arial" size="15.0" />
                </font></TextField>
-            <Button fx:id="login" alignment="CENTER" layoutX="295.0" layoutY="205.0" mnemonicParsing="false" onMouseClicked="#onLoginClicked" prefHeight="25.0" prefWidth="79.0" text="Login" AnchorPane.leftAnchor="295.0" AnchorPane.rightAnchor="275.0">
+            <Button fx:id="login" alignment="CENTER" layoutX="279.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#onLoginClicked" prefHeight="27.0" prefWidth="105.0" style="-fx-background-color: #CFF3F2 #CFF3F2; -fx-border-color: #b9b9b9; -fx-background-radius: 5; -fx-border-radius: 5;" text="Login" AnchorPane.leftAnchor="279.0" AnchorPane.rightAnchor="266.0">
                <font>
-                  <Font name="Arial" size="13.0" />
+                  <Font name="Arial" size="15.0" />
                </font></Button>
-            <Button id="rescue_passwd" alignment="CENTER" layoutX="331.0" layoutY="314.0" mnemonicParsing="false" onMouseClicked="#onRegistrazioneClicked" prefHeight="25.0" prefWidth="95.0" text="Registrati" AnchorPane.leftAnchor="331.0" AnchorPane.rightAnchor="214.0" />
-            <Text layoutX="164.275390625" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hai dimenticato la password?" AnchorPane.leftAnchor="164.275390625" AnchorPane.rightAnchor="315.91845703125">
+            <Button id="bottoneRegistrati" alignment="CENTER" layoutX="311.0" layoutY="313.0" mnemonicParsing="false" onMouseClicked="#onRegistrazioneClicked" prefHeight="25.0" prefWidth="95.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Registrati" AnchorPane.leftAnchor="311.0" AnchorPane.rightAnchor="234.0">
                <font>
-                  <Font name="Arial" size="13.0" />
+                  <Font name="Arial" size="15.0" />
+               </font></Button>
+            <Text layoutX="127.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hai dimenticato la password?" AnchorPane.leftAnchor="127.0" AnchorPane.rightAnchor="354.06982421875">
+               <font>
+                  <Font name="Arial" size="15.0" />
                </font></Text>
-            <Button alignment="CENTER" layoutX="347.0" layoutY="273.0" mnemonicParsing="false" text="Reimposta password" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="161.0" />
-            <Text layoutX="210.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non sei registrato?" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="330.89013671875">
+            <Button id="bottoneReimposta" alignment="CENTER" layoutX="339.0" layoutY="272.0" mnemonicParsing="false" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Reimposta password" AnchorPane.leftAnchor="339.0" AnchorPane.rightAnchor="169.0">
                <font>
-                  <Font name="Arial" size="13.0" />
+                  <Font name="Arial" size="15.0" />
+               </font></Button>
+            <Text layoutX="162.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non sei registrato?" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="389.10400390625">
+               <font>
+                  <Font name="Arial" size="15.0" />
                </font></Text>
          </children>
          <VBox.margin>
