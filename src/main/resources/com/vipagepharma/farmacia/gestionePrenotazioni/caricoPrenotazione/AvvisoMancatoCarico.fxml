@@ -38,6 +38,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
   <children>
@@ -48,11 +50,22 @@
             <Button alignment="CENTER" layoutX="422.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Logout" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="153.0" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
+                  <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="143.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="354.0" />
-            <Button layoutX="280.0" layoutY="253.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Conferma" />
+            <Button alignment="CENTER" layoutX="334.0" layoutY="251.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Segnala un problema" />
+            <Text fill="RED" layoutX="249.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE" textAlignment="CENTER" wrappingWidth="142.2333984375">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="180.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La consegna id_consegna prevista per oggi non è stata ancora caricata" textAlignment="CENTER" wrappingWidth="281.2880859375">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Text>
+            <Button alignment="CENTER" layoutX="165.0" layoutY="251.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Conferma carico" />
       </children>
     </AnchorPane>
   </children>
