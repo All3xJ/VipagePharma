@@ -2,6 +2,11 @@ package com.vipagepharma.farmacia;
 
 import java.io.IOException;
 
+import com.vipagepharma.farmacia.autenticazione.login.LoginControl;
+import com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni.VisualizzaPrenotazioniControl;
+import com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco.RicercaFarmacoControl;
+import com.vipagepharma.farmacia.gestionePrenotazioni.modificaContratti.ModificaContrattiControl;
+import com.vipagepharma.farmacia.gestioneFarmaci.scaricoFarmaci.ScaricoFarmaciControl;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
@@ -9,7 +14,29 @@ public class SchermataPrincipale {
 
 	@FXML
     void onVisualizzaPrenotazioniClicked(MouseEvent event) throws IOException{
-        App.setRoot("SchermataElencoPrenotazioni");	// ho messo nel controller di ListaPrenotazioni (quindi ListaPrenotazioniController) un initialize che letteralmente esegue roba che voglio. questo perchè inizialmente volevo fare tutto in questo controller una volta che si fa setRoot si SMINCHIANO TUTTE LE VARIBAILI DI QUESTO OGGETTO.... È COME SE SI RICARICASSE TUTTO AHAHAHAHAHAH QUINDI È TUTTO NULL E QUINDI NULLPOINTEREXCEPTION DIOCRISTO. DEVO SEPARARE I CONTROLLER DIOBONO DI DIO STANTO.
+
+		VisualizzaPrenotazioniControl visualprenCtrl = new VisualizzaPrenotazioniControl();
+		visualprenCtrl.start();
+		System.out.println("test per vedere se dopo che si va setRoot effettivamente continua a fare robe oppure proprio flusso è cambiato");	// risposta: SI LO PRINTA SUBITO, QUINDI È COME SE FACESSE THREAD
+	}
+	@FXML
+	void onRicercaFarmacoClicked(MouseEvent event) throws IOException{
+		RicercaFarmacoControl ricfarmCtrl = new RicercaFarmacoControl();
+		ricfarmCtrl.start();
+		System.out.println("test per vedere se dopo che si va setRoot effettivamente continua a fare robe oppure proprio flusso è cambiato");	// risposta: SI LO PRINTA SUBITO, QUINDI È COME SE FACESSE THREAD
+	}
+
+	@FXML
+	void onScaricoFarmaciClicked(MouseEvent event) throws IOException{
+		ScaricoFarmaciControl scarfarmCtrl = new ScaricoFarmaciControl();
+		scarfarmCtrl.start();
+		System.out.println("test per vedere se dopo che si va setRoot effettivamente continua a fare robe oppure proprio flusso è cambiato");	// risposta: SI LO PRINTA SUBITO, QUINDI È COME SE FACESSE THREAD
+	}
+
+	@FXML
+	void onModificaContrattiClicked(MouseEvent event) throws IOException{
+		ModificaContrattiControl modcontraCtrl = new ModificaContrattiControl();
+		modcontraCtrl.start();
 		System.out.println("test per vedere se dopo che si va setRoot effettivamente continua a fare robe oppure proprio flusso è cambiato");	// risposta: SI LO PRINTA SUBITO, QUINDI È COME SE FACESSE THREAD
 	}
 

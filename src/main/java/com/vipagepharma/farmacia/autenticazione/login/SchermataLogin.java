@@ -11,7 +11,7 @@ import javafx.scene.input.MouseEvent;
 public class SchermataLogin{
 
 	@FXML
-	private TextField username;	// il nome della variabile deve essere lo stesso dell'FXXXXXXID di Scene Builder
+	private TextField username;  // il nome della variabile deve essere lo stesso dell'FXXXXXXID di Scene Builder
 
 	@FXML
 	private TextField password;
@@ -19,13 +19,14 @@ public class SchermataLogin{
 	@FXML
 	private Button login;
 
+
+
 	@FXML
     void onLoginClicked(MouseEvent event) throws IOException{	// sono nella schermata di login. se preme pulsante "login" allora:
 		System.out.println(username.getText());
 		System.out.println(password.getText());
 		LoginControl logCtrl = new LoginControl(username,password);
 		logCtrl.start();
-        App.setRoot("SchermataPrincipaleFarmacista"); // se sono giuste le credenziali mi porta alla home
     }
 
 	@FXML

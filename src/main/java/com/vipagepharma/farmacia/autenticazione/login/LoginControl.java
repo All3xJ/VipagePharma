@@ -15,7 +15,7 @@ public class LoginControl {
     }
 
     public void start() throws IOException {
-        //App.setRoot("SchermataPrincipaleFarmacista");
+        App.setRoot("SchermataPrincipale"); // se sono giuste le credenziali mi porta alla home
         System.out.println("ciao");
     }
 }
