@@ -50,7 +50,7 @@
             <Button alignment="CENTER" layoutX="422.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Logout" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="153.0" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
+                  <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="143.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="354.0" />

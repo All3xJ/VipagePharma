@@ -7,7 +7,7 @@ import java.io.IOException;
 public class RegistrazioneControl {
 
     public void start() throws IOException {
-        App.setRoot("SchermataRegistrazione");
+        App.setRoot("autenticazione/registrazione/SchermataRegistrazione");
 
     }
 }

@@ -33,8 +33,8 @@
 -->
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -44,18 +44,23 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button layoutX="286.0" layoutY="330.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="65.0" text="home" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="290.0" />
+            <Button alignment="CENTER" layoutX="290.0" layoutY="330.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="60.0" text="Home" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="290.0" />
             <Button layoutX="150.0" layoutY="340.0" mnemonicParsing="false" text="Indietro" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="150.0" />
-            <Button alignment="CENTER" layoutX="422.0" layoutY="340.0" mnemonicParsing="false" text="logout" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="153.0" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+            <Button alignment="CENTER" layoutX="430.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Logout" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="150.0" />
+            <ImageView fitHeight="150.0" fitWidth="251.0" layoutX="8.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <TextField layoutX="249.0" layoutY="135.0" promptText="ID" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0" />
-            <TextField layoutX="243.0" layoutY="170.0" promptText="Parola chiave" AnchorPane.leftAnchor="243.0" AnchorPane.rightAnchor="236.0" />
-            <ButtonBar layoutX="34.0" layoutY="140.0" prefHeight="40.0" prefWidth="200.0" />
-            <Button layoutX="298.0" layoutY="205.0" mnemonicParsing="false" text="Invia" AnchorPane.leftAnchor="285.0" AnchorPane.rightAnchor="285.0" />
+            <Button alignment="CENTER" layoutX="290.0" layoutY="249.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Firma" />
+            <TableView layoutX="143.0" layoutY="117.0" prefHeight="74.0" prefWidth="355.0">
+              <columns>
+                <TableColumn prefWidth="84.0" text="ID consegna" />
+                <TableColumn prefWidth="89.0" text="ID farmacia" />
+                  <TableColumn prefWidth="111.0" text="Data di consegna" />
+                  <TableColumn prefWidth="70.0" text="Quantità" />
+              </columns>
+            </TableView>
       </children>
     </AnchorPane>
   </children>

@@ -37,34 +37,37 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button layoutX="286.0" layoutY="330.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="65.0" text="Home" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="290.0" />
-            <Button layoutX="150.0" layoutY="340.0" mnemonicParsing="false" text="Indietro" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="150.0" />
-            <Button alignment="CENTER" layoutX="422.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Logout" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="153.0" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
-               </image>
-            </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="143.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="354.0" />
-            <Text fill="#45b243" layoutX="199.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OPERAZIONE RIUSCITA" textAlignment="CENTER" wrappingWidth="241.734375">
-               <font>
-                  <Font name="Arial Bold" size="20.0" />
-               </font>
-            </Text>
-            <Text layoutX="222.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Il farmaco è stato scaricato correttamente!" textAlignment="CENTER" wrappingWidth="196.734375">
+            <Button fx:id="buttonHome" alignment="CENTER" contentDisplay="CENTER" layoutX="282.0" layoutY="333.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="76.0" style="-fx-background-radius: 5px; -fx-border-radius: 5;" text="Home" textAlignment="CENTER" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="282.0" AnchorPane.rightAnchor="282.0">
                <font>
                   <Font name="Arial" size="15.0" />
-               </font>
-            </Text>
-            <Button layoutX="279.0" layoutY="230.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Ok" />
+               </font></Button>
+            <Button fx:id="buttonIndietro" alignment="CENTER" layoutX="61.0" layoutY="333.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" style="-fx-background-radius: 5px; -fx-border-radius: 5;" text="Indietro" textAlignment="CENTER" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="61.0">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font></Button>
+            <Button fx:id="buttonLogout" alignment="CENTER" layoutX="491.0" layoutY="333.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" style="-fx-background-radius: 5px; -fx-border-radius: 5;" text="Logout" textAlignment="CENTER" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="61.0">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font></Button>
+            <ImageView fitHeight="150.0" fitWidth="251.0" layoutX="8.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="bottoneVisualizzaSegnalzioni" alignment="CENTER" layoutX="218.0" layoutY="156.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="207.0" style="-fx-background-radius: 5px; -fx-border-radius: 5;" text="Visualizza segnalazioni">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button fx:id="bottoneVisualizzaStorico" alignment="CENTER" layoutX="217.0" layoutY="210.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="207.0" style="-fx-background-radius: 5px; -fx-border-radius: 5;" text="Visualizza storico consegne">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
       </children>
     </AnchorPane>
   </children>

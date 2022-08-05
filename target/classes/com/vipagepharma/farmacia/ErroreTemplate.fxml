@@ -37,19 +37,22 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="794.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button alignment="CENTER" layoutX="290.0" layoutY="330.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="60.0" text="Home" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="290.0" />
+            <Button layoutX="286.0" layoutY="330.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="65.0" text="Home" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="290.0" />
             <Button layoutX="150.0" layoutY="340.0" mnemonicParsing="false" text="Indietro" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="150.0" />
-            <Button alignment="CENTER" layoutX="430.0" layoutY="340.0" mnemonicParsing="false" text="Logout" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="153.0" />
+            <Button alignment="CENTER" layoutX="422.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Logout" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="153.0" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
+                  <Image url="@../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="143.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="354.0" />
+            <Button layoutX="280.0" layoutY="253.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Conferma" />
       </children>
     </AnchorPane>
   </children>

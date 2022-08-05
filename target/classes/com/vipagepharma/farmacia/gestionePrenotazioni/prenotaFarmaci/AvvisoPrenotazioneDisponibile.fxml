@@ -50,21 +50,21 @@
             <Button alignment="CENTER" layoutX="422.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Logout" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="153.0" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
+                  <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="143.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="354.0" />
-            <Text fill="RED" layoutX="249.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ERRORE" textAlignment="CENTER" wrappingWidth="142.2333984375">
+            <Text layoutX="161.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La tua prenotazione di n pezzi di nome_farmaco per giorno gg/mm/aaaa è disponibile" textAlignment="CENTER" wrappingWidth="318.4580078125">
                <font>
-                  <Font name="Arial Bold" size="20.0" />
+                  <Font name="Arial" size="14.0" />
                </font>
             </Text>
-            <Text layoutX="199.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nuova password e conferma password non coincidono" textAlignment="CENTER" wrappingWidth="241.734375">
+            <Button layoutX="280.0" layoutY="230.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Conferma" />
+            <Text layoutX="215.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vuoi confermare la prenotazione?">
                <font>
-                  <Font name="Arial" size="15.0" />
+                  <Font name="Arial" size="14.0" />
                </font>
             </Text>
-            <Button layoutX="290.0" layoutY="230.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Ok" />
       </children>
     </AnchorPane>
   </children>
