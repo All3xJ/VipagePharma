@@ -1,9 +1,7 @@
 package com.vipagepharma.farmacia.autenticazione.login;
 
 import java.io.IOException;
-
 import com.vipagepharma.farmacia.App;
-import com.vipagepharma.farmacia.autenticazione.login.LoginControl;
 import com.vipagepharma.farmacia.autenticazione.registrazione.RegistrazioneControl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -27,7 +25,7 @@ public class SchermataLogin{
 		System.out.println(password.getText());
 		LoginControl logCtrl = new LoginControl(username,password);
 		logCtrl.start();
-        //App.setRoot("SchermataPrincipale"); // se sono giuste le credenziali mi porta alla home
+        App.setRoot("SchermataPrincipaleFarmacista"); // se sono giuste le credenziali mi porta alla home
     }
 
 	@FXML

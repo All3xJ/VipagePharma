@@ -2,7 +2,6 @@ package com.vipagepharma.farmacia.autenticazione.login;
 
 import com.vipagepharma.farmacia.App;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 
@@ -16,7 +15,7 @@ public class LoginControl {
     }
 
     public void start() throws IOException {
-        App.setRoot("SchermataPrincipale");
+        //App.setRoot("SchermataPrincipaleFarmacista");
         System.out.println("ciao");
     }
 }
