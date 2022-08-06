@@ -1,5 +1,5 @@
 package com.vipagepharma.addettoAzienda;
-import com.vipagepharma.addettoAzienda.App;
+
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
