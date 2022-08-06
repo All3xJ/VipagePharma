@@ -18,4 +18,11 @@ module com.vipagepharma {
     opens com.vipagepharma.addettoAzienda.autenticazione.login to javafx.fxml;
     exports com.vipagepharma.addettoAzienda.autenticazione.registrazione;
     opens com.vipagepharma.addettoAzienda.autenticazione.registrazione to javafx.fxml;
+
+    exports com.vipagepharma.corriere;
+    opens com.vipagepharma.corriere to javafx.fxml;
+    exports com.vipagepharma.corriere.autenticazione.login;
+    opens com.vipagepharma.corriere.autenticazione.login to javafx.fxml;
+    exports com.vipagepharma.corriere.autenticazione.registrazione;
+    opens com.vipagepharma.corriere.autenticazione.registrazione to javafx.fxml;
 }
