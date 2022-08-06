@@ -17,7 +17,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("autenticazione/login/SchermataLogin"), 640, 480);
+        //scene = new Scene(loadFXML("autenticazione/login/SchermataLogin"), 640, 480);
+        scene = new Scene(loadFXML("autenticazione/login/SchermataLogin"), 1080, 720);
         scene.getRoot().setStyle("-fx-font-family: 'Arial'");
         stage.setScene(scene);
         stage.show();	
