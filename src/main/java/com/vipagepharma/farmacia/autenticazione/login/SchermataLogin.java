@@ -9,6 +9,7 @@ import com.vipagepharma.farmacia.autenticazione.registrazione.RegistrazioneContr
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -19,7 +20,7 @@ public class SchermataLogin implements Initializable {
 	private TextField username;  // il nome della variabile deve essere lo stesso dell'FXXXXXXID di Scene Builder
 
 	@FXML
-	private TextField password;
+	private PasswordField password;
 
 	@FXML
 	private Button login;
