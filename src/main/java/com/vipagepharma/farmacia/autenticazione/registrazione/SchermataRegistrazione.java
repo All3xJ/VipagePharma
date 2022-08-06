@@ -8,8 +8,11 @@ import javafx.scene.input.MouseEvent;
 
 public class SchermataRegistrazione{
 
+    @FXML
+    void premeRegistrati(MouseEvent event) throws IOException{
 
     }
+}
 
 
 

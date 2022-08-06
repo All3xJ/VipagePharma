@@ -77,9 +77,9 @@
                <font>
                   <Font name="Arial" size="15.0" />
                </font></TextField>
-            <Button id="bottoneRegistrati" alignment="CENTER" layoutX="273.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#premeRegistrati" prefHeight="25.0" prefWidth="94.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Registrati" AnchorPane.leftAnchor="273.0" AnchorPane.rightAnchor="273.0">
+            <Button id="bottoneRegistrati" alignment="CENTER" layoutX="273.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#premeRegistrati" prefHeight="25.0" prefWidth="94.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Registrati" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0">
                <font>
-                  <Font name="Arial" size="15.0" />
+                  <Font name="Arial" size="20.0" />
                </font></Button>
       </children>
     </AnchorPane>
