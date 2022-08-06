@@ -37,47 +37,34 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="794.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button layoutX="603.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
+            <Button fx:id="buttonHome" alignment="CENTER" contentDisplay="CENTER" layoutX="603.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home" textAlignment="CENTER">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button layoutX="116.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
+            <Button fx:id="buttonIndietro" alignment="CENTER" layoutX="61.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" textAlignment="CENTER" AnchorPane.leftAnchor="116.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button alignment="CENTER" layoutX="1017.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="116.0">
+            <Button fx:id="buttonLogout" alignment="CENTER" layoutX="491.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" textAlignment="CENTER" AnchorPane.rightAnchor="116.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
             <ImageView fitHeight="225.0" fitWidth="230.0" layoutX="30.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
+                  <Image url="@../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="410.0" layoutX="308.0" layoutY="174.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="691.0" />
-            <Button alignment="CENTER" layoutX="719.0" layoutY="482.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="208.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Completa ordine">
+            <Button fx:id="bottoneVisualizzaSegnalzioni" alignment="CENTER" layoutX="510.0" layoutY="240.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Visualizza segnalazioni">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Text fill="RED" layoutX="541.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE" textAlignment="CENTER" wrappingWidth="235.30496215820312">
-               <font>
-                  <Font name="Arial Bold" size="35.0" />
-               </font>
-            </Text>
-            <Text layoutX="385.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La consegna id_consegna prevista per la farmacia id_farmacia ha avuto qualche problema" textAlignment="CENTER" wrappingWidth="547.5883178710938">
-               <font>
-                  <Font name="Arial" size="25.0" />
-               </font>
-            </Text>
-            <Button alignment="CENTER" layoutX="382.0" layoutY="482.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="208.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Rimborsa">
+            <Button fx:id="bottoneVisualizzaStorico" alignment="CENTER" layoutX="510.0" layoutY="310.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Visualizza storico consegne">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
