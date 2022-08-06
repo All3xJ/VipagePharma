@@ -1,6 +1,6 @@
 package com.vipagepharma.corriere.autenticazione.registrazione;
 
-import com.vipagepharma.farmacia.App;
+import com.vipagepharma.corriere.App;
 
 import java.io.IOException;
 
