@@ -19,7 +19,7 @@ public class SchermataLogin{
 	private Button login;
 
 	@FXML
-    void onLoginClicked(MouseEvent event) throws IOException{	// sono nella schermata di login. se preme pulsante "login" allora:
+    void premeLogin(MouseEvent event) throws IOException{	// sono nella schermata di login. se preme pulsante "login" allora:
 		System.out.println(username.getText());
 		System.out.println(password.getText());
 		LoginControl logCtrl = new LoginControl(username,password);
@@ -27,8 +27,13 @@ public class SchermataLogin{
 	}
 
 	@FXML
-	void onRegistrazioneClicked(MouseEvent event) throws IOException{
+	void premeRegistrati(MouseEvent event) throws IOException{
 		RegistrazioneControl regCtrl = new RegistrazioneControl();
 		regCtrl.start();
+	}
+
+	@FXML
+	void premeReimpostaPassword(MouseEvent event) throws IOException{
+
 	}
 }

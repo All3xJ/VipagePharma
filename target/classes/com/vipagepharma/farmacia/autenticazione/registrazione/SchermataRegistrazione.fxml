@@ -44,15 +44,15 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button layoutX="282.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="77.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" text="Home" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="282.0" AnchorPane.rightAnchor="282.0">
+            <Button layoutX="282.0" layoutY="333.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="77.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="282.0" AnchorPane.rightAnchor="282.0">
                <font>
                   <Font name="Arial" size="15.0" />
                </font></Button>
-            <Button id="bottoneIndietro" layoutX="130.0" layoutY="340.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" style="-fx-background-radius: 10px; -fx-border-radius: 10px;" text="Indietro" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="61.0">
+            <Button id="bottoneIndietro" layoutX="130.0" layoutY="340.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="61.0">
                <font>
                   <Font name="Arial" size="15.0" />
                </font></Button>
-            <Button id="bottoneLogout" alignment="CENTER" layoutX="436.0" layoutY="340.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="89.0" style="-fx-background-radius: 10px; -fx-border-radius: 10px;" text="Logout" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="61.0">
+            <Button id="bottoneLogout" alignment="CENTER" layoutX="436.0" layoutY="340.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="61.0">
                <font>
                   <Font name="Arial" size="15.0" />
                </font></Button>
@@ -61,23 +61,23 @@
                   <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <TextField layoutX="242.0" layoutY="120.0" promptText="Nome" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0">
+            <TextField layoutX="242.0" layoutY="110.0" promptText="Nome" style="-fx-background-radius: 5; -fx-border-radius: 5;" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0">
                <font>
                   <Font name="Arial" size="15.0" />
                </font></TextField>
-            <TextField layoutX="242.0" layoutY="155.0" promptText="Email" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0">
+            <TextField layoutX="242.0" layoutY="148.0" promptText="Email" style="-fx-background-radius: 5; -fx-border-radius: 5;" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0">
                <font>
                   <Font name="Arial" size="15.0" />
                </font></TextField>
-            <TextField layoutX="242.0" layoutY="188.0" promptText="Password" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0">
+            <TextField layoutX="242.0" layoutY="187.0" promptText="Password" style="-fx-background-radius: 5; -fx-border-radius: 5;" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0">
                <font>
                   <Font name="Arial" size="15.0" />
                </font></TextField>
-            <TextField layoutX="242.0" layoutY="225.0" promptText="Conferma password" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0">
+            <TextField layoutX="242.0" layoutY="227.0" promptText="Conferma password" style="-fx-background-radius: 5; -fx-border-radius: 5;" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="237.0">
                <font>
                   <Font name="Arial" size="15.0" />
                </font></TextField>
-            <Button id="bottoneRegistrati" alignment="CENTER" layoutX="273.0" layoutY="264.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" style="-fx-background-radius: 10;" text="Suca" AnchorPane.leftAnchor="273.0" AnchorPane.rightAnchor="273.0">
+            <Button id="bottoneRegistrati" alignment="CENTER" layoutX="273.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#premeRegistrati" prefHeight="25.0" prefWidth="94.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Registrati" AnchorPane.leftAnchor="273.0" AnchorPane.rightAnchor="273.0">
                <font>
                   <Font name="Arial" size="15.0" />
                </font></Button>
