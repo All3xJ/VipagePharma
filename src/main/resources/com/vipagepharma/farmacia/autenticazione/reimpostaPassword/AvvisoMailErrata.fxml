@@ -45,9 +45,18 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button layoutX="286.0" layoutY="330.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="65.0" text="Home" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="290.0" />
-            <Button layoutX="150.0" layoutY="340.0" mnemonicParsing="false" text="Indietro" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="150.0" />
-            <Button alignment="CENTER" layoutX="422.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Logout" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="153.0" />
+            <Button layoutX="286.0" layoutY="330.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="77.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="282.0" AnchorPane.rightAnchor="282.0">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font></Button>
+            <Button layoutX="150.0" layoutY="340.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="90.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="61.0">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font></Button>
+            <Button alignment="CENTER" layoutX="422.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#premeLogout" prefHeight="40.0" prefWidth="90.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.bottomAnchor="27.0" AnchorPane.rightAnchor="61.0">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font></Button>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
@@ -59,12 +68,15 @@
                   <Font name="Arial Bold" size="20.0" />
                </font>
             </Text>
-            <Text layoutX="175.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La mail inserita è già presente nel database">
+            <Text layoutX="165.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La mail inserita è già presente nel database">
                <font>
-                  <Font name="Arial" size="15.0" />
+                  <Font name="Arial" size="16.0" />
                </font>
             </Text>
-            <Button layoutX="290.0" layoutY="230.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Ok" />
+            <Button layoutX="290.0" layoutY="230.0" mnemonicParsing="false" onMouseClicked="#premeOk" prefHeight="25.0" prefWidth="67.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Ok">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font></Button>
       </children>
     </AnchorPane>
   </children>
