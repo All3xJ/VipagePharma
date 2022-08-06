@@ -34,6 +34,6 @@ public class SchermataLogin{
 
 	@FXML
 	void premeReimpostaPassword(MouseEvent event) throws IOException{
-
+		// sucami la minchia
 	}
 }
