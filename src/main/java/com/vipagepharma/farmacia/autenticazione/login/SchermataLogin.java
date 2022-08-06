@@ -1,7 +1,6 @@
 package com.vipagepharma.farmacia.autenticazione.login;
 
 import java.io.IOException;
-import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.autenticazione.registrazione.RegistrazioneControl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
