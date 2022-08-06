@@ -1,4 +1,4 @@
-package com.vipagepharma.farmacia;
+package com.vipagepharma.addettoAzienda;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

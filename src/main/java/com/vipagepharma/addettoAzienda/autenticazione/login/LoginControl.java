@@ -1,6 +1,6 @@
 package com.vipagepharma.addettoAzienda.autenticazione.login;
 
-import com.vipagepharma.farmacia.App;
+import com.vipagepharma.addettoAzienda.App;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -15,7 +15,7 @@ public class LoginControl {
     }
 
     public void start() throws IOException {
-        App.setRoot("SchermataPrincipaleFarmacista"); // se sono giuste le credenziali mi porta alla home
+        App.setRoot("SchermataPrincipale"); // se sono giuste le credenziali mi porta alla home
         System.out.println("ciao");
     }
 }

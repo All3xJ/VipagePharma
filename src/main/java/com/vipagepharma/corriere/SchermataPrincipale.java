@@ -1,9 +1,9 @@
-package com.vipagepharma.farmacia;
-
-import java.io.IOException;
+package com.vipagepharma.corriere;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
+
+import java.io.IOException;
 
 public class SchermataPrincipale {
 
