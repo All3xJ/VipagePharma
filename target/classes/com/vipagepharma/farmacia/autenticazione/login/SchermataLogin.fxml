@@ -52,7 +52,7 @@
                   <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <TextField id="IdTextField" fx:id="username" layoutX="507.0" layoutY="242.0" maxWidth="297.0" minWidth="-Infinity" prefHeight="37.0" prefWidth="297.0" promptText="ID" style="-fx-background-radius: 5; -fx-border-radius: 5;" AnchorPane.leftAnchor="507.0" AnchorPane.rightAnchor="692.0">
+            <TextField id="IdTextField" fx:id="username" layoutX="507.0" layoutY="242.0" maxWidth="297.0" minWidth="-Infinity" prefHeight="37.0" prefWidth="297.0" promptText="ID" style="-fx-background-radius: 5; -fx-border-radius: 5;">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></TextField>
