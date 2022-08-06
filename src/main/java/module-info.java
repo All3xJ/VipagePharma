@@ -1,6 +1,7 @@
 module com.vipagepharma {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
     exports com.vipagepharma.farmacia;
     opens com.vipagepharma.farmacia to javafx.fxml;

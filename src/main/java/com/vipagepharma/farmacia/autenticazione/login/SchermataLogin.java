@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.autenticazione.registrazione.RegistrazioneControl;
+import com.vipagepharma.farmacia.autenticazione.reimpostaPassword.ReimpostaPasswordControl;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -47,7 +48,7 @@ public class SchermataLogin implements Initializable {
 
 	@FXML
 	void premeReimpostaPassword(MouseEvent event) throws IOException{
-		// sucami la minchia
-		System.out.println("ciao");
+		ReimpostaPasswordControl repassCtrl = new ReimpostaPasswordControl();
+		repassCtrl.start();
 	}
 }
