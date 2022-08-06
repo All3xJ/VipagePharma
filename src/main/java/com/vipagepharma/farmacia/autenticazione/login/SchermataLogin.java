@@ -24,7 +24,7 @@ public class SchermataLogin implements Initializable {
 	@FXML
 	private Button login;
 
-	@Override
+	//@Override
 	public void initialize(URL url, ResourceBundle resbound){	// FINALMENTE HO SCOPERTO A CHE SERVE. SERVE PER ESSERE DIOCANEMENTE EVOCATA QUANDO FACCIO setRoot. QUESTO METODO VERRÀ EVOCATO. È UNA SORTA DI MAIN DEL CONTROLLERRR
 		username.setStyle("-fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);");
 		password.setStyle("-fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);");
