@@ -1,6 +1,6 @@
 package com.vipagepharma.addettoAzienda.autenticazione.registrazione;
 
-import com.vipagepharma.farmacia.App;
+import com.vipagepharma.addettoAzienda.App;
 
 import java.io.IOException;
 
