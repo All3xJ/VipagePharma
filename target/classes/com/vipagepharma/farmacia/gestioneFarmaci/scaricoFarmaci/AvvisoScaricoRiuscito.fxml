@@ -68,7 +68,7 @@
                   <Font name="Arial Bold" size="35.0" />
                </font>
             </Text>
-            <Text layoutX="509.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Il farmaco è stato scaricato correttamente!" textAlignment="CENTER" wrappingWidth="292.212158203125">
+            <Text layoutX="414.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Il farmaco è stato scaricato correttamente!" textAlignment="CENTER" wrappingWidth="486.212158203125">
                <font>
                   <Font name="Arial" size="25.0" />
                </font>

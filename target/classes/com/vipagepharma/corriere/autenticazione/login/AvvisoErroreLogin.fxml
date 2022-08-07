@@ -43,17 +43,17 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="794.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button layoutX="603.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font></Button>
-            <Button layoutX="116.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
+            <Button alignment="CENTER" layoutX="116.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
             <Button alignment="CENTER" layoutX="1017.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="116.0">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font></Button>
+            <Button alignment="CENTER" layoutX="603.0" layoutY="689.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
@@ -63,21 +63,17 @@
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="410.0" layoutX="308.0" layoutY="174.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="691.0" />
-            <Button alignment="CENTER" layoutX="719.0" layoutY="482.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="208.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Completa ordine">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font></Button>
-            <Text fill="RED" layoutX="541.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE" textAlignment="CENTER" wrappingWidth="235.30496215820312">
+            <Text fill="RED" layoutX="512.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ERRORE" textAlignment="CENTER" wrappingWidth="271.2830810546875">
                <font>
                   <Font name="Arial Bold" size="35.0" />
                </font>
             </Text>
-            <Text layoutX="385.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La consegna id_consegna prevista per la farmacia id_farmacia ha avuto qualche problema" textAlignment="CENTER" wrappingWidth="547.5883178710938">
+            <Text layoutX="446.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="L'ID o la password inseriti sono errati!" wrappingWidth="434.312744140625">
                <font>
                   <Font name="Arial" size="25.0" />
                </font>
             </Text>
-            <Button alignment="CENTER" layoutX="382.0" layoutY="482.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="208.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Rimborsa">
+            <Button alignment="CENTER" layoutX="603.0" layoutY="494.0" mnemonicParsing="false" onMouseClicked="#premeOk" prefHeight="50.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Ok">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
