@@ -80,7 +80,17 @@ public class DBMSBoundary {
         }
     }
 
-
+    public static ResultSet getInventario(){
+        ResultSet resultSet;
+        try{
+            Connection connection = connectFarmacia();
+            Statement statement = connection.createStatement();
+            resultSet = statement .executeQuery("select ref_id_f ,qty ,isBanco  from farmaco");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
 
 } // class ends
 
