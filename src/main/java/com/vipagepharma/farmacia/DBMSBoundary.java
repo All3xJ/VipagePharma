@@ -59,7 +59,7 @@ public class DBMSBoundary {
         try{
             Connection connection = connectFarmacia();
             Statement statement = connection.createStatement();
-            resultSet = statement .executeQuery("select ref_id_f ,qty ,isBanco  from farmaco")
+            resultSet = statement .executeQuery("select ref_id_f ,qty ,isBanco  from farmaco");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
