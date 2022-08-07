@@ -1,16 +1,12 @@
-package com.vipagepharma.farmacia;
-
+package com.vipagepharma.addettoAzienda;
 import java.sql.*;
 
-
 public class DBMSBoundary {
-
     private static final String url = "jdbc:mysql://vipagesite.duckdns.org:3306/";
     private static final String user = "pi";
     private static final String pass = "BubJbhvbj373838&#@!";
     private static final String dbFarmacia = "vipagepharma_farmacia";
     private static final String dbAzienda = "vipagepharma_azienda";
-
 
 
     public static Connection connectFarmacia(){
@@ -42,9 +38,9 @@ public class DBMSBoundary {
     public static boolean effettuaLogin(String id,String pass){
         boolean esito = false;
         try {
-            Connection connection = connectFarmacia();
+            Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select u.* from utente u where u.id_uf = " + id + " and u.password = " + "'" + pass + "'" );
+            ResultSet resultSet = statement.executeQuery("select u.* from utente u where u.id_ua = " + id + " and u.password = " + "'" + pass + "'" );
             esito = resultSet.next();
         }
         catch (SQLException e){
@@ -52,22 +48,4 @@ public class DBMSBoundary {
         }
         return esito;
     }
-
-
-    public static ResultSet getInventario(){
-        ResultSet resultSet;
-        try{
-            Connection connection = connectFarmacia();
-            Statement statement = connection.createStatement();
-            resultSet = statement .executeQuery("select ref_id_f ,qty ,isBanco  from farmaco")
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return resultSet;
-    }
-
-} // class ends
-
-
-
-
+}
