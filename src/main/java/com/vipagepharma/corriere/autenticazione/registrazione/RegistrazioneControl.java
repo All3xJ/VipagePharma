@@ -8,6 +8,5 @@ public class RegistrazioneControl {
 
     public void start() throws IOException {
         App.setRoot("autenticazione/registrazione/SchermataRegistrazione");
-
     }
 }

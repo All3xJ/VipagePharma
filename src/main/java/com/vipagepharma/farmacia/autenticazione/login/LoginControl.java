@@ -2,8 +2,10 @@ package com.vipagepharma.farmacia.autenticazione.login;
 
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
+import com.vipagepharma.farmacia.entity.Utente;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
 
 import java.io.IOException;
 
@@ -17,16 +19,26 @@ public class LoginControl {
     }
 
     public void start() throws IOException {
-        if (this.effettuaLogin(this.id,this.pass)==true) {
+        if (DBMSBoundary.effettuaLoginFarmacia(this.id.getText(),this.pass.getText())) {
+            Utente.creaUtente(this.id.getText());
             App.setRoot("SchermataPrincipale"); // se sono giuste le credenziali mi porta alla home
-            System.out.println("ciao");
         } else{
-            System.out.println("suca");
+            App.setRoot("autenticazione/login/AvvisoErroreLogin");
+            createSolButtonHandler();
         }
     }
 
-    private boolean effettuaLogin(TextField id, PasswordField pass){
-        DBMSBoundary.start();
-        return true;
+    public EventHandler<Event> createSolButtonHandler()
+    {
+        btnSolHandler = new EventHandler<Event>() {
+
+            @Override
+            public void handle(Event event) {
+                System.out.println("Pressed!");
+                biddingHelperFrame.getBtnSag().setVisible(false);
+            }
+        };
+        return btnSolHandler;
     }
+
 }

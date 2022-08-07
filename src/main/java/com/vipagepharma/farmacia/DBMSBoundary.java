@@ -2,36 +2,72 @@ package com.vipagepharma.farmacia;
 
 import java.sql.*;
 
+
 public class DBMSBoundary {
-    public static void start()
-    {
+
+    private static final String url = "jdbc:mysql://vipagesite.duckdns.org:3306/";
+    private static final String user = "pi";
+    private static final String pass = "BubJbhvbj373838&#@!";
+    private static final String dbFarmacia = "vipagepharma_farmacia";
+    private static final String dbAzienda = "vipagepharma_azienda";
+
+
+
+    public static Connection connectFarmacia(){
         Connection connection = null;
         try {
             // below two lines are used for connectivity.
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(
-                    "jdbc:mysql://vipagesite.duckdns.org:3306/vipagepharma_farmacia",
-                    "pi", "BubJbhvbj373838&#@!");
-
-            Statement statement;
-            statement = connection.createStatement();
-            ResultSet resultSet;
-            resultSet = statement.executeQuery(
-                    "select * from farmaco");
-            int code;
-            String title;
-            while (resultSet.next()) {
-                code = resultSet.getInt("id_f");
-                title = resultSet.getString("nome").trim();
-                System.out.println("Code : " + code
-                        + " Title : " + title);
-            }
-            resultSet.close();
-            statement.close();
-            connection.close();
+            connection = DriverManager.getConnection(url + dbFarmacia, user, pass);
         }
-        catch (Exception exception) {
-            System.out.println(exception);
+        catch (Exception e) {
+            e.printStackTrace();
         }
+        return connection;
     } // function ends
+
+    public static Connection connectAzienda(){
+        Connection connection = null;
+        try {
+            // below two lines are used for connectivity.
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(url + dbAzienda, user, pass);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return connection;
+    } // function ends
+
+    public static boolean effettuaLoginFarmacia(String id,String pass){
+        boolean esito = false;
+        try {
+            Connection connection = connectFarmacia();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select u.* from utente u where u.id_uf = " + id + " and u.password = " + "'" + pass + "'" );
+            esito = resultSet.next();
+        }
+        catch (SQLException e){
+            return false;
+        }
+        return esito;
+    }
+    public static boolean effettuaLoginAzienda(String id,String pass){
+        boolean esito = false;
+        try {
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("IF EXISTS (select * from utente where id_ua =" + id + " and pass = " + pass +")");
+            esito = resultSet.getBoolean(0);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return esito;
+    }
+
 } // class ends
+
+
+
+
