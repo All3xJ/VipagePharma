@@ -10,43 +10,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
-public class AvvisoErroreLogin implements Initializable{
+public class AvvisoErroreLogin{
 
-    public static AvvisoErroreLogin av;
-    public static boolean premuto = false;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resbound){	// FINALMENTE HO SCOPERTO A CHE SERVE. SERVE PER ESSERE DIOCANEMENTE EVOCATA QUANDO FACCIO setRoot. QUESTO METODO VERRÀ EVOCATO. È UNA SORTA DI MAIN DEL CONTROLLERRR
-        av = this;
+    public void premutoOk(MouseEvent event) throws IOException {
+        LoginControl loginControl = LoginControl.logCtrlRef;
+        loginControl.mostra("autenticazione/login/SchermataLogin");
     }
 
-    synchronized public void premeOk(MouseEvent event) throws IOException {
-        premuto = true;
-        notifyAll();
-    }
-
-    synchronized public void checkpremutoOk(){
-        while (premuto==false){
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-
-
-
-
-    public void premeIndietro(MouseEvent event) throws IOException{
+    public void premutoIndietro(MouseEvent event) throws IOException{
 
     }
 
-    public void premeHome(MouseEvent event) throws IOException{
+    public void premutoHome(MouseEvent event) throws IOException{
 
     }
 
-    public void premeLogout(MouseEvent event) throws IOException{
+    public void premutoLogout(MouseEvent event) throws IOException{
 
     }
 }

@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.autenticazione.registrazione.RegistrazioneControl;
 import com.vipagepharma.farmacia.autenticazione.reimpostaPassword.ReimpostaPasswordControl;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -27,13 +28,13 @@ public class SchermataLogin implements Initializable {
 	private Button login;
 
 	@Override
-	public void initialize(URL url, ResourceBundle resbound){	// FINALMENTE HO SCOPERTO A CHE SERVE. SERVE PER ESSERE DIOCANEMENTE EVOCATA QUANDO FACCIO setRoot. QUESTO METODO VERRÀ EVOCATO. È UNA SORTA DI MAIN DEL CONTROLLERRR
+	public void initialize(URL url, ResourceBundle resbound){
 		username.setStyle("-fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);");
 		password.setStyle("-fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);");
 	}
 
 	@FXML
-    void premeLogin(MouseEvent event) throws IOException{	// sono nella schermata di login. se preme pulsante "login" allora:
+    void premutoLogin(ActionEvent event) throws IOException{	// sono nella schermata di login. se preme pulsante "login" allora:
 		System.out.println(username.getText());
 		System.out.println(password.getText());
 		LoginControl logCtrl = new LoginControl(username,password);
@@ -41,13 +42,13 @@ public class SchermataLogin implements Initializable {
     }
 
 	@FXML
-	void premeRegistrati(MouseEvent event) throws IOException{
+	void premutoRegistrati(MouseEvent event) throws IOException{
 		RegistrazioneControl regCtrl = new RegistrazioneControl();
 		regCtrl.start();
 	}
 
 	@FXML
-	void premeReimpostaPassword(MouseEvent event) throws IOException{
+	void premutoReimpostaPassword(MouseEvent event) throws IOException{
 		ReimpostaPasswordControl repassCtrl = new ReimpostaPasswordControl();
 		repassCtrl.start();
 	}

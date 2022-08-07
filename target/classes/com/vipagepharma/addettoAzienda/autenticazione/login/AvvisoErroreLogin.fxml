@@ -41,7 +41,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.autenticazione.login.AvvisoErroreLogin">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.addettoAzienda.autenticazione.login.AvvisoErroreLogin">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
@@ -73,7 +73,7 @@
                   <Font name="Arial" size="25.0" />
                </font>
             </Text>
-            <Button fx:id="okButton" alignment="CENTER" layoutX="603.0" layoutY="494.0" mnemonicParsing="false" onMouseClicked="#premeOk" prefHeight="50.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Ok">
+            <Button alignment="CENTER" layoutX="603.0" layoutY="494.0" mnemonicParsing="false" onMouseClicked="#premutoOk" prefHeight="50.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Ok">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>

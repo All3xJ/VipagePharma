@@ -53,12 +53,12 @@ public class SchermataElencoPrenotazioni implements Initializable{
 
 
 	@Override
-	public void initialize(URL url, ResourceBundle resbound){	// FINALMENTE HO SCOPERTO A CHE SERVE. SERVE PER ESSERE DIOCANEMENTE EVOCATA QUANDO FACCIO setRoot. QUESTO METODO VERRÀ EVOCATO. È UNA SORTA DI MAIN DEL CONTROLLERRR
+	public void initialize(URL url, ResourceBundle resbound){
 		this.id_column.setCellValueFactory(new PropertyValueFactory<Entry,String >("id"));
 		this.dataconsegna_column.setCellValueFactory(new PropertyValueFactory<Entry,String >("data"));
 
 		this.prenotazioni_table.setItems(this.tvObservableList);
-		//this.prenotazioni_table.getColumns().addAll(this.id_column, this.dataconsegna_column); NOOOOOOOOOOOO ALTRIMENTI LI RIAGGIUNGO CRISTO. GIA LI AGGIUNGE DA SOLO FXMLOADER ECC
+		//this.prenotazioni_table.getColumns().addAll(this.id_column, this.dataconsegna_column); NOOOOOOOOOOOO ALTRIMENTI LI RIAGGIUNGEREBBEEEEEE. GIA LI AGGIUNGE DA SOLO FXMLOADER ECC
 		this.addButtonToTable("Annulla",this.annulla_column);
 		this.addButtonToTable("Carico",this.carico_column);
 

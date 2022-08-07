@@ -11,29 +11,29 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class LoginControl extends Thread{
+public class LoginControl{
     private TextField id;
     private PasswordField pass;
+
+    public static LoginControl logCtrlRef;
 
     public LoginControl(TextField id,PasswordField pass){
         this.id = id;
         this.pass = pass;
+        logCtrlRef = this;
     }
 
-    public void run() {
-        try {
-            if (DBMSBoundary.effettuaLogin(this.id.getText(),this.pass.getText())) {
-                Utente.creaUtente(this.id.getText());
-                App.setRoot("SchermataPrincipale"); // se sono giuste le credenziali mi porta alla home
-            } else{
-                App.setRoot("autenticazione/login/AvvisoErroreLogin");
-                AvvisoErroreLogin avv = AvvisoErroreLogin.av;
-                avv.checkpremutoOk();
-                App.setRoot("autenticazione/login/SchermataLogin");
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public void start() throws IOException {
+        if (DBMSBoundary.effettuaLogin(this.id.getText(),this.pass.getText())) {
+            Utente.creaUtente(this.id.getText());
+            App.setRoot("SchermataPrincipale"); // se sono giuste le credenziali mi porta alla home
+        } else{
+            App.setRoot("autenticazione/login/AvvisoErroreLogin");
         }
+    }
+
+    public void mostra(String schermata) throws IOException {
+        App.setRoot(schermata);
     }
 
 
