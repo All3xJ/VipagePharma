@@ -43,7 +43,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.autenticazione.login.SchermataLogin">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.corriere.autenticazione.login.SchermataLogin">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="800.0" prefWidth="826.0" VBox.vgrow="ALWAYS">
          <children>
@@ -61,11 +61,11 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </PasswordField>
-            <Button fx:id="login" alignment="CENTER" layoutX="580.0" layoutY="383.0" mnemonicParsing="false" onMouseClicked="#premeLogin" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #CFF3F2 #CFF3F2; -fx-border-color: #b9b9b9; -fx-background-radius: 5; -fx-border-radius: 5;" text="Login" AnchorPane.leftAnchor="580.0" AnchorPane.rightAnchor="746.0">
+            <Button fx:id="login" alignment="CENTER" layoutX="580.0" layoutY="383.0" mnemonicParsing="false" onMouseClicked="#premutoLogin" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #CFF3F2 #CFF3F2; -fx-border-color: #b9b9b9; -fx-background-radius: 5; -fx-border-radius: 5;" text="Login" AnchorPane.leftAnchor="580.0" AnchorPane.rightAnchor="746.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button id="bottoneRegistrati" alignment="CENTER" layoutX="719.0" layoutY="553.0" mnemonicParsing="false" onMouseClicked="#premeRegistrati" prefHeight="39.0" prefWidth="182.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Registrati" AnchorPane.leftAnchor="719.0" AnchorPane.rightAnchor="594.0">
+            <Button id="bottoneRegistrati" alignment="CENTER" layoutX="719.0" layoutY="553.0" mnemonicParsing="false" onMouseClicked="#premutoRegistrati" prefHeight="39.0" prefWidth="182.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Registrati" AnchorPane.leftAnchor="719.0" AnchorPane.rightAnchor="594.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
@@ -73,7 +73,7 @@
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Text>
-            <Button id="bottoneReimposta" alignment="CENTER" layoutX="698.0" layoutY="497.0" mnemonicParsing="false" onMouseClicked="#premeReimpostaPassword" prefHeight="39.0" prefWidth="244.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Reimposta password" AnchorPane.leftAnchor="698.0" AnchorPane.rightAnchor="553.0">
+            <Button id="bottoneReimposta" alignment="CENTER" layoutX="698.0" layoutY="497.0" mnemonicParsing="false" onMouseClicked="#premutoReimpostaPassword" prefHeight="39.0" prefWidth="244.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Reimposta password" AnchorPane.leftAnchor="698.0" AnchorPane.rightAnchor="553.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>

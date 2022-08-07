@@ -70,7 +70,7 @@
                 <TableColumn fx:id="id_column" prefWidth="168.0" text="ID prenotazione" />
                   <TableColumn fx:id="annulla_column" prefWidth="139.0" text="Farmaco" />
                 <TableColumn fx:id="dataconsegna_column" minWidth="0.0" prefWidth="160.0" text="Data consegna" />
-                  <TableColumn fx:id="carico_column" minWidth="0.0" prefWidth="184.0" />
+                  <TableColumn fx:id="carico_column" minWidth="0.0" prefWidth="184.0" visible="false" />
               </columns>
             </TableView>
          </children>

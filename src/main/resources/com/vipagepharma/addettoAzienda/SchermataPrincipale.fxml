@@ -39,7 +39,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<<< HEAD:target/classes/com/vipagepharma/addettoAzienda/SchermataPrincipale.fxml
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.addettoAzienda.SchermataPrincipale">
+========
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.addettoAzienda.gestioneConsegne.SchermataPrincipale">
+>>>>>>>> origin/pitar:src/main/resources/com/vipagepharma/addettoAzienda/SchermataPrincipale.fxml
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
@@ -60,11 +64,19 @@
                   <Image url="@../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
+<<<<<<<< HEAD:target/classes/com/vipagepharma/addettoAzienda/SchermataPrincipale.fxml
             <Button fx:id="bottoneVisualizzaSegnalzioni" alignment="CENTER" layoutX="510.0" layoutY="240.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Visualizza segnalazioni">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
             <Button fx:id="bottoneVisualizzaStorico" alignment="CENTER" layoutX="510.0" layoutY="310.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Visualizza storico consegne">
+========
+            <Button fx:id="bottoneVisualizzaSegnalzioni" alignment="CENTER" layoutX="510.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#premutoVisualizzaSegnalazioni" prefHeight="45.0" prefWidth="300.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Visualizza segnalazioni">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font></Button>
+            <Button fx:id="bottoneVisualizzaStorico" alignment="CENTER" layoutX="510.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#premutoVisualizzaStorico" prefHeight="45.0" prefWidth="300.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Visualizza storico consegne">
+>>>>>>>> origin/pitar:src/main/resources/com/vipagepharma/addettoAzienda/SchermataPrincipale.fxml
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>

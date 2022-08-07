@@ -41,7 +41,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.autenticazione.registrazione.SchermataRegistrazione">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.addettoAzienda.autenticazione.registrazione.SchermataRegistrazione">
   <children>
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" VBox.vgrow="ALWAYS">
       <children>
@@ -55,7 +55,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button id="bottoneLogout" alignment="CENTER" layoutX="1017.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="116.0">
+            <Button id="bottoneLogout" alignment="CENTER" layoutX="1017.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premutoLogout" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="116.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -75,11 +75,6 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </TextField>
-            <Button id="bottoneRegistrati" alignment="CENTER" layoutX="561.0" layoutY="501.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#premeRegistrati" prefHeight="39.0" prefWidth="169.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Registrati" AnchorPane.leftAnchor="580.0" AnchorPane.rightAnchor="746.0">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font>
-            </Button>
             <PasswordField layoutX="561.0" layoutY="349.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="37.0" prefWidth="228.0" promptText="Password" style="-fx-background-radius: 5; -fx-border-radius: 5;">
                <font>
                   <Font name="Arial" size="20.0" />
@@ -90,7 +85,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </PasswordField>
-            <Button layoutX="591.0" layoutY="507.0" mnemonicParsing="false" prefWidth="169.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Registra">
+            <Button layoutX="591.0" layoutY="507.0" mnemonicParsing="false" onMouseClicked="#premutoRegistra" prefHeight="50.0" prefWidth="169.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Registra">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
