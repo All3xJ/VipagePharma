@@ -39,7 +39,7 @@ public class DBMSBoundary {
         return connection;
     } // function ends
 
-    public static boolean effettuaLoginFarmacia(String id,String pass){
+    public static boolean effettuaLogin(String id,String pass){
         boolean esito = false;
         try {
             Connection connection = connectFarmacia();
@@ -52,12 +52,13 @@ public class DBMSBoundary {
         }
         return esito;
     }
-    public static boolean effettuaLoginAzienda(String id,String pass){
+
+    public static boolean verificaMail(String mail){
         boolean esito = false;
         try {
-            Connection connection = connectAzienda();
+            Connection connection = connectFarmacia();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("IF EXISTS (select * from utente where id_ua =" + id + " and pass = " + pass +")");
+            ResultSet resultSet = statement.executeQuery("select * from utente where email = " + "'" + mail + "'");
             esito = resultSet.getBoolean(0);
         }
         catch (SQLException e){
@@ -65,6 +66,21 @@ public class DBMSBoundary {
         }
         return esito;
     }
+
+    public static void registra(String nome,String mail, String pass, String chiave_recupero){
+        boolean esito = false;
+        try {
+            Connection connection = connectFarmacia();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("INSERT INTO vipagepharma_farmacia.utente(nome, password, chiave_recupero, email) VALUES("+"'"+nome+"','" + pass+"','"+ chiave_recupero+"',''"+ mail+"'");
+            //sito = resultSet.getBoolean(0);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+
 
 } // class ends
 

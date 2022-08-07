@@ -22,7 +22,7 @@ public class LoginControl extends Thread{
 
     public void run() {
         try {
-            if (DBMSBoundary.effettuaLoginFarmacia(this.id.getText(),this.pass.getText())) {
+            if (DBMSBoundary.effettuaLogin(this.id.getText(),this.pass.getText())) {
                 Utente.creaUtente(this.id.getText());
                 App.setRoot("SchermataPrincipale"); // se sono giuste le credenziali mi porta alla home
             } else{
