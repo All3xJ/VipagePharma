@@ -45,23 +45,23 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.corriere.autenticazione.login.SchermataLogin">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="800.0" prefWidth="826.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="783.0" prefWidth="1404.0" VBox.vgrow="ALWAYS">
          <children>
             <ImageView fitHeight="224.0" fitWidth="230.0" layoutX="30.0" layoutY="-12.0">
                <image>
                   <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <TextField id="IdTextField" fx:id="username" layoutX="507.0" layoutY="242.0" maxWidth="297.0" minWidth="-Infinity" prefHeight="37.0" prefWidth="297.0" promptText="ID" style="-fx-background-radius: 5; -fx-border-radius: 5;">
+            <TextField id="IdTextField" fx:id="username" layoutX="527.0" layoutY="242.0" maxWidth="297.0" minWidth="-Infinity" prefHeight="37.0" prefWidth="297.0" promptText="ID" style="-fx-background-radius: 5; -fx-border-radius: 5;">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></TextField>
-            <PasswordField fx:id="password" layoutX="507.0" layoutY="302.0" prefHeight="37.0" prefWidth="297.0" promptText="Password" style="-fx-background-radius: 5; -fx-border-radius: 5;">
+            <PasswordField fx:id="password" layoutX="527.0" layoutY="302.0" prefHeight="37.0" prefWidth="297.0" promptText="Password" style="-fx-background-radius: 5; -fx-border-radius: 5;">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </PasswordField>
-            <Button fx:id="login" alignment="CENTER" layoutX="580.0" layoutY="383.0" mnemonicParsing="false" onMouseClicked="#premutoLogin" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #CFF3F2 #CFF3F2; -fx-border-color: #b9b9b9; -fx-background-radius: 5; -fx-border-radius: 5;" text="Login" AnchorPane.leftAnchor="580.0" AnchorPane.rightAnchor="746.0">
+            <Button fx:id="login" alignment="CENTER" defaultButton="true" layoutX="580.0" layoutY="383.0" mnemonicParsing="false" onAction="#premutoLogin" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #CFF3F2 #CFF3F2; -fx-border-color: #b9b9b9; -fx-background-radius: 5; -fx-border-radius: 5;" text="Login" AnchorPane.leftAnchor="580.0" AnchorPane.rightAnchor="746.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
