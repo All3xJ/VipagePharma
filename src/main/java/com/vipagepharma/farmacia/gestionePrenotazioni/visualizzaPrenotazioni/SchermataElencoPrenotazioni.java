@@ -15,11 +15,25 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class SchermataElencoPrenotazioni implements Initializable{
+
+	@FXML
+	void premutoLogout(MouseEvent mouseEvent){
+
+	}
+	@FXML
+	void premutoHome(MouseEvent mouseEvent){
+
+	}
+	@FXML
+	void premutoIndietro(MouseEvent mouseEvent){
+
+	}
 
 	@FXML
 	private TextField username;	// il nome della variabile deve essere lo stesso dell'FXXXXXXID di Scene Builder

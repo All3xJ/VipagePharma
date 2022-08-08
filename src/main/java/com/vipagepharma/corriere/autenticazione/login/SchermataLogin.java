@@ -1,6 +1,8 @@
 package com.vipagepharma.corriere.autenticazione.login;
 
+import com.vipagepharma.corriere.autenticazione.login.LoginControl;
 import com.vipagepharma.corriere.autenticazione.registrazione.RegistrazioneControl;
+import com.vipagepharma.corriere.autenticazione.reimpostaPassword.ReimpostaPasswordControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,7 +36,7 @@ public class SchermataLogin implements Initializable {
     void premutoLogin(ActionEvent event) throws IOException{	// sono nella schermata di login. se preme pulsante "login" allora:
 		System.out.println(username.getText());
 		System.out.println(password.getText());
-		LoginControl logCtrl = new LoginControl(username,password);
+		com.vipagepharma.farmacia.autenticazione.login.LoginControl logCtrl = new LoginControl(username,password);
 		logCtrl.start();
     }
 
@@ -46,6 +48,7 @@ public class SchermataLogin implements Initializable {
 
 	@FXML
 	void premutoReimpostaPassword(MouseEvent event) throws IOException{
-		System.out.println("ciao");
+		ReimpostaPasswordControl repassCtrl = new ReimpostaPasswordControl();
+		repassCtrl.start();
 	}
 }

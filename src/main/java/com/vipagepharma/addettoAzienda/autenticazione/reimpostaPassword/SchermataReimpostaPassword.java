@@ -1,18 +1,17 @@
-package com.vipagepharma.corriere.autenticazione.registrazione;
+package com.vipagepharma.addettoAzienda.autenticazione.reimpostaPassword;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-public class SchermataRegistrazione{
-
+public class SchermataReimpostaPassword {
     @FXML
-    void premeutoRegistra(MouseEvent event) throws IOException{
+    void premutoInvia(MouseEvent event) throws IOException {
 
     }
     @FXML
-    void premutoHome(MouseEvent event) throws IOException{
+    void premutoHome(MouseEvent event) throws IOException {
 
     }
     @FXML
@@ -24,6 +23,3 @@ public class SchermataRegistrazione{
 
     }
 }
-
-
-

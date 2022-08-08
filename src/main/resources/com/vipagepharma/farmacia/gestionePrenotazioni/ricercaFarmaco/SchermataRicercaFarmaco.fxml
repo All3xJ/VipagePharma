@@ -40,7 +40,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco.SchermataRicercaFarmaco>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco.SchermataRicercaFarmaco">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
       <children>
@@ -52,7 +52,7 @@
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button alignment="CENTER" layoutX="430.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeLogout" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="116.0">
+            <Button alignment="CENTER" layoutX="430.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premutoLogout" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="116.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
@@ -61,7 +61,7 @@
                   <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <Button layoutX="750.0" layoutY="357.0" mnemonicParsing="false" onMouseClicked="#premeInvio" prefHeight="50.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Invio">
+            <Button layoutX="750.0" layoutY="357.0" mnemonicParsing="false" onMouseClicked="#premutoInvio" prefHeight="50.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Invio">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
