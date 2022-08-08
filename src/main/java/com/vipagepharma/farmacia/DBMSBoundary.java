@@ -92,6 +92,53 @@ public class DBMSBoundary {
         return resultSet;
     }
 
+    public static ResultSet getFarmaco(String nome_o_principio_attivo){
+        ResultSet resultSet;
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            resultSet = statement .executeQuery("SELECT * " +
+                                                    "FROM farmaco f " +
+                                                    "WHERE f.nome LIKE + " + "'%" + nome_o_principio_attivo + "'"+
+                                                        "or f.nome LIKE" + "'" + nome_o_principio_attivo + "%'" +
+                                                        "or f.nome LIKE" + "'%" + nome_o_principio_attivo + "%'" +
+                                                        "or f.nome = "+ "'" + nome_o_principio_attivo + "'" +
+                                                        "or f.principio_attivo  LIKE "+ "'%" + nome_o_principio_attivo + "'" +
+                                                        "or f.principio_attivo LIKE "+ "'" + nome_o_principio_attivo + "%'" +
+                                                        "or f.principio_attivo LIKE"+ "'%" + nome_o_principio_attivo + "%'" +
+                                                        "or f.principio_attivo =" + "'" + nome_o_principio_attivo + "'");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+    public static ResultSet getPrenotazioni(String id_farmacia){
+        ResultSet resultSet;
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            resultSet = statement .executeQuery("SELECT p.* FROM prenotazione p WHERE p.isConsegnato = 0 and p.ref_id_uf =" + id_farmacia );  //prenotazioni per la medesima farmacia e non ancora contrassegnati come consegnati
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+    // DA COMPLETARE!!!!!!!
+    public static void eliminaOrdineERicaricaFarmaci(String id_prenotazione){
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            statement .executeQuery("DELETE FROM prenotazione p WHERE p.prenotazione =" + id_prenotazione);
+            // QUERY RICARICA FARMACI PER ADESSO NON NE HO IDEA
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+
 } // class ends
 
 
