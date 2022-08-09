@@ -1,6 +1,8 @@
 package com.vipagepharma.farmacia;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.LinkedList;
 
 
 public class DBMSBoundary {
@@ -82,6 +84,17 @@ public class DBMSBoundary {
         return resultSet;
     }
 
+    public static void aggiornaPassword(String id,String password){
+        try {
+            Connection connection = connectFarmacia();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("update utente set password = " + "'" + password + "'" + " where id_uf =" + id);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
     public static boolean verificaKey(String id,String key){
         boolean esito = false;
         try {
@@ -94,17 +107,6 @@ public class DBMSBoundary {
             e.printStackTrace();
         }
         return esito;
-    }
-
-    public static void aggiornaPassword(String id,String password){
-        try {
-            Connection connection = connectFarmacia();
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("update utente set password = " + "'" + password + "'" + " where id_uf =" + id);
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
     }
 
 
@@ -126,15 +128,15 @@ public class DBMSBoundary {
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
             resultSet = statement .executeQuery("SELECT * " +
-                                                    "FROM farmaco f " +
-                                                    "WHERE f.nome LIKE + " + "'%" + nome_o_principio_attivo + "'"+
-                                                        "or f.nome LIKE" + "'" + nome_o_principio_attivo + "%'" +
-                                                        "or f.nome LIKE" + "'%" + nome_o_principio_attivo + "%'" +
-                                                        "or f.nome = "+ "'" + nome_o_principio_attivo + "'" +
-                                                        "or f.principio_attivo  LIKE "+ "'%" + nome_o_principio_attivo + "'" +
-                                                        "or f.principio_attivo LIKE "+ "'" + nome_o_principio_attivo + "%'" +
-                                                        "or f.principio_attivo LIKE"+ "'%" + nome_o_principio_attivo + "%'" +
-                                                        "or f.principio_attivo =" + "'" + nome_o_principio_attivo + "'");
+                    "FROM farmaco f " +
+                    "WHERE f.nome LIKE + " + "'%" + nome_o_principio_attivo + "'"+
+                    "or f.nome LIKE" + "'" + nome_o_principio_attivo + "%'" +
+                    "or f.nome LIKE" + "'%" + nome_o_principio_attivo + "%'" +
+                    "or f.nome = "+ "'" + nome_o_principio_attivo + "'" +
+                    "or f.principio_attivo  LIKE "+ "'%" + nome_o_principio_attivo + "'" +
+                    "or f.principio_attivo LIKE "+ "'" + nome_o_principio_attivo + "%'" +
+                    "or f.principio_attivo LIKE"+ "'%" + nome_o_principio_attivo + "%'" +
+                    "or f.principio_attivo =" + "'" + nome_o_principio_attivo + "'");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -165,7 +167,89 @@ public class DBMSBoundary {
     }
 
 
+    public static void aggiornaContratto(String id_farmaco, String id_farmacia, String quantita){
+        ResultSet resultSet;
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("update contratto set qty_settimanale = "+ quantita +" where ref_id_f = " + id_farmaco + "and ref_id_uf = " +  id_farmacia );
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    public static ResultSet getDati(String id_farmaco){
+        ResultSet resultSet;
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery("select * from lotto where ref_id_f = " + id_farmaco);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery("select id_farmaco, produzione_settimanale from farmaco where ref_id_f = " + id_farmaco);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet; //???
+    }
+
+    public static void creaPrenotazioneEScarica(String id_prenotazione, String id_farmacia, String id_corriere, LocalDate data_consegna, LinkedList <Integer> id_lotti, LinkedList <Integer> quantita){
+        ResultSet resultSet;
+        try{ //crea prenotazione
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("insert into prenotazione(id_p, ref_id_uf, ref_id_ua, isConsegnato, data_consegna) values ("+"'"+ id_prenotazione+"','" + id_farmacia+"','"+ id_corriere+"','"+ 0+"','"+ data_consegna +"'");
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        for(int i=0; i<id_lotti.size(); ++i) {
+            try { // scarico da tabella lotto
+                Connection connection = connectAzienda();
+                Statement statement = connection.createStatement();
+                statement.executeUpdate("update lotto set qty = qty - " + quantita.removeFirst() + "where id_l = " + id_lotti.removeFirst());
+
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            try { //crea lotto ordinato
+                Connection connection = connectAzienda();
+                Statement statement = connection.createStatement();
+                statement.executeUpdate("insert into lotto_ordinato(ref_id_l, ref_id_p, isCaricato, qty) values(" + id_lotti.removeFirst() + ", " + id_prenotazione + ", " + 0 + ", " + quantita.removeFirst());
+
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public static void carica(LinkedList <Integer> quantità, LinkedList <Integer> id_lotti){ //ricarica i lotti non consegnati RISOLUZIONE PROBLEMA CONSEGNA
+        ResultSet resultSet;
+        for (int i=0; i< id_lotti.size(); ++i){
+            try{
+                Connection connection = connectAzienda();
+                Statement statement = connection.createStatement();
+                statement.executeUpdate("Update lotto set qty = qty +" + quantità.removeFirst() + "where id_l = " + id_lotti.removeFirst());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public static void creaOrdine(String id_prenotazione, String id_farmacista, String id_corriere, LocalDate data_consegna){ //RISOLUZINE PROBLEMA CONSEGNA
+        ResultSet resultSet;
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("insert into prenotazione (id_p, ref_id_uf, ref_id_ua, isConsegnato, data_consegna) values (" + id_prenotazione + "," + id_farmacista + "," + id_corriere +"," + 0 + "," + data_consegna);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 } // class ends
 
