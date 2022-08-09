@@ -17,7 +17,7 @@ public class DBMSBoundary {
         Connection connection = null;
         try {
             // below two lines are used for connectivity.
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url + dbFarmacia, user, pass);
         }
         catch (Exception e) {
@@ -30,7 +30,7 @@ public class DBMSBoundary {
         Connection connection = null;
         try {
             // below two lines are used for connectivity.
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url + dbAzienda, user, pass);
         }
         catch (Exception e) {
@@ -54,12 +54,12 @@ public class DBMSBoundary {
     }
 
     public static boolean verificaMail(String mail){
-        boolean esito = false;
+        boolean esito = true;
         try {
             Connection connection = connectFarmacia();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from utente where email = " + "'" + mail + "'");
-            esito = resultSet.getBoolean(0);
+            esito = !resultSet.next();
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -67,12 +67,12 @@ public class DBMSBoundary {
         return esito;
     }
 
-    public static int registra(String nome,String mail, String pass){
+    public static int registra(String nome,String mail, String pass,String parola_chiave){
         boolean esito = false;
         try {
             Connection connection = connectFarmacia();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("INSERT INTO vipagepharma_farmacia.utente(nome, password, chiave_recupero, email) VALUES("+"'"+nome+"','" + pass+"',''"+ mail+"'");
+            statement.executeUpdate("INSERT INTO utente(nome, password, email,chiave_recupero) VALUES("+"'"+nome+"','" + pass+"','"+ mail+"','" + parola_chiave + "')");
             //sito = resultSet.getBoolean(0);
         }
         catch (SQLException e){

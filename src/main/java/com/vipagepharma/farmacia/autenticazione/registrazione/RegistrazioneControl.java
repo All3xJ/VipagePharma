@@ -29,29 +29,29 @@ public class RegistrazioneControl {
         this.password = password;
         this.confermaPassword = confermaPassword;
         if(!checkPass()){
-            App.setRoot("autenticazione/registrazione/AvvisoPasswordErrata");
+            App.setRoot("autenticazione/registrazione/AvvisoPasswordErrate");
         }
         else{
-            boolean esito = DBMSBoundary.verificaMail(this.email);
-            if(!esito){
+            boolean mailValida = DBMSBoundary.verificaMail(this.email);
+            if(!mailValida){
                 App.setRoot("autenticazione/registrazione/AvvisoMailErrata");
             }
             else{
-                int id = DBMSBoundary.registra(this.nome,this.email,this.password);
+                int id = DBMSBoundary.registra(this.nome,this.email,this.password,"123");
                 //this.generaKeyEInvioEmail(id);
-                App.setRoot("autenticazione/registrazione/AvvisoOperazioneRiuscita");
+                App.setRoot("AvvisoOperazioneRiuscita");
             }
         }
     }
 
     public void premutoOk() throws IOException {
-        App.setRoot("autenticazone/registrazione/SchermataRegistrazione");
+        App.setRoot("autenticazione/registrazione/SchermataRegistrazione");
     }
     public void premutoOkk() throws IOException {
-        App.setRoot("autenticazone/registrazione/SchermataLogin");
+        App.setRoot("autenticazione/login/SchermataLogin");
     }
     public boolean checkPass(){
-        if(Objects.equals(this.password, this.confermaPassword))
+        if(this.password.equals(this.confermaPassword))
             return true;
         return false;
     }

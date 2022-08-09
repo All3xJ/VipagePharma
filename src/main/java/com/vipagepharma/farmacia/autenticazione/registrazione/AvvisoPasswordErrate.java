@@ -5,12 +5,13 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-public class AvvisoPasswordErrata {
+public class AvvisoPasswordErrate {
     private final RegistrazioneControl registrazioneControl = RegistrazioneControl.regCtrlRef;
 
     @FXML
     public void premeOk() throws IOException {
-        registrazioneControl.premutoOkk();
+        registrazioneControl.premutoOk();
+
     }
 
     @FXML
