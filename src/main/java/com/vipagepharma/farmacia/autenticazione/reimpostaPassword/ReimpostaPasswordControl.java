@@ -32,13 +32,13 @@ public class ReimpostaPasswordControl {
 
     public void inviaPassword(String password,String confermaPassword) throws IOException {
         this.password = password;
-        this.confermaPassword = password;
+        this.confermaPassword = confermaPassword;
         if(!this.checkPass()){
             App.setRoot("autenticazione/reimpostaPassword/AvvisoPasswordErrate");
         }
         else{
             DBMSBoundary.aggiornaPassword(this.id,this.password);
-            App.setRoot("AvvisoOperazioneRiuscita");
+            App.setRoot("autenticazione/reimpostaPassword/AvvisoOperazioneRiuscita");
         }
     }
 

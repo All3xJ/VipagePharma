@@ -1,6 +1,5 @@
 package com.vipagepharma.farmacia.autenticazione.reimpostaPassword;
 
-import com.vipagepharma.farmacia.autenticazione.reimpostaPassword.ReimpostaPasswordControl;
 import javafx.fxml.FXML;
 
 import java.io.IOException;
@@ -11,6 +10,6 @@ public class AvvisoOperazioneRiuscita {
 
     @FXML
     public void premeOk() throws IOException {
-        reimpostaPasswordControl.premutoOk("autenticazione/login/schermaLogin");
+        reimpostaPasswordControl.premutoOk("autenticazione/login/SchermataLogin");
     }
 }

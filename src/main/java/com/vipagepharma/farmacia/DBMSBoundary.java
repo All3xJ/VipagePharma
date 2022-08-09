@@ -87,7 +87,7 @@ public class DBMSBoundary {
         try {
             Connection connection = connectFarmacia();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from utente where id_uf = " + id + "chiave_recupero = " + "'" + key + "'");
+            ResultSet resultSet = statement.executeQuery("select * from utente where id_uf = " + id + " and chiave_recupero = " + "'" + key + "'");
             esito = resultSet.next();
         }
         catch (SQLException e){
@@ -100,7 +100,7 @@ public class DBMSBoundary {
         try {
             Connection connection = connectFarmacia();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("update utente set password = " + "'" + password + "'" + " where id_f =" + id);
+            statement.executeUpdate("update utente set password = " + "'" + password + "'" + " where id_uf =" + id);
         }
         catch (SQLException e){
             e.printStackTrace();

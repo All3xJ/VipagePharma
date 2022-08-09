@@ -34,7 +34,7 @@ public class SchermataLogin implements Initializable {
 	}
 
 	@FXML
-    void premeLogin(ActionEvent event) throws IOException{	// sono nella schermata di login. se preme pulsante "login" allora:
+    void premeLogin(ActionEvent event) throws IOException{
 		System.out.println(username.getText());
 		System.out.println(password.getText());
 		LoginControl logCtrl = new LoginControl(username,password);
