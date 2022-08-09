@@ -39,7 +39,7 @@ public class DBMSBoundary {
         return connection;
     } // function ends
 
-    public static boolean effettuaLogin(String id,String pass){
+    public static boolean effettuaLogin(int id,String pass){
         boolean esito = false;
         try {
             Connection connection = connectFarmacia();
@@ -65,19 +65,6 @@ public class DBMSBoundary {
             e.printStackTrace();
         }
         return esito;
-    }
-
-    public static void registra(String nome,String mail, String pass, String chiave_recupero){
-        boolean esito = false;
-        try {
-            Connection connection = connectFarmacia();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("INSERT INTO vipagepharma_farmacia.utente(nome, password, chiave_recupero, email) VALUES("+"'"+nome+"','" + pass+"','"+ chiave_recupero+"',''"+ mail+"'");
-            //sito = resultSet.getBoolean(0);
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
     }
 
     public static ResultSet getInventario(){
