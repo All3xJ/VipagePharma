@@ -94,7 +94,7 @@ public class DBMSBoundary {
         return resultSet;
     }
 
-    public static void aggiornaContratto(int id_farmaco, int id_farmacia, int quantita){
+    public static void aggiornaContratto(String id_farmaco, String id_farmacia, String quantita){
         ResultSet resultSet;
         try{
             Connection connection = connectAzienda();
@@ -105,18 +105,7 @@ public class DBMSBoundary {
         }
     }
 
-    public static void confermaConsegna(int id_lotto, int id_prenotazione, int isCaricato){
-        ResultSet resultSet;
-        try{
-            Connection connection = connectAzienda();
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("update lotto_ordinato set isCaricato = " + isCaricato + "where ref_id_l = " +  id_lotto +  "and ref_id_p = " +  id_prenotazione);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static ResultSet getDati(int id_farmaco){
+    public static ResultSet getDati(String id_farmaco){
         ResultSet resultSet;
         try{
             Connection connection = connectAzienda();
@@ -135,7 +124,7 @@ public class DBMSBoundary {
         return resultSet; //???
     }
 
-    public static void creaPrenotazioneEScarica(int id_prenotazione, int id_farmacia, int id_corriere, LocalDate data_consegna, LinkedList <Integer> id_lotti, LinkedList <Integer> quantita){
+    public static void creaPrenotazioneEScarica(String id_prenotazione, String id_farmacia, String id_corriere, LocalDate data_consegna, LinkedList <Integer> id_lotti, LinkedList <Integer> quantita){
         ResultSet resultSet;
         try{ //crea prenotazione
             Connection connection = connectAzienda();
@@ -178,7 +167,7 @@ public class DBMSBoundary {
         }
     }
 
-    public static void creaOrdine(int id_prenotazione, int id_farmacista, int id_corriere, LocalDate data_consegna){ //RISOLUZINE PROBLEMA CONSEGNA
+    public static void creaOrdine(String id_prenotazione, String id_farmacista, String id_corriere, LocalDate data_consegna){ //RISOLUZINE PROBLEMA CONSEGNA
         ResultSet resultSet;
         try{
             Connection connection = connectAzienda();
@@ -188,51 +177,6 @@ public class DBMSBoundary {
             throw new RuntimeException(e);
         }
     }
-
-    public static ResultSet getConsegneOdierneNonCaricate(){
-        ResultSet resultSet;
-        try{
-            Connection connection = connectAzienda();
-            Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery("select * from lotto_ordinato where isCaricato = 0");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return resultSet;
-    }
-
-    public static void setFlagProblema(int id_prenotazione){
-        ResultSet resultSet;
-        try{
-            Connection connection = connectAzienda();
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("Update prenotazione set problema = 1 where id_p = " + id_prenotazione);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static void aggiungiEConfermaCarico(LinkedList <Integer> id_lotti, int quantita, int id_farmaco){
-        ResultSet resultSet;
-        try{
-            Connection connection = connectFarmacia();
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("update farmaci set qty = qty + " + quantita + "where ref_id_f = " + id_farmaco);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        for(int i=0; i<id_lotti.size(); ++i) {
-            try {
-                Connection connection = connectAzienda();
-                Statement statement = connection.createStatement();
-                statement.executeUpdate("update lotto_ordinato set isCaricato = 1 where ref_id_l = id_lotti.removeFirst()");
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-
-
 
 
 

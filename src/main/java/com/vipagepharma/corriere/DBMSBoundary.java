@@ -34,4 +34,15 @@ public class DBMSBoundary {
         }
         return esito;
     }
+
+    public static void confermaConsegna(String id_lotto, String id_prenotazione, String isCaricato){
+        ResultSet resultSet;
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("update lotto_ordinato set isCaricato = " + isCaricato + "where ref_id_l = " +  id_lotto +  "and ref_id_p = " +  id_prenotazione);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
