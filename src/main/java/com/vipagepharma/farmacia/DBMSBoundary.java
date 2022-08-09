@@ -67,19 +67,46 @@ public class DBMSBoundary {
         return esito;
     }
 
-    public static int registra(String nome,String mail, String pass,String parola_chiave){
-        boolean esito = false;
+    public static ResultSet registra(String nome,String mail, String pass, String chiave_recupero){
+        ResultSet resultSet = null;
         try {
             Connection connection = connectFarmacia();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("INSERT INTO utente(nome, password, email,chiave_recupero) VALUES("+"'"+nome+"','" + pass+"','"+ mail+"','" + parola_chiave + "')");
-            //sito = resultSet.getBoolean(0);
+            statement.executeUpdate("INSERT INTO vipagepharma_farmacia.utente(nome, password, chiave_recupero, email)" +
+                    "VALUES("+"'"+nome+"','" + pass+"','"+ chiave_recupero+"','"+ mail+"'"+")");
+            resultSet = statement.executeQuery("SELECT LAST_INSERT_ID()");
         }
         catch (SQLException e){
             e.printStackTrace();
         }
-        return 1;
+        return resultSet;
     }
+
+    public static boolean verificaKey(String id,String key){
+        boolean esito = false;
+        try {
+            Connection connection = connectFarmacia();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select * from utente where id_uf = " + id + "chiave_recupero = " + "'" + key + "'");
+            esito = resultSet.next();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return esito;
+    }
+
+    public static void aggiornaPassword(String id,String password){
+        try {
+            Connection connection = connectFarmacia();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("update utente set password = " + "'" + password + "'" + " where id_f =" + id);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 
     public static ResultSet getInventario(){
         ResultSet resultSet;

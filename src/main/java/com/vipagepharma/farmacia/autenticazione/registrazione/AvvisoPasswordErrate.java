@@ -10,7 +10,7 @@ public class AvvisoPasswordErrate {
 
     @FXML
     public void premeOk() throws IOException {
-        registrazioneControl.premutoOk();
+        registrazioneControl.premutoOk("autenticazione/registrazione/SchermataRegistrazione");
 
     }
 

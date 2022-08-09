@@ -1,7 +1,5 @@
-package com.vipagepharma.farmacia;
+package com.vipagepharma.farmacia.autenticazione.registrazione;
 
-import com.vipagepharma.farmacia.autenticazione.registrazione.RegistrazioneControl;
-import com.vipagepharma.farmacia.autenticazione.reimpostaPassword.ReimpostaPasswordControl;
 import javafx.fxml.FXML;
 
 import java.io.IOException;

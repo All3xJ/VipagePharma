@@ -11,7 +11,7 @@ public class AvvisoMailErrata {
 
     @FXML
     public void premeOk() throws IOException {
-        registrazioneControl.premutoOkk();
+        registrazioneControl.premutoOk("autenticazione/login/SchermataLogin");
     }
 
     @FXML

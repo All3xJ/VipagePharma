@@ -24,7 +24,7 @@ public class SchermataRegistrazione{
     }
     @FXML
     void premeOK(MouseEvent event) throws IOException{
-        registrazioneControl.premutoOk();
+        registrazioneControl.premutoOk("autenticazione/registrazione/SchermataRegistrazione");
     }
 
 
