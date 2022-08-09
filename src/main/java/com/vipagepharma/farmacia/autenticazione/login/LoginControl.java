@@ -32,6 +32,9 @@ public class LoginControl{
         }
     }
 
+    public void premutoOk() throws IOException {
+        this.mostra("autenticazione/login/SchermataLogin");
+    }
     public void mostra(String schermata) throws IOException {
         App.setRoot(schermata);
     }

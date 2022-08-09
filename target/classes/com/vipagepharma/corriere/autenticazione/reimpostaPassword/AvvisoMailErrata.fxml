@@ -73,7 +73,7 @@
                   <Font name="Arial" size="25.0" />
                </font>
             </Text>
-            <Button layoutX="603.0" layoutY="494.0" mnemonicParsing="false" onMouseClicked="#premutoOk" prefHeight="50.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Ok">
+            <Button layoutX="603.0" layoutY="494.0" mnemonicParsing="false" onMouseClicked="#premeOk" prefHeight="50.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Ok">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>

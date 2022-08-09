@@ -55,7 +55,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button id="bottoneLogout" alignment="CENTER" layoutX="1017.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premutoLogout" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="116.0">
+            <Button id="bottoneLogout" alignment="CENTER" layoutX="1017.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeLogout" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="116.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -85,7 +85,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </PasswordField>
-            <Button layoutX="591.0" layoutY="507.0" mnemonicParsing="false" onMouseClicked="#premutoRegistra" prefHeight="50.0" prefWidth="169.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Registra">
+            <Button layoutX="591.0" layoutY="507.0" mnemonicParsing="false" onMouseClicked="#premeRegistra" prefHeight="50.0" prefWidth="169.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Registra">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>

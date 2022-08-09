@@ -43,15 +43,15 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button alignment="CENTER" layoutX="603.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premutoHome" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
+            <Button alignment="CENTER" layoutX="603.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeHome" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button layoutX="150.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premutoIndietro" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
+            <Button layoutX="150.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeIndietro" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button alignment="CENTER" layoutX="430.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premutoLogout" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="116.0">
+            <Button alignment="CENTER" layoutX="430.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeLogout" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="116.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
@@ -60,19 +60,19 @@
                   <Image url="@../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <Button alignment="CENTER" layoutX="520.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#premutoVisualizzaPrenotazioni" prefHeight="45.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Visualizza prenotazioni">
+            <Button alignment="CENTER" layoutX="520.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#premeVisualizzaPrenotazioni" prefHeight="45.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Visualizza prenotazioni">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button alignment="CENTER" layoutX="520.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#premutoRicercaFarmaci" prefHeight="45.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Ricerca farmaci">
+            <Button alignment="CENTER" layoutX="520.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#premeRicercaFarmaci" prefHeight="45.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Ricerca farmaci">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button alignment="CENTER" layoutX="520.0" layoutY="380.0" mnemonicParsing="false" onMouseClicked="#premutoScaricaFarmaci" prefHeight="45.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Scarica farmaci">
+            <Button alignment="CENTER" layoutX="520.0" layoutY="380.0" mnemonicParsing="false" onMouseClicked="#premeScaricaFarmaci" prefHeight="45.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Scarica farmaci">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button alignment="CENTER" layoutX="520.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#premutoModificaContratti" prefHeight="45.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Modifica contratti">
+            <Button alignment="CENTER" layoutX="520.0" layoutY="450.0" mnemonicParsing="false" onMouseClicked="#premeModificaContratti" prefHeight="45.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Modifica contratti">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>

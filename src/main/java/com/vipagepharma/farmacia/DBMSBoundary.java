@@ -67,17 +67,18 @@ public class DBMSBoundary {
         return esito;
     }
 
-    public static void registra(String nome,String mail, String pass, String chiave_recupero){
+    public static int registra(String nome,String mail, String pass){
         boolean esito = false;
         try {
             Connection connection = connectFarmacia();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("INSERT INTO vipagepharma_farmacia.utente(nome, password, chiave_recupero, email) VALUES("+"'"+nome+"','" + pass+"','"+ chiave_recupero+"',''"+ mail+"'");
+            ResultSet resultSet = statement.executeQuery("INSERT INTO vipagepharma_farmacia.utente(nome, password, chiave_recupero, email) VALUES("+"'"+nome+"','" + pass+"',''"+ mail+"'");
             //sito = resultSet.getBoolean(0);
         }
         catch (SQLException e){
             e.printStackTrace();
         }
+        return 1;
     }
 
     public static ResultSet getInventario(){

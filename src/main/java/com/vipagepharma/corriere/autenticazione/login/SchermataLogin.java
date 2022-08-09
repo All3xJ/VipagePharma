@@ -36,7 +36,7 @@ public class SchermataLogin implements Initializable {
     void premutoLogin(ActionEvent event) throws IOException{	// sono nella schermata di login. se preme pulsante "login" allora:
 		System.out.println(username.getText());
 		System.out.println(password.getText());
-		com.vipagepharma.farmacia.autenticazione.login.LoginControl logCtrl = new LoginControl(username,password);
+		LoginControl logCtrl = new LoginControl(username,password);
 		logCtrl.start();
     }
 

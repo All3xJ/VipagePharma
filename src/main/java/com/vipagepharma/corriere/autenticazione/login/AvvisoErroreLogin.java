@@ -8,7 +8,7 @@ import java.io.IOException;
 public class AvvisoErroreLogin {
 
     public void premutoOk(MouseEvent event) throws IOException {
-        com.vipagepharma.corriere.autenticazione.login.LoginControl loginControl = LoginControl.logCtrlRef;
+        LoginControl loginControl = LoginControl.logCtrlRef;
         loginControl.mostra("autenticazione/login/SchermataLogin");
     }
 

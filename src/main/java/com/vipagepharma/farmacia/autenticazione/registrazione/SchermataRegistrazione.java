@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import org.w3c.dom.Text;
+
 
 public class SchermataRegistrazione{
     @FXML
@@ -17,23 +17,27 @@ public class SchermataRegistrazione{
     private PasswordField password;
     @FXML
     private PasswordField confermaPassword;
-
+    private final RegistrazioneControl registrazioneControl = RegistrazioneControl.regCtrlRef;
     @FXML
-    void premutoRegistra(MouseEvent event) throws IOException{
-        RegistrazioneControl registrazioneControl = RegistrazioneControl.regCtrlRef;
-        registrazioneControl.setDati(nome.getText(),email.getText(),password.getText(),confermaPassword.getText());
-        registrazioneControl.checkPass();
+    void premeRegistra(MouseEvent event) throws IOException{
+        registrazioneControl.premutoRegistra(this.nome.getText(),this.email.getText(),this.password.getText(),this.confermaPassword.getText());
     }
     @FXML
-    void premutoHome(MouseEvent event) throws IOException{
+    void premeOK(MouseEvent event) throws IOException{
+        registrazioneControl.premutoOk();
+    }
+
+
+    @FXML
+    void premeHome(MouseEvent event) throws IOException{
 
     }
     @FXML
-    void premutoLogout(MouseEvent event) throws IOException{
+    void premeLogout(MouseEvent event) throws IOException{
 
     }
     @FXML
-    void premutoIndietro(MouseEvent event) throws IOException{
+    void premeIndietro(MouseEvent event) throws IOException{
 
     }
 }
