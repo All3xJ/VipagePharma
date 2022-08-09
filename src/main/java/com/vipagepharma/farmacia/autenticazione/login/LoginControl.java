@@ -24,7 +24,7 @@ public class LoginControl{
     }
 
     public void start() throws IOException {
-        if (DBMSBoundary.effettuaLogin(this.id.getText(),this.pass.getText())) {
+        if (DBMSBoundary.effettuaLogin(Integer.parseInt(this.id.getText()),this.pass.getText())) {
             Utente.creaUtente(this.id.getText());
             App.setRoot("SchermataPrincipale"); // se sono giuste le credenziali mi porta alla home
         } else{

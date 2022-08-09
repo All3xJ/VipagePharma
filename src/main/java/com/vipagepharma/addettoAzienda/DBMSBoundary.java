@@ -1,6 +1,7 @@
 package com.vipagepharma.addettoAzienda;
 
 import java.sql.*;
+import java.time.LocalDate;
 
 public class DBMSBoundary {
     private static final String url = "jdbc:mysql://vipagesite.duckdns.org:3306/";
@@ -35,6 +36,20 @@ public class DBMSBoundary {
         return connection;
     } // function ends
 
+    public static boolean effettuaLogin(int id,String pass){
+        boolean esito = false;
+        try {
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("select u.* from utente u where u.id_ua = " + id + " and u.password = " + "'" + pass + "'" );
+            esito = resultSet.next();
+        }
+        catch (SQLException e){
+            return false;
+        }
+        return esito;
+    }
+
     public static ResultSet getFarmaci(){
         ResultSet resultSet = null;
         try {
@@ -49,19 +64,30 @@ public class DBMSBoundary {
         return resultSet;
     }
 
-
-
-    public static boolean effettuaLogin(String id,String pass){
-        boolean esito = false;
+    public static void creaLotto(int ID_farmaco, LocalDate dataScadenza, int qty){
         try {
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select u.* from utente u where u.id_ua = " + id + " and u.password = " + "'" + pass + "'" );
-            esito = resultSet.next();
+            LocalDate dataDisponibilita = LocalDate.now().plusMonths(2);
+            ResultSet resultSet = statement.executeQuery("INSERT INTO lotto (ref_id_f , qty, data_di_disponibilitá, data_di_scadenza)\n" +
+                                                              "VALUES('"+ID_farmaco+"','"+qty+"','"+dataDisponibilita+"','"+dataScadenza+"');");
         }
         catch (SQLException e){
-            return false;
+            e.printStackTrace();
         }
-        return esito;
     }
+
+    public static ResultSet getContratti(){  // mettere che lo fa alle 9 e fa produzione alle 8 quindi invertiti.
+        ResultSet resultSet = null;
+        try {
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery("select * from contratto");
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
+
 }
