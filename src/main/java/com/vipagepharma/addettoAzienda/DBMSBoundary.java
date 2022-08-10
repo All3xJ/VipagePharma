@@ -3,6 +3,8 @@ package com.vipagepharma.addettoAzienda;
 import java.sql.*;
 import java.util.LinkedList;
 import java.time.LocalDate;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DBMSBoundary {
     private static final String url = "jdbc:mysql://vipagesite.duckdns.org:3306/";
@@ -10,6 +12,8 @@ public class DBMSBoundary {
     private static final String pass = "BubJbhvbj373838&#@!";
     private static final String dbFarmacia = "vipagepharma_farmacia";
     private static final String dbAzienda = "vipagepharma_azienda";
+
+    private static int contatore = 0;
 
     public static Connection connectFarmacia(){
         Connection connection = null;
@@ -30,6 +34,19 @@ public class DBMSBoundary {
             // below two lines are used for connectivity.
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(url + dbAzienda, user, pass);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return connection;
+    } // function ends
+
+    public static Connection connectDBMS(){
+        Connection connection = null;
+        try {
+            // below two lines are used for connectivity.
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(url, user, pass);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -135,4 +152,43 @@ public class DBMSBoundary {
             }
         }
     }
+
+    public static ResultSet getElencoConsegneConSegnalazioni(){
+        ResultSet resultSet;
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery("select ref_id_uf, id_p, data_consegna from prenotazione where problema = 1");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+    public static ResultSet getConsegneRecenti(){
+        ResultSet resultSet;
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery("Select id_p, ref_id_uf from prenotazione where isConsegnato = 1 limit 15"); //vedere se funziona sintassi
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+    public static ResultSet getAltreConsegne(){
+        ++contatore;
+        int base = contatore * 15;
+        ResultSet resultSet;
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery("Select id_p, ref_id_uf from prenotazione where isConsegnato=1 limit " + base + ", 15"); //vedere se funziona sintassi
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
 }

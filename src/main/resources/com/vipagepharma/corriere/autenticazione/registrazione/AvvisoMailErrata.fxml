@@ -33,51 +33,36 @@
 -->
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.corriere.autenticazione.reimpostaPassword.AvvisoMailErrata">
-  <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-      <children>
-            <Button layoutX="603.0" layoutY="689.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font></Button>
-            <Button layoutX="116.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font></Button>
-            <Button alignment="CENTER" layoutX="1017.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeLogout" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="61.0">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font></Button>
-            <ImageView fitHeight="225.0" fitWidth="230.0" layoutX="15.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
-               </image>
-            </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="410.0" layoutX="308.0" layoutY="174.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="691.0" />
-            <Text fill="RED" layoutX="571.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ERRORE" textAlignment="CENTER" wrappingWidth="163.2333984375">
-               <font>
-                  <Font name="Arial Bold" size="35.0" />
-               </font>
-            </Text>
-            <Text layoutX="411.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La mail inserita è già presente nel database">
-               <font>
-                  <Font name="Arial" size="25.0" />
-               </font>
-            </Text>
-            <Button layoutX="603.0" layoutY="494.0" mnemonicParsing="false" onMouseClicked="#premeOk" prefHeight="50.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Ok">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font></Button>
-      </children>
-    </AnchorPane>
-  </children>
-</VBox>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: f5f5f5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.corriere.autenticazione.registrazione.AvvisoMailErrata">
+   <children>
+      <Text fill="RED" layoutX="305.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ERRORE" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Text>
+      <Text layoutX="231.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Formato dell'email non valido!">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Button fx:id="Ok" alignment="CENTER" layoutX="324.0" layoutY="308.0" mnemonicParsing="false" onMouseClicked="#premeOk" prefHeight="40.0" prefWidth="90.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Ok">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Button>
+      <Text layoutX="152.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inserire formato valido ">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#7c7c7c" layoutX="356.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(es. nome@example.com)">
+         <font>
+            <Font name="Arial Italic" size="20.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>
