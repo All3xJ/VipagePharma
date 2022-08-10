@@ -15,12 +15,11 @@ public class RicercaFarmacoControl {
     }
 
     public void start() throws IOException {
-        SchermataRicercaFarmaco.schermataPrecedente = "SchermataPrincipale";
         App.setRoot("gestionePrenotazioni/ricercaFarmaco/SchermataRicercaFarmaco"); // se sono giuste le credenziali mi porta alla home
     }
 
-    public void premutoIndietro(String schermataPrecedente) throws IOException{
-        App.setRoot(schermataPrecedente);
+    public void premutoIndietro() throws IOException{
+        App.setRoot("SchermataPrincipale");
     }
 
     public void premutoHome(String schermataPrecedente) throws IOException {

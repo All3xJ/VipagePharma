@@ -1,7 +1,11 @@
 package com.vipagepharma.farmacia.autenticazione.registrazione;
 
+import com.vipagepharma.corriere.autenticazione.login.SchermataLogin;
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
+import com.vipagepharma.farmacia.SchermataPrincipale;
+import com.vipagepharma.farmacia.autenticazione.reimpostaPassword.SchermataNuovaPassword;
+import com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni.SchermataElencoPrenotazioni;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -65,4 +69,9 @@ public class RegistrazioneControl {
         String key = salt.toString();
         return key;
     }
+
+    public void premutoIndietro() throws IOException {
+        App.setRoot("autenticazione/login/SchermataLogin");
+    }
+
 }

@@ -6,8 +6,6 @@ import java.io.IOException;
 
 public class SchermataRiepilogoContratto {
 
-    public static String schermataPrecedente;
-
     public void premeLogout(MouseEvent mouseEvent) {
     }
 
@@ -19,6 +17,6 @@ public class SchermataRiepilogoContratto {
     }
 
     public void premeIndietro(MouseEvent mouseEvent) throws IOException {
-        ModificaContrattiControl.modifContraCtrl.premutoIndietro(schermataPrecedente);
+        ModificaContrattiControl.modifContraCtrl.premutoIndietro("gestionePrenotazioni/modificaContratti/SchermataModificaContratti");
     }
 }

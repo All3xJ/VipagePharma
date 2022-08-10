@@ -2,10 +2,12 @@ package com.vipagepharma.farmacia.autenticazione.reimpostaPassword;
 
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
+import com.vipagepharma.farmacia.SchermataPrincipale;
 
 import java.io.IOException;
 
 public class ReimpostaPasswordControl {
+
     private String id;
     private String key;
     private String confermaPassword;
@@ -15,6 +17,7 @@ public class ReimpostaPasswordControl {
         repassCtrlRef = this;
     }
     public void start() throws IOException {
+        SchermataReimpostaPassword.schermataPrecedente = "autenticazione/login/SchermataLogin";
         App.setRoot("autenticazione/reimpostaPassword/SchermataReimpostaPassword");
     }
 
@@ -23,6 +26,7 @@ public class ReimpostaPasswordControl {
         if(esito){
             this.id = id;
             this.key = key;
+            SchermataNuovaPassword.schermataPrecedente = "autenticazione/registrazione/SchermataReimpostaPassword";
             App.setRoot("autenticazione/reimpostaPassword/SchermataNuovaPassword");
         }
         else{
@@ -50,4 +54,9 @@ public class ReimpostaPasswordControl {
             return true;
         return false;
     }
+
+    public void premutoIndietro(String schermataPrecedente) throws IOException {
+        App.setRoot(schermataPrecedente);
+    }
+
 }

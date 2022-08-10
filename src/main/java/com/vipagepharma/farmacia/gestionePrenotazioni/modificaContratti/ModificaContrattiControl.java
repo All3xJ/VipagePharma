@@ -14,7 +14,6 @@ public class ModificaContrattiControl {
     }
 
     public void start() throws IOException {
-        SchermataModificaContratti.schermataPrecedente="SchermataPrincipale";
         App.setRoot("gestionePrenotazioni/modificaContratti/SchermataModificaContratti");
     }
 

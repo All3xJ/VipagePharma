@@ -20,8 +20,6 @@ import javafx.util.Callback;
 
 public class SchermataElencoPrenotazioni implements Initializable{
 
-	public static String schermataPrecedente;
-
 	@FXML
     private TableColumn<Prenotazione, String> idprenotazione_column;
 
@@ -70,11 +68,19 @@ public class SchermataElencoPrenotazioni implements Initializable{
                         btn.setOnAction((ActionEvent event) -> {
 							if (nomeButton.equals("Annulla")){
 								Prenotazione prenotazione = getTableView().getItems().get(getIndex());
-								this.premeAnnulla(prenotazione);
+								try {
+									this.premeAnnulla(prenotazione);
+								} catch (IOException e) {
+									throw new RuntimeException(e);
+								}
 								//System.out.println("Annulla-> selectedEntry: " + entry);
 							} else if (nomeButton.equals("Carico")){
 								Prenotazione prenotazione = getTableView().getItems().get(getIndex());
-								this.premeCarico(prenotazione);
+								try {
+									this.premeCarico(prenotazione);
+								} catch (IOException e) {
+									throw new RuntimeException(e);
+								}
 								//System.out.println("Carico-> selectedEntry: " + entry);
 							}else if (nomeButton.equals("Modifica")){
 								Prenotazione prenotazione = getTableView().getItems().get(getIndex());
@@ -84,11 +90,12 @@ public class SchermataElencoPrenotazioni implements Initializable{
                         });
                     }
 
-					private void premeAnnulla(Prenotazione entry) {
+					private void premeAnnulla(Prenotazione entry) throws IOException {
+						VisualizzaPrenotazioniControl.visualPrenCtrlRef.premutoAnnulla("gestionePrenotazioni/visualizzaPrenotazioni/AvvisoAnnullaPrenotazione");
 					}
 
-					private void premeCarico(Prenotazione entry) {
-
+					private void premeCarico(Prenotazione entry) throws IOException {
+						VisualizzaPrenotazioniControl.visualPrenCtrlRef.premutoCarico("gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni");
 					}
 
 					private void premeModifica(Prenotazione entry) {
@@ -120,7 +127,7 @@ public class SchermataElencoPrenotazioni implements Initializable{
     }
 
 	public void premeIndietro(MouseEvent mouseEvent) throws IOException {
-		VisualizzaPrenotazioniControl.visualPrenCtrlRef.premutoIndietro(schermataPrecedente);
+		VisualizzaPrenotazioniControl.visualPrenCtrlRef.premutoIndietro();
 	}
 
 	public void premeLogout(MouseEvent mouseEvent) throws IOException {

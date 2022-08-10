@@ -10,7 +10,6 @@ import java.lang.reflect.InvocationTargetException;
 
 public class SchermataRicercaFarmaco {
 
-    public static String schermataPrecedente;
     @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
         LogoutControl.start();
@@ -21,7 +20,7 @@ public class SchermataRicercaFarmaco {
     }
 
     public void premeIndietro(MouseEvent mouseEvent) throws IOException{
-        RicercaFarmacoControl.ricercFarmCtrlRef.premutoIndietro(schermataPrecedente);
+        RicercaFarmacoControl.ricercFarmCtrlRef.premutoIndietro();
     }
 
     public void premeHome(MouseEvent mouseEvent) throws IOException {
