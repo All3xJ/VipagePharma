@@ -9,4 +9,6 @@ public class AvvisoCaricoParziale {
 
     }
 
+    public void premeSegnalaUnProblema(MouseEvent mouseEvent) {
+    }
 }

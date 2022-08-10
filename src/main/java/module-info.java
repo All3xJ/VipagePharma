@@ -23,6 +23,8 @@ module com.vipagepharma {
     opens com.vipagepharma.addettoAzienda.autenticazione.login to javafx.fxml;
     exports com.vipagepharma.addettoAzienda.autenticazione.registrazione;
     opens com.vipagepharma.addettoAzienda.autenticazione.registrazione to javafx.fxml;
+    exports com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConsegne;
+    opens com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConsegne to javafx.fxml;
 
     exports com.vipagepharma.corriere;
     opens com.vipagepharma.corriere to javafx.fxml;
@@ -30,4 +32,8 @@ module com.vipagepharma {
     opens com.vipagepharma.corriere.autenticazione.login to javafx.fxml;
     exports com.vipagepharma.corriere.autenticazione.registrazione;
     opens com.vipagepharma.corriere.autenticazione.registrazione to javafx.fxml;
+    exports com.vipagepharma.corriere.autenticazione.reimpostaPassword;
+    opens com.vipagepharma.corriere.autenticazione.reimpostaPassword to javafx.fxml;
+    exports com.vipagepharma.corriere.gestioneConsegne.firmaConsegna;
+    opens com.vipagepharma.corriere.gestioneConsegne.firmaConsegna to javafx.fxml;
 }

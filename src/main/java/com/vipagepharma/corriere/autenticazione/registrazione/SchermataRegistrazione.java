@@ -23,6 +23,15 @@ public class SchermataRegistrazione{
     void premutoIndietro(MouseEvent event) throws IOException{
 
     }
+
+    public void premeLogout(MouseEvent mouseEvent) {
+    }
+
+    public void premeRegistra(MouseEvent mouseEvent) {
+    }
+
+    public void premeRegistrati(MouseEvent mouseEvent) {
+    }
 }
 
 

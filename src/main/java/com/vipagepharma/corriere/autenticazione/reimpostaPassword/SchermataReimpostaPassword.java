@@ -22,4 +22,7 @@ public class SchermataReimpostaPassword {
     void premutoIndietro(MouseEvent event) throws IOException{
 
     }
+
+    public void premeInvia(MouseEvent mouseEvent) {
+    }
 }

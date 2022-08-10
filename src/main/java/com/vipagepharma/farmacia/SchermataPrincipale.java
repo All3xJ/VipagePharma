@@ -13,39 +13,35 @@ import javafx.scene.input.MouseEvent;
 public class SchermataPrincipale {
 
 	@FXML
-    void premutoVisualizzaPrenotazioni(MouseEvent event) throws IOException{
+    void premeVisualizzaPrenotazioni(MouseEvent event) throws IOException{
 
 		VisualizzaPrenotazioniControl visualprenCtrl = new VisualizzaPrenotazioniControl();
 		visualprenCtrl.start();
-		System.out.println("test per vedere se dopo che si va setRoot effettivamente continua a fare robe oppure proprio flusso è cambiato");	// risposta: SI LO PRINTA SUBITO, QUINDI È COME SE FACESSE THREAD
 	}
 	@FXML
-	void premutoRicercaFarmaci(MouseEvent event) throws IOException{
+	void premeRicercaFarmaci(MouseEvent event) throws IOException{
 		RicercaFarmacoControl ricfarmCtrl = new RicercaFarmacoControl();
 		ricfarmCtrl.start();
-		System.out.println("test per vedere se dopo che si va setRoot effettivamente continua a fare robe oppure proprio flusso è cambiato");	// risposta: SI LO PRINTA SUBITO, QUINDI È COME SE FACESSE THREAD
 	}
 
 	@FXML
-	void premutoScaricaFarmaci(MouseEvent event) throws IOException{
+	void premeScaricaFarmaci(MouseEvent event) throws IOException{
 		ScaricoFarmaciControl scarfarmCtrl = new ScaricoFarmaciControl();
 		scarfarmCtrl.start();
-		System.out.println("test per vedere se dopo che si va setRoot effettivamente continua a fare robe oppure proprio flusso è cambiato");	// risposta: SI LO PRINTA SUBITO, QUINDI È COME SE FACESSE THREAD
 	}
 
 	@FXML
-	void premutoModificaContratti(MouseEvent event) throws IOException{
+	void premeModificaContratti(MouseEvent event) throws IOException{
 		ModificaContrattiControl modcontraCtrl = new ModificaContrattiControl();
 		modcontraCtrl.start();
-		System.out.println("test per vedere se dopo che si va setRoot effettivamente continua a fare robe oppure proprio flusso è cambiato");	// risposta: SI LO PRINTA SUBITO, QUINDI È COME SE FACESSE THREAD
 	}
 
-	public void premutoHome(MouseEvent mouseEvent) {
+    public void premeHome(MouseEvent mouseEvent) {
+    }
+
+	public void premeIndietro(MouseEvent mouseEvent) {
 	}
 
-	public void premutoIndietro(MouseEvent mouseEvent) {
-	}
-
-	public void premutoLogout(MouseEvent mouseEvent) {
+	public void premeLogout(MouseEvent mouseEvent) {
 	}
 }

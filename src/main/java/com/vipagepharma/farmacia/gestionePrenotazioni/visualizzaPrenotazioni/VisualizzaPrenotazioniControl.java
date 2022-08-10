@@ -8,8 +8,10 @@ public class VisualizzaPrenotazioniControl {
 
 
     public void start() throws IOException {
-        // deve fare roba col db
-        App.setRoot("gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni"); // se sono giuste le credenziali mi porta alla home
-        System.out.println("ciao");
+        App.setRoot("gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni");
+    }
+
+    public static String getIDFarmacia(){
+        return com.vipagepharma.farmacia.entity.Utente.getID();
     }
 }

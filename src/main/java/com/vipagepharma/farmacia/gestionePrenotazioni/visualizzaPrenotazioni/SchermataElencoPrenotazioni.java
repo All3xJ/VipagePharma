@@ -1,6 +1,7 @@
 package com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -21,28 +22,6 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class SchermataElencoPrenotazioni implements Initializable{
-
-	@FXML
-	void premutoLogout(MouseEvent mouseEvent){
-
-	}
-	@FXML
-	void premutoHome(MouseEvent mouseEvent){
-
-	}
-	@FXML
-	void premutoIndietro(MouseEvent mouseEvent){
-
-	}
-
-	@FXML
-	private TextField username;	// il nome della variabile deve essere lo stesso dell'FXXXXXXID di Scene Builder
-
-	@FXML
-	private TextField password;
-
-	@FXML
-	private Button login;
 
 	@FXML
     private TableColumn<Entry, String> id_column;
@@ -76,7 +55,6 @@ public class SchermataElencoPrenotazioni implements Initializable{
 		this.addButtonToTable("Annulla",this.annulla_column);
 		this.addButtonToTable("Carico",this.carico_column);
 
-		System.out.println("ciavj sv");
 	}
 
 	private void addButtonToTable(String nomeButton,TableColumn colBtn) {
@@ -135,4 +113,13 @@ public class SchermataElencoPrenotazioni implements Initializable{
 		newStage.setScene(stageScene);
 		newStage.show();
 		}
+
+    public void premeHome(MouseEvent mouseEvent) {
+    }
+
+	public void premeIndietro(MouseEvent mouseEvent) {
+	}
+
+	public void premeLogout(MouseEvent mouseEvent) {
+	}
 }

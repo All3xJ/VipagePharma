@@ -51,4 +51,13 @@ public class SchermataLogin implements Initializable {
 		ReimpostaPasswordControl repassCtrl = new ReimpostaPasswordControl();
 		repassCtrl.start();
 	}
+
+    public void premeLogin(ActionEvent actionEvent) {
+    }
+
+	public void premeRegistrati(MouseEvent mouseEvent) {
+	}
+
+	public void premeReimpostaPassword(MouseEvent mouseEvent) {
+	}
 }

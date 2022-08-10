@@ -8,4 +8,7 @@ public class AvvisoEsaurimentoScorte {
     void premutoPrenota(MouseEvent mouseEvent){
 
     }
+
+    public void premePrenota(MouseEvent mouseEvent) {
+    }
 }

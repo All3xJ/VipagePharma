@@ -14,4 +14,9 @@ public class AvvisoAnnullaPrenotazione {
 
     }
 
+    public void premeLogout(MouseEvent mouseEvent) {
+    }
+
+    public void premeConferma(MouseEvent mouseEvent) {
+    }
 }

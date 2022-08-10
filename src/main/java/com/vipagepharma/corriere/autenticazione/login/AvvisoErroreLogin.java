@@ -23,4 +23,7 @@ public class AvvisoErroreLogin {
     public void premutoLogout(MouseEvent event) throws IOException{
 
     }
+
+    public void premeOk(MouseEvent mouseEvent) {
+    }
 }

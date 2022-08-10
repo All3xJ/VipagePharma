@@ -12,4 +12,10 @@ public class AvvisoPrenotazioneDisponibile {
     void premutoConferma(MouseEvent mouseEvent){
 
     }
+
+    public void premeLogout(MouseEvent mouseEvent) {
+    }
+
+    public void premeConferma(MouseEvent mouseEvent) {
+    }
 }

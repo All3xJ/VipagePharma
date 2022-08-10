@@ -7,9 +7,21 @@ import java.io.IOException;
 
 public class SchermataPrincipale {
 
-	@FXML
-    void premutoVisualizzaPrenotazioni(MouseEvent event) throws IOException{
-        App.setRoot("SchermataElencoPrenotazioni");
-	}
+    public void premeHome(MouseEvent mouseEvent) {
+    }
 
+    public void premeIndietro(MouseEvent mouseEvent) {
+    }
+
+    public void premeLogout(MouseEvent mouseEvent) {
+    }
+
+    public void premeDownloadConsegne(MouseEvent mouseEvent) {
+    }
+
+    public void premeVisualizzaConsegne(MouseEvent mouseEvent) {
+    }
+
+    public void premeUploadFirme(MouseEvent mouseEvent) {
+    }
 }

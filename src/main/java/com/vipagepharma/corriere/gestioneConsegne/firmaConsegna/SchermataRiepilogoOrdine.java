@@ -17,4 +17,15 @@ public class SchermataRiepilogoOrdine{
 
         }
 
+    public void premeHome(MouseEvent mouseEvent) {
+    }
+
+        public void premeIndietro(MouseEvent mouseEvent) {
+        }
+
+        public void premeLogout(MouseEvent mouseEvent) {
+        }
+
+        public void premeFirma(MouseEvent mouseEvent) {
+        }
 }

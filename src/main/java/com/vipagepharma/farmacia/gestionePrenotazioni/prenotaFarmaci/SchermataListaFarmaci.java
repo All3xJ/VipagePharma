@@ -8,4 +8,7 @@ public class SchermataListaFarmaci{
         void premutoLogout(MouseEvent mouseEvent){
 
         }
+
+    public void premeLogout(MouseEvent mouseEvent) {
+    }
 }

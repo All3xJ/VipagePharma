@@ -16,4 +16,13 @@ public class AvvisoMancatoCarico {
     void premutoLogout(MouseEvent mouseEvent){
 
     }
+
+    public void premeLogout(MouseEvent mouseEvent) {
+    }
+
+    public void premeSegnalaUnProblema(MouseEvent mouseEvent) {
+    }
+
+    public void premeConfermaCarico(MouseEvent mouseEvent) {
+    }
 }

@@ -12,4 +12,10 @@ public class SchermataRicercaFarmaco {
     void premutoInvio(MouseEvent mouseEvent){
 
     }
+
+    public void premeLogout(MouseEvent mouseEvent) {
+    }
+
+    public void premeInvio(MouseEvent mouseEvent) {
+    }
 }
