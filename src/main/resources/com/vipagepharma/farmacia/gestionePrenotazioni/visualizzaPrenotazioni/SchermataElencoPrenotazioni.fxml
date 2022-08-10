@@ -65,12 +65,14 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <TableView fx:id="prenotazioni_table" layoutX="314.0" layoutY="205.0" prefHeight="305.0" prefWidth="652.0">
+            <TableView fx:id="prenotazioni_table" layoutX="212.0" layoutY="106.0" prefHeight="434.0" prefWidth="842.0">
               <columns>
-                <TableColumn fx:id="id_column" prefWidth="168.0" text="ID prenotazione" />
-                  <TableColumn fx:id="annulla_column" prefWidth="139.0" text="Farmaco" />
+                <TableColumn fx:id="idprenotazione_column" prefWidth="168.0" text="ID prenotazione" />
+                  <TableColumn fx:id="nomefarmaco_column" prefWidth="139.0" text="Farmaco" />
                 <TableColumn fx:id="dataconsegna_column" minWidth="0.0" prefWidth="160.0" text="Data consegna" />
-                  <TableColumn fx:id="carico_column" minWidth="0.0" prefWidth="184.0" visible="false" />
+                  <TableColumn fx:id="annulla_column" prefWidth="122.0" />
+                  <TableColumn fx:id="carico_column" prefWidth="122.0" />
+                  <TableColumn fx:id="modifica_column" prefWidth="122.0" />
               </columns>
             </TableView>
          </children>

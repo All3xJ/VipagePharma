@@ -1,7 +1,6 @@
 package com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -24,7 +23,10 @@ import javafx.util.Callback;
 public class SchermataElencoPrenotazioni implements Initializable{
 
 	@FXML
-    private TableColumn<Entry, String> id_column;
+    private TableColumn<Entry, String> idprenotazione_column;
+
+	@FXML
+	private TableColumn<Entry, String> nomefarmaco_column;
 
 	@FXML
     private TableColumn<Entry, String> dataconsegna_column;
@@ -36,25 +38,22 @@ public class SchermataElencoPrenotazioni implements Initializable{
     private TableColumn<Entry, Void> carico_column;
 
 	@FXML
+	private TableColumn<Entry, Void> modifica_column;
+
+	@FXML
     private TableView<Entry> prenotazioni_table;
-
-	private ObservableList<Entry> tvObservableList = FXCollections.observableArrayList(new Entry("1", "data1"),
-																						new Entry("2", "data2"), 
-																						new Entry("3", "data3"), 
-																						new Entry("4", "data4"),
-																						new Entry("5", "data5"));
-
 
 	@Override
 	public void initialize(URL url, ResourceBundle resbound){
-		this.id_column.setCellValueFactory(new PropertyValueFactory<Entry,String >("id"));
-		this.dataconsegna_column.setCellValueFactory(new PropertyValueFactory<Entry,String >("data"));
+		this.idprenotazione_column.setCellValueFactory(new PropertyValueFactory<Entry,String >("idPrenotazione"));
+		this.nomefarmaco_column.setCellValueFactory(new PropertyValueFactory<Entry,String >("nomeFarmaco"));
+		this.dataconsegna_column.setCellValueFactory(new PropertyValueFactory<Entry,String >("dataConsegna"));
 
-		this.prenotazioni_table.setItems(this.tvObservableList);
-		//this.prenotazioni_table.getColumns().addAll(this.id_column, this.dataconsegna_column); NOOOOOOOOOOOO ALTRIMENTI LI RIAGGIUNGEREBBEEEEEE. GIA LI AGGIUNGE DA SOLO FXMLOADER ECC
+		this.prenotazioni_table.setItems(VisualizzaPrenotazioniControl.visualPrenCtrlRef.tvObservableList);
+		//this.prenotazioni_table.getColumns().addAll(this.idprenotazione_column, this.dataconsegna_column); NOOOOOOOOOOOO ALTRIMENTI LI RIAGGIUNGEREBBEEEEEE. GIA LI AGGIUNGE DA SOLO FXMLOADER ECC
 		this.addButtonToTable("Annulla",this.annulla_column);
 		this.addButtonToTable("Carico",this.carico_column);
-
+		this.addButtonToTable("Modifica",this.modifica_column);
 	}
 
 	private void addButtonToTable(String nomeButton,TableColumn colBtn) {
@@ -74,6 +73,9 @@ public class SchermataElencoPrenotazioni implements Initializable{
 								System.out.println("Annulla-> selectedEntry: " + entry);
 								showPopup();
 							} else if (nomeButton.equals("Carico")){
+								Entry entry = getTableView().getItems().get(getIndex());
+								System.out.println("Carico-> selectedEntry: " + entry);
+							}else if (nomeButton.equals("Modifica")){
 								Entry entry = getTableView().getItems().get(getIndex());
 								System.out.println("Carico-> selectedEntry: " + entry);
 							}

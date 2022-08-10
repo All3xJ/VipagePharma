@@ -4,36 +4,51 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Entry {
-	private final StringProperty id = new SimpleStringProperty();	
-	private final StringProperty data = new SimpleStringProperty();	
+	private final StringProperty idPrenotazione = new SimpleStringProperty();
+	private final StringProperty nomeFarmaco = new SimpleStringProperty();
 
-	public Entry(String id, String data){
-		this.setId(id);	
-		this.setData(data);	
+	private final StringProperty dataConsegna = new SimpleStringProperty();
+
+	public Entry(String idPrenotazione, String nomeFarmaco, String dataConsegna){
+		this.setId(idPrenotazione);
+		this.setNomeFarmaco(nomeFarmaco);
+		this.setDataConsegna(dataConsegna);
 	}
 
-	public final StringProperty idProperty() {	
-		return this.id;	
+	public final StringProperty idPrenotazioneProperty() {
+		return this.idPrenotazione;
 	 }
 
-	public final String getId() {	
-		return this.id.get();	
+	public final String getIdPrenotazione() {
+		return this.idPrenotazione.get();
 	}
 	 
 	public final void setId(String value) {	
-		 this.id.set(value);	
+		 this.idPrenotazione.set(value);
 	}
 
-    public final StringProperty dataProperty() {	
-		return this.data;	
+    public final StringProperty dataConsegnaProperty() {
+		return this.dataConsegna;
 	 }
 
-	public final String getData() {	
-		return this.data.get();	
+	public final String getDataConsegna() {
+		return this.dataConsegna.get();
 	}
 	 
-	public final void setData(String value) {	
-		 this.data.set(value);	
+	public final void setDataConsegna(String value) {
+		 this.dataConsegna.set(value);
+	}
+
+	public final StringProperty nomeFarmacoProperty() {
+		return this.nomeFarmaco;
+	}
+
+	public final String getNomeFarmaco() {
+		return this.nomeFarmaco.get();
+	}
+
+	public final void setNomeFarmaco(String value) {
+		this.nomeFarmaco.set(value);
 	}
 
 }
