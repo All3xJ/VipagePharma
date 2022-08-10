@@ -5,6 +5,7 @@ import com.vipagepharma.farmacia.DBMSBoundary;
 import com.vipagepharma.farmacia.entity.Utente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni.SchermataElencoPrenotazioni;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -24,6 +25,7 @@ public class VisualizzaPrenotazioniControl {
 
     public void start() throws IOException {
         riempiObservableList(this.getIDFarmacia());
+        SchermataElencoPrenotazioni.schermataPrecedente="SchermataPrincipale";
         App.setRoot("gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni");
     }
 
@@ -41,5 +43,13 @@ public class VisualizzaPrenotazioniControl {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void premutoIndietro(String schermataPrecedente) throws IOException {
+        App.setRoot(schermataPrecedente);
+    }
+
+    public void premutoHome() throws IOException {
+        App.setRoot("SchermataPrincipale");
     }
 }

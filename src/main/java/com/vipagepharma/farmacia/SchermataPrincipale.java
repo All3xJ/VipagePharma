@@ -9,12 +9,14 @@ import com.vipagepharma.farmacia.gestionePrenotazioni.modificaContratti.Modifica
 import com.vipagepharma.farmacia.gestioneFarmaci.scaricoFarmaci.ScaricoFarmaciControl;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 
 public class SchermataPrincipale {
 
+	public static String schermataPrecedente;
+
 	@FXML
     void premeVisualizzaPrenotazioni(MouseEvent event) throws IOException{
-
 		VisualizzaPrenotazioniControl visualprenCtrl = new VisualizzaPrenotazioniControl();
 		visualprenCtrl.start();
 	}
@@ -36,10 +38,11 @@ public class SchermataPrincipale {
 		modcontraCtrl.start();
 	}
 
-    public void premeHome(MouseEvent mouseEvent) {
+    public void premeHome(MouseEvent mouseEvent)  {
     }
 
 	public void premeIndietro(MouseEvent mouseEvent) {
+
 	}
 
 	public void premeLogout(MouseEvent mouseEvent) {

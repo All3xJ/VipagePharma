@@ -1,5 +1,6 @@
 package com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,6 +22,8 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class SchermataElencoPrenotazioni implements Initializable{
+
+	public static String schermataPrecedente;
 
 	@FXML
     private TableColumn<Entry, String> idprenotazione_column;
@@ -116,12 +119,15 @@ public class SchermataElencoPrenotazioni implements Initializable{
 		newStage.show();
 		}
 
-    public void premeHome(MouseEvent mouseEvent) {
+    public void premeHome(MouseEvent mouseEvent) throws IOException {
+		VisualizzaPrenotazioniControl.visualPrenCtrlRef.premutoHome();
     }
 
-	public void premeIndietro(MouseEvent mouseEvent) {
+	public void premeIndietro(MouseEvent mouseEvent) throws IOException {
+		VisualizzaPrenotazioniControl.visualPrenCtrlRef.premutoIndietro(schermataPrecedente);
 	}
 
 	public void premeLogout(MouseEvent mouseEvent) {
+
 	}
 }
