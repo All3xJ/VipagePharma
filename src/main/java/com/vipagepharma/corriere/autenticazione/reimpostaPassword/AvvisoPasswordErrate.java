@@ -1,24 +1,21 @@
 package com.vipagepharma.corriere.autenticazione.reimpostaPassword;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-public class SchermataNuovaPassword {
-    @FXML
-    private PasswordField password;
-    @FXML
-    private PasswordField confermaPassword;
+public class AvvisoPasswordErrate {
     private final ReimpostaPasswordControl reimpostaPasswordControl = ReimpostaPasswordControl.repassCtrlRef;
+
     @FXML
-    void premeInvia(MouseEvent event) throws IOException {
-        reimpostaPasswordControl.inviaPassword(this.password.getText(),this.confermaPassword.getText());
+    public void premeOk() throws IOException {
+        reimpostaPasswordControl.premutoOk("autenticazione/reimpostaPassword/SchermataNuovaPassword");
+
     }
 
     @FXML
-    void premeHome(MouseEvent event) throws IOException {
+    void premeHome(MouseEvent event) throws IOException{
 
     }
     @FXML
@@ -30,4 +27,3 @@ public class SchermataNuovaPassword {
 
     }
 }
-

@@ -1,4 +1,4 @@
-package com.vipagepharma.corriere.autenticazione.login;
+package com.vipagepharma.addettoAzienda.autenticazione.login;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;

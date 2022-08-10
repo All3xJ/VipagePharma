@@ -8,13 +8,13 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class LoginControl {
+public class LoginControl{
     private TextField id;
     private PasswordField pass;
 
     public static LoginControl logCtrlRef;
 
-    public LoginControl(TextField id, PasswordField pass){
+    public LoginControl(TextField id,PasswordField pass){
         this.id = id;
         this.pass = pass;
         logCtrlRef = this;
@@ -33,5 +33,7 @@ public class LoginControl {
         App.setRoot(schermata);
     }
 
-
+    public void premutoOk() throws IOException {
+        this.mostra("autenticazione/login/SchermataLogin");
+    }
 }
