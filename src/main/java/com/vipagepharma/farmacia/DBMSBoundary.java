@@ -76,7 +76,7 @@ public class DBMSBoundary {
             Statement statement = connection.createStatement();
             statement.executeUpdate("INSERT INTO vipagepharma_farmacia.utente(nome, password, chiave_recupero, email)" +
                     "VALUES("+"'"+nome+"','" + pass+"','"+ chiave_recupero+"','"+ mail+"'"+")");
-            resultSet = statement.executeQuery("SELECT LAST_INSERT_ID()");
+            resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() as id");
         }
         catch (SQLException e){
             e.printStackTrace();
