@@ -32,20 +32,13 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci.SchermataPrenotazione">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci.SchermataPrenotazione">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
       <children>
@@ -77,13 +70,13 @@
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Text>
-            <DatePicker layoutX="533.0" layoutY="303.0" prefHeight="30.0" />
+            <DatePicker fx:id="data_consegna" layoutX="533.0" layoutY="303.0" prefHeight="30.0" />
             <Text layoutX="370.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inserisci quantità:">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Text>
-            <TextField layoutX="534.0" layoutY="353.0" prefHeight="30.0" prefWidth="70.0" />
-            <RadioButton layoutX="350.0" layoutY="404.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="627.0" text="Accetto farmaci con scadenza inferiore a due mesi dalla data selezionata">
+            <TextField fx:id="qty" layoutX="534.0" layoutY="353.0" prefHeight="30.0" prefWidth="70.0" />
+            <RadioButton fx:id="flag_scadenza" layoutX="350.0" layoutY="404.0" mnemonicParsing="false" onMouseClicked="#premeRadioButton" prefHeight="27.0" prefWidth="627.0" text="Accetto farmaci con scadenza inferiore a due mesi dalla data selezionata">
                <font>
                   <Font name="Arial" size="18.0" />
                </font></RadioButton>
