@@ -19,6 +19,8 @@ module com.vipagepharma {
     opens com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco to javafx.fxml;
     exports com.vipagepharma.farmacia.gestionePrenotazioni.modificaContratti;
     opens com.vipagepharma.farmacia.gestionePrenotazioni.modificaContratti to javafx.fxml;
+    exports com.vipagepharma.farmacia.entity;
+    opens com.vipagepharma.farmacia.entity to javafx.base;
 
 
 

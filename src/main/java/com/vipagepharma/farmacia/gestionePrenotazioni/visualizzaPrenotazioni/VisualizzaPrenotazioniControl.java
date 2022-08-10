@@ -2,10 +2,11 @@ package com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni;
 
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
+import com.vipagepharma.farmacia.SchermataPrincipale;
 import com.vipagepharma.farmacia.entity.Utente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni.SchermataElencoPrenotazioni;
+import com.vipagepharma.farmacia.entity.Prenotazione;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -15,7 +16,7 @@ public class VisualizzaPrenotazioniControl {
 
     public static VisualizzaPrenotazioniControl visualPrenCtrlRef;
 
-    public ObservableList<Entry> tvObservableList = FXCollections.observableArrayList();
+    public ObservableList<Prenotazione> tvObservableList = FXCollections.observableArrayList();
 
     public ResultSet prenotazioni = null;
 
@@ -38,7 +39,7 @@ public class VisualizzaPrenotazioniControl {
         try {
         while (true) {
             if (!prenotazioni.next()) break;
-            this.tvObservableList.add(new Entry(prenotazioni.getString("id_p"),prenotazioni.getString("nome"),prenotazioni.getString("data_consegna")));
+            this.tvObservableList.add(new Prenotazione(prenotazioni.getString("id_p"),prenotazioni.getString("nome"),prenotazioni.getString("data_consegna")));
         }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -49,7 +50,8 @@ public class VisualizzaPrenotazioniControl {
         App.setRoot(schermataPrecedente);
     }
 
-    public void premutoHome() throws IOException {
+    public void premutoHome(String schermataPrecedente) throws IOException {
+        SchermataPrincipale.schermataPrecedente=schermataPrecedente;
         App.setRoot("SchermataPrincipale");
     }
 }

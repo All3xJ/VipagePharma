@@ -50,17 +50,17 @@
                   <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <Button layoutX="603.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
+            <Button layoutX="603.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeHome" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="177.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
+            <Button layoutX="177.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeIndietro" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" layoutX="85.0" layoutY="686.0" mnemonicParsing="false" onMouseDragged="#premeLogout" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="116.0">
+            <Button alignment="CENTER" layoutX="85.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeLogout" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="116.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>

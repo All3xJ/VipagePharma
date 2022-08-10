@@ -33,12 +33,6 @@ public class App extends Application {
         scene.getRoot().setStyle("-fx-font-family: 'Arial'");
     }
 
-    public String getPackageFromFile(String fxml){
-        String packagename = fxml.replace("/",".");
-        packagename = (this.getClass().getPackage().toString()).split(" ")[1] + "." + packagename;
-        return packagename;
-    }
-
 	// questo è il metodo richiamato dal metodo setRoot di questa stessa classe, letteralmente sopra di questo
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
