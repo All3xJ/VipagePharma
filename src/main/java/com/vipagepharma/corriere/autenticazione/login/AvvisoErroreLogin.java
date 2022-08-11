@@ -1,29 +1,27 @@
 package com.vipagepharma.corriere.autenticazione.login;
 
-import com.vipagepharma.farmacia.autenticazione.login.LoginControl;
+import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-public class AvvisoErroreLogin {
+public class AvvisoErroreLogin{
 
-    public void premutoOk(MouseEvent event) throws IOException {
-        LoginControl loginControl = LoginControl.logCtrlRef;
-        loginControl.mostra("autenticazione/login/SchermataLogin");
+    private final LoginControl loginControl = LoginControl.logCtrlRef;
+    @FXML
+    public void premeOk(MouseEvent event) throws IOException {
+        loginControl.premutoOk();
     }
-
-    public void premutoIndietro(MouseEvent event) throws IOException{
-
-    }
-
-    public void premutoHome(MouseEvent event) throws IOException{
+    @FXML
+    public void premeIndietro(MouseEvent event) throws IOException{
 
     }
-
-    public void premutoLogout(MouseEvent event) throws IOException{
+    @FXML
+    public void premeHome(MouseEvent event) throws IOException{
 
     }
+    @FXML
+    public void premeLogout(MouseEvent event) throws IOException{
 
-    public void premeOk(MouseEvent mouseEvent) {
     }
 }

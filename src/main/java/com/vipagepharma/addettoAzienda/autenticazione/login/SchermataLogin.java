@@ -1,6 +1,7 @@
 package com.vipagepharma.addettoAzienda.autenticazione.login;
 
 import com.vipagepharma.addettoAzienda.autenticazione.registrazione.RegistrazioneControl;
+import com.vipagepharma.addettoAzienda.autenticazione.reimpostaPassword.ReimpostaPasswordControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,7 +32,7 @@ public class SchermataLogin implements Initializable {
 	}
 
 	@FXML
-    void premutoLogin(ActionEvent event) throws IOException{	// sono nella schermata di login. se preme pulsante "login" allora:
+    void premeLogin(ActionEvent event) throws IOException{
 		System.out.println(username.getText());
 		System.out.println(password.getText());
 		LoginControl logCtrl = new LoginControl(username,password);
@@ -39,13 +40,14 @@ public class SchermataLogin implements Initializable {
     }
 
 	@FXML
-	void premutoRegistrati(MouseEvent event) throws IOException{
+	void premeRegistrati(MouseEvent event) throws IOException{
 		RegistrazioneControl regCtrl = new RegistrazioneControl();
 		regCtrl.start();
 	}
 
 	@FXML
-	void premutoReimpostaPassword(MouseEvent event) throws IOException{
-		System.out.println("ciao");
+	void premeReimpostaPassword(MouseEvent event) throws IOException{
+		ReimpostaPasswordControl repassCtrl = new ReimpostaPasswordControl();
+		repassCtrl.start();
 	}
 }

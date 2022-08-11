@@ -67,7 +67,7 @@
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <TextField layoutX="396.0" layoutY="360.0" prefHeight="45.0" prefWidth="332.0" promptText="Cerca per nome o principio attivo">
+            <TextField fx:id="nome_o_principio_attivo" layoutX="396.0" layoutY="360.0" prefHeight="45.0" prefWidth="332.0" promptText="Cerca per nome o principio attivo">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></TextField>

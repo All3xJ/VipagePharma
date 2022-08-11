@@ -19,14 +19,9 @@ public class SchermataRegistrazione{
     private PasswordField confermaPassword;
     private final RegistrazioneControl registrazioneControl = RegistrazioneControl.regCtrlRef;
     @FXML
-    void premeRegistra(MouseEvent event) throws IOException{
+    void premeRegistra(MouseEvent event) throws Exception{
         registrazioneControl.premutoRegistra(this.nome.getText(),this.email.getText(),this.password.getText(),this.confermaPassword.getText());
     }
-    @FXML
-    void premeOK(MouseEvent event) throws IOException{
-        registrazioneControl.premutoOk("autenticazione/registrazione/SchermataRegistrazione");
-    }
-
 
     @FXML
     void premeHome(MouseEvent event) throws IOException{

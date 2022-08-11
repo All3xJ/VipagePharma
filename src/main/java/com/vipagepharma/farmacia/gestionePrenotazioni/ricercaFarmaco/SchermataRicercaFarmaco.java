@@ -1,21 +1,19 @@
 package com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import java.io.IOException;
 
 public class SchermataRicercaFarmaco {
     @FXML
-    void premutoLogout(MouseEvent mouseEvent){
+    TextField nome_o_principio_attivo;
 
-    }
     @FXML
-    void premutoInvio(MouseEvent mouseEvent){
-
-    }
-
     public void premeLogout(MouseEvent mouseEvent) {
     }
-
-    public void premeInvio(MouseEvent mouseEvent) {
+    @FXML
+    public void premeInvio(MouseEvent mouseEvent) throws IOException {
+        RicercaFarmacoControl.getControl().premutoInvio(this.nome_o_principio_attivo.getText());
     }
 }
