@@ -23,7 +23,7 @@ public class RicercaFarmacoControl {
     public void premutoInvio(String nome_o_principio_attivo) throws IOException {
         ResultSet risultatoRicerca = DBMSBoundary.getFarmaco(nome_o_principio_attivo);
         // fare magie con il risultato per creare le tabelle
-        App.setRoot("gestionePrenotazione/prenotaFarmaci/SchermataListaFarmaci");
+        App.setRoot("gestionePrenotazioni/prenotaFarmaci/SchermataListaFarmaci");
     }
 
     public static RicercaFarmacoControl getControl(){

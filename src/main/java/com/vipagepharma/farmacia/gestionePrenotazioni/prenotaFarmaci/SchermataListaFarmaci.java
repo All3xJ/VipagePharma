@@ -18,4 +18,10 @@ public class SchermataListaFarmaci{
         PrenotaFarmaciControl prFarCtrl = new PrenotaFarmaciControl();
         prFarCtrl.start(this.id_farmaco);
     }
+
+    public void premeHome(MouseEvent event) {
+    }
+
+    public void premeIndietro(MouseEvent event) {
+    }
 }
