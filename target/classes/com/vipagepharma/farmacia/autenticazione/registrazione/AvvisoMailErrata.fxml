@@ -54,12 +54,12 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Button>
-      <Text layoutX="160.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inserire formato valido ">
+      <Text layoutX="152.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inserire formato valido ">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
       </Text>
-      <Text fill="#7c7c7c" layoutX="364.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(es. nome@gmail.com)">
+      <Text fill="#7c7c7c" layoutX="356.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(es. nome@example.com)">
          <font>
             <Font name="Arial Italic" size="20.0" />
          </font>

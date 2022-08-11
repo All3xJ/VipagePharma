@@ -65,12 +65,18 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <TableView fx:id="prenotazioni_table" layoutX="351.0" layoutY="221.0" prefHeight="318.0" prefWidth="582.0">
+            <TableView fx:id="prenotazioni_table" layoutX="337.0" layoutY="158.0" prefHeight="383.0" prefWidth="647.0">
               <columns>
-                <TableColumn fx:id="id_column" prefWidth="168.0" text="ID farmacia" />
+                <TableColumn fx:id="id_column" prefWidth="135.0" text="ID consegna" />
                   <TableColumn editable="false" prefWidth="103.60113525390625" visible="false" />
+                  <TableColumn prefWidth="160.0" text="ID farmacia" />
               </columns>
             </TableView>
+            <Button layoutX="832.0" layoutY="553.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Mostra altro">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

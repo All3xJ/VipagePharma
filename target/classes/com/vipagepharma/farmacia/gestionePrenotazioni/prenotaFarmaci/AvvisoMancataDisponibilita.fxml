@@ -34,56 +34,36 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci.AvvisoMancataDisponibilita">
-  <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="794.0" VBox.vgrow="ALWAYS">
-      <children>
-            <Button layoutX="603.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font></Button>
-            <Button layoutX="150.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font></Button>
-            <Button alignment="CENTER" layoutX="422.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeLogout" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="116.0">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font></Button>
-            <ImageView fitHeight="225.0" fitWidth="230.0" layoutX="30.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
-               </image>
-            </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="410.0" layoutX="308.0" layoutY="174.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="691.0" />
-            <Button layoutX="603.0" layoutY="494.0" mnemonicParsing="false" onMouseClicked="#premeConferma" prefHeight="50.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Conferma">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font></Button>
-            <Text layoutX="431.0" layoutY="256.0" lineSpacing="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La quantità di nome_farmaco richiesta non è totalmente disponibile per il gg/mm/aaaa" textAlignment="CENTER" wrappingWidth="452.27587890625">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font>
-            </Text>
-            <RadioButton layoutX="361.0" layoutY="360.0" mnemonicParsing="false" text="Accetto solo n pezzi per il gg/mm/aaaa">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font>
-            </RadioButton>
-            <RadioButton layoutX="361.0" layoutY="400.0" mnemonicParsing="false" text="Accetto n pezzi per il gg/mm/aaaa e m pezzi per il gg/mm/aaaa">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font>
-            </RadioButton>
-      </children>
-    </AnchorPane>
-  </children>
-</VBox>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: f5f5f5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci.AvvisoMancataDisponibilita">
+   <children>
+      <Text fill="RED" layoutX="273.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Text>
+      <Text layoutX="122.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La quantità di nome_farmaco richiesta non è totalmente disponibile per il gg/mm/aaaa" textAlignment="CENTER" wrappingWidth="492.3359375">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Button alignment="CENTER" layoutX="305.0" layoutY="338.0" mnemonicParsing="false" onMouseClicked="#premeAnnulla" prefHeight="40.0" prefWidth="127.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Annulla">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Button>
+      <RadioButton layoutX="70.0" layoutY="227.0" mnemonicParsing="false" text="Accetto solo n pezzi per il gg/mm/aaaa">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </RadioButton>
+      <RadioButton layoutX="71.0" layoutY="269.0" mnemonicParsing="false" text="Accetto n pezzi per il gg/mm/aaaa e m pezzi per il gg/mm/aaaa">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </RadioButton>
+   </children>
+</Pane>
