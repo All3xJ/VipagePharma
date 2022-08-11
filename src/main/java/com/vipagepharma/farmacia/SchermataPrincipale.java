@@ -3,18 +3,21 @@ package com.vipagepharma.farmacia;
 import java.io.IOException;
 
 import com.vipagepharma.farmacia.autenticazione.login.LoginControl;
+import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni.VisualizzaPrenotazioniControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco.RicercaFarmacoControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.modificaContratti.ModificaContrattiControl;
 import com.vipagepharma.farmacia.gestioneFarmaci.scaricoFarmaci.ScaricoFarmaciControl;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 
 public class SchermataPrincipale {
 
+	public static String schermataPrecedente;
+
 	@FXML
     void premeVisualizzaPrenotazioni(MouseEvent event) throws IOException{
-
 		VisualizzaPrenotazioniControl visualprenCtrl = new VisualizzaPrenotazioniControl();
 		visualprenCtrl.start();
 	}
@@ -36,12 +39,14 @@ public class SchermataPrincipale {
 		modcontraCtrl.start();
 	}
 
-    public void premeHome(MouseEvent mouseEvent) {
+    public void premeHome(MouseEvent mouseEvent)  {
     }
 
 	public void premeIndietro(MouseEvent mouseEvent) {
+
 	}
 
-	public void premeLogout(MouseEvent mouseEvent) {
+	public void premeLogout(MouseEvent mouseEvent) throws IOException {
+		LogoutControl.start();
 	}
 }

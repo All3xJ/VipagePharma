@@ -32,7 +32,6 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import com.gluonhq.charm.glisten.control.AutoCompleteTextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -45,12 +44,11 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
       <children>
-            <AutoCompleteTextField completerMode="SEARCH_ON_REQUEST" layoutX="396.0" layoutY="290.0" prefHeight="45.0" prefWidth="332.0" promptText="Cerca per nome o principio attivo" />
-            <Button alignment="CENTER" layoutX="603.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
+            <Button alignment="CENTER" layoutX="603.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeHome" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button layoutX="150.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
+            <Button layoutX="150.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeIndietro" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
@@ -63,14 +61,11 @@
                   <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <Button alignment="CENTER" layoutX="750.0" layoutY="357.0" mnemonicParsing="false" onMouseClicked="#premeInvio" prefHeight="50.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Invio">
+            <Button layoutX="750.0" layoutY="357.0" mnemonicParsing="false" onMouseClicked="#premeInvio" prefHeight="50.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Invio">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <TextField fx:id="nome_o_principio_attivo" layoutX="396.0" layoutY="360.0" prefHeight="45.0" prefWidth="332.0" promptText="Cerca per nome o principio attivo">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font></TextField>
+            <TextField layoutX="443.0" layoutY="360.0" prefHeight="45.0" prefWidth="278.0" />
       </children>
     </AnchorPane>
   </children>

@@ -15,6 +15,17 @@ module com.vipagepharma {
     opens com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni to javafx.fxml;
     exports com.vipagepharma.farmacia.gestioneFarmaci.scaricoFarmaci;
     opens com.vipagepharma.farmacia.gestioneFarmaci.scaricoFarmaci to javafx.fxml;
+    exports com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco;
+    opens com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco to javafx.fxml;
+    exports com.vipagepharma.farmacia.gestionePrenotazioni.modificaContratti;
+    opens com.vipagepharma.farmacia.gestionePrenotazioni.modificaContratti to javafx.fxml;
+    exports com.vipagepharma.farmacia.gestionePrenotazioni.caricoPrenotazione;
+    opens com.vipagepharma.farmacia.gestionePrenotazioni.caricoPrenotazione to javafx.fxml;
+    exports com.vipagepharma.farmacia.gestionePrenotazioni.annullaPrenotazione;
+    opens com.vipagepharma.farmacia.gestionePrenotazioni.annullaPrenotazione to javafx.fxml;
+    exports com.vipagepharma.farmacia.entity;
+    opens com.vipagepharma.farmacia.entity to javafx.base;
+
 
 
     exports com.vipagepharma.addettoAzienda;

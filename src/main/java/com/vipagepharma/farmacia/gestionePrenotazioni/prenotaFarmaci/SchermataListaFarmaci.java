@@ -9,6 +9,7 @@ public class SchermataListaFarmaci{
 
     private String id_farmaco;
     @FXML
+
     public void premeLogout(MouseEvent mouseEvent) {
     }
 

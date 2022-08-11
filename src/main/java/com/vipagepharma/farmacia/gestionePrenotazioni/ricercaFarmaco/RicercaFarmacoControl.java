@@ -1,14 +1,20 @@
 package com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco;
 
 import com.vipagepharma.farmacia.App;
+import com.vipagepharma.farmacia.SchermataPrincipale;
 import com.vipagepharma.farmacia.DBMSBoundary;
 
 import java.io.IOException;
-import java.sql.ResultSet;
+import java.lang.reflect.InvocationTargetException;
 
 public class RicercaFarmacoControl {
 
     public static RicercaFarmacoControl controlRef;
+
+    public RicercaFarmacoControl(){
+        controlRef = this;
+    }
+
     public void start() throws IOException {
         App.setRoot("gestionePrenotazioni/ricercaFarmaco/SchermataRicercaFarmaco");
     }
@@ -21,6 +27,15 @@ public class RicercaFarmacoControl {
 
     public static RicercaFarmacoControl getControl(){
         return controlRef;
+    }
+
+    public void premutoIndietro() throws IOException{
+        App.setRoot("SchermataPrincipale");
+    }
+
+    public void premutoHome(String schermataPrecedente) throws IOException {
+        SchermataPrincipale.schermataPrecedente=schermataPrecedente;
+        App.setRoot("SchermataPrincipale");
     }
 
 }
