@@ -1,6 +1,7 @@
 package com.vipagepharma.farmacia.autenticazione.registrazione;
 
 
+
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
@@ -10,22 +11,7 @@ public class AvvisoMailErrata {
     private final RegistrazioneControl registrazioneControl = RegistrazioneControl.regCtrlRef;
 
     @FXML
-    public void premeOk() throws IOException {
-        registrazioneControl.premutoOk("autenticazione/login/SchermataLogin");
+    public void premeOk(MouseEvent event) throws IOException {
+        registrazioneControl.premutoOk("autenticazione/registrazione/SchermataRegistrazione");
     }
-
-    @FXML
-    void premeHome(MouseEvent event) throws IOException{
-
-    }
-    @FXML
-    void premeLogout(MouseEvent event) throws IOException{
-
-    }
-    @FXML
-    void premeIndietro(MouseEvent event) throws IOException{
-
-    }
-
-
 }

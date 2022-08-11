@@ -1,6 +1,7 @@
 package com.vipagepharma.farmacia;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -17,6 +18,7 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    public static Stage popup_stage;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -38,16 +40,29 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+    public static void newWind(String fxml, ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        popup_stage = new Stage();
+        Scene newscene = new Scene(root1, 720,480);
+        newscene.getRoot().setStyle("-fx-font-family: 'Arial'");
+        popup_stage.setScene(newscene);
+        popup_stage.initModality(Modality.WINDOW_MODAL);
+        popup_stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+        popup_stage.show();
+    }
+
+
     public static void newWind(String fxml, MouseEvent event) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        Scene newscene = new Scene(root1);
+        popup_stage = new Stage();
+        Scene newscene = new Scene(root1, 720,480);
         newscene.getRoot().setStyle("-fx-font-family: 'Arial'");
-        stage.setScene(newscene);
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
-        stage.show();
+        popup_stage.setScene(newscene);
+        popup_stage.initModality(Modality.WINDOW_MODAL);
+        popup_stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+        popup_stage.show();
     }
 
     public static void main(String[] args) {

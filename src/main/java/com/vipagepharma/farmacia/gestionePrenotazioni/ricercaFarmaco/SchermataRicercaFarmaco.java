@@ -28,7 +28,6 @@ public class SchermataRicercaFarmaco {
         RicercaFarmacoControl.getControl().premutoHome("gestionePrenotazioni/ricercaFarmaco/SchermataRicercaFarmaco");
     }
 
-
     @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
         LogoutControl.start();

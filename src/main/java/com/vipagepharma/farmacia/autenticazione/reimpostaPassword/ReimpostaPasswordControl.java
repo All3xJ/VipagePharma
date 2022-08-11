@@ -3,6 +3,8 @@ package com.vipagepharma.farmacia.autenticazione.reimpostaPassword;
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
 import com.vipagepharma.farmacia.SchermataPrincipale;
+import javafx.event.ActionEvent;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
@@ -21,32 +23,33 @@ public class ReimpostaPasswordControl {
         App.setRoot("autenticazione/reimpostaPassword/SchermataReimpostaPassword");
     }
 
-    public void premutoInvia(String id,String key) throws IOException {
+    public void premutoInvia(String id, String key, ActionEvent event) throws IOException {
         boolean esito = DBMSBoundary.verificaKey(id,key);
         if(esito){
             this.id = id;
             this.key = key;
-            SchermataNuovaPassword.schermataPrecedente = "autenticazione/registrazione/SchermataReimpostaPassword";
+            SchermataNuovaPassword.schermataPrecedente = "autenticazione/reimpostaPassword/SchermataReimpostaPassword";
             App.setRoot("autenticazione/reimpostaPassword/SchermataNuovaPassword");
         }
         else{
-            App.setRoot("autenticazione/reimpostaPassword/AvvisoOperazioneFallita");
+            App.newWind("autenticazione/reimpostaPassword/AvvisoOperazioneFallita",event);
         }
     }
 
-    public void inviaPassword(String password,String confermaPassword) throws IOException {
+    public void inviaPassword(String password, String confermaPassword, ActionEvent event) throws IOException {
         this.password = password;
         this.confermaPassword = confermaPassword;
         if(!this.checkPass()){
-            App.setRoot("autenticazione/reimpostaPassword/AvvisoPasswordErrate");
+            App.newWind("autenticazione/reimpostaPassword/AvvisoPasswordErrate",event);
         }
         else{
             DBMSBoundary.aggiornaPassword(this.id,this.password);
-            App.setRoot("autenticazione/reimpostaPassword/AvvisoOperazioneRiuscita");
+            App.newWind("autenticazione/reimpostaPassword/AvvisoOperazioneRiuscita",event);
         }
     }
 
     public void premutoOk(String schermata) throws IOException {
+        App.popup_stage.close();
         App.setRoot(schermata);
     }
     private boolean checkPass(){

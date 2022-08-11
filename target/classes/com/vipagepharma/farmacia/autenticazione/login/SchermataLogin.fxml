@@ -61,7 +61,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </PasswordField>
-            <Button fx:id="login" alignment="CENTER" defaultButton="true" layoutX="580.0" layoutY="383.0" mnemonicParsing="false" onAction="#premeLogin" onMouseClicked="#premeLogin" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #CFF3F2 #CFF3F2; -fx-border-color: #b9b9b9; -fx-background-radius: 5; -fx-border-radius: 5;" text="Login" AnchorPane.leftAnchor="580.0" AnchorPane.rightAnchor="746.0">
+            <Button fx:id="login" alignment="CENTER" defaultButton="true" layoutX="580.0" layoutY="383.0" mnemonicParsing="false" onAction="#premeLogin"  prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #CFF3F2 #CFF3F2; -fx-border-color: #b9b9b9; -fx-background-radius: 5; -fx-border-radius: 5;" text="Login" AnchorPane.leftAnchor="580.0" AnchorPane.rightAnchor="746.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>

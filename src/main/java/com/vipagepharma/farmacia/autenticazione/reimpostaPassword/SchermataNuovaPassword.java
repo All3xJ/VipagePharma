@@ -1,5 +1,6 @@
 package com.vipagepharma.farmacia.autenticazione.reimpostaPassword;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
@@ -15,8 +16,8 @@ public class SchermataNuovaPassword {
     private PasswordField confermaPassword;
     private final ReimpostaPasswordControl reimpostaPasswordControl = ReimpostaPasswordControl.repassCtrlRef;
     @FXML
-    void premeInvia(MouseEvent event) throws IOException {
-        reimpostaPasswordControl.inviaPassword(this.password.getText(),this.confermaPassword.getText());
+    void premeInvia(ActionEvent event) throws IOException {
+        reimpostaPasswordControl.inviaPassword(this.password.getText(),this.confermaPassword.getText(),event);
     }
 
     @FXML
