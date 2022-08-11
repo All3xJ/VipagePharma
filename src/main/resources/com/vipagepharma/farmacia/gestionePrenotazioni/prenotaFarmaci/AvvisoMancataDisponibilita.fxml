@@ -32,13 +32,11 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: f5f5f5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci.AvvisoMancataDisponibilita">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: f5f5f5;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci.AvvisoMancataDisponibilita">
    <children>
       <Text fill="RED" layoutX="273.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE" textAlignment="CENTER">
          <font>
@@ -50,17 +48,17 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Text>
-      <Button alignment="CENTER" layoutX="305.0" layoutY="338.0" mnemonicParsing="false" onMouseClicked="#premeAnnulla" prefHeight="40.0" prefWidth="127.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Annulla">
+      <Button alignment="CENTER" layoutX="305.0" layoutY="338.0" mnemonicParsing="false" onMouseClicked="#premeConferma" prefHeight="40.0" prefWidth="127.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Conferma">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
       </Button>
-      <RadioButton layoutX="70.0" layoutY="227.0" mnemonicParsing="false" text="Accetto solo n pezzi per il gg/mm/aaaa">
+      <RadioButton fx:id="opzione1" layoutX="70.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#selezionaOpzione1" text="Accetto solo n pezzi per il gg/mm/aaaa">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="71.0" layoutY="269.0" mnemonicParsing="false" text="Accetto n pezzi per il gg/mm/aaaa e m pezzi per il gg/mm/aaaa">
+      <RadioButton fx:id="opzione2" layoutX="71.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#selezionaOpzione2" text="Accetto n pezzi per il gg/mm/aaaa e m pezzi per il gg/mm/aaaa">
          <font>
             <Font name="Arial" size="20.0" />
          </font>

@@ -1,5 +1,6 @@
 package com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
@@ -21,12 +22,12 @@ public class SchermataPrenotazione {
     public void premeLogout(MouseEvent mouseEvent) {
     }
 
-    public void premeInvio() throws SQLException, IOException {
-        PrenotaFarmaciControl.getControl().premutoInvio(data_consegna.getValue(),qty.getText(),this.flag_scadenza);
+    public void premeInvia(ActionEvent event) throws SQLException, IOException {
+        PrenotaFarmaciControl.getControl().premutoInvia(data_consegna.getValue(),qty.getText(),this.flag_scadenza,event);
     }
 
     @FXML
-    public void premeRadioButton(){
+    public void premeRadioButton(MouseEvent event){
         if(this.flag_scadenza == 0){
             flag_scadenza = 1;
         }

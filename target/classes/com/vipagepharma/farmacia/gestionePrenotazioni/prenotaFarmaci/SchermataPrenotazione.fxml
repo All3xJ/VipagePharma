@@ -42,15 +42,15 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button alignment="CENTER" layoutX="603.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
+            <Button alignment="CENTER" layoutX="603.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeHome" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button layoutX="150.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
+            <Button layoutX="150.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeIndetro" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button alignment="CENTER" layoutX="430.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeLougout" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="116.0">
+            <Button alignment="CENTER" layoutX="430.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeLogout" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" AnchorPane.rightAnchor="116.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
@@ -80,7 +80,7 @@
                <font>
                   <Font name="Arial" size="18.0" />
                </font></RadioButton>
-            <Button layoutX="603.0" layoutY="494.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Invia">
+            <Button layoutX="603.0" layoutY="494.0" mnemonicParsing="false" onAction="#premeInvia" prefHeight="50.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Invia">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>

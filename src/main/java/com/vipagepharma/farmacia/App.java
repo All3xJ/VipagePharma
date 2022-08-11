@@ -52,6 +52,7 @@ public class App extends Application {
         popup_stage.show();
     }
 
+
     public static void newWind(String fxml, MouseEvent event) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
