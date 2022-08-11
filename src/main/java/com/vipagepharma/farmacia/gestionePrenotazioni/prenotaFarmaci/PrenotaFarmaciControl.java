@@ -4,9 +4,8 @@ import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
 import com.vipagepharma.farmacia.entity.Utente;
 
-import javax.xml.transform.Result;
+
 import java.io.IOException;
-import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -25,8 +24,8 @@ public class PrenotaFarmaciControl {
     private ResultSet lotti;
     private String id_corriere;
     private String id_farmacia;
-    ArrayList<Integer> idLotti;
-    ArrayList<Integer> qtyLotti;
+    ArrayList<String> idLotti;
+    ArrayList<String> qtyLotti;
 
     public PrenotaFarmaciControl(){
         controlRef = this;
@@ -64,14 +63,14 @@ public class PrenotaFarmaciControl {
         int qtyLottiTot = 0;
         while(lotti.next() && qtyLottiTot < qtyTotale){
             if(this.lotti.getDate(5).toLocalDate().isAfter(this.data_scadenza_min) && this.lotti.getDate(4).toLocalDate().isBefore(this.data_consegna)){
-                this.idLotti.add(this.lotti.getInt(1));
+                this.idLotti.add(this.lotti.getString(1));
                 int qtyLotto = this.lotti.getInt(3);
                 qtyLottiTot += qtyLotto;
                 if(qtyLottiTot > qtyTotale){
-                    this.qtyLotti.add(qtyTotale - (qtyLottiTot - qtyLotto));
+                    this.qtyLotti.add(String.valueOf(qtyTotale - (qtyLottiTot - qtyLotto)));
                 }
                 else{
-                    this.qtyLotti.add(qtyLotto);
+                    this.qtyLotti.add(String.valueOf(qtyLotto));
                 }
             }
         }
@@ -82,14 +81,14 @@ public class PrenotaFarmaciControl {
         int qtyLottiTot = 0;
         while(lotti.next() && qtyLottiTot < qtyTotale && this.lotti.getDate(4).toLocalDate().isBefore(this.data_consegna)){  //esco dal loop appena la data di disp > data consegna richiesta
             if(this.lotti.getDate(5).toLocalDate().isAfter(this.data_scadenza_min)){
-                this.idLotti.add(this.lotti.getInt(1));
+                this.idLotti.add(this.lotti.getString(1));
                 int qtyLotto = this.lotti.getInt(3);
                 qtyLottiTot += qtyLotto;
                 if(qtyLottiTot > qtyTotale){
-                    this.qtyLotti.add(qtyTotale - (qtyLottiTot - qtyLotto));
+                    this.qtyLotti.add(String.valueOf(qtyTotale - (qtyLottiTot - qtyLotto)));
                 }
                 else{
-                    this.qtyLotti.add(qtyLotto);
+                    this.qtyLotti.add(String.valueOf(qtyLotto));
                 }
             }
         }
@@ -108,14 +107,14 @@ public class PrenotaFarmaciControl {
         int qtyMancante = Integer.parseInt(this.qtyDisponibile) - Integer.parseInt(this.qtyRichiesta);
         int qtyLottiTot = 0;
         while(this.lotti.next() && qtyLottiTot<qtyMancante){
-            this.idLotti.add(this.lotti.getInt(1));
+            this.idLotti.add(this.lotti.getString(1));
             int qtyLotto = this.lotti.getInt(3);
             qtyLottiTot += qtyLotto;
             if(qtyLottiTot > qtyMancante){
-                this.qtyLotti.add(qtyMancante - (qtyLottiTot - qtyLotto));
+                this.qtyLotti.add(String.valueOf(qtyMancante - (qtyLottiTot - qtyLotto)));
             }
             else{
-                this.qtyLotti.add(qtyLotto);
+                this.qtyLotti.add(String.valueOf(qtyLotto));
             }
         }
         this.qtyMancante = String.valueOf(qtyMancante);

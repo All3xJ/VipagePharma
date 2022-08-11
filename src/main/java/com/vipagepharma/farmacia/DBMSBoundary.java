@@ -2,6 +2,7 @@ package com.vipagepharma.farmacia;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 
@@ -182,33 +183,21 @@ public class DBMSBoundary {
     }
 
 
-    public static void creaPrenotazioneEScarica(String id_prenotazione, String id_farmacia, String id_corriere, LocalDate data_consegna, LinkedList <String> id_lotti, LinkedList <String> quantita){
+    public static void creaPrenotazioneEScarica(String id_farmacia, String id_corriere, LocalDate data_consegna, ArrayList<String> id_lotti, ArrayList <String> quantita){
         ResultSet resultSet;
+        String id_prenotazione;
         try{ //crea prenotazione
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
             statement.executeUpdate("insert into prenotazione(ref_id_uf, ref_id_ua, isConsegnato, data_consegna) values (" + id_farmacia+ ", "+ id_corriere+ ", "+ 0+",'"+ data_consegna +"'");
+            id_prenotazione = statement.executeQuery("SELECT LAST_INSERT_ID() as id").getString("id");
+            for(int i=0; i<id_lotti.size(); ++i) {
+                statement.executeUpdate("update lotto set qty = qty - " + quantita.get(i) + " where id_l = " + id_lotti.get(i));
 
+                statement.executeUpdate("insert into lotto_ordinato(ref_id_l, ref_id_p, isCaricato, qty) values(" + id_lotti.get(i) + ", " + id_prenotazione + ", " + 0 + ", " + quantita.get(i));
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
-        for(int i=0; i<id_lotti.size(); ++i) {
-            try { // scarico da tabella lotto
-                Connection connection = connectAzienda();
-                Statement statement = connection.createStatement();
-                statement.executeUpdate("update lotto set qty = qty - " + quantita.removeFirst() + " where id_l = " + id_lotti.removeFirst());
-
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-            try { //aggiungi lotto ordinato
-                Connection connection = connectAzienda();
-                Statement statement = connection.createStatement();
-                statement.executeUpdate("insert into lotto_ordinato(ref_id_l, ref_id_p, isCaricato, qty) values(" + id_lotti.removeFirst() + ", " + id_prenotazione + ", " + 0 + ", " + quantita.removeFirst());
-
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 
