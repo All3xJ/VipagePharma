@@ -21,11 +21,11 @@ public class SchermataRicercaFarmaco {
     }
 
     public void premeIndietro(MouseEvent mouseEvent) throws IOException{
-        RicercaFarmacoControl.ricercFarmCtrlRef.premutoIndietro();
+        RicercaFarmacoControl.getControl().premutoIndietro();
     }
 
     public void premeHome(MouseEvent mouseEvent) throws IOException {
-        RicercaFarmacoControl.ricercFarmCtrlRef.premutoHome("gestionePrenotazioni/ricercaFarmaco/SchermataRicercaFarmaco");
+        RicercaFarmacoControl.getControl().premutoHome("gestionePrenotazioni/ricercaFarmaco/SchermataRicercaFarmaco");
     }
 
 

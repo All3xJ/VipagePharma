@@ -1,7 +1,7 @@
 package com.vipagepharma.corriere.autenticazione.reimpostaPassword;
 
-import com.vipagepharma.corriere.App;
-import com.vipagepharma.corriere.DBMSBoundary;
+import com.vipagepharma.addettoAzienda.App;
+import com.vipagepharma.addettoAzienda.DBMSBoundary;
 
 import java.io.IOException;
 

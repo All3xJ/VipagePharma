@@ -29,7 +29,7 @@ public class VisualizzaPrenotazioniControl {
     }
 
     public void start() throws IOException {
-        riempiObservableList(this.getIDFarmacia());
+        this.riempiObservableList(this.getIDFarmacia());
         App.setRoot("gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni");
     }
 

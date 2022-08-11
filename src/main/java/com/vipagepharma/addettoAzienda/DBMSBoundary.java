@@ -229,7 +229,7 @@ public class DBMSBoundary {
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery("Select id_p, ref_id_uf from prenotazione where isConsegnato = 1 limit 15"); //vedere se funziona sintassi
+            resultSet = statement.executeQuery("Select id_p, ref_id_uf, data_consegna from prenotazione where isConsegnato = 1 limit 15"); //vedere se funziona sintassi
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -243,7 +243,7 @@ public class DBMSBoundary {
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery("Select id_p, ref_id_uf from prenotazione where isConsegnato=1 limit " + base + ", 15"); //vedere se funziona sintassi
+            resultSet = statement.executeQuery("Select id_p, ref_id_uf, data_consegna from prenotazione where isConsegnato=1 limit " + base + ", 15"); //vedere se funziona sintassi
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

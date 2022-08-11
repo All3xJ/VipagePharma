@@ -6,9 +6,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 
 public class SchermataRegistrazione{
+
     @FXML
     private TextField nome;
     @FXML
@@ -19,21 +21,17 @@ public class SchermataRegistrazione{
     private PasswordField confermaPassword;
     private final RegistrazioneControl registrazioneControl = RegistrazioneControl.regCtrlRef;
     @FXML
-    void premeRegistra(MouseEvent event) throws Exception{
+    void premeRegistra(MouseEvent event) throws IOException, SQLException {
         registrazioneControl.premutoRegistra(this.nome.getText(),this.email.getText(),this.password.getText(),this.confermaPassword.getText());
     }
-
     @FXML
-    void premeHome(MouseEvent event) throws IOException{
-
+    void premeOK(MouseEvent event) throws IOException{
+        registrazioneControl.premutoOk("autenticazione/registrazione/SchermataRegistrazione");
     }
-    @FXML
-    void premeLogout(MouseEvent event) throws IOException{
 
-    }
     @FXML
     void premeIndietro(MouseEvent event) throws IOException{
-
+        RegistrazioneControl.regCtrlRef.premutoIndietro();
     }
 }
 

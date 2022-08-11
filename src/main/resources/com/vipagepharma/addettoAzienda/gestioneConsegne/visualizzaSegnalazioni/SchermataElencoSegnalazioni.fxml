@@ -41,7 +41,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.addettoAzienda.gestioneConsegne.risoluzioneProblemaConsegna.SchermataElencoSegnalazioni">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni.SchermataElencoSegnalazioni">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
@@ -65,12 +65,13 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <TableView fx:id="prenotazioni_table" layoutX="232.0" layoutY="179.0" prefHeight="410.0" prefWidth="843.0">
+            <TableView fx:id="segnalazioni_table" layoutX="320.0" layoutY="166.0" prefHeight="410.0" prefWidth="674.0">
               <columns>
-                <TableColumn fx:id="id_column" prefWidth="168.0" text="ID farmacia" />
-                  <TableColumn fx:id="annulla_column" prefWidth="139.0" text="ID ordine " />
+                <TableColumn fx:id="idfarmacia_column" prefWidth="168.0" text="ID farmacia" />
+                  <TableColumn fx:id="idordine_column" prefWidth="139.0" text="ID ordine " />
                 <TableColumn fx:id="dataconsegna_column" minWidth="0.0" prefWidth="160.0" text="Data consegna" />
                   <TableColumn editable="false" prefWidth="103.60113525390625" visible="false" />
+                  <TableColumn fx:id="visualizzaerrore_column" prefWidth="206.0" />
               </columns>
             </TableView>
          </children>

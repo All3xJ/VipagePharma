@@ -1,6 +1,7 @@
 package com.vipagepharma.farmacia.autenticazione.registrazione;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
 import javafx.fxml.FXML;
@@ -22,7 +23,7 @@ public class SchermataRegistrazione{
     private PasswordField confermaPassword;
     private final RegistrazioneControl registrazioneControl = RegistrazioneControl.regCtrlRef;
     @FXML
-    void premeRegistra(MouseEvent event) throws IOException{
+    void premeRegistra(MouseEvent event) throws IOException, SQLException {
         registrazioneControl.premutoRegistra(this.nome.getText(),this.email.getText(),this.password.getText(),this.confermaPassword.getText());
     }
     @FXML

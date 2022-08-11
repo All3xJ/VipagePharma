@@ -87,4 +87,9 @@ public class RegistrazioneControl {
         String key = salt.toString();
         return key;
     }
+
+    public void premutoIndietro() throws IOException {
+        App.setRoot("autenticazione/login/SchermataLogin");
+    }
+
 }

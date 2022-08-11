@@ -41,7 +41,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConsegne.SchermataElencoConsegneEffettuate">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConsegne.SchermataStoricoConsegne">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
@@ -65,14 +65,15 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <TableView fx:id="prenotazioni_table" layoutX="337.0" layoutY="158.0" prefHeight="383.0" prefWidth="647.0">
+            <TableView fx:id="storico_table" layoutX="315.0" layoutY="173.0" prefHeight="385.0" prefWidth="685.0">
               <columns>
-                <TableColumn fx:id="id_column" prefWidth="135.0" text="ID consegna" />
-                  <TableColumn editable="false" prefWidth="103.60113525390625" visible="false" />
-                  <TableColumn prefWidth="160.0" text="ID farmacia" />
+                <TableColumn fx:id="idordine_column" prefWidth="135.0" text="ID consegna" />
+                  <TableColumn fx:id="idfarmacia_column" prefWidth="160.0" text="ID farmacia" />
+                  <TableColumn fx:id="dataconsegna_column" prefWidth="162.0" text="Data consegna" />
+                  <TableColumn fx:id="visualizzaricevuta_column" prefWidth="206.0" />
               </columns>
             </TableView>
-            <Button layoutX="832.0" layoutY="553.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Mostra altro">
+            <Button layoutX="850.0" layoutY="571.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Mostra altro">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
