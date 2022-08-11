@@ -10,21 +10,7 @@ public class AvvisoPasswordErrate {
     private final ReimpostaPasswordControl reimpostaPasswordControl = ReimpostaPasswordControl.repassCtrlRef;
 
     @FXML
-    public void premeOk() throws IOException {
+    public void premeOk(MouseEvent event) throws IOException {
         reimpostaPasswordControl.premutoOk("autenticazione/reimpostaPassword/SchermataNuovaPassword");
-
-    }
-
-    @FXML
-    void premeHome(MouseEvent event) throws IOException{
-
-    }
-    @FXML
-    void premeLogout(MouseEvent event) throws IOException{
-
-    }
-    @FXML
-    void premeIndietro(MouseEvent event) throws IOException{
-
     }
 }

@@ -6,6 +6,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class SchermataPrenotazione {
@@ -20,7 +21,7 @@ public class SchermataPrenotazione {
     public void premeLogout(MouseEvent mouseEvent) {
     }
 
-    public void premeInvio() throws SQLException {
+    public void premeInvio() throws SQLException, IOException {
         PrenotaFarmaciControl.getControl().premutoInvio(data_consegna.getValue(),qty.getText(),this.flag_scadenza);
     }
 

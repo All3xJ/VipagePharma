@@ -6,6 +6,7 @@ import com.vipagepharma.farmacia.DBMSBoundary;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.ResultSet;
 
 public class RicercaFarmacoControl {
 

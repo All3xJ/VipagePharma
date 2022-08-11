@@ -6,6 +6,8 @@ import com.vipagepharma.farmacia.DBMSBoundary;
 import com.vipagepharma.farmacia.SchermataPrincipale;
 import com.vipagepharma.farmacia.autenticazione.reimpostaPassword.SchermataNuovaPassword;
 import com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni.SchermataElencoPrenotazioni;
+import javafx.event.ActionEvent;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -31,21 +33,21 @@ public class RegistrazioneControl {
         App.setRoot("autenticazione/registrazione/SchermataRegistrazione");
     }
 
-    public void premutoRegistra(String nome,String email,String password,String confermaPassword) throws IOException, SQLException {
+    public void premutoRegistra(String nome,String email,String password,String confermaPassword,ActionEvent event) throws IOException, SQLException {
         this.nome = nome;
         this.email = email;
         this.password = password;
         this.confermaPassword = confermaPassword;
         if(!this.checkPassword()){
-            App.setRoot("autenticazione/registrazione/AvvisoPasswordErrate");
+            App.newWind("autenticazione/registrazione/AvvisoPasswordErrate",event);
         }
         else{
             if(!checkFormattazioneEmail()){
-                App.setRoot("autenticazione/registrazione/AvvisoMailErrata");
+                App.newWind("autenticazione/registrazione/AvvisoMailErrata",event);
             }
             else {
                 if (!DBMSBoundary.verificaMail(this.email)) {
-                    App.setRoot("autenticazione/registrazione/AvvisoMailNonDisponibile");
+                    App.newWind("autenticazione/registrazione/AvvisoMailNonDisponibile",event);
                 }
                 else {
                     String key = this.generaKey();
@@ -54,13 +56,14 @@ public class RegistrazioneControl {
                         String id = resultSet.getString("id");
                     }
                     //this.invioEmail(id,key);
-                    App.setRoot("AvvisoOperazioneRiuscita");
+                    App.newWind("autenticazione/registrazione/AvvisoOperazioneRiuscita",event);
                 }
             }
         }
     }
 
     public void premutoOk(String schermata) throws IOException {
+        App.popup_stage.close();
         App.setRoot(schermata);
     }
 

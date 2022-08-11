@@ -14,7 +14,7 @@ public class AvvisoErroreLogin{
 
     private final LoginControl loginControl = LoginControl.logCtrlRef;
     @FXML
-    public void premeOk(MouseEvent event) throws IOException {
+    public void premeOk() throws IOException {
         loginControl.premutoOk();
     }
     @FXML

@@ -24,8 +24,6 @@ public class SchermataLogin implements Initializable {
 	@FXML
 	private PasswordField password;
 
-	@FXML
-	private Button login;
 
 	@Override
 	public void initialize(URL url, ResourceBundle resbound){
@@ -38,7 +36,7 @@ public class SchermataLogin implements Initializable {
 		System.out.println(username.getText());
 		System.out.println(password.getText());
 		LoginControl logCtrl = new LoginControl(username,password);
-		logCtrl.start();
+		logCtrl.start(event);
     }
 
 	@FXML

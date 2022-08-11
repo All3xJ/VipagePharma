@@ -6,12 +6,10 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-public class AvvisoOperazioneRiuscita {
-
-    private final RegistrazioneControl registrazioneControl = RegistrazioneControl.regCtrlRef;
+public class AvvisoMailNonDisponibile {
 
     @FXML
     public void premeOk(MouseEvent event) throws IOException {
-        registrazioneControl.premutoOk("autenticazione/login/SchermataLogin");
+        RegistrazioneControl.regCtrlRef.premutoOk("autenticazione/registrazione/SchermataRegistrazione");
     }
 }
