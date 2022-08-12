@@ -183,25 +183,27 @@ public class DBMSBoundary {
     }
 
 
-    public static void creaPrenotazioneEScarica(String id_farmacia, String id_corriere,String id_farmaco,LocalDate data_consegna, ArrayList<String> id_lotti, ArrayList <String> quantita){
+    public static void creaPrenotazioneEScarica(int id_farmacia, int id_corriere,int id_farmaco,LocalDate data_consegna, ArrayList<Integer> id_lotti, ArrayList <Integer> qty_lotti){
         try{ //crea prenotazione
             Connection connection = connectAzienda();
             PreparedStatement statement1 = connection.prepareStatement("insert into prenotazione(ref_id_uf, ref_id_ua,ref_id_f, isConsegnato, data_consegna) values (?,?,?,?,?)");
-            statement1.setInt(1,Integer.parseInt(id_farmacia));
-            statement1.setInt(2,Integer.parseInt(id_corriere));
-            statement1.setInt(3,Integer.parseInt(id_farmaco));
+            statement1.setInt(1,id_farmacia);
+            statement1.setInt(2,id_corriere);
+            statement1.setInt(3,id_farmaco);
             statement1.setInt(4, 0);
             statement1.setDate(5,Date.valueOf(data_consegna));
             statement1.executeUpdate();
             Statement statement2 = connection.createStatement() ;
-            int id_prenotazione = statement2.executeQuery("SELECT LAST_INSERT_ID() as id").getInt("id");
+            ResultSet rsId = statement2.executeQuery("SELECT LAST_INSERT_ID() as id");
+            rsId.next();
+            int id_prenotazione = rsId.getInt("id");
             for(int i=0; i<id_lotti.size(); ++i) {
-                statement2.executeUpdate("update lotto set qty = qty - " + quantita.get(i) + " where id_l = " + id_lotti.get(i));
+                statement2.executeUpdate("update lotto set qty = qty - " + String.valueOf(qty_lotti.get(i)) + " where id_l = " + id_lotti.get(i));
                 PreparedStatement statement3 = connection.prepareStatement("insert into lotto_ordinato(ref_id_l, ref_id_p, isCaricato, qty) values(?,?,?,?)");
-                statement3.setInt(1,Integer.parseInt(id_lotti.get(i)));
+                statement3.setInt(1,id_lotti.get(i));
                 statement3.setInt(2,id_prenotazione);
                 statement3.setInt(3,0);
-                statement3.setInt(3,Integer.parseInt(quantita.get(i)));
+                statement3.setInt(4,qty_lotti.get(i));
                 statement3.executeUpdate();
             }
         } catch (Exception e) {

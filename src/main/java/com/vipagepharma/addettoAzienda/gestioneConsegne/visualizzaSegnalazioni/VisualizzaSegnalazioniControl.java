@@ -33,6 +33,7 @@ public class VisualizzaSegnalazioniControl {
         try {
             while (true) {
                 if (!consegneConSegnalazione.next()) break;
+                this.tvObservableList.clear();
                 this.tvObservableList.add(new Consegna(consegneConSegnalazione.getString("ref_id_uf"),consegneConSegnalazione.getString("id_p"),consegneConSegnalazione.getString("data_consegna")));
             }
         } catch (SQLException e) {

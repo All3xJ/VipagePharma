@@ -33,6 +33,7 @@ public class VisualizzaStoricoConsegneControl {
         try {
             while (true) {
                 if (!consegne.next()) break;
+                this.tvObservableList.clear();
                 this.tvObservableList.add(new Consegna(consegne.getString("ref_id_uf"),consegne.getString("id_p"),consegne.getString("data_consegna")));
             }
         } catch (SQLException e) {

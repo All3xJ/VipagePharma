@@ -1,6 +1,7 @@
 package com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci;
 
-import com.vipagepharma.corriere.App;
+import com.vipagepharma.farmacia.App;
+import com.vipagepharma.farmacia.SchermataPrincipale;
 import com.vipagepharma.farmacia.entity.Farmaco;
 import com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco.RicercaFarmacoControl;
 import javafx.event.ActionEvent;
@@ -20,8 +21,6 @@ import java.util.ResourceBundle;
 public class SchermataListaFarmaci implements Initializable{
 
 
-    private String id_farmaco;
-
     @FXML
     private TableColumn<Farmaco, String> idFarmaco_column;
 
@@ -36,6 +35,11 @@ public class SchermataListaFarmaci implements Initializable{
 
     @FXML
     private TableView<Farmaco> farmaci_table;
+
+
+
+    /*BUGGGGGGG
+      se viene fatta una ricerca e poi si va indietro e se ne fa un altra le prima ricerca non scompare */
 
     @Override
     public void initialize(URL url, ResourceBundle resbound){
@@ -101,9 +105,12 @@ public class SchermataListaFarmaci implements Initializable{
     }
 
 
-    public void premeHome(MouseEvent event) {
+    public void premeHome(MouseEvent event) throws IOException {
+        SchermataPrincipale.schermataPrecedente = "gestionePrenotazioni/prenotaFarmaci/SchermataListaFarmaci";
+        App.setRoot("SchermataPrincipale");
     }
 
-    public void premeIndietro(MouseEvent event) {
+    public void premeIndietro(MouseEvent event) throws IOException {
+        App.setRoot("gestionePrenotazioni/ricercaFarmaco/SchermataRicercaFarmaco");
     }
 }

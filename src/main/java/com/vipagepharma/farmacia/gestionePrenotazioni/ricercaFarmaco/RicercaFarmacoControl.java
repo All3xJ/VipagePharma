@@ -38,6 +38,7 @@ public class RicercaFarmacoControl {
         try {
             while (true) {
                 if (!farmaci.next()) break;
+                this.tvObservableList.clear();
                 this.tvObservableList.add(new Farmaco(farmaci.getString("id_f"),farmaci.getString("nome"),farmaci.getString("principio_attivo")));
             }
         } catch (SQLException e) {
@@ -56,7 +57,7 @@ public class RicercaFarmacoControl {
     }
 
     public void premutoHome(String schermataPrecedente) throws IOException {
-        SchermataPrincipale.schermataPrecedente=schermataPrecedente;
+        SchermataPrincipale.schermataPrecedente = schermataPrecedente;
         App.setRoot("SchermataPrincipale");
     }
 

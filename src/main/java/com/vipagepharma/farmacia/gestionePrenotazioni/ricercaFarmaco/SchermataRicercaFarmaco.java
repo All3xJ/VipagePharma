@@ -19,11 +19,11 @@ public class SchermataRicercaFarmaco {
     public void premeInvio(MouseEvent mouseEvent) throws IOException {
         RicercaFarmacoControl.getControl().premutoInvio(this.nome_o_principio_attivo.getText());
     }
-
+    @FXML
     public void premeIndietro(MouseEvent mouseEvent) throws IOException{
         RicercaFarmacoControl.getControl().premutoIndietro();
     }
-
+    @FXML
     public void premeHome(MouseEvent mouseEvent) throws IOException {
         RicercaFarmacoControl.getControl().premutoHome("gestionePrenotazioni/ricercaFarmaco/SchermataRicercaFarmaco");
     }

@@ -21,7 +21,9 @@ import java.util.concurrent.ThreadLocalRandom;
 public class PrenotaFarmaciControl {
 
     private static PrenotaFarmaciControl controlRef;
-    private String id_farmaco;
+    private int id_farmaco;
+    private int id_corriere;
+    private int id_farmacia;
     private LocalDate data_scadenza_min;
     private String qtyRichiesta;
     private String qtyDisponibile;
@@ -30,20 +32,22 @@ public class PrenotaFarmaciControl {
     private LocalDate data_consegna;
     private LocalDate new_data_consegna;
     private ResultSet lotti;
-    private String id_corriere;
-    private String id_farmacia;
-    ArrayList<String> idLotti;
-    ArrayList<String> qtyLotti;
-    ArrayList<String> new_idLotti;
-    ArrayList<String> new_qtyLotti;
+
+    ArrayList<Integer> idLotti;
+    ArrayList<Integer> qtyLotti;
+    ArrayList<Integer> new_idLotti;
+    ArrayList<Integer> new_qtyLotti;
 
     public PrenotaFarmaciControl(){
         controlRef = this;
     }
+    public static PrenotaFarmaciControl getControl(){
+        return controlRef;
+    }
 
 
     public void start(String id_farmaco) throws IOException {
-        this.id_farmaco = id_farmaco;
+        this.id_farmaco = Integer.parseInt(id_farmaco);
         App.setRoot("gestionePrenotazioni/prenotaFarmaci/SchermataPrenotazione");
     }
 
@@ -57,10 +61,10 @@ public class PrenotaFarmaciControl {
         this.new_idLotti = new ArrayList<>();
         this.qtyLotti = new ArrayList<>();
         this.new_qtyLotti = new ArrayList<>();
-        this.lotti = DBMSBoundary.getLotti(this.id_farmaco);
-        ResultSet corrieri = DBMSBoundary.getCorrieri(this.id_farmaco);
-        this.id_corriere = this.scegliCorriere(corrieri);
-        this.id_farmacia = Utente.getID();
+        this.lotti = DBMSBoundary.getLotti(String.valueOf(this.id_farmaco));
+        ResultSet corrieri = DBMSBoundary.getCorrieri(String.valueOf(this.id_farmaco));
+        this.scegliCorriere(corrieri);
+        this.id_farmacia = Integer.parseInt(Utente.getID());
         System.out.println("Farmacia:" + this.id_farmacia +"\nQty richiesta:" + this.qtyRichiesta + "\nData consegna :" + this.data_consegna + "\nCorriere selezionato: " + this.id_corriere + "\nFlag Scadenza:"+ this.flag_scadenza);
         checkDisponibilitaEScegliLotti();
         if(Integer.parseInt(this.qtyDisponibile) >= Integer.parseInt(this.qtyRichiesta)){
@@ -74,7 +78,7 @@ public class PrenotaFarmaciControl {
     public void premutoConferma(MouseEvent event) throws IOException {
         DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia,this.id_corriere,this.id_farmaco, this.data_consegna,this.idLotti,this.qtyLotti);
         App.popup_stage.close();
-        App.newWind("gestionePrenotazioni/prenotaFarmaci/OperazioneRiuscita",event);
+        App.newWind("gestionePrenotazioni/prenotaFarmaci/AvvisoOperazioneRiuscita",event);
 
     }
 
@@ -87,7 +91,7 @@ public class PrenotaFarmaciControl {
             DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia, this.id_corriere,this.id_farmaco, this.data_consegna, this.idLotti, this.qtyLotti);
         }
         App.popup_stage.close();
-        App.newWind("gestionePrenotazioni/prenotaFarmaci/OperazioneRiuscita",event);
+        App.newWind("gestionePrenotazioni/prenotaFarmaci/AvvisoOperazioneRiuscita",event);
     }
 
 
@@ -96,14 +100,14 @@ public class PrenotaFarmaciControl {
         int qtyLottiTot = 0;
         while(lotti.next() && qtyLottiTot < qtyTotale && this.lotti.getDate(4).toLocalDate().isBefore(this.data_consegna)){  //esco dal loop appena la data di disp > data consegna richiesta
             if(this.lotti.getDate(5).toLocalDate().isAfter(this.data_scadenza_min)){
-                this.idLotti.add(this.lotti.getString(1));
+                this.idLotti.add(this.lotti.getInt(1));
                 int qtyLotto = this.lotti.getInt(3);
                 qtyLottiTot += qtyLotto;
                 if(qtyLottiTot > qtyTotale){
-                    this.qtyLotti.add(String.valueOf(qtyTotale - (qtyLottiTot - qtyLotto)));
+                    this.qtyLotti.add(qtyTotale - (qtyLottiTot - qtyLotto));
                 }
                 else{
-                    this.qtyLotti.add(String.valueOf(qtyLotto));
+                    this.qtyLotti.add(qtyLotto);
                 }
             }
         }
@@ -119,24 +123,24 @@ public class PrenotaFarmaciControl {
     private void calcProxDisponibilitaEScegliLotti() throws SQLException {
         int qtyMancante = Integer.parseInt(this.qtyDisponibile) - Integer.parseInt(this.qtyRichiesta);
         int qtyLottiTot = 0;
-        this.new_idLotti.add(this.lotti.getString(1));
+        this.new_idLotti.add(this.lotti.getInt(1));
         int qtyLotto1 = this.lotti.getInt(3);
         qtyLottiTot += qtyLotto1;
         if(qtyLottiTot > qtyMancante){
-            this.new_qtyLotti.add(String.valueOf(qtyMancante - (qtyLottiTot - qtyLotto1)));
+            this.new_qtyLotti.add(qtyMancante - (qtyLottiTot - qtyLotto1));
         }
         else{
-            this.new_qtyLotti.add(String.valueOf(qtyLotto1));
+            this.new_qtyLotti.add(qtyLotto1);
         }
         while(this.lotti.next() && qtyLottiTot<qtyMancante){
-            this.new_idLotti.add(this.lotti.getString(1));
+            this.new_idLotti.add(this.lotti.getInt(1));
             int qtyLotto = this.lotti.getInt(3);
             qtyLottiTot += qtyLotto;
             if(qtyLottiTot > qtyMancante){
-                this.new_qtyLotti.add(String.valueOf(qtyMancante - (qtyLottiTot - qtyLotto)));
+                this.new_qtyLotti.add(qtyMancante - (qtyLottiTot - qtyLotto));
             }
             else{
-                this.new_qtyLotti.add(String.valueOf(qtyLotto));
+                this.new_qtyLotti.add(qtyLotto);
             }
         }
         this.qtyMancante = String.valueOf(qtyMancante);
@@ -160,19 +164,19 @@ public class PrenotaFarmaciControl {
     imposta resultSet sulla riga casuale
     ritorna l'id di questa riga*/
 
-    private String scegliCorriere(ResultSet corrieri) throws SQLException {
-        String id_corriere = "";
+    private void scegliCorriere(ResultSet corrieri) throws SQLException {
         if(corrieri.last()){
             int len = corrieri.getRow();
             int index = ThreadLocalRandom.current().nextInt(1, len + 1);
             if(corrieri.absolute(index)){
-                id_corriere = id_corriere.concat(corrieri.getString("id_ua"));
+                this.id_corriere = corrieri.getInt("id_ua");
             }
         }
         corrieri.close();
-        return id_corriere;
     }
-    public static PrenotaFarmaciControl getControl(){
-        return controlRef;
+
+    public void premutoOk() throws IOException {
+        App.popup_stage.close();
+        App.setRoot("SchermataPrincipale");
     }
 }
