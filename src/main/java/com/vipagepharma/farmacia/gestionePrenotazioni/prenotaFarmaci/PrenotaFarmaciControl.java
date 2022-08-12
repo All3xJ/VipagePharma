@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class PrenotaFarmaciControl {
 
@@ -60,33 +61,33 @@ public class PrenotaFarmaciControl {
         ResultSet corrieri = DBMSBoundary.getCorrieri(this.id_farmaco);
         this.id_corriere = this.scegliCorriere(corrieri);
         this.id_farmacia = Utente.getID();
+        System.out.println("Farmacia:" + this.id_farmacia +"\nQty richiesta:" + this.qtyRichiesta + "\nData consegna :" + this.data_consegna + "\nCorriere selezionato: " + this.id_corriere + "\nFlag Scadenza:"+ this.flag_scadenza);
         checkDisponibilitaEScegliLotti();
-        if(Integer.parseInt(this.qtyDisponibile) > Integer.parseInt(this.qtyRichiesta)){
-            App.newWind("autenticazione/gestionePrenotazione/AvvisoPrenotazioneDisponibile",event);
+        if(Integer.parseInt(this.qtyDisponibile) >= Integer.parseInt(this.qtyRichiesta)){
+            App.newWind("gestionePrenotazioni/prenotaFarmaci/AvvisoPrenotazioneDisponibile",event);
         }
         else{
-            App.newWind("autenticazione/gestionePrenotazione/AvvisoMancataDisponibilita",event);
+            App.newWind("gestionePrenotazioni/prenotaFarmaci/AvvisoMancataDisponibilita",event);
         }
     }
 
     public void premutoConferma(MouseEvent event) throws IOException {
-        DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia,this.id_corriere,this.data_consegna,this.idLotti,this.qtyLotti);
+        DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia,this.id_corriere,this.id_farmaco, this.data_consegna,this.idLotti,this.qtyLotti);
         App.popup_stage.close();
-        App.newWind("autenticazione/gestionePrenotazione/OperazioneRiuscita",event);
+        App.newWind("gestionePrenotazioni/prenotaFarmaci/OperazioneRiuscita",event);
 
     }
 
     public void premutoConferma(int opzione,MouseEvent event) throws IOException {
-        App.popup_stage.close();
         if(opzione == 1) {
-            DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia, this.id_corriere, this.data_consegna, this.idLotti, this.qtyLotti);
-            DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia, this.id_corriere, this.new_data_consegna, this.new_idLotti, this.new_qtyLotti);
+            DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia, this.id_corriere,this.id_farmaco, this.data_consegna, this.idLotti, this.qtyLotti);
+            DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia, this.id_corriere,this.id_farmaco, this.new_data_consegna, this.new_idLotti, this.new_qtyLotti);
         }
         else{
-            DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia, this.id_corriere, this.data_consegna, this.idLotti, this.qtyLotti);
+            DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia, this.id_corriere,this.id_farmaco, this.data_consegna, this.idLotti, this.qtyLotti);
         }
         App.popup_stage.close();
-        App.newWind("autenticazione/gestionePrenotazione/OperazioneRiuscita",event);
+        App.newWind("gestionePrenotazioni/prenotaFarmaci/OperazioneRiuscita",event);
     }
 
 
@@ -152,13 +153,20 @@ public class PrenotaFarmaciControl {
         }
     }
 
+
+    /*imposta resultSet sull'ultimo elemento
+    prende il numero di quest'ultimo elemento
+    sceglie un indice casuale
+    imposta resultSet sulla riga casuale
+    ritorna l'id di questa riga*/
+
     private String scegliCorriere(ResultSet corrieri) throws SQLException {
-        String id_corriere = null;
-        if(corrieri.last()){                                               //imposta resultSet sull'ultimo elemento
-            int len = corrieri.getRow();                                   //prende il numero di quest'ultimo elemento
-            int index  = (int) (Math.random() * len);                      //sceglie un indice casuale
-            if(corrieri.absolute(index)){                                  //imposta resultSet sulla riga casuale
-                id_corriere = corrieri.getString("id_ua");      //ritorna l'id di questa riga
+        String id_corriere = "";
+        if(corrieri.last()){
+            int len = corrieri.getRow();
+            int index = ThreadLocalRandom.current().nextInt(1, len + 1);
+            if(corrieri.absolute(index)){
+                id_corriere = id_corriere.concat(corrieri.getString("id_ua"));
             }
         }
         corrieri.close();
