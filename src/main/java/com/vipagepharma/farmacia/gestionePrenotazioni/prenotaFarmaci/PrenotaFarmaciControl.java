@@ -2,7 +2,11 @@ package com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci;
 
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
+import com.vipagepharma.farmacia.entity.Farmaco;
+import com.vipagepharma.farmacia.entity.Prenotazione;
 import com.vipagepharma.farmacia.entity.Utente;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -14,6 +18,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PrenotaFarmaciControl {
+
     private static PrenotaFarmaciControl controlRef;
     private String id_farmaco;
     private LocalDate data_scadenza_min;
@@ -35,10 +40,12 @@ public class PrenotaFarmaciControl {
         controlRef = this;
     }
 
+
     public void start(String id_farmaco) throws IOException {
         this.id_farmaco = id_farmaco;
-        App.setRoot("gestionePrenotazione/prenotaFarmaci/SchermataPrenotazione");
+        App.setRoot("gestionePrenotazioni/prenotaFarmaci/SchermataPrenotazione");
     }
+
 
     public void premutoInvia(LocalDate data_consegna, String qtyRichiesta , int flag_scadenza, ActionEvent event) throws SQLException, IOException {
         this.data_consegna = data_consegna;

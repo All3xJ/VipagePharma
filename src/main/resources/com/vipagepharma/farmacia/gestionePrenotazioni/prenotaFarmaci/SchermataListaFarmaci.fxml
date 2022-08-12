@@ -61,12 +61,12 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <TableView fx:id="prenotazioni_table" layoutX="311.0" layoutY="198.0" prefHeight="345.0" prefWidth="722.0">
+            <TableView fx:id="farmaci_table" layoutX="311.0" layoutY="198.0" prefHeight="345.0" prefWidth="722.0">
               <columns>
-                <TableColumn fx:id="id_column" prefWidth="168.0" text="ID farmaco" />
-                  <TableColumn prefWidth="75.0" text="Farmaco" />
-                  <TableColumn prefWidth="75.0" text="Principio attivo" />
-                  <TableColumn editable="false" prefWidth="103.60113525390625" visible="false" />
+                <TableColumn fx:id="idFarmaco_column" prefWidth="150.0" text="ID farmaco" />
+                  <TableColumn fx:id="nomeFarmaco_column" minWidth="20.0" prefWidth="220.0" text="Farmaco" />
+                  <TableColumn fx:id="principioAttivo_column" prefWidth="220.0" text="Principio attivo" />
+                  <TableColumn fx:id="prenota_column" prefWidth="130.0" />
               </columns>
             </TableView>
          </children>

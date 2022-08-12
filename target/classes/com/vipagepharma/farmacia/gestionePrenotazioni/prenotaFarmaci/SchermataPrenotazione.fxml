@@ -76,7 +76,7 @@
                   <Font name="Arial" size="20.0" />
                </font></Text>
             <TextField fx:id="qty" layoutX="534.0" layoutY="353.0" prefHeight="30.0" prefWidth="70.0" />
-            <RadioButton fx:id="flag_scadenza" layoutX="350.0" layoutY="404.0" mnemonicParsing="false" onMouseClicked="#premeRadioButton" prefHeight="27.0" prefWidth="627.0" text="Accetto farmaci con scadenza inferiore a due mesi dalla data selezionata">
+            <RadioButton layoutX="350.0" layoutY="404.0" mnemonicParsing="false" onMouseClicked="#premeRadioButton" prefHeight="27.0" prefWidth="627.0" text="Accetto farmaci con scadenza inferiore a due mesi dalla data selezionata">
                <font>
                   <Font name="Arial" size="18.0" />
                </font></RadioButton>

@@ -35,4 +35,10 @@ public class SchermataPrenotazione {
             this.flag_scadenza = 0;
         }
     }
+
+    public void premeHome(MouseEvent event) {
+    }
+
+    public void premeIndetro(MouseEvent event) {
+    }
 }
