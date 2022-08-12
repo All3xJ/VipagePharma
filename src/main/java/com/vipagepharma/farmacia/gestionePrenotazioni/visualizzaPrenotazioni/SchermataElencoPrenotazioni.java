@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.entity.Prenotazione;
-import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -131,6 +130,6 @@ public class SchermataElencoPrenotazioni implements Initializable{
 	}
 
 	public void premeLogout(MouseEvent mouseEvent) throws IOException {
-		LogoutControl.start();
+		App.setRoot("autenticazione/login/SchermataLogin");
 	}
 }

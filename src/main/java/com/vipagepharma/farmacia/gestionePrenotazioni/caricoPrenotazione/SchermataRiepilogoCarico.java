@@ -1,6 +1,6 @@
 package com.vipagepharma.farmacia.gestionePrenotazioni.caricoPrenotazione;
 
-import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
+import com.vipagepharma.farmacia.App;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.io.IOException;
 public class SchermataRiepilogoCarico {
 
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        LogoutControl.start();
+        App.setRoot("autenticazione/login/SchermataLogin");
     }
 
     public void premeIndietro(MouseEvent mouseEvent) throws IOException {

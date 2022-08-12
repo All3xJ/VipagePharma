@@ -3,7 +3,6 @@ package com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni;
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
 import com.vipagepharma.farmacia.SchermataPrincipale;
-import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
 import com.vipagepharma.farmacia.entity.Utente;
 import com.vipagepharma.farmacia.gestionePrenotazioni.annullaPrenotazione.AnnullaPrenotazioneControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.caricoPrenotazione.CaricoPrenotazioneControl;
@@ -56,10 +55,6 @@ public class VisualizzaPrenotazioniControl {
     public void premutoHome(String schermataPrecedente) throws IOException {
         SchermataPrincipale.schermataPrecedente=schermataPrecedente;
         App.setRoot("SchermataPrincipale");
-    }
-
-    public void premutoLogout() throws IOException {
-        LogoutControl.start();
     }
 
     public void premutoCarico(String schermataPrecedente) throws IOException {

@@ -1,6 +1,6 @@
 package com.vipagepharma.corriere;
 
-import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
+import com.vipagepharma.farmacia.App;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
@@ -28,6 +28,6 @@ public class SchermataPrincipale {
     }
 
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        LogoutControl.start();
+        App.setRoot("autenticazione/login/SchermataLogin");
     }
 }
