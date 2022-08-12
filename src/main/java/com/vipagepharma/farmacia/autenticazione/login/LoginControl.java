@@ -39,6 +39,7 @@ public class LoginControl{
     }
 
     public void premutoOk() throws IOException {
+        App.popup_stage.close();
         this.mostra("autenticazione/login/SchermataLogin");
     }
 }

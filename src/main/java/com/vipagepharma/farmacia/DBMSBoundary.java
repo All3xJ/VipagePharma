@@ -105,7 +105,7 @@ public class DBMSBoundary {
             esito = resultSet.next();
         }
         catch (SQLException e){
-            e.printStackTrace();
+            return false;
         }
         return esito;
     }
