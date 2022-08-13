@@ -51,4 +51,6 @@ module com.vipagepharma {
     opens com.vipagepharma.corriere.autenticazione.reimpostaPassword to javafx.fxml;
     exports com.vipagepharma.corriere.gestioneConsegne.firmaConsegna;
     opens com.vipagepharma.corriere.gestioneConsegne.firmaConsegna to javafx.fxml;
+    exports com.vipagepharma.corriere.gestioneConsegne.downloadConsegne;
+    opens com.vipagepharma.corriere.gestioneConsegne.downloadConsegne to javafx.fxml;
 }

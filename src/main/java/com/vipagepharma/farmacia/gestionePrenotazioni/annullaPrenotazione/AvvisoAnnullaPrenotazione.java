@@ -1,7 +1,6 @@
 package com.vipagepharma.farmacia.gestionePrenotazioni.annullaPrenotazione;
 
 import com.vipagepharma.farmacia.SchermataPrincipale;
-import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
