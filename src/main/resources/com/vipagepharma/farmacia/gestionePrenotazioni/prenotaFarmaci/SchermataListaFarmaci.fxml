@@ -37,7 +37,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci.SchermataListaFarmaci">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../../main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci.SchermataListaFarmaci">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
@@ -61,12 +61,12 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <TableView fx:id="farmaci_table" layoutX="311.0" layoutY="198.0" prefHeight="345.0" prefWidth="722.0">
+            <TableView fx:id="farmaci_table" layoutX="311.0" layoutY="198.0" prefHeight="345.0" prefWidth="722.0" style="-fx-alignment: CENTER;">
               <columns>
-                <TableColumn fx:id="idFarmaco_column" prefWidth="150.0" text="ID farmaco" />
-                  <TableColumn fx:id="nomeFarmaco_column" minWidth="20.0" prefWidth="220.0" text="Farmaco" />
-                  <TableColumn fx:id="principioAttivo_column" prefWidth="220.0" text="Principio attivo" />
-                  <TableColumn fx:id="prenota_column" prefWidth="130.0" />
+                <TableColumn fx:id="idFarmaco_column" prefWidth="150.0" resizable="false" styleClass="colonna" text="ID farmaco" />
+                  <TableColumn fx:id="nomeFarmaco_column" minWidth="20.0" prefWidth="220.0" resizable="false" styleClass="colonna" text="Farmaco" />
+                  <TableColumn fx:id="principioAttivo_column" prefWidth="260.0" resizable="false" styleClass="colonna" text="Principio attivo" />
+                  <TableColumn fx:id="prenota_column" prefWidth="90.0" resizable="false" styleClass="colonna" />
               </columns>
             </TableView>
          </children>

@@ -36,9 +36,9 @@ public class RicercaFarmacoControl {
     private void riempiObservableList(String nome_o_principio_attivo)  {
         this.farmaci = DBMSBoundary.getFarmaco(nome_o_principio_attivo);
         try {
+            this.tvObservableList.clear();
             while (true) {
                 if (!farmaci.next()) break;
-                this.tvObservableList.clear();
                 this.tvObservableList.add(new Farmaco(farmaci.getString("id_f"),farmaci.getString("nome"),farmaci.getString("principio_attivo")));
             }
         } catch (SQLException e) {

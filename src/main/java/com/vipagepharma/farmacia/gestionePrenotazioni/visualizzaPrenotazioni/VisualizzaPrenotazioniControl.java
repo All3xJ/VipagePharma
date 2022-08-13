@@ -41,8 +41,8 @@ public class VisualizzaPrenotazioniControl {
         this.prenotazioni = DBMSBoundary.getPrenotazioniEInfoFarmaci(IDFarmacia);
         try {
         while (true) {
-            if (!prenotazioni.next()) break;
             this.tvObservableList.clear();
+            if (!prenotazioni.next()) break;
             this.tvObservableList.add(new Prenotazione(prenotazioni.getString("id_p"),prenotazioni.getString("nome"),prenotazioni.getString("data_consegna")));
         }
         } catch (SQLException e) {

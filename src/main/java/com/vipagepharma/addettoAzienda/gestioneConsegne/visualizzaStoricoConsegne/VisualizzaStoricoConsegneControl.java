@@ -31,9 +31,9 @@ public class VisualizzaStoricoConsegneControl {
     private void riempiObservableList()  {
         this.consegne = DBMSBoundary.getConsegneRecenti();
         try {
+            this.tvObservableList.clear();
             while (true) {
                 if (!consegne.next()) break;
-                this.tvObservableList.clear();
                 this.tvObservableList.add(new Consegna(consegne.getString("ref_id_uf"),consegne.getString("id_p"),consegne.getString("data_consegna")));
             }
         } catch (SQLException e) {
