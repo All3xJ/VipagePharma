@@ -40,8 +40,8 @@ public class VisualizzaPrenotazioniControl {
     private void riempiObservableList(String IDFarmacia)  {
         this.prenotazioni = DBMSBoundary.getPrenotazioniEInfoFarmaci(IDFarmacia);
         try {
-        while (true) {
             this.tvObservableList.clear();
+        while (true) {
             if (!prenotazioni.next()) break;
             this.tvObservableList.add(new Prenotazione(prenotazioni.getString("id_p"),prenotazioni.getString("nome"),prenotazioni.getString("data_consegna")));
         }
@@ -59,9 +59,6 @@ public class VisualizzaPrenotazioniControl {
         App.setRoot("SchermataPrincipale");
     }
 
-    public void premutoLogout() throws IOException {
-        LogoutControl.start();
-    }
 
     public void premutoCarico(String schermataPrecedente) throws IOException {
         CaricoPrenotazioneControl carPrenCtrl = new CaricoPrenotazioneControl();

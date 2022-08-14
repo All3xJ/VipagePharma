@@ -66,16 +66,16 @@ public class SchermataListaFarmaci implements Initializable{
                         btn.setOnAction((ActionEvent event) -> {
                             Farmaco Farmaco = getTableView().getItems().get(getIndex());
                             try {
-                                this.premePrenota(Farmaco.getIdFarmaco());
+                                this.premePrenota(Farmaco.getIdFarmaco(),Farmaco.getNomeFarmaco());
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
                         });
                     }
 
-                    private void premePrenota(String id_farmaco) throws IOException {
+                    private void premePrenota(String id_farmaco,String nome_farmaco) throws IOException {
                         PrenotaFarmaciControl prFarCtrl = new PrenotaFarmaciControl();
-                        prFarCtrl.start(id_farmaco);
+                        prFarCtrl.start(id_farmaco,nome_farmaco);
                     }
 
                     @Override

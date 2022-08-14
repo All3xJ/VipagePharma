@@ -2,11 +2,7 @@ package com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci;
 
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
-import com.vipagepharma.farmacia.entity.Farmaco;
-import com.vipagepharma.farmacia.entity.Prenotazione;
 import com.vipagepharma.farmacia.entity.Utente;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 
@@ -21,6 +17,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class PrenotaFarmaciControl {
 
     private static PrenotaFarmaciControl controlRef;
+    private String nome_farmaco;
     private int id_farmaco;
     private int id_corriere;
     private int id_farmacia;
@@ -46,8 +43,9 @@ public class PrenotaFarmaciControl {
     }
 
 
-    public void start(String id_farmaco) throws IOException {
+    public void start(String id_farmaco, String nome_farmaco) throws IOException {
         this.id_farmaco = Integer.parseInt(id_farmaco);
+        this.nome_farmaco = nome_farmaco;
         App.setRoot("gestionePrenotazioni/prenotaFarmaci/SchermataPrenotazione");
     }
 
@@ -68,6 +66,7 @@ public class PrenotaFarmaciControl {
         System.out.println("Farmacia:" + this.id_farmacia +"\nQty richiesta:" + this.qtyRichiesta + "\nData consegna :" + this.data_consegna + "\nCorriere selezionato: " + this.id_corriere + "\nFlag Scadenza:"+ this.flag_scadenza);
         checkDisponibilitaEScegliLotti();
         if(Integer.parseInt(this.qtyDisponibile) >= Integer.parseInt(this.qtyRichiesta)){
+
             App.newWind("gestionePrenotazioni/prenotaFarmaci/AvvisoPrenotazioneDisponibile",event);
         }
         else{
@@ -85,10 +84,10 @@ public class PrenotaFarmaciControl {
     public void premutoConferma(int opzione,MouseEvent event) throws IOException {
         if(opzione == 1) {
             DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia, this.id_corriere,this.id_farmaco, this.data_consegna, this.idLotti, this.qtyLotti);
-            DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia, this.id_corriere,this.id_farmaco, this.new_data_consegna, this.new_idLotti, this.new_qtyLotti);
         }
         else{
             DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia, this.id_corriere,this.id_farmaco, this.data_consegna, this.idLotti, this.qtyLotti);
+            DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia, this.id_corriere,this.id_farmaco, this.new_data_consegna, this.new_idLotti, this.new_qtyLotti);
         }
         App.popup_stage.close();
         App.newWind("gestionePrenotazioni/prenotaFarmaci/AvvisoOperazioneRiuscita",event);
@@ -118,10 +117,12 @@ public class PrenotaFarmaciControl {
         else{
             this.qtyDisponibile = qtyRichiesta;
         }
+        this.lotti.close();
     }
 
+    // DA SISTEMARE
     private void calcProxDisponibilitaEScegliLotti() throws SQLException {
-        int qtyMancante = Integer.parseInt(this.qtyDisponibile) - Integer.parseInt(this.qtyRichiesta);
+        int qtyMancante = Integer.parseInt(this.qtyRichiesta) - Integer.parseInt(this.qtyDisponibile);
         int qtyLottiTot = 0;
         this.new_idLotti.add(this.lotti.getInt(1));
         int qtyLotto1 = this.lotti.getInt(3);
@@ -179,4 +180,25 @@ public class PrenotaFarmaciControl {
         App.popup_stage.close();
         App.setRoot("SchermataPrincipale");
     }
+
+
+    public String getFarmaco(){
+        return this.nome_farmaco;
+    }
+    public String getData(){
+        return this.data_consegna.toString();
+    }
+
+    public String getQty(){
+        return this.qtyDisponibile;
+    }
+
+    public String getNewData(){
+        return  this.new_data_consegna.toString();
+    }
+
+    public String getQtyMancante(){
+        return this.qtyMancante;
+    }
+
 }

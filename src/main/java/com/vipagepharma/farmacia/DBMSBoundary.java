@@ -239,7 +239,7 @@ public class DBMSBoundary {
         ResultSet resultSet;
         try{ //getLotti
             Connection connection = connectAzienda();
-            Statement statement = connection.createStatement();
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             resultSet = statement.executeQuery("select * from lotto where ref_id_f = " + id_farmaco);
         } catch (Exception e) {
             throw new RuntimeException(e);

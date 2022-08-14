@@ -43,7 +43,7 @@
             <Font name="Arial Bold" size="30.0" />
          </font>
       </Text>
-      <Text layoutX="122.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La quantità di nome_farmaco richiesta non è totalmente disponibile per il gg/mm/aaaa" textAlignment="CENTER" wrappingWidth="492.3359375">
+      <Text fx:id="t" layoutX="122.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="492.3359375">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
@@ -53,12 +53,12 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Button>
-      <RadioButton fx:id="opzione1" layoutX="70.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#selezionaOpzione1" text="Accetto solo n pezzi per il gg/mm/aaaa">
+      <RadioButton fx:id="opzione1" layoutX="70.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#selezionaOpzione1">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="opzione2" layoutX="71.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#selezionaOpzione2" text="Accetto n pezzi per il gg/mm/aaaa e m pezzi per il gg/mm/aaaa">
+      <RadioButton fx:id="opzione2" layoutX="71.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#selezionaOpzione2" >
          <font>
             <Font name="Arial" size="20.0" />
          </font>

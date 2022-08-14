@@ -32,22 +32,18 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni.SchermataElencoPrenotazioni">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../../main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni.SchermataElencoPrenotazioni">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
             <ImageView fitHeight="225.0" fitWidth="230.0" layoutX="30.0" layoutY="-12.0">
                <image>
-                  <Image url="@../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
+                  <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
             <Button layoutX="603.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeHome" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
@@ -65,14 +61,14 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <TableView fx:id="prenotazioni_table" layoutX="212.0" layoutY="106.0" prefHeight="434.0" prefWidth="842.0">
+            <TableView fx:id="prenotazioni_table" layoutX="272.0" layoutY="164.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="762.0">
               <columns>
-                <TableColumn fx:id="idprenotazione_column" prefWidth="168.0" text="ID prenotazione" />
-                  <TableColumn fx:id="nomefarmaco_column" prefWidth="139.0" text="Farmaco" />
-                <TableColumn fx:id="dataconsegna_column" minWidth="0.0" prefWidth="160.0" text="Data consegna" />
-                  <TableColumn fx:id="annulla_column" prefWidth="122.0" />
-                  <TableColumn fx:id="carico_column" prefWidth="122.0" />
-                  <TableColumn fx:id="modifica_column" prefWidth="122.0" />
+                <TableColumn fx:id="idprenotazione_column" prefWidth="130.0" resizable="false" styleClass="colonna" text="ID prenotazione" />
+                  <TableColumn fx:id="nomefarmaco_column" prefWidth="210.0" resizable="false" styleClass="colonna" text="Farmaco" />
+                <TableColumn fx:id="dataconsegna_column" minWidth="0.0" prefWidth="150.0" resizable="false" styleClass="colonna" text="Data consegna" />
+                  <TableColumn fx:id="carico_column" prefWidth="90.0" resizable="false" styleClass="colonna" />
+                  <TableColumn fx:id="modifica_column" prefWidth="90.0" resizable="false" styleClass="colonna" />
+                  <TableColumn fx:id="annulla_column" prefWidth="90.0" resizable="false" styleClass="colonna" />
               </columns>
             </TableView>
          </children>

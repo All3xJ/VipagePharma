@@ -41,6 +41,7 @@ public class RicercaFarmacoControl {
                 if (!farmaci.next()) break;
                 this.tvObservableList.add(new Farmaco(farmaci.getString("id_f"),farmaci.getString("nome"),farmaci.getString("principio_attivo")));
             }
+            this.farmaci.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
