@@ -1,6 +1,6 @@
 package com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci;
 
-import com.vipagepharma.corriere.App;
+import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.SchermataPrincipale;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
