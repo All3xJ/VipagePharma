@@ -1,21 +1,27 @@
 package com.vipagepharma.farmacia.gestionePrenotazioni.caricoPrenotazione;
 
 import com.vipagepharma.corriere.App;
+import com.vipagepharma.farmacia.DBMSBoundary;
 import com.vipagepharma.farmacia.SchermataPrincipale;
-import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 
 public class CaricoPrenotazioneControl {
 
     public static CaricoPrenotazioneControl carPrenCtrl;
 
-    public CaricoPrenotazioneControl(){
+    private String id_prenotazione;
+
+    private ResultSet lotti_ordinati;
+
+    public CaricoPrenotazioneControl(String id_prenotazione){
         carPrenCtrl = this;
+        this.id_prenotazione = id_prenotazione;
     }
 
     public void start() throws IOException {
+        this.lotti_ordinati = DBMSBoundary.getLottiOrdinati(this.id_prenotazione);
         App.setRoot("gestionePrenotazioni/caricoPrenotazione/SchermataRiepilogoCarico");
     }
 

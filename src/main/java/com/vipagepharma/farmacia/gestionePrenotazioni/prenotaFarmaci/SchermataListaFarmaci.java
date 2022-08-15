@@ -38,14 +38,11 @@ public class SchermataListaFarmaci implements Initializable{
 
 
 
-    /*BUGGGGGGG
-      se viene fatta una ricerca e poi si va indietro e se ne fa un altra le prima ricerca non scompare */
-
     @Override
     public void initialize(URL url, ResourceBundle resbound){
-        this.idFarmaco_column.setCellValueFactory(new PropertyValueFactory<Farmaco,String >("idFarmaco"));
-        this.nomeFarmaco_column.setCellValueFactory(new PropertyValueFactory<Farmaco,String >("nomeFarmaco"));
-        this.principioAttivo_column.setCellValueFactory(new PropertyValueFactory<Farmaco,String >("principioAttivo"));
+        this.idFarmaco_column.setCellValueFactory(new PropertyValueFactory<>("idFarmaco"));
+        this.nomeFarmaco_column.setCellValueFactory(new PropertyValueFactory<>("nomeFarmaco"));
+        this.principioAttivo_column.setCellValueFactory(new PropertyValueFactory<>("principioAttivo"));
 
         this.farmaci_table.setItems(RicercaFarmacoControl.getControl().tvObservableList);
         //this.farmaci_table.getColumns().addAll(this.idFarmaco_column, this.principioattivo_column); NOOOOOOOOOOOO ALTRIMENTI LI RIAGGIUNGEREBBEEEEEE. GIA LI AGGIUNGE DA SOLO FXMLOADER ECC
@@ -55,10 +52,10 @@ public class SchermataListaFarmaci implements Initializable{
     private void addButtonToTable(String nomeButton,TableColumn colBtn) {
         //TableColumn<Entry, Void> colBtn = new TableColumn("Button Column");
 
-        Callback<TableColumn<Farmaco, Void>, TableCell<Farmaco, Void>> cellFactory = new Callback<TableColumn<Farmaco, Void>, TableCell<Farmaco, Void>>() {
+        Callback<TableColumn<Farmaco, Void>, TableCell<Farmaco, Void>> cellFactory = new Callback<>() {
             @Override
             public TableCell<Farmaco, Void> call(final TableColumn<Farmaco, Void> param) {
-                final TableCell<Farmaco, Void> cell = new TableCell<Farmaco, Void>() {
+                final TableCell<Farmaco, Void> cell = new TableCell<>() {
 
                     private final Button btn = new Button(nomeButton);
 

@@ -1,6 +1,8 @@
 package com.vipagepharma.farmacia;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni.VisualizzaPrenotazioniControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco.RicercaFarmacoControl;
@@ -14,7 +16,7 @@ public class SchermataPrincipale {
 	public static String schermataPrecedente;
 
 	@FXML
-    void premeVisualizzaPrenotazioni(MouseEvent event) throws IOException{
+    void premeVisualizzaPrenotazioni(MouseEvent event) throws IOException, SQLException {
 		VisualizzaPrenotazioniControl visualprenCtrl = new VisualizzaPrenotazioniControl();
 		visualprenCtrl.start();
 	}

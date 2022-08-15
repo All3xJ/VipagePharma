@@ -66,7 +66,7 @@
                 <TableColumn fx:id="idFarmaco_column" prefWidth="150.0" resizable="false" styleClass="colonna" text="ID farmaco" />
                   <TableColumn fx:id="nomeFarmaco_column" minWidth="20.0" prefWidth="220.0" resizable="false" styleClass="colonna" text="Farmaco" />
                   <TableColumn fx:id="principioAttivo_column" prefWidth="260.0" resizable="false" styleClass="colonna" text="Principio attivo" />
-                  <TableColumn fx:id="prenota_column" prefWidth="90.0" resizable="false" styleClass="colonna" />
+                  <TableColumn fx:id="prenota_column" prefWidth="90.0" resizable="false" styleClass="colonna" text="prova" />
               </columns>
             </TableView>
          </children>
