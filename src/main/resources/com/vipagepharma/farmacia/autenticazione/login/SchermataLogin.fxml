@@ -32,18 +32,13 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.autenticazione.login.SchermataLogin">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.autenticazione.login.SchermataLogin">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="783.0" prefWidth="1404.0" VBox.vgrow="ALWAYS">
          <children>
@@ -61,7 +56,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </PasswordField>
-            <Button fx:id="login" alignment="CENTER" defaultButton="true" layoutX="580.0" layoutY="383.0" mnemonicParsing="false" onAction="#premeLogin"  prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #CFF3F2 #CFF3F2; -fx-border-color: #b9b9b9; -fx-background-radius: 5; -fx-border-radius: 5;" text="Login" AnchorPane.leftAnchor="580.0" AnchorPane.rightAnchor="746.0">
+            <Button fx:id="login" alignment="CENTER" defaultButton="true" layoutX="580.0" layoutY="383.0" mnemonicParsing="false" onAction="#premeLogin" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #CFF3F2 #CFF3F2; -fx-border-color: #b9b9b9; -fx-background-radius: 5; -fx-border-radius: 5;" text="Login" AnchorPane.leftAnchor="580.0" AnchorPane.rightAnchor="746.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
