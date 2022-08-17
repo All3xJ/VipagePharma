@@ -1,7 +1,9 @@
 package com.vipagepharma.corriere;
 
 import com.vipagepharma.corriere.gestioneConsegne.downloadConsegne.DownloadConsegneControl;
-import com.vipagepharma.farmacia.App;
+import com.vipagepharma.corriere.gestioneConsegne.uploadFirme.UploadFirmeControl;
+import com.vipagepharma.corriere.gestioneConsegne.visualizzaConsegne.VisualizzaConsegneControl;
+import com.vipagepharma.corriere.App;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -36,10 +38,14 @@ public class SchermataPrincipale implements Initializable {
         downConsCtrl.start(mouseEvent);
     }
 
-    public void premeVisualizzaConsegne(MouseEvent mouseEvent) {
+    public void premeVisualizzaConsegne(MouseEvent mouseEvent) throws IOException {
+        VisualizzaConsegneControl visConCtr = new VisualizzaConsegneControl();
+        visConCtr.start();
     }
 
-    public void premeUploadFirme(MouseEvent mouseEvent) {
+    public void premeUploadFirme(MouseEvent mouseEvent) throws IOException {
+        UploadFirmeControl upFirCtrl = new UploadFirmeControl();
+        upFirCtrl.start(mouseEvent);
     }
 
     public void premeHome(MouseEvent mouseEvent)  {

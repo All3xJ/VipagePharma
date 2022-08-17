@@ -2,7 +2,7 @@ package com.vipagepharma.addettoAzienda;
 
 import com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni.VisualizzaSegnalazioniControl;
 import com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConsegne.VisualizzaStoricoConsegneControl;
-import com.vipagepharma.farmacia.App;
+import com.vipagepharma.addettoAzienda.App;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;

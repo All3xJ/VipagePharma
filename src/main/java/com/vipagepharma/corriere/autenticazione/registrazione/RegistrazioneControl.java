@@ -1,7 +1,7 @@
 package com.vipagepharma.corriere.autenticazione.registrazione;
 
-import com.vipagepharma.farmacia.App;
-import com.vipagepharma.farmacia.DBMSBoundary;
+import com.vipagepharma.corriere.App;
+import com.vipagepharma.corriere.DBMSBoundary;
 
 import java.io.IOException;
 import java.sql.ResultSet;

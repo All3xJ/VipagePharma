@@ -62,16 +62,16 @@
                   <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <Button alignment="CENTER" layoutX="598.0" layoutY="551.0" mnemonicParsing="false" onMouseClicked="#premeFirma" prefHeight="50.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Firma">
+            <Button alignment="CENTER" layoutX="597.0" layoutY="463.0" mnemonicParsing="false" onMouseClicked="#premeFirma" prefHeight="50.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Firma">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <TableView layoutX="189.0" layoutY="178.0" prefHeight="332.0" prefWidth="939.0">
+            <TableView fx:id="riepilogoordine_table" layoutX="188.0" layoutY="283.0" prefHeight="136.0" prefWidth="939.0">
               <columns>
-                <TableColumn minWidth="20.0" prefWidth="227.59654235839844" text="ID consegna" />
-                <TableColumn minWidth="0.0" prefWidth="286.4035339355469" text="ID farmacia" />
-                  <TableColumn prefWidth="273.8594970703125" text="Data di consegna" />
-                  <TableColumn minWidth="0.0" prefWidth="156.98199462890625" text="Quantità" />
+                <TableColumn fx:id="idconsegna_column" minWidth="20.0" prefWidth="227.59654235839844" text="ID consegna" />
+                <TableColumn fx:id="idfarmacia_column" minWidth="0.0" prefWidth="236.0" text="ID farmacia" />
+                  <TableColumn fx:id="dataconsegna_column" prefWidth="256.0" text="Data di consegna" />
+                  <TableColumn fx:id="qty_column" minWidth="0.0" prefWidth="226.0" text="Quantità" />
               </columns>
             </TableView>
       </children>

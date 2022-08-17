@@ -7,8 +7,7 @@ import java.io.IOException;
 
 public class AvvisoOperazioneRiuscita {
 
-    @FXML
-    void premeOk(MouseEvent event) throws IOException {
+    public void premeOk(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         DownloadConsegneControl.downConsCtrlRef.premutoOk();
     }
 }

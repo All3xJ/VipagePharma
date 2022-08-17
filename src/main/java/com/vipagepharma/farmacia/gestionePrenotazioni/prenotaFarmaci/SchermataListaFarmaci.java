@@ -1,6 +1,6 @@
 package com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci;
 
-import com.vipagepharma.corriere.App;
+import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.entity.Farmaco;
 import com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco.RicercaFarmacoControl;
 import javafx.event.ActionEvent;

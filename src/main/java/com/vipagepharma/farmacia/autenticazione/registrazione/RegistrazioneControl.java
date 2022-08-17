@@ -1,6 +1,6 @@
 package com.vipagepharma.farmacia.autenticazione.registrazione;
 
-import com.vipagepharma.corriere.autenticazione.login.SchermataLogin;
+import com.vipagepharma.farmacia.autenticazione.login.SchermataLogin;
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
 import com.vipagepharma.farmacia.SchermataPrincipale;
