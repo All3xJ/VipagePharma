@@ -20,6 +20,7 @@ public class App extends Application {
     private static Scene scene;
     public static Stage popup_stage;
 
+
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("autenticazione/login/SchermataLogin"), 1280, 800);
