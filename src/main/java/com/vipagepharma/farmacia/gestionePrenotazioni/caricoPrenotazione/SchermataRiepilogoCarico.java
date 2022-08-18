@@ -22,8 +22,6 @@ public class SchermataRiepilogoCarico implements Initializable {
     @FXML
     private Text testo_nome_farmaco;
 
-    private String id_farmaco;
-    private String id_farmacia;
 
     @FXML
     private TableColumn<Lotto, String> id_lotti_column;
@@ -40,6 +38,7 @@ public class SchermataRiepilogoCarico implements Initializable {
         lotti_selezionati = new LinkedList<>();
         qty_selezionati = new LinkedList<>();
         date_scadenza_selezionate = new LinkedList<>();
+        testo_nome_farmaco.setText(CaricoPrenotazioneControl.nome_farmaco);
         this.id_lotti_column.setCellValueFactory(new PropertyValueFactory<>("lotto"));
         this.lotti_table.setItems(CaricoPrenotazioneControl.carPrenCtrl.tvObservableList);
         this.addRadioButtonToTable(this.rdButton_column);

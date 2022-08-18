@@ -24,7 +24,7 @@ public class CaricoPrenotazioneControl {
     private String id_prenotazione;
     private String id_farmaco;
     private String id_farmacia;
-    private String nome_farmacia;
+    public static String nome_farmaco;
 
     private ResultSet lotti_ordinati;
 
@@ -37,6 +37,7 @@ public class CaricoPrenotazioneControl {
         this.id_farmacia = prenotazione.getIdFarmacia();
         this.id_farmaco = prenotazione.getIdFarmaco();
         this.id_prenotazione =  prenotazione.getIdPrenotazione();
+        nome_farmaco = prenotazione.getNomeFarmaco();
         this.riempiObservableList();
         App.setRoot("gestionePrenotazioni/caricoPrenotazione/SchermataRiepilogoCarico");
     }
