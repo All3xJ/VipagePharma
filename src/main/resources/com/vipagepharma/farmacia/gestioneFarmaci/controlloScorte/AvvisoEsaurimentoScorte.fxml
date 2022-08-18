@@ -44,7 +44,7 @@
             <Font name="Arial Bold" size="30.0" />
          </font>
       </Text>
-      <Text layoutX="133.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le tue scorte di nome_farmaco stanno per terminare!">
+      <Text fx:id="testo_esaurimento_scorte" layoutX="133.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="472.0"> <!-- Le tue scorte di nome_farmaco stanno per terminare! -->
          <font>
             <Font name="Arial" size="20.0" />
          </font>
