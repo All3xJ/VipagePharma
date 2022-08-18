@@ -1,5 +1,8 @@
 package com.vipagepharma.addettoAzienda;
 
+import com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConsegne.VisualizzaStoricoConsegneControl;
+import com.vipagepharma.corriere.gestioneConsegne.visualizzaConsegne.VisualizzaConsegneControl;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -12,8 +15,6 @@ public class DBMSBoundary {
     private static final String pass = "BubJbhvbj373838&#@!";
     private static final String dbFarmacia = "vipagepharma_farmacia";
     private static final String dbAzienda = "vipagepharma_azienda";
-
-    private static int contatore = 0;
 
     public static Connection connectFarmacia(){
         Connection connection = null;
@@ -257,7 +258,7 @@ public class DBMSBoundary {
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery("Select id_p, ref_id_uf, data_consegna from prenotazione where isConsegnato = 1 limit 15"); //vedere se funziona sintassi
+            resultSet = statement.executeQuery("Select id_p, ref_id_uf, data_consegna, ricevuta_pdf from prenotazione where isConsegnato = 1 limit 15"); //vedere se funziona sintassi
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -265,13 +266,13 @@ public class DBMSBoundary {
     }
 
     public static ResultSet getAltreConsegne(){
-        ++contatore;
-        int base = contatore * 15;
+        ++VisualizzaStoricoConsegneControl.contatorePagineConsegne;
+        int base = VisualizzaStoricoConsegneControl.contatorePagineConsegne * 15;
         ResultSet resultSet;
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery("Select id_p, ref_id_uf, data_consegna from prenotazione where isConsegnato=1 limit " + base + ", 15"); //vedere se funziona sintassi
+            resultSet = statement.executeQuery("Select id_p, ref_id_uf, data_consegna, ricevuta_pdf from prenotazione where isConsegnato=1 limit " + base + ", 15"); //vedere se funziona sintassi
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

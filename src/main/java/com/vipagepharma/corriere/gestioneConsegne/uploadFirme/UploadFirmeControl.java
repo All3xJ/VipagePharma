@@ -21,8 +21,8 @@ public class UploadFirmeControl {
     public void start(MouseEvent mouseEvent) throws IOException {
         for (Ordine ordine: VisualizzaConsegneControl.visualConCtrlRef.tvObservableList) {
             if (ordine.filePDF!=null){
-                DBMSBoundary.contrassegnaOrdineFirmato(ordine.idPrenotazione.toString());
-                DBMSBoundary.salvaRicevuta(ordine.idPrenotazione.toString(), (Blob) ordine.filePDF);
+                DBMSBoundary.contrassegnaOrdineFirmato(ordine.idPrenotazione.get());
+                DBMSBoundary.salvaRicevuta(ordine.idPrenotazione.get(), ordine.filePDF);
             }
         }
         App.newWind("gestioneConsegne/uploadFirme/AvvisoOperazioneRiuscita",mouseEvent);

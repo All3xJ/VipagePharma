@@ -3,6 +3,7 @@ package com.vipagepharma.corriere.autenticazione.login;
 import com.vipagepharma.corriere.App;
 import com.vipagepharma.corriere.DBMSBoundary;
 import com.vipagepharma.corriere.entity.Utente;
+import javafx.event.ActionEvent;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -20,12 +21,12 @@ public class LoginControl{
         logCtrlRef = this;
     }
 
-    public void start() throws IOException {
+    public void start(ActionEvent event) throws IOException {
         if (DBMSBoundary.effettuaLogin(this.id.getText(),this.pass.getText())) {
             Utente.creaUtente(this.id.getText());
             App.setRoot("SchermataPrincipale"); // se sono giuste le credenziali mi porta alla home
         } else{
-            App.setRoot("autenticazione/login/AvvisoErroreLogin");
+            App.newWind("autenticazione/login/AvvisoErroreLogin",event);
         }
     }
 
@@ -34,6 +35,7 @@ public class LoginControl{
     }
 
     public void premutoOk() throws IOException {
+        App.popup_stage.close();
         this.mostra("autenticazione/login/SchermataLogin");
     }
 }

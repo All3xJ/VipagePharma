@@ -3,9 +3,6 @@ package com.vipagepharma.corriere.entity;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-import java.io.FileOutputStream;
-import java.sql.ResultSet;
-
 public class Ordine {
 
     public StringProperty idPrenotazione = new SimpleStringProperty();
@@ -17,7 +14,7 @@ public class Ordine {
 
     public StringProperty dataConsegna = new SimpleStringProperty();
 
-    public FileOutputStream filePDF = null;
+    public String filePDF = null;
 
     public Ordine(String idPrenotazione, String nomeFarmaciaConsegna, String idFarmacia, String qty, String dataConsegna){
         this.idPrenotazione.set(idPrenotazione);
@@ -47,7 +44,7 @@ public class Ordine {
         return dataConsegna.get();
     }
 
-    public void setFilePDF(FileOutputStream filePDF){
+    public void setFilePDF(String filePDF){
         this.filePDF = filePDF;
     }
 

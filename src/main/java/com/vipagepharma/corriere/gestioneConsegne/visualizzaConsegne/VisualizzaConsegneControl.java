@@ -1,5 +1,6 @@
 package com.vipagepharma.corriere.gestioneConsegne.visualizzaConsegne;
 
+import com.vipagepharma.corriere.SchermataPrincipale;
 import com.vipagepharma.corriere.entity.Ordine;
 import com.vipagepharma.corriere.gestioneConsegne.firmaConsegna.FirmaConsegnaControl;
 import com.vipagepharma.corriere.App;
@@ -38,5 +39,14 @@ public class VisualizzaConsegneControl {
             throw new RuntimeException(e);
         }
         ordini.close();
+    }
+
+    public void premutoHome(String schermataPrecedente) throws IOException {
+        SchermataPrincipale.schermataPrecedente = schermataPrecedente;
+        App.setRoot("SchermataPrincipale");
+    }
+
+    public void premutoIndietro() throws IOException {
+        App.setRoot("SchermataPrincipale");
     }
 }
