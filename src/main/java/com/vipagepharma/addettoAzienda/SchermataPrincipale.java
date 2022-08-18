@@ -1,8 +1,8 @@
 package com.vipagepharma.addettoAzienda;
 
 import com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni.VisualizzaSegnalazioniControl;
-import com.vipagepharma.addettoAzienda.autenticazione.logout.LogoutControl;
 import com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConsegne.VisualizzaStoricoConsegneControl;
+import com.vipagepharma.addettoAzienda.App;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -29,6 +29,6 @@ public class SchermataPrincipale {
     }
 
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        LogoutControl.start();
+        App.setRoot("autenticazione/login/SchermataLogin");
     }
 }

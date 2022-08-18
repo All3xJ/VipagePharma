@@ -59,9 +59,4 @@ public class VisualizzaPrenotazioniControl {
     }
 
 
-
-    public void premutoAnnulla(String schermataPrecedente) throws IOException {
-        AnnullaPrenotazioneControl annPrenCtrl = new AnnullaPrenotazioneControl();
-        annPrenCtrl.start();
-    }
 }

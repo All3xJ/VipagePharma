@@ -3,7 +3,6 @@ package com.vipagepharma.farmacia;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni.VisualizzaPrenotazioniControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco.RicercaFarmacoControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.modificaContratti.ModificaContrattiControl;
@@ -46,6 +45,6 @@ public class SchermataPrincipale {
 	}
 
 	public void premeLogout(MouseEvent mouseEvent) throws IOException {
-		LogoutControl.start();
+		App.setRoot("autenticazione/login/SchermataLogin");
 	}
 }

@@ -1,6 +1,6 @@
 package com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco;
 
-import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
+import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.gestioneFarmaci.scaricoFarmaci.ScaricoFarmaciControl;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -30,6 +30,6 @@ public class SchermataRicercaFarmaco {
 
     @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        LogoutControl.start();
+        App.setRoot("autenticazione/login/SchermataLogin");
     }
 }

@@ -1,4 +1,6 @@
 package com.vipagepharma.corriere;
+import com.vipagepharma.corriere.entity.Ordine;
+
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -125,39 +127,37 @@ public class DBMSBoundary {
             Connection connection = connectDBMS();
             Statement statement = connection.createStatement();
             java.util.Date date = new Date();
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
-            String str = formatter.format(date);
-            resultSet = statement.executeQuery("Select p.id_p, u.indirizzo from vipagepharma_azienda.prenotazione p join vipagepharma_farmacia.utente u where p.ref_id_uf = u.id_uf and p.ref_id_ua = " + id_corriere + " and p.data_consegna = data_odierna");
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
+            String strDataOdierna = formatter.format(date);
+            resultSet = statement.executeQuery("select p.id_p, u.nome, p.data_consegna, p.ref_id_uf, sum(l.qty) as qty from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u, vipagepharma_azienda.lotto_ordinato l where p.ref_id_uf = u.id_uf and p.ref_id_ua = "+id_corriere+" and p.data_consegna = str_to_date('"+strDataOdierna+"','%d-%m-%Y') and l.ref_id_p=p.id_p group by p.id_p, u.nome, p.data_consegna, p.ref_id_uf, l.qty");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return resultSet;
     }
 
-    public static void contrassegnaOrdineFirmato(LinkedList <String> id_prenotazioni){
+    public static void contrassegnaOrdineFirmato(String id_prenotazione){
         ResultSet resultSet;
-        for(int i=0; i<id_prenotazioni.size(); ++i){
-            try{
-                Connection connection = connectAzienda();
-                Statement statement = connection.createStatement();
-                statement.executeUpdate("update prenotazione set isConsegnato = 1 where id_p = " + id_prenotazioni.removeFirst());
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("update prenotazione set isConsegnato = 1 where id_p = " + id_prenotazione);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
+
     }
 
-    public static void salvaRicevuta(LinkedList <String> id_prenotazioni, LinkedList <Blob> ricevute){
+    public static void salvaRicevuta(String id_prenotazione, Blob ricevuta){
         ResultSet resultSet;
-        for(int i=0; i<id_prenotazioni.size(); ++i){
-            try{
-                Connection connection = connectAzienda();
-                Statement statement = connection.createStatement();
-                statement.executeUpdate("update prenotazione set ricevuta_pdf = " + ricevute.removeFirst() + " where id_p = " + id_prenotazioni.removeFirst());
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("update prenotazione set ricevuta_pdf = " + ricevuta + " where id_p = " + id_prenotazione);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
+
     }
 
 

@@ -1,6 +1,5 @@
 package com.vipagepharma.farmacia.autenticazione.reimpostaPassword;
 
-import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;

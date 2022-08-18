@@ -64,11 +64,11 @@
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button alignment="CENTER" layoutX="520.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#premeVisualizzaConsegne" prefHeight="45.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Visualizza consegne">
+            <Button fx:id="visualconsegne_button" alignment="CENTER" layoutX="520.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#premeVisualizzaConsegne" prefHeight="45.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Visualizza consegne">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button alignment="CENTER" layoutX="520.0" layoutY="380.0" mnemonicParsing="false" onMouseClicked="#premeUploadFirme" prefHeight="45.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Upload firme">
+            <Button fx:id="uploadfirme_button" alignment="CENTER" layoutX="520.0" layoutY="380.0" mnemonicParsing="false" onMouseClicked="#premeUploadFirme" prefHeight="45.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Upload firme">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>

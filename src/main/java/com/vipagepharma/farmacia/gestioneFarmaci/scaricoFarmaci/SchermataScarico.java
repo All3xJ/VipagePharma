@@ -1,6 +1,6 @@
 package com.vipagepharma.farmacia.gestioneFarmaci.scaricoFarmaci;
 
-import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
+import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni.VisualizzaPrenotazioniControl;
 import javafx.scene.input.MouseEvent;
 
@@ -18,7 +18,7 @@ public class SchermataScarico {
     }
 
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        LogoutControl.start();
+        App.setRoot("autenticazione/login/SchermataLogin");
     }
 
     public void premeScarica(MouseEvent mouseEvent) {

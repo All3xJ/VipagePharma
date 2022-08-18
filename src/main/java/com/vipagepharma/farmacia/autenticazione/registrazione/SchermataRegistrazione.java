@@ -3,7 +3,6 @@ package com.vipagepharma.farmacia.autenticazione.registrazione;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

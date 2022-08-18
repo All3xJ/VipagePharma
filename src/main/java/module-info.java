@@ -40,6 +40,10 @@ module com.vipagepharma {
     opens com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConsegne to javafx.fxml;
     exports com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni;
     opens com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni to javafx.fxml;
+    exports com.vipagepharma.addettoAzienda.entity;
+    opens com.vipagepharma.addettoAzienda.entity to javafx.base;
+
+
 
     exports com.vipagepharma.corriere;
     opens com.vipagepharma.corriere to javafx.fxml;
@@ -51,4 +55,10 @@ module com.vipagepharma {
     opens com.vipagepharma.corriere.autenticazione.reimpostaPassword to javafx.fxml;
     exports com.vipagepharma.corriere.gestioneConsegne.firmaConsegna;
     opens com.vipagepharma.corriere.gestioneConsegne.firmaConsegna to javafx.fxml;
+    exports com.vipagepharma.corriere.gestioneConsegne.downloadConsegne;
+    opens com.vipagepharma.corriere.gestioneConsegne.downloadConsegne to javafx.fxml;
+    exports com.vipagepharma.corriere.gestioneConsegne.visualizzaConsegne;
+    opens com.vipagepharma.corriere.gestioneConsegne.visualizzaConsegne to javafx.fxml;
+    exports com.vipagepharma.corriere.entity;
+    opens com.vipagepharma.corriere.entity to javafx.base;
 }

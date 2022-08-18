@@ -137,6 +137,6 @@ public class SchermataElencoPrenotazioni implements Initializable{
 	}
 
 	public void premeLogout(MouseEvent mouseEvent) throws IOException {
-		LogoutControl.start();
+		App.setRoot("autenticazione/login/SchermataLogin");
 	}
 }
