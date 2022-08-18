@@ -21,14 +21,14 @@ public class SchermataPrenotazione implements Initializable {
     @FXML
     private TextField qty;
     @FXML
-    private Text t;
+    private Text testo_nome_farmaco;
 
 
     private int flag_scadenza = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        t.setText(PrenotaFarmaciControl.getControl().getFarmaco());
+        testo_nome_farmaco.setText(PrenotaFarmaciControl.getControl().getFarmaco());
     }
 
     @FXML
