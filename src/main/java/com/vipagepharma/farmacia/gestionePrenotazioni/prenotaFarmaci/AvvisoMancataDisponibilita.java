@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 public class AvvisoMancataDisponibilita implements Initializable {
 
     @FXML
-    private Text t;
+    private Text testo_mancata_disponibilita;
     @FXML
     private RadioButton opzione1;
 
@@ -42,7 +42,7 @@ public class AvvisoMancataDisponibilita implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.init();
         opzione1.setSelected(true);
-        t.setText("La quantità inserita di " + this.farmaco +  " non è totalmente disponibile per il " + this.data);
+        testo_mancata_disponibilita.setText("La quantità inserita di " + this.farmaco +  " non è totalmente disponibile per il " + this.data);
         opzione1.setText("Accetto solo " + this.qty + " pezzi per il " + this.data);
         opzione2.setText("Accetto " + this.qty + " pezzi per il " + this.data + " e "+ this.qtyMancante + " pezzi per il " + this.newData);
     }
