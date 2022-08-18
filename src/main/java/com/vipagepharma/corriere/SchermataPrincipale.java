@@ -38,7 +38,7 @@ public class SchermataPrincipale implements Initializable {
         downConsCtrl.start(mouseEvent);
     }
 
-    public void premeVisualizzaConsegne(MouseEvent mouseEvent) throws IOException {
+    public void premeVisualizzaConsegne(MouseEvent mouseEvent) throws IOException, SQLException {
         VisualizzaConsegneControl visConCtr = new VisualizzaConsegneControl();
         visConCtr.start();
     }

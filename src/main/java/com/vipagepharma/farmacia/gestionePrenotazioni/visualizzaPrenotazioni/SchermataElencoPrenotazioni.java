@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.entity.Prenotazione;
-import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
+import com.vipagepharma.farmacia.gestionePrenotazioni.annullaPrenotazione.AnnullaPrenotazioneControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.caricoPrenotazione.CaricoPrenotazioneControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -96,7 +96,8 @@ public class SchermataElencoPrenotazioni implements Initializable{
                     }
 
 					private void premeAnnulla(Prenotazione entry) throws IOException {
-						VisualizzaPrenotazioniControl.visualPrenCtrlRef.premutoAnnulla("gestionePrenotazioni/visualizzaPrenotazioni/AvvisoAnnullaPrenotazione");
+						AnnullaPrenotazioneControl annControl = new AnnullaPrenotazioneControl();
+						annControl.start();
 					}
 
 					private void premeCarico(String id_prenotazione) throws IOException {

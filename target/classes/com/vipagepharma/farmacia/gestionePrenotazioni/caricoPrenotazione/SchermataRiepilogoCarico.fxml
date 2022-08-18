@@ -65,8 +65,7 @@
                   <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cff3f2" height="46.0" layoutX="518.0" layoutY="191.0" stroke="#b9b9b9" strokeType="INSIDE" style="-fx-arc-height: 15; -fx-arc-width: 15;" width="283.0" />
-            <Text layoutX="591.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome_farmaco">
+            <Text fx:id="testo_nome_farmaco" layoutX="591.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0"> <!-- nome farmaco-->
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -81,11 +80,11 @@
                 <TableColumn prefWidth="199.0" />
               </columns>
             </TableView>
-            <Text layoutX="705.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantità totale prevista: n">
+            <Text fx:id="testo_qty_prevista" layoutX="705.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0"> <!-- Quantità totale prevista: n -->
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Text>
-            <Text layoutX="694.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantità totale consegnata: m">
+            <Text fx:id="testo_qty_consegnata" layoutX="694.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0"> <!-- Quantità totale consgnata: m -->
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Text>

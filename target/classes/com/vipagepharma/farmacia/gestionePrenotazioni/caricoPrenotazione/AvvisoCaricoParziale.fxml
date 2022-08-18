@@ -44,7 +44,7 @@
             <Font name="Arial Bold" size="30.0" />
          </font>
       </Text>
-      <Text layoutX="113.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La consegna id_consegna prevista per oggi è stata caricata parzialmente" textAlignment="CENTER" wrappingWidth="501.18359375">
+      <Text fx:id="testo_carico_parziale" layoutX="113.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="501.18359375"> <!-- "La consegna id_consegna prevista per oggi è stata caricata parzialmente"-->
          <font>
             <Font name="Arial" size="20.0" />
          </font>

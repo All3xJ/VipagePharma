@@ -44,7 +44,7 @@
             <Font name="Arial Bold" size="30.0" />
          </font>
       </Text>
-      <Text layoutX="126.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La consegna prevista per la farmacia id_farmacia ha avuto qualche problema" textAlignment="CENTER" wrappingWidth="485.73046875">
+      <Text fx:id="testo_problema_ordine" layoutX="126.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="485.73046875"> <!-- //La consegna prevista per la farmacia id_farmacia ha avuto qualche problema -->
          <font>
             <Font name="Arial" size="20.0" />
          </font>

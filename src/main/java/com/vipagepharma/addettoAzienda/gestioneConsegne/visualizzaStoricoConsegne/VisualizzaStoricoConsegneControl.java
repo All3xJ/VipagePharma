@@ -23,12 +23,12 @@ public class VisualizzaStoricoConsegneControl {
 
     public ResultSet consegne = null;
 
-    public void start() throws IOException {
+    public void start() throws IOException, SQLException {
         this.riempiObservableList();
         App.setRoot("gestioneConsegne/visualizzaStoricoConsegne/SchermataStoricoConsegne");
     }
 
-    private void riempiObservableList()  {
+    private void riempiObservableList() throws SQLException {
         this.consegne = DBMSBoundary.getConsegneRecenti();
         try {
             this.tvObservableList.clear();
@@ -39,6 +39,7 @@ public class VisualizzaStoricoConsegneControl {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        this.consegne.close();
     }
 
     public void premutoVisualizzaErrore(String schermata, ActionEvent event) throws IOException {

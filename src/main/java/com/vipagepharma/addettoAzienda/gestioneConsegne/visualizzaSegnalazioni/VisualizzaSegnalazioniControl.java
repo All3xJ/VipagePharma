@@ -23,12 +23,12 @@ public class VisualizzaSegnalazioniControl {
         visConsCtrlRef = this;
     }
 
-    public void start() throws IOException {
+    public void start() throws IOException, SQLException {
         this.riempiObservableList();
         App.setRoot("gestioneConsegne/visualizzaSegnalazioni/SchermataElencoSegnalazioni");
     }
 
-    private void riempiObservableList()  {
+    private void riempiObservableList() throws SQLException {
         this.consegneConSegnalazione = DBMSBoundary.getElencoConsegneConSegnalazioni();
         try {
             this.tvObservableList.clear();
@@ -39,6 +39,7 @@ public class VisualizzaSegnalazioniControl {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        this.consegneConSegnalazione.close();
     }
 
     public void premutoVisualizzaErrore(String schermata, ActionEvent event) throws IOException {

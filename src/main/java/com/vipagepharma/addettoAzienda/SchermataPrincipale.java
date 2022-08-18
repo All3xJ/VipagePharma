@@ -6,17 +6,18 @@ import com.vipagepharma.addettoAzienda.App;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class SchermataPrincipale {
 
     public static String schermataPrecedente;
 
-	public void premeVisualizzaSegnalazioni(MouseEvent mouseEvent) throws IOException {
+	public void premeVisualizzaSegnalazioni(MouseEvent mouseEvent) throws IOException, SQLException {
         VisualizzaSegnalazioniControl visConseCtrl = new VisualizzaSegnalazioniControl();
         visConseCtrl.start();
     }
 
-    public void premeVisualizzaStorico(MouseEvent mouseEvent) throws IOException {
+    public void premeVisualizzaStorico(MouseEvent mouseEvent) throws IOException, SQLException {
         VisualizzaStoricoConsegneControl visStoConsCtrl = new VisualizzaStoricoConsegneControl();
         visStoConsCtrl.start();
     }

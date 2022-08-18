@@ -3,8 +3,7 @@ package com.vipagepharma.farmacia.gestionePrenotazioni.caricoPrenotazione;
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
 import com.vipagepharma.farmacia.SchermataPrincipale;
-import com.vipagepharma.farmacia.autenticazione.logout.LogoutControl;
-import javafx.scene.input.MouseEvent;
+
 
 import java.io.IOException;
 import java.sql.ResultSet;

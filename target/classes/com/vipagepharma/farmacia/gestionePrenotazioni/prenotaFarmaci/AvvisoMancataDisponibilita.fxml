@@ -43,7 +43,7 @@
             <Font name="Arial Bold" size="30.0" />
          </font>
       </Text>
-      <Text fx:id="t" layoutX="122.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="492.3359375">
+      <Text fx:id="testo_mancata_disponibilita" layoutX="122.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="492.3359375"> <!-- La quantità di nome_farmaco richiesta non è totalmente disponibile per il gg/mm/aaaa-->
          <font>
             <Font name="Arial" size="20.0" />
          </font>
