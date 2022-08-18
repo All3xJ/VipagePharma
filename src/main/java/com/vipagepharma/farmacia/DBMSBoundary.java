@@ -282,6 +282,23 @@ public class DBMSBoundary {
         }
         return resultSet;
     }
+
+    public static void confermaConsegna(String id_prenotazione, LinkedList <String> id_lotti){
+        ResultSet resultSet;
+        for (int i=0; i< id_lotti.size(); ++i){
+            try{
+                Connection connection = connectAzienda();
+                Statement statement = connection.createStatement();
+                statement.executeUpdate("Update lotto_ordinato set isCaricato = 1 where ref_id_p = " +id_prenotazione + " and ref_id_l = " + id_lotti.removeFirst());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
+
+
 } // class ends
 
 
