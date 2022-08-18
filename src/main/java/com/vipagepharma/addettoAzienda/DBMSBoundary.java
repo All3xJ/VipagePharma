@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.time.LocalDate;
-import java.text.SimpleDateFormat;
 
 public class DBMSBoundary {
     private static final String url = "jdbc:mysql://vipagesite.duckdns.org:3306/";
@@ -59,7 +58,7 @@ public class DBMSBoundary {
         ResultSet resultSet = null;
         try {
             Connection connection = connectAzienda();
-            Statement statement = connection.createStatement();
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             resultSet = statement.executeQuery("select * from farmaco");
 
         }
@@ -167,16 +166,17 @@ public class DBMSBoundary {
 
 
 
-    public static void creaLotto(int id_farmaco, LocalDate dataScadenza, int qty){
+    public static void creaLotto(int id_farmaco, LocalDate dataScadenza, LocalDate dataDisponibilita, int qty, int qtyContratti){
         try {
             Connection connection = connectAzienda();
-            LocalDate dataDisponibilita = LocalDate.now().plusMonths(2);
+            dataDisponibilita = dataDisponibilita.plusMonths(2);
             dataScadenza = dataScadenza.plusMonths(2);
-            PreparedStatement stmt = connection.prepareStatement("INSERT INTO lotto (ref_id_f , qty, data_di_disponibilitá, data_di_scadenza) VALUES(?,?,?,?)",ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO lotto (ref_id_f , qty,qty_contratti, data_di_disponibilitá, data_di_scadenza) VALUES(?,?,?,?,?)",ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             stmt.setInt(1,id_farmaco);
             stmt.setInt(2,qty);
-            stmt.setDate(3, Date.valueOf(dataDisponibilita));
-            stmt.setDate(4, Date.valueOf(dataScadenza));
+            stmt.setInt(3,qtyContratti);
+            stmt.setDate(4, Date.valueOf(dataDisponibilita));
+            stmt.setDate(5, Date.valueOf(dataScadenza));
             stmt.executeUpdate();
         }
         catch (SQLException e){
@@ -278,27 +278,27 @@ public class DBMSBoundary {
         return resultSet;
     }
 
-    public static void creaPrenotazioneEScarica(int id_farmacia, int id_corriere, int id_farmaco, LocalDate data_consegna, ArrayList<Integer> id_lotti, ArrayList <Integer> qty_lotti){
-        try{ //crea prenotazione
+    public static void creaPrenotazioneEScarica(int id_farmacia, int id_corriere, int id_farmaco, LocalDate data_consegna, ArrayList<Integer> id_lotti, ArrayList <Integer> qty_lotti) {
+        try {
             Connection connection = connectAzienda();
             PreparedStatement statement1 = connection.prepareStatement("insert into prenotazione(ref_id_uf, ref_id_ua,ref_id_f, isConsegnato, data_consegna) values (?,?,?,?,?)");
-            statement1.setInt(1,id_farmacia);
-            statement1.setInt(2,id_corriere);
-            statement1.setInt(3,id_farmaco);
+            statement1.setInt(1, id_farmacia);
+            statement1.setInt(2, id_corriere);
+            statement1.setInt(3, id_farmaco);
             statement1.setInt(4, 0);
             statement1.setDate(5, Date.valueOf(data_consegna));
             statement1.executeUpdate();
-            Statement statement2 = connection.createStatement() ;
+            Statement statement2 = connection.createStatement();
             ResultSet rsId = statement2.executeQuery("SELECT LAST_INSERT_ID() as id");
             rsId.next();
             int id_prenotazione = rsId.getInt("id");
-            for(int i=0; i<id_lotti.size(); ++i) {
+            for (int i = 0; i < id_lotti.size(); ++i) {
                 statement2.executeUpdate("update lotto set qty = qty - " + String.valueOf(qty_lotti.get(i)) + " where id_l = " + id_lotti.get(i));
                 PreparedStatement statement3 = connection.prepareStatement("insert into lotto_ordinato(ref_id_l, ref_id_p, isCaricato, qty) values(?,?,?,?)");
-                statement3.setInt(1,id_lotti.get(i));
-                statement3.setInt(2,id_prenotazione);
-                statement3.setInt(3,0);
-                statement3.setInt(4,qty_lotti.get(i));
+                statement3.setInt(1, id_lotti.get(i));
+                statement3.setInt(2, id_prenotazione);
+                statement3.setInt(3, 0);
+                statement3.setInt(4, qty_lotti.get(i));
                 statement3.executeUpdate();
             }
         } catch (Exception e) {
@@ -306,4 +306,31 @@ public class DBMSBoundary {
         }
     }
 
+    public static void creaPrenotazioneDaBancoEScarica(int id_farmacia, int id_corriere, int id_farmaco, LocalDate data_consegna, ArrayList<Integer> id_lotti, ArrayList <Integer> qty_lotti){
+        try {
+            Connection connection = connectAzienda();
+            PreparedStatement statement1 = connection.prepareStatement("insert into prenotazione(ref_id_uf, ref_id_ua,ref_id_f, isConsegnato, data_consegna) values (?,?,?,?,?)");
+            statement1.setInt(1, id_farmacia);
+            statement1.setInt(2, id_corriere);
+            statement1.setInt(3, id_farmaco);
+            statement1.setInt(4, 0);
+            statement1.setDate(5, Date.valueOf(data_consegna));
+            statement1.executeUpdate();
+            Statement statement2 = connection.createStatement();
+            ResultSet rsId = statement2.executeQuery("SELECT LAST_INSERT_ID() as id");
+            rsId.next();
+            int id_prenotazione = rsId.getInt("id");
+            for (int i = 0; i < id_lotti.size(); ++i) {
+                statement2.executeUpdate("update lotto set qtyContratti = qtyContratti - " + String.valueOf(qty_lotti.get(i)) + " where id_l = " + id_lotti.get(i));
+                PreparedStatement statement3 = connection.prepareStatement("insert into lotto_ordinato(ref_id_l, ref_id_p, isCaricato, qty) values(?,?,?,?)");
+                statement3.setInt(1, id_lotti.get(i));
+                statement3.setInt(2, id_prenotazione);
+                statement3.setInt(3, 0);
+                statement3.setInt(4, qty_lotti.get(i));
+                statement3.executeUpdate();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

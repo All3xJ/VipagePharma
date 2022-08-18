@@ -30,7 +30,7 @@ public class PrenotazioneFarmaciDaBancoControl {
                 String id_farmaco = contratti.getString("ref_id_f");
                 ResultSet lotti = DBMSBoundary.getLotti(id_farmaco);
                 scegliLottiECorriere(lotti,corrieri,contratti);
-                DBMSBoundary.creaPrenotazioneEScarica(contratti.getInt("ref_id_uf"),this.id_corriere,Integer.parseInt(id_farmaco),data.plusWeeks(1),idLotti,qtyLotti);
+                DBMSBoundary.creaPrenotazioneDaBancoEScarica(contratti.getInt("ref_id_uf"),this.id_corriere,Integer.parseInt(id_farmaco),data.plusWeeks(1),idLotti,qtyLotti);
                 lotti.close();
             }
             contratti.close();

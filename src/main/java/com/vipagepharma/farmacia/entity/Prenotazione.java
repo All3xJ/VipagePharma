@@ -5,14 +5,28 @@ import javafx.beans.property.StringProperty;
 
 public class Prenotazione {
     private final StringProperty idPrenotazione = new SimpleStringProperty();
+
     private final StringProperty nomeFarmaco = new SimpleStringProperty();
 
     private final StringProperty dataConsegna = new SimpleStringProperty();
 
-    public Prenotazione(String idPrenotazione, String nomeFarmaco, String dataConsegna){
+    private String idFarmaco;
+    private String idFarmacia;
+
+    public Prenotazione(String idPrenotazione, String nomeFarmaco, String dataConsegna , String idFarmacia,String idFarmaco){
         this.setId(idPrenotazione);
         this.setNomeFarmaco(nomeFarmaco);
         this.setDataConsegna(dataConsegna);
+        this.idFarmacia = idFarmacia;
+        this.idFarmaco = idFarmaco;
+    }
+
+    public String getIdFarmaco(){
+        return this.idFarmaco;
+    }
+
+    public String getIdFarmacia(){
+        return this.idFarmacia;
     }
 
     public final StringProperty idPrenotazioneProperty() {

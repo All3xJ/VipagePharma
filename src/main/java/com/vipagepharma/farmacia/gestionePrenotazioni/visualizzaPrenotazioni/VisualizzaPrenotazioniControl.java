@@ -41,7 +41,7 @@ public class VisualizzaPrenotazioniControl {
             this.tvObservableList.clear();
         while (true) {
             if (!prenotazioni.next()) break;
-            this.tvObservableList.add(new Prenotazione(prenotazioni.getString("id_p"),prenotazioni.getString("nome"),prenotazioni.getString("data_consegna")));
+            this.tvObservableList.add(new Prenotazione(prenotazioni.getString("id_p"),prenotazioni.getString("nome"),prenotazioni.getString("data_consegna"),prenotazioni.getString("ref_id_uf"),prenotazioni.getString("id_f")));
         }
         } catch (SQLException e) {
             throw new RuntimeException(e);

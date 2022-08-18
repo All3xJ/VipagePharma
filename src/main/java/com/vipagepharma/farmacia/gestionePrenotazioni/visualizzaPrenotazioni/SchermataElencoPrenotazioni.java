@@ -2,6 +2,7 @@ package com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.vipagepharma.farmacia.App;
@@ -82,8 +83,10 @@ public class SchermataElencoPrenotazioni implements Initializable{
 							} else if (nomeButton.equals("Carico")){
 								Prenotazione prenotazione = getTableView().getItems().get(getIndex());
 								try {
-									this.premeCarico(prenotazione.getIdPrenotazione());
+									this.premeCarico(prenotazione);
 								} catch (IOException e) {
+									throw new RuntimeException(e);
+								} catch (SQLException e) {
 									throw new RuntimeException(e);
 								}
 								//System.out.println("Carico-> selectedEntry: " + entry);
@@ -100,8 +103,8 @@ public class SchermataElencoPrenotazioni implements Initializable{
 						annControl.start();
 					}
 
-					private void premeCarico(String id_prenotazione) throws IOException {
-						CaricoPrenotazioneControl carPreCtrl = new CaricoPrenotazioneControl(id_prenotazione);
+					private void premeCarico(Prenotazione prenotazione) throws IOException, SQLException {
+						CaricoPrenotazioneControl carPreCtrl = new CaricoPrenotazioneControl(prenotazione);
 						carPreCtrl.start();
 					}
 
