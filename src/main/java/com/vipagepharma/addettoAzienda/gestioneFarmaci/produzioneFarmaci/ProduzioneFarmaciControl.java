@@ -2,7 +2,6 @@ package com.vipagepharma.addettoAzienda.gestioneFarmaci.produzioneFarmaci;
 
 import com.vipagepharma.addettoAzienda.DBMSBoundary;
 
-import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.DayOfWeek;
