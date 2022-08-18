@@ -1,6 +1,7 @@
 package com.vipagepharma.corriere.gestioneConsegne.visualizzaConsegne;
 
 import com.vipagepharma.corriere.entity.Ordine;
+import com.vipagepharma.corriere.gestioneConsegne.firmaConsegna.FirmaConsegnaControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -63,7 +64,8 @@ public class SchermataConsegneOdierne implements Initializable {
                     }
 
                     private void premeFirma(Ordine entry) throws IOException {
-                        VisualizzaConsegneControl.visualConCtrlRef.premutoFirma(entry);
+                        FirmaConsegnaControl firmaconsCtrl = new FirmaConsegnaControl();
+                        firmaconsCtrl.start(entry);
                     }
 
                     @Override

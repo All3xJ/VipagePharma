@@ -39,9 +39,4 @@ public class VisualizzaConsegneControl {
         }
         ordini.close();
     }
-
-    public void premutoFirma(Ordine ordine) throws IOException {
-        FirmaConsegnaControl firmaconsCtrl = new FirmaConsegnaControl();
-        firmaconsCtrl.start(ordine);
-    }
 }

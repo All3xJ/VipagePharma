@@ -49,5 +49,6 @@ public class SchermataRiepilogoOrdine implements Initializable {
     }
 
     public void premeFirma(MouseEvent mouseEvent) {
+        FirmaConsegnaControl.firmConsCtrlRef.premutoFirma(ordine);
     }
 }
