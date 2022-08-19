@@ -17,7 +17,7 @@ public class RisoluzioneProblemaConsegnaControl {
 
     public static RisoluzioneProblemaConsegnaControl risProbConsCtrlRef;
 
-    private Consegna consegna;
+    public Consegna consegna;
 
     public RisoluzioneProblemaConsegnaControl(Consegna consegna){
         this.consegna=consegna;

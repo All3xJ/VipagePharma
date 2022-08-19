@@ -246,9 +246,9 @@ public class DBMSBoundary {
     public static ResultSet getElencoConsegneConSegnalazioni(){
         ResultSet resultSet;
         try{
-            Connection connection = connectAzienda();
+            Connection connection = connectDBMS();
             Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery("select ref_id_uf, id_p, data_consegna, ref_id_f from prenotazione where problema = 1");
+            resultSet = statement.executeQuery("select p.ref_id_uf, p.id_p, p.data_consegna, p.ref_id_f, u.nome from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u where problema = 1 and p.ref_id_uf=u.id_uf");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

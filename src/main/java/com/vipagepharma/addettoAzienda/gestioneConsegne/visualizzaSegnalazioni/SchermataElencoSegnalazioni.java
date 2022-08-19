@@ -22,7 +22,7 @@ public class SchermataElencoSegnalazioni implements Initializable {
     private TableColumn<Consegna, String> dataconsegna_column;
 
     @FXML
-    private TableColumn<Consegna, String> idfarmacia_column;
+    private TableColumn<Consegna, String> nomefarmacia_column;
 
     @FXML
     private TableColumn<Consegna, String> idordine_column;
@@ -36,7 +36,7 @@ public class SchermataElencoSegnalazioni implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resbound){
-        this.idfarmacia_column.setCellValueFactory(new PropertyValueFactory<Consegna,String >("idFarmacia"));
+        this.nomefarmacia_column.setCellValueFactory(new PropertyValueFactory<Consegna,String >("nomeFarmacia"));
         this.idordine_column.setCellValueFactory(new PropertyValueFactory<Consegna,String >("idOrdine"));
         this.dataconsegna_column.setCellValueFactory(new PropertyValueFactory<Consegna,String >("dataConsegna"));
 
