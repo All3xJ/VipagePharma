@@ -35,13 +35,13 @@ public class VisualizzaPrenotazioniControl {
         return Utente.getID();
     }
 
-    private void riempiObservableList(String IDFarmacia) throws SQLException {
+    public void riempiObservableList(String IDFarmacia) throws SQLException {
         this.prenotazioni = DBMSBoundary.getPrenotazioniEInfoFarmaci(IDFarmacia);
         try {
             this.tvObservableList.clear();
         while (true) {
             if (!prenotazioni.next()) break;
-            this.tvObservableList.add(new Prenotazione(prenotazioni.getString("id_p"),prenotazioni.getString("nome"),prenotazioni.getString("data_consegna"),prenotazioni.getString("ref_id_uf"),prenotazioni.getString("id_f")));
+            this.tvObservableList.add(new Prenotazione(prenotazioni.getString("id_p"),prenotazioni.getString("nome"),prenotazioni.getString("data_consegna"),prenotazioni.getString("ref_id_uf"),prenotazioni.getString("id_f"),prenotazioni.getInt("isConsegnato")));
         }
         } catch (SQLException e) {
             throw new RuntimeException(e);

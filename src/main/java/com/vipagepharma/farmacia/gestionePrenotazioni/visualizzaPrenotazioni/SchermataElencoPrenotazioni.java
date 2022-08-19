@@ -3,6 +3,7 @@ package com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import com.vipagepharma.farmacia.App;
@@ -45,6 +46,7 @@ public class SchermataElencoPrenotazioni implements Initializable{
 
 	@Override
 	public void initialize(URL url, ResourceBundle resbound){
+
 		this.idprenotazione_column.setCellValueFactory(new PropertyValueFactory<>("idPrenotazione"));
 		this.nomefarmaco_column.setCellValueFactory(new PropertyValueFactory<>("nomeFarmaco"));
 		this.dataconsegna_column.setCellValueFactory(new PropertyValueFactory<>("dataConsegna"));
@@ -68,18 +70,28 @@ public class SchermataElencoPrenotazioni implements Initializable{
 
 					{
 						btn.setStyle("-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;");
-					}
 
+						/*
+						NON FUNZIONA GetTableView
+
+						Prenotazione prenotazione = getTableView().getItems().get(getIndex());
+						if(LocalDate.parse(prenotazione.getDataConsegna()).isBefore(LocalDate.now().plusDays(2)) && (nomeButton.equals("Annulla") || nomeButton.equals("Modifica"))){
+							btn.setDisable(true);
+						}
+						if(!prenotazione.getIsConsegnato() && nomeButton.equals("Carico")){
+							btn.setDisable(true);
+						}*/
+					}
                     {
+
                         btn.setOnAction((ActionEvent event) -> {
 							if (nomeButton.equals("Annulla")){
 								Prenotazione prenotazione = getTableView().getItems().get(getIndex());
 								try {
-									this.premeAnnulla(prenotazione);
+									this.premeAnnulla(prenotazione,event);
 								} catch (IOException e) {
 									throw new RuntimeException(e);
 								}
-								//System.out.println("Annulla-> selectedEntry: " + entry);
 							} else if (nomeButton.equals("Carico")){
 								Prenotazione prenotazione = getTableView().getItems().get(getIndex());
 								try {
@@ -89,18 +101,16 @@ public class SchermataElencoPrenotazioni implements Initializable{
 								} catch (SQLException e) {
 									throw new RuntimeException(e);
 								}
-								//System.out.println("Carico-> selectedEntry: " + entry);
 							}else if (nomeButton.equals("Modifica")){
 								Prenotazione prenotazione = getTableView().getItems().get(getIndex());
 								this.premeModifica(prenotazione);
-								//System.out.println("Carico-> selectedEntry: " + entry);
 							}
                         });
                     }
 
-					private void premeAnnulla(Prenotazione entry) throws IOException {
-						AnnullaPrenotazioneControl annControl = new AnnullaPrenotazioneControl();
-						annControl.start();
+					private void premeAnnulla(Prenotazione prenotazione,ActionEvent event) throws IOException {
+						AnnullaPrenotazioneControl annControl = new AnnullaPrenotazioneControl(prenotazione);
+						annControl.start(event);
 					}
 
 					private void premeCarico(Prenotazione prenotazione) throws IOException, SQLException {

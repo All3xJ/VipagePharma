@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -50,6 +51,7 @@ public class App extends Application {
         popup_stage.setScene(newscene);
         popup_stage.initModality(Modality.WINDOW_MODAL);
         popup_stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+        popup_stage.initStyle(StageStyle.UNDECORATED);
         popup_stage.show();
     }
 
@@ -63,6 +65,7 @@ public class App extends Application {
         popup_stage.setScene(newscene);
         popup_stage.initModality(Modality.WINDOW_MODAL);
         popup_stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+        popup_stage.initStyle(StageStyle.UNDECORATED);
         popup_stage.show();
     }
 

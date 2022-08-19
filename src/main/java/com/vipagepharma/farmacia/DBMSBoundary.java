@@ -150,21 +150,21 @@ public class DBMSBoundary {
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             //resultSet = statement .executeQuery("SELECT p.id_p, f.nome, p.data_consegna FROM prenotazione p, farmaco f, lotto l, lotto_ordinato lo WHERE p.isConsegnato = 0 and p.ref_id_uf =" + id_farmacia +" and p.id_p=lo.ref_id_p and lo.ref_id_l=l.id_l and l.ref_id_f=f.id_f");  //prenotazioni per la medesima farmacia e non ancora contrassegnati come consegnati
-            resultSet = statement.executeQuery("SELECT p.id_p, p.ref_id_uf,f.id_f, f.nome, p.data_consegna FROM prenotazione p, farmaco f WHERE p.ref_id_uf =" + id_farmacia +" and p.ref_id_f=f.id_f");
+            resultSet = statement.executeQuery("SELECT p.id_p, p.ref_id_uf,f.id_f, f.nome, p.data_consegna ,p.isConsegnato FROM prenotazione p, farmaco f WHERE p.ref_id_uf =" + id_farmacia +" and p.ref_id_f=f.id_f");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return resultSet;
     }
 
-
-    // DA COMPLETARE!!!!!!!
-    public static void eliminaOrdineERicaricaFarmaci(String id_prenotazione){
+    public static void eliminaOrdineERicaricaFarmaci(String id_prenotazione,ArrayList<String> id_l,ArrayList<String> qty){
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            statement .executeQuery("DELETE FROM prenotazione p WHERE p.prenotazione =" + id_prenotazione);
-            // QUERY RICARICA FARMACI PER ADESSO NON NE HO IDEA
+            statement.executeUpdate("DELETE FROM prenotazione p WHERE p.prenotazione =" + id_prenotazione);
+            for(int i = 0 ; i< id_l.size();++i) {
+                statement.executeUpdate("UPDATE FROM lotto l set qty = qty + " + qty.get(i)+" WHERE l.id_l =" + id_l.get(i));
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

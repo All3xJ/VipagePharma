@@ -5,8 +5,10 @@ import com.vipagepharma.farmacia.DBMSBoundary;
 import com.vipagepharma.farmacia.SchermataPrincipale;
 import com.vipagepharma.farmacia.entity.Lotto;
 import com.vipagepharma.farmacia.entity.Prenotazione;
+import com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni.VisualizzaPrenotazioniControl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.input.MouseEvent;
 
 
 import java.io.IOException;
@@ -42,9 +44,17 @@ public class CaricoPrenotazioneControl {
         App.setRoot("gestionePrenotazioni/caricoPrenotazione/SchermataRiepilogoCarico");
     }
 
-    public void premutoConferma(LinkedList<String> lotti_selezionati){
+    public void premutoConferma(LinkedList<String> lotti_selezionati, LinkedList<String> qty, LinkedList<String> date_scadenza, MouseEvent event) throws IOException {
         //DBMSBoundary.confermaConsegna(this.id_prenotazione,lotti_selezionati);
-        //DBMSBoundary.aggiungiCarico(this.id_farmacia,this.id_farmaco,this.nome_farmacia,lotti_selezionati,date_scadenza,qty);
+        //DBMSBoundary.aggiungiCarico(this.id_farmacia,this.id_farmaco,nome_farmaco,lotti_selezionati,date_scadenza,qty);
+        App.newWind("gestionePrenotazioni/caricoPrenotazione/AvvisoOperazioneRiuscita",event);
+    }
+
+    public void premutoOk() throws IOException, SQLException {
+        VisualizzaPrenotazioniControl.visualPrenCtrlRef.riempiObservableList(this.id_farmacia);
+        App.setRoot("gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni");
+        App.popup_stage.close();
+
     }
 
     private void riempiObservableList() throws SQLException {

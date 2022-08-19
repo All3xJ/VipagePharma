@@ -105,8 +105,8 @@ public class SchermataRiepilogoCarico implements Initializable {
     }
 
     @FXML
-    public void premeConferma(MouseEvent event){
-        CaricoPrenotazioneControl.carPrenCtrl.premutoConferma(lotti_selezionati);
+    public void premeConferma(MouseEvent event) throws IOException {
+        CaricoPrenotazioneControl.carPrenCtrl.premutoConferma(lotti_selezionati,qty_selezionati,date_scadenza_selezionate,event);
     }
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
         App.setRoot("autenticazione/login/SchermataLogin");
