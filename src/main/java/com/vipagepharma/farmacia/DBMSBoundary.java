@@ -212,29 +212,7 @@ public class DBMSBoundary {
         }
     }
 
-    public static void carica(LinkedList <String> quantità, LinkedList <String> id_lotti){ //ricarica i lotti non consegnati RISOLUZIONE PROBLEMA CONSEGNA
-        ResultSet resultSet;
-        for (int i=0; i< id_lotti.size(); ++i){
-            try{
-                Connection connection = connectAzienda();
-                Statement statement = connection.createStatement();
-                statement.executeUpdate("Update lotto set qty = qty +" + quantità.removeFirst() + " where id_l = " + id_lotti.removeFirst());
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
 
-    public static void creaOrdine(String id_farmacista, String id_corriere, LocalDate data_consegna){ //RISOLUZINE PROBLEMA CONSEGNA
-        ResultSet resultSet;
-        try{
-            Connection connection = connectAzienda();
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into prenotazione (ref_id_uf, ref_id_ua, isConsegnato, data_consegna) values (" + id_farmacista + ", " + id_corriere +", " + 0 + ", " + data_consegna);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public static ResultSet getLotti(String id_farmaco){
         ResultSet resultSet;
@@ -260,7 +238,7 @@ public class DBMSBoundary {
         return resultSet;
     }
 
-    public static ResultSet getCorrieri(String id_farmaco){
+    public static ResultSet getCorrieri(){
         ResultSet resultSet;
         try{
             Connection connection = connectAzienda();

@@ -2,6 +2,10 @@ module com.vipagepharma {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires itextpdf;
+    requires java.desktop;
+    requires mail;
+    requires activation;
 
     exports com.vipagepharma.farmacia;
     opens com.vipagepharma.farmacia to javafx.fxml;
@@ -40,6 +44,8 @@ module com.vipagepharma {
     opens com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConsegne to javafx.fxml;
     exports com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni;
     opens com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni to javafx.fxml;
+    exports com.vipagepharma.addettoAzienda.gestioneConsegne.risoluzioneProblemaConsegna;
+    opens com.vipagepharma.addettoAzienda.gestioneConsegne.risoluzioneProblemaConsegna to javafx.fxml;
     exports com.vipagepharma.addettoAzienda.entity;
     opens com.vipagepharma.addettoAzienda.entity to javafx.base;
 

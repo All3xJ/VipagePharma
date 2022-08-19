@@ -25,8 +25,8 @@ public class SchermataPrincipale {
     public void premeHome(MouseEvent mouseEvent)  {
     }
 
-    public void premeIndietro(MouseEvent mouseEvent) {
-
+    public void premeIndietro(MouseEvent mouseEvent) throws IOException {
+        App.setRoot(schermataPrecedente);
     }
 
     public void premeLogout(MouseEvent mouseEvent) throws IOException {

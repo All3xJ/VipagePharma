@@ -10,8 +10,5 @@
         <module name="vipagepharma (1)" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="vipagepharma (2)" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>

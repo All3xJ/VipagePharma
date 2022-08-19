@@ -1,6 +1,7 @@
 package com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni;
 
 import com.vipagepharma.addettoAzienda.entity.Consegna;
+import com.vipagepharma.addettoAzienda.gestioneConsegne.risoluzioneProblemaConsegna.RisoluzioneProblemaConsegnaControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,7 +22,7 @@ public class SchermataElencoSegnalazioni implements Initializable {
     private TableColumn<Consegna, String> dataconsegna_column;
 
     @FXML
-    private TableColumn<Consegna, String> idfarmacia_column;
+    private TableColumn<Consegna, String> nomefarmacia_column;
 
     @FXML
     private TableColumn<Consegna, String> idordine_column;
@@ -35,7 +36,7 @@ public class SchermataElencoSegnalazioni implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resbound){
-        this.idfarmacia_column.setCellValueFactory(new PropertyValueFactory<Consegna,String >("idFarmacia"));
+        this.nomefarmacia_column.setCellValueFactory(new PropertyValueFactory<Consegna,String >("nomeFarmacia"));
         this.idordine_column.setCellValueFactory(new PropertyValueFactory<Consegna,String >("idOrdine"));
         this.dataconsegna_column.setCellValueFactory(new PropertyValueFactory<Consegna,String >("dataConsegna"));
 
@@ -71,7 +72,8 @@ public class SchermataElencoSegnalazioni implements Initializable {
                     }
 
                     private void premeVisualizzaErrore(Consegna entry,ActionEvent event) throws IOException {
-                        VisualizzaSegnalazioniControl.visConsCtrlRef.premutoVisualizzaErrore("gestioneConsegne/risoluzioneProblemaConsegna/AvvisoProblemaOrdine",event);
+                        RisoluzioneProblemaConsegnaControl risProbConCtrl = new RisoluzioneProblemaConsegnaControl(entry);
+                        risProbConCtrl.start(event);
                     }
 
                     @Override

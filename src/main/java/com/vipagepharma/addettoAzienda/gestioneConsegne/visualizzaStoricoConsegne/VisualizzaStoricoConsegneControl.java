@@ -2,11 +2,14 @@ package com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConseg
 
 import com.vipagepharma.addettoAzienda.App;
 import com.vipagepharma.addettoAzienda.DBMSBoundary;
+import com.vipagepharma.addettoAzienda.SchermataPrincipale;
 import com.vipagepharma.addettoAzienda.entity.Consegna;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,26 +26,64 @@ public class VisualizzaStoricoConsegneControl {
 
     public ResultSet consegne = null;
 
+    public static int contatorePagineConsegne = 0;
+
+
     public void start() throws IOException, SQLException {
         this.riempiObservableList();
         App.setRoot("gestioneConsegne/visualizzaStoricoConsegne/SchermataStoricoConsegne");
     }
 
     private void riempiObservableList() throws SQLException {
-        this.consegne = DBMSBoundary.getConsegneRecenti();
-        try {
+        if (contatorePagineConsegne==0) {
             this.tvObservableList.clear();
+            this.consegne = DBMSBoundary.getConsegneRecenti();
+        }else {
+            this.tvObservableList.clear();
+            this.consegne = DBMSBoundary.getAltreConsegne();
+        }try {
             while (true) {
-                if (!consegne.next()) break;
-                this.tvObservableList.add(new Consegna(consegne.getString("ref_id_uf"),consegne.getString("id_p"),consegne.getString("data_consegna")));
+                if (!this.consegne.next()) break;
+                this.tvObservableList.add(new Consegna(this.consegne.getString("ref_id_uf"),this.consegne.getString("id_p"),this.consegne.getString("data_consegna"),this.consegne.getBlob("ricevuta_pdf")));
             }
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
         this.consegne.close();
     }
 
-    public void premutoVisualizzaErrore(String schermata, ActionEvent event) throws IOException {
-        App.newWind(schermata,event);
+    public void premutoVisualizzaRicevuta(Consegna consegna) throws IOException {
+        try
+        {
+            Runtime.getRuntime().exec("evince "+consegna.ricevutaPath);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            try{
+                Runtime.getRuntime().exec("okular "+consegna.ricevutaPath);
+            } catch (Exception e2){
+                e2.printStackTrace();
+            }
+        }
+    }
+
+    public void premutoMostraAltro() throws SQLException, IOException {
+        ++contatorePagineConsegne;
+        this.start();
+    }
+
+    public void premutoHome(String schermataPrecedente) throws IOException {
+        contatorePagineConsegne=0;
+        SchermataPrincipale.schermataPrecedente = schermataPrecedente;
+        App.setRoot("SchermataPrincipale");
+    }
+
+
+    public void premutoIndietro() throws IOException {
+        contatorePagineConsegne=0;
+        App.setRoot("SchermataPrincipale");
     }
 }

@@ -1,6 +1,9 @@
 package com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConsegne;
 
+import com.vipagepharma.addettoAzienda.DBMSBoundary;
+import com.vipagepharma.addettoAzienda.SchermataPrincipale;
 import com.vipagepharma.addettoAzienda.entity.Consegna;
+import com.vipagepharma.addettoAzienda.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,10 +12,14 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class SchermataStoricoConsegne implements Initializable {
@@ -62,7 +69,7 @@ public class SchermataStoricoConsegne implements Initializable {
                             if (nomeButton.equals("Visualizza ricevuta")){
                                 Consegna consegna = getTableView().getItems().get(getIndex());
                                 try {
-                                    this.premeVisualizzaRicevuta(consegna,event);
+                                    this.premeVisualizzaRicevuta(consegna, event);
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }
@@ -70,8 +77,9 @@ public class SchermataStoricoConsegne implements Initializable {
                         });
                     }
 
-                    private void premeVisualizzaRicevuta(Consegna entry,ActionEvent event) throws IOException {
-                        VisualizzaStoricoConsegneControl.visStoConsCtrlRef.premutoVisualizzaErrore("SchermataPrincipale",event);
+                    private void premeVisualizzaRicevuta(Consegna consegna, ActionEvent event) throws IOException {
+                        VisualizzaStoricoConsegneControl.visStoConsCtrlRef.premutoVisualizzaRicevuta(consegna);
+
                     }
 
                     @Override
@@ -94,4 +102,21 @@ public class SchermataStoricoConsegne implements Initializable {
 
     }
 
+
+    public void premeHome(MouseEvent mouseEvent) throws IOException {
+        VisualizzaStoricoConsegneControl.visStoConsCtrlRef.premutoHome("gestioneConsegne/visualizzaStoricoConsegne/SchermataStoricoConsegne.java");
+    }
+
+    public void premeIndietro(MouseEvent mouseEvent) throws IOException {
+        VisualizzaStoricoConsegneControl.visStoConsCtrlRef.premutoIndietro();
+    }
+
+    public void premeLogout(MouseEvent mouseEvent) throws IOException {
+        VisualizzaStoricoConsegneControl.contatorePagineConsegne=0;
+        App.setRoot("autenticazione/login/SchermataLogin");
+    }
+
+    public void premeMostraAltro(MouseEvent mouseEvent) throws SQLException, IOException {
+        VisualizzaStoricoConsegneControl.visStoConsCtrlRef.premutoMostraAltro();
+    }
 }

@@ -1,5 +1,7 @@
 package com.vipagepharma.corriere.gestioneConsegne.visualizzaConsegne;
 
+import com.vipagepharma.corriere.App;
+import com.vipagepharma.corriere.SchermataPrincipale;
 import com.vipagepharma.corriere.entity.Ordine;
 import com.vipagepharma.corriere.gestioneConsegne.firmaConsegna.FirmaConsegnaControl;
 import javafx.event.ActionEvent;
@@ -10,6 +12,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 import java.io.IOException;
@@ -17,6 +20,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SchermataConsegneOdierne implements Initializable {
+
+    public static String schermataPrecedente;
 
     @FXML
     private TableColumn<Ordine, String> nomeFarmacia_column;
@@ -91,4 +96,16 @@ public class SchermataConsegneOdierne implements Initializable {
 
     }
 
+
+    public void premeHome(MouseEvent mouseEvent) throws IOException {
+        VisualizzaConsegneControl.visualConCtrlRef.premutoHome("gestioneConsegne/visualizzaConsegne/SchermataConsegneOdierne");
+    }
+
+    public void premeIndietro(MouseEvent mouseEvent) throws IOException {
+        VisualizzaConsegneControl.visualConCtrlRef.premutoIndietro(schermataPrecedente);
+    }
+
+    public void premeLogout(MouseEvent mouseEvent) throws IOException {
+        App.setRoot("autenticazione/login/SchermataLogin");
+    }
 }

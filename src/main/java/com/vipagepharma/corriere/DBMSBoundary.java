@@ -1,10 +1,11 @@
 package com.vipagepharma.corriere;
-import com.vipagepharma.corriere.entity.Ordine;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.LinkedList;
 
 public class DBMSBoundary {
     private static final String url = "jdbc:mysql://vipagesite.duckdns.org:3306/";
@@ -129,7 +130,7 @@ public class DBMSBoundary {
             java.util.Date date = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
             String strDataOdierna = formatter.format(date);
-            resultSet = statement.executeQuery("select p.id_p, u.nome, p.data_consegna, p.ref_id_uf, sum(l.qty) as qty from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u, vipagepharma_azienda.lotto_ordinato l where p.ref_id_uf = u.id_uf and p.ref_id_ua = "+id_corriere+" and p.data_consegna = str_to_date('"+strDataOdierna+"','%d-%m-%Y') and l.ref_id_p=p.id_p group by p.id_p, u.nome, p.data_consegna, p.ref_id_uf, l.qty");
+            resultSet = statement.executeQuery("select p.id_p, u.nome, p.data_consegna, p.ref_id_uf, sum(l.qty) as qty from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u, vipagepharma_azienda.lotto_ordinato l where p.ref_id_uf = u.id_uf and p.ref_id_ua = "+id_corriere+" and p.data_consegna = str_to_date('"+strDataOdierna+"','%d-%m-%Y') and l.ref_id_p=p.id_p and p.isConsegnato=0 group by p.id_p, u.nome, p.data_consegna, p.ref_id_uf");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -148,13 +149,30 @@ public class DBMSBoundary {
 
     }
 
-    public static void salvaRicevuta(String id_prenotazione, Blob ricevuta){
+    public static void salvaRicevuta(String id_prenotazione, String ricevutaPath){
         ResultSet resultSet;
-        try{
+        /*try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
             statement.executeUpdate("update prenotazione set ricevuta_pdf = " + ricevuta + " where id_p = " + id_prenotazione);
         } catch (Exception e) {
+            throw new RuntimeException(e);
+        }*/
+        Connection connection = connectAzienda();
+        String sql = "update prenotazione set ricevuta_pdf = ? where id_p = ?";
+        PreparedStatement statement = null;
+        try {
+            statement = connection.prepareStatement(sql);
+        File fileRicevuta= new File(ricevutaPath);
+        FileInputStream inputStreamRicevuta= new FileInputStream(fileRicevuta);
+        statement.setBlob(1, inputStreamRicevuta);
+        statement.setString(2, id_prenotazione);
+
+        // sends the statement to the database server
+        statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
 

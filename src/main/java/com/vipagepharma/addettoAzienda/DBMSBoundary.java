@@ -1,9 +1,13 @@
 package com.vipagepharma.addettoAzienda;
 
+import com.vipagepharma.addettoAzienda.entity.Consegna;
+import com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConsegne.VisualizzaStoricoConsegneControl;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.time.LocalDate;
+import java.text.SimpleDateFormat;
 
 public class DBMSBoundary {
     private static final String url = "jdbc:mysql://vipagesite.duckdns.org:3306/";
@@ -11,8 +15,6 @@ public class DBMSBoundary {
     private static final String pass = "BubJbhvbj373838&#@!";
     private static final String dbFarmacia = "vipagepharma_farmacia";
     private static final String dbAzienda = "vipagepharma_azienda";
-
-    private static int contatore = 0;
 
     public static Connection connectFarmacia(){
         Connection connection = null;
@@ -209,12 +211,12 @@ public class DBMSBoundary {
         return resultSet;
     }
 
-    public static void setFlagProblema(String id_prenotazione){
+    public static void setFlagProblema(String id_prenotazione, int boo){
         ResultSet resultSet;
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("Update prenotazione set problema = 1 where id_p = " + id_prenotazione);
+            statement.executeUpdate("Update prenotazione set problema = "+boo+" where id_p = " + id_prenotazione);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -243,9 +245,9 @@ public class DBMSBoundary {
     public static ResultSet getElencoConsegneConSegnalazioni(){
         ResultSet resultSet;
         try{
-            Connection connection = connectAzienda();
+            Connection connection = connectDBMS();
             Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery("select ref_id_uf, id_p, data_consegna from prenotazione where problema = 1");
+            resultSet = statement.executeQuery("select p.ref_id_uf, p.id_p, p.data_consegna, p.ref_id_f, u.nome from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u where problema = 1 and p.ref_id_uf=u.id_uf");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -257,7 +259,7 @@ public class DBMSBoundary {
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery("Select id_p, ref_id_uf, data_consegna from prenotazione where isConsegnato = 1 limit 15"); //vedere se funziona sintassi
+            resultSet = statement.executeQuery("Select id_p, ref_id_uf, data_consegna, ricevuta_pdf from prenotazione where isConsegnato = 1 limit 15"); //vedere se funziona sintassi
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -265,13 +267,13 @@ public class DBMSBoundary {
     }
 
     public static ResultSet getAltreConsegne(){
-        ++contatore;
-        int base = contatore * 15;
+        ++VisualizzaStoricoConsegneControl.contatorePagineConsegne;
+        int base = VisualizzaStoricoConsegneControl.contatorePagineConsegne * 15;
         ResultSet resultSet;
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery("Select id_p, ref_id_uf, data_consegna from prenotazione where isConsegnato=1 limit " + base + ", 15"); //vedere se funziona sintassi
+            resultSet = statement.executeQuery("Select id_p, ref_id_uf, data_consegna, ricevuta_pdf from prenotazione where isConsegnato=1 limit " + base + ", 15"); //vedere se funziona sintassi
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -333,4 +335,60 @@ public class DBMSBoundary {
             throw new RuntimeException(e);
         }
     }
+
+    public static ResultSet getLottiNonConsegnati(Consegna consegna){
+        ResultSet resultSet;
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            resultSet = statement.executeQuery("select l.qty,l.ref_id_l from lotto_ordinato l, prenotazione p where l.ref_id_p=p.id_p and p.ref_id_uf = " + consegna.idFarmacia.get() + " and p.id_p="+consegna.idOrdine.get());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+    public static void carica(ResultSet lottiNonConsegnati) throws SQLException { //ricarica i lotti non consegnati RISOLUZIONE PROBLEMA CONSEGNA
+        ResultSet resultSet;
+        int qtyDaRiaggiungere = 0;
+        String idLotto = null;
+        while (lottiNonConsegnati.next()) {
+            try{
+                Connection connection = connectAzienda();
+                Statement statement = connection.createStatement();
+                qtyDaRiaggiungere = lottiNonConsegnati.getInt("qty");
+                idLotto = lottiNonConsegnati.getString("ref_id_l");
+                statement.executeUpdate("Update lotto set qty = qty +" + qtyDaRiaggiungere + " where id_l = " + idLotto);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public static ResultSet creaOrdine(String id_farmacia, int id_corriere, String id_farmaco) throws SQLException { //RISOLUZINE PROBLEMA CONSEGNA
+        ResultSet resultSet;
+
+        Connection connection = connectAzienda();
+        Statement statement = connection.createStatement();
+        java.util.Date date = new java.util.Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
+        String strDataOdierna = formatter.format(date);
+        //System.out.println("insert into prenotazione (ref_id_uf, ref_id_ua, isConsegnato, data_consegna, ref_id_f) values (" + id_farmacia + "," + id_corriere +"," + 0 + ", str_to_date('"+strDataOdierna+"','%d-%m-%Y')  ,"+ id_farmaco+")");
+        statement.executeUpdate("insert into prenotazione (ref_id_uf, ref_id_ua, isConsegnato, data_consegna, ref_id_f) values (" + id_farmacia + "," + id_corriere +"," + 0 + ", str_to_date('"+strDataOdierna+"','%d-%m-%Y')  ,"+ id_farmaco+")");
+        resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() as id_p");
+
+        return resultSet;
+    }
+
+    public static void aggiornaLottiOrdinati(int idprenotazione, ResultSet lottiNonConsegnati) throws SQLException {
+        int idLotto = 0;
+        while (lottiNonConsegnati.next()) {
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            idLotto = lottiNonConsegnati.getInt("ref_id_l");
+            statement.executeUpdate("Update lotto_ordinato set ref_id_p = " + idprenotazione + " where ref_id_l="+idLotto);
+        }
+    }
+
+
 }
