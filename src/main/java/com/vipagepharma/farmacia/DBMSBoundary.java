@@ -144,13 +144,13 @@ public class DBMSBoundary {
         return resultSet;
     }
 
-    public static ResultSet getPrenotazioniEInfoFarmaci(String id_farmacia){
+    public static ResultSet getPrenotazioni(String id_farmacia){
         ResultSet resultSet;
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             //resultSet = statement .executeQuery("SELECT p.id_p, f.nome, p.data_consegna FROM prenotazione p, farmaco f, lotto l, lotto_ordinato lo WHERE p.isConsegnato = 0 and p.ref_id_uf =" + id_farmacia +" and p.id_p=lo.ref_id_p and lo.ref_id_l=l.id_l and l.ref_id_f=f.id_f");  //prenotazioni per la medesima farmacia e non ancora contrassegnati come consegnati
-            resultSet = statement.executeQuery("SELECT p.id_p, p.ref_id_uf,f.id_f, f.nome, p.data_consegna ,p.isConsegnato FROM prenotazione p, farmaco f WHERE p.ref_id_uf =" + id_farmacia +" and p.ref_id_f=f.id_f");
+            resultSet = statement.executeQuery("SELECT p.id_p, p.ref_id_uf,f.id_f, f.nome, p.data_consegna ,p.isConsegnato,p.qty FROM prenotazione p, farmaco f WHERE p.ref_id_uf =" + id_farmacia +" and p.ref_id_f=f.id_f");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -184,15 +184,16 @@ public class DBMSBoundary {
     }
 
 
-    public static void creaPrenotazioneEScarica(int id_farmacia, int id_corriere,int id_farmaco,LocalDate data_consegna, ArrayList<Integer> id_lotti, ArrayList <Integer> qty_lotti){
+    public static void creaPrenotazioneEScarica(int id_farmacia, int id_corriere,int id_farmaco,LocalDate data_consegna, ArrayList<Integer> id_lotti, ArrayList <Integer> qty_lotti,int qty){
         try{ //crea prenotazione
             Connection connection = connectAzienda();
-            PreparedStatement statement1 = connection.prepareStatement("insert into prenotazione(ref_id_uf, ref_id_ua,ref_id_f, isConsegnato, data_consegna) values (?,?,?,?,?)");
+            PreparedStatement statement1 = connection.prepareStatement("insert into prenotazione(ref_id_uf, ref_id_ua,ref_id_f, isConsegnato, data_consegna,qty) values (?,?,?,?,?,?)");
             statement1.setInt(1,id_farmacia);
             statement1.setInt(2,id_corriere);
             statement1.setInt(3,id_farmaco);
             statement1.setInt(4, 0);
             statement1.setDate(5,Date.valueOf(data_consegna));
+            statement1.setInt(6,qty);
             statement1.executeUpdate();
             Statement statement2 = connection.createStatement() ;
             ResultSet rsId = statement2.executeQuery("SELECT LAST_INSERT_ID() as id");

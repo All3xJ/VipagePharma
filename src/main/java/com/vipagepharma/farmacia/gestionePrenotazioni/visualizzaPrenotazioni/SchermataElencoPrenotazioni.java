@@ -10,6 +10,8 @@ import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.entity.Prenotazione;
 import com.vipagepharma.farmacia.gestionePrenotazioni.annullaPrenotazione.AnnullaPrenotazioneControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.caricoPrenotazione.CaricoPrenotazioneControl;
+import com.vipagepharma.farmacia.gestionePrenotazioni.modificaContratti.ModificaContrattiControl;
+import com.vipagepharma.farmacia.gestionePrenotazioni.modificaPrenotazione.ModificaPrenotazioneControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -103,7 +105,11 @@ public class SchermataElencoPrenotazioni implements Initializable{
 								}
 							}else if (nomeButton.equals("Modifica")){
 								Prenotazione prenotazione = getTableView().getItems().get(getIndex());
-								this.premeModifica(prenotazione);
+								try {
+									this.premeModifica(prenotazione);
+								} catch (IOException e) {
+									throw new RuntimeException(e);
+								}
 							}
                         });
                     }
@@ -118,8 +124,9 @@ public class SchermataElencoPrenotazioni implements Initializable{
 						carPreCtrl.start();
 					}
 
-					private void premeModifica(Prenotazione entry) {
-
+					private void premeModifica(Prenotazione prenotazione) throws IOException {
+						ModificaPrenotazioneControl modPreCtrl = new ModificaPrenotazioneControl(prenotazione);
+						modPreCtrl.start();
 					}
 
 					@Override

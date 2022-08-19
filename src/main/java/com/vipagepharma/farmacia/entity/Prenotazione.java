@@ -10,16 +10,17 @@ public class Prenotazione {
 
     private final StringProperty dataConsegna = new SimpleStringProperty();
     private boolean isConsegnato;
-
     private String idFarmaco;
     private String idFarmacia;
+    private int qty;
 
-    public Prenotazione(String idPrenotazione, String nomeFarmaco, String dataConsegna , String idFarmacia,String idFarmaco,int isConsegnato){
+    public Prenotazione(String idPrenotazione, String nomeFarmaco, String dataConsegna , String idFarmacia,String idFarmaco,int isConsegnato,int qty){
         this.setId(idPrenotazione);
         this.setNomeFarmaco(nomeFarmaco);
         this.setDataConsegna(dataConsegna);
         this.idFarmacia = idFarmacia;
         this.idFarmaco = idFarmaco;
+        this.qty = qty;
         if(isConsegnato == 1)
             this.isConsegnato = true;
         else
@@ -35,6 +36,9 @@ public class Prenotazione {
 
     public String getIdFarmacia(){
         return this.idFarmacia;
+    }
+    public int getQty(){
+        return this.qty;
     }
 
     public final StringProperty idPrenotazioneProperty() {
