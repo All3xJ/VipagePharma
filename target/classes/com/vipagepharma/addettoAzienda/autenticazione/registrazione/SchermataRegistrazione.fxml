@@ -75,7 +75,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </PasswordField>
-            <Button layoutX="591.0" layoutY="507.0" mnemonicParsing="false" onAction="#premeRegistra" onMouseClicked="#premeRegistra" prefHeight="50.0" prefWidth="169.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Registra">
+            <Button layoutX="591.0" layoutY="507.0" mnemonicParsing="false" onAction="#premeRegistra" prefHeight="50.0" prefWidth="169.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Registra">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
