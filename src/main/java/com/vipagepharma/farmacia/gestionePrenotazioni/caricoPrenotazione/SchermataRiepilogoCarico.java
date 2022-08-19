@@ -21,6 +21,14 @@ public class SchermataRiepilogoCarico implements Initializable {
 
     @FXML
     private Text testo_nome_farmaco;
+    @FXML
+    private Text testo_qty_prevista;
+    @FXML
+    private Text testo_qty_consegnata;
+
+    public static int qty_prevista;
+    private int qty_consegnata = 0;
+
 
 
     @FXML
@@ -38,6 +46,8 @@ public class SchermataRiepilogoCarico implements Initializable {
         lotti_selezionati = new LinkedList<>();
         qty_selezionati = new LinkedList<>();
         date_scadenza_selezionate = new LinkedList<>();
+        testo_qty_prevista.setText("Quantità prevista: "+ qty_prevista);
+        testo_qty_consegnata.setText("Quantità consegnata: "+ this.qty_consegnata);
         testo_nome_farmaco.setText(CaricoPrenotazioneControl.nome_farmaco);
         this.id_lotti_column.setCellValueFactory(new PropertyValueFactory<>("lotto"));
         this.lotti_table.setItems(CaricoPrenotazioneControl.carPrenCtrl.tvObservableList);
@@ -71,14 +81,17 @@ public class SchermataRiepilogoCarico implements Initializable {
                             lotti_selezionati.add(lotto.getLotto());
                             qty_selezionati.add(lotto.getQty());
                             date_scadenza_selezionate.add(lotto.getDataScadenza());
+                            qty_consegnata = qty_consegnata + Integer.parseInt(lotto.getQty());
                             flag = true;
                         }
                         else{
                             lotti_selezionati.remove(lotto.getLotto());
                             qty_selezionati.remove(lotto.getQty());
                             date_scadenza_selezionate.remove(lotto.getDataScadenza());
+                            qty_consegnata = qty_consegnata - Integer.parseInt(lotto.getQty());
                             flag = false;
                         }
+                        testo_qty_consegnata.setText("Quantità consegnata: "+ qty_consegnata);
                         System.out.println(lotti_selezionati);
                         System.out.println(qty_selezionati);
                         System.out.println(date_scadenza_selezionate);

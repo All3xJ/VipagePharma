@@ -65,7 +65,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <TableView fx:id="farmaci_table" layoutX="295.0" layoutY="175.0" prefHeight="446.0" prefWidth="719.0" style="-fx-alignment: CENTER;">
+            <TableView fx:id="farmaci_table" styleClass="table-view" layoutX="295.0" layoutY="175.0" prefHeight="446.0" prefWidth="719.0" style="-fx-alignment: CENTER;">
               <columns>
                 <TableColumn fx:id="idFarmaco_column" prefWidth="150.0" resizable="false" styleClass="colonna" text="ID farmaco" />
                   <TableColumn fx:id="nomeFarmaco_column" minWidth="20.0" prefWidth="220.0" resizable="false" styleClass="colonna" text="Farmaco" />

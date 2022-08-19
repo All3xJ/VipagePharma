@@ -161,10 +161,11 @@ public class DBMSBoundary {
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("DELETE FROM prenotazione p WHERE p.prenotazione =" + id_prenotazione);
+            statement.executeUpdate("DELETE FROM lotto_ordinato WHERE ref_id_p = "+ id_prenotazione);
             for(int i = 0 ; i< id_l.size();++i) {
-                statement.executeUpdate("UPDATE FROM lotto l set qty = qty + " + qty.get(i)+" WHERE l.id_l =" + id_l.get(i));
+                statement.executeUpdate("UPDATE lotto set qty = qty + " + qty.get(i)+" WHERE id_l =" + id_l.get(i));
             }
+            statement.executeUpdate("DELETE FROM prenotazione  WHERE id_p = " + id_prenotazione);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -284,25 +285,29 @@ public class DBMSBoundary {
     }
 
     public static void confermaConsegna(String id_prenotazione, LinkedList <String> id_lotti){
-        ResultSet resultSet;
         for (int i=0; i< id_lotti.size(); ++i){
             try{
                 Connection connection = connectAzienda();
                 Statement statement = connection.createStatement();
-                statement.executeUpdate("Update lotto_ordinato set isCaricato = 1 where ref_id_p = " +id_prenotazione + " and ref_id_l = " + id_lotti.removeFirst());
+                statement.executeUpdate("Update lotto_ordinato set isCaricato = 1 where ref_id_p = " +id_prenotazione + " and ref_id_l = " + id_lotti.get(i));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
     }
 
-    public static void aggiungiCarico(String id_farmacia, String id_farmaco, String nome_farmaco, Date data_scadenza, LinkedList<String> id_lotti, LinkedList<Date>date_scadenza, LinkedList<Integer> quantita){
-        ResultSet resultSet;
+    public static void aggiungiCarico(String id_farmacia, String id_farmaco, String nome_farmaco,LinkedList<String> id_lotti, LinkedList<String>date_scadenza, LinkedList<String> quantita){
         for (int i=0; i< id_lotti.size(); ++i){
             try{
                 Connection connection = connectFarmacia();
-                Statement statement = connection.createStatement();
-                statement.executeUpdate("insert into farmaco (ref_id_f, ref_id_l, ref_id_uf, nome, data_di_scadenza, quantita) values (" + id_farmaco + ", " + id_lotti.removeFirst() +", " + id_farmacia + ", " + nome_farmaco + ", " + date_scadenza.removeFirst() + ", " + quantita.removeFirst());
+                PreparedStatement statement = connection.prepareStatement("insert into farmaco (ref_id_f, ref_id_l, ref_id_uf, nome, data_scadenza, qty) values (?,?,?,?,?,?)");
+                statement.setInt(1,Integer.parseInt(id_farmaco));
+                statement.setInt(2,Integer.parseInt(id_lotti.get(i)));
+                statement.setInt(3,Integer.parseInt(id_farmacia));
+                statement.setString(4,nome_farmaco);
+                statement.setDate(5,Date.valueOf(date_scadenza.get(i)));
+                statement.setInt(6,Integer.parseInt(quantita.get(i)));
+                statement.executeUpdate();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

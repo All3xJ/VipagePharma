@@ -29,17 +29,19 @@ public class AnnullaPrenotazioneControl {
     @FXML
     public void premutoSi(MouseEvent event) throws SQLException, IOException {
         String idPrenotazione = prenotazione.getIdPrenotazione();
-        String idFarmaco = prenotazione.getIdFarmaco();
-        ResultSet lotti = DBMSBoundary.getLotti(idFarmaco);
+        ResultSet lottiOrdinati = DBMSBoundary.getLottiOrdinati(idPrenotazione);
         ArrayList<String> qtyLotti = new ArrayList<>();
         ArrayList<String> idLotti = new ArrayList<>();
-        while(lotti.next()){
-            qtyLotti.add(lotti.getString("qty"));
-            idLotti.add(lotti.getString("id_l"));
+        while(lottiOrdinati.next()){
+            qtyLotti.add(lottiOrdinati.getString("qty"));
+            idLotti.add(lottiOrdinati.getString("ref_id_l"));
         }
-        lotti.close();
+        System.out.println(qtyLotti);
+        System.out.println(idLotti);
         DBMSBoundary.eliminaOrdineERicaricaFarmaci(idPrenotazione,idLotti,qtyLotti);
-        App.newWind("gestionePrenotazioni/annullaPrenotazioni/AvvisoAnnullaPrenotazione",event);
+        lottiOrdinati.close();
+        App.popup_stage.close();
+        App.newWind("gestionePrenotazioni/annullaPrenotazione/AvvisoOperazioneRiuscita",event);
 
     }
     @FXML
@@ -48,8 +50,8 @@ public class AnnullaPrenotazioneControl {
     }
 
     public void premutoOk() throws SQLException, IOException {
-        App.popup_stage.close();
         VisualizzaPrenotazioniControl.visualPrenCtrlRef.riempiObservableList(prenotazione.getIdFarmacia());
+        App.popup_stage.close();
         App.setRoot("gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni");
     }
 
