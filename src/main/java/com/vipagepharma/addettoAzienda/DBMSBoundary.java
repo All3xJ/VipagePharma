@@ -212,12 +212,12 @@ public class DBMSBoundary {
         return resultSet;
     }
 
-    public static void setFlagProblema(String id_prenotazione){
+    public static void setFlagProblema(String id_prenotazione, int boo){
         ResultSet resultSet;
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("Update prenotazione set problema = 1 where id_p = " + id_prenotazione);
+            statement.executeUpdate("Update prenotazione set problema = "+boo+" where id_p = " + id_prenotazione);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
