@@ -1,3 +1,13 @@
 .colonna{
     -fx-alignment : CENTER;
+    -fx-border-color: #b9b9b9;
+    -fx-border-width: 0.1;
+}
+
+.table-view .column-header{
+    -fx-size : 35;
+    -fx-background-color: #cff3f2;
+    -fx-border-color: #b9b9b9;
+    -fx-border-width: 0.1;
+
 }

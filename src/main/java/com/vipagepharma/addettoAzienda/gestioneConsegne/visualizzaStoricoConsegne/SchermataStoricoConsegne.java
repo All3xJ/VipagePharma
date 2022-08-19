@@ -53,6 +53,9 @@ public class SchermataStoricoConsegne implements Initializable {
                 final TableCell<Consegna, Void> cell = new TableCell<Consegna, Void>() {
 
                     private final Button btn = new Button(nomeButton);
+                    {
+                        btn.setStyle("-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;");
+                    }
 
                     {
                         btn.setOnAction((ActionEvent event) -> {
