@@ -65,7 +65,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <TableView fx:id="ordini_table" layoutX="329.0" layoutY="203.0" prefHeight="305.0" prefWidth="622.0">
+            <TableView fx:id="ordini_table" styleClass="table-view" layoutX="329.0" layoutY="203.0" prefHeight="305.0" prefWidth="622.0">
               <columns>
                 <TableColumn fx:id="idprenotazione_column" prefWidth="245.0" styleClass="colonna" text="ID ordine" />
                   <TableColumn fx:id="nomeFarmacia_column" prefWidth="214.0" styleClass="colonna" text="Nome farmacia" />
