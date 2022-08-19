@@ -25,7 +25,7 @@ public class RisoluzioneProblemaConsegnaControl {
     }
 
     public void start(ActionEvent event) throws IOException {
-        App.newWind("gestioneConsegne/risoluzioneProblemaConsegna/AvvisoProblemaOrdine",event);
+        App.newWind("gestioneConsegne/risoluzioneProblemaConsegna/SchermataProblemaOrdine",event);
     }
 
     public void premutoOk() throws IOException {

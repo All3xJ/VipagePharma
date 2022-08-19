@@ -10,6 +10,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+import javax.mail.MessagingException;
+
 
 public class SchermataRegistrazione{
 
@@ -23,7 +25,7 @@ public class SchermataRegistrazione{
     private PasswordField conferma_password;
     private final RegistrazioneControl registrazioneControl = RegistrazioneControl.regCtrlRef;
     @FXML
-    void premeRegistra(ActionEvent event) throws IOException, SQLException {
+    void premeRegistra(ActionEvent event) throws IOException, SQLException, MessagingException {
         registrazioneControl.premutoRegistra(this.nome.getText(),this.email.getText(),this.password.getText(),this.conferma_password.getText(),event);
     }
 

@@ -10,7 +10,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AvvisoProblemaOrdine implements Initializable {
+public class SchermataProblemaOrdine implements Initializable {
 
     @FXML
     private Text testo_problema_ordine;

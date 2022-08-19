@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,7 +41,7 @@ public class SchermataLogin implements Initializable {
     }
 
 	@FXML
-	void premeRegistrati(MouseEvent event) throws IOException{
+	void premeRegistrati(MouseEvent event) throws IOException, MessagingException {
 		RegistrazioneControl regCtrl = new RegistrazioneControl();
 		regCtrl.start();
 	}

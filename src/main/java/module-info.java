@@ -4,6 +4,8 @@ module com.vipagepharma {
     requires java.sql;
     requires itextpdf;
     requires java.desktop;
+    requires mail;
+    requires activation;
 
     exports com.vipagepharma.farmacia;
     opens com.vipagepharma.farmacia to javafx.fxml;
