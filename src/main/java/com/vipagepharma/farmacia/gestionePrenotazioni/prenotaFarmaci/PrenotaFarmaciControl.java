@@ -60,7 +60,7 @@ public class PrenotaFarmaciControl {
         this.qtyLotti = new ArrayList<>();
         this.new_qtyLotti = new ArrayList<>();
         this.lotti = DBMSBoundary.getLotti(String.valueOf(this.id_farmaco));
-        ResultSet corrieri = DBMSBoundary.getCorrieri(String.valueOf(this.id_farmaco));
+        ResultSet corrieri = DBMSBoundary.getCorrieri();
         this.scegliCorriere(corrieri);
         this.id_farmacia = Integer.parseInt(Utente.getID());
         System.out.println("Farmacia:" + this.id_farmacia +"\nQty richiesta:" + this.qtyRichiesta + "\nData consegna :" + this.data_consegna + "\nCorriere selezionato: " + this.id_corriere + "\nFlag Scadenza:"+ this.flag_scadenza);

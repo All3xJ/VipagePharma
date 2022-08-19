@@ -34,15 +34,11 @@ public class VisualizzaSegnalazioniControl {
             this.tvObservableList.clear();
             while (true) {
                 if (!consegneConSegnalazione.next()) break;
-                this.tvObservableList.add(new Consegna(consegneConSegnalazione.getString("ref_id_uf"),consegneConSegnalazione.getString("id_p"),consegneConSegnalazione.getString("data_consegna")));
+                this.tvObservableList.add(new Consegna(consegneConSegnalazione.getString("ref_id_uf"),consegneConSegnalazione.getString("id_p"),consegneConSegnalazione.getString("data_consegna"),consegneConSegnalazione.getString("ref_id_f")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         this.consegneConSegnalazione.close();
-    }
-
-    public void premutoVisualizzaErrore(String schermata, ActionEvent event) throws IOException {
-        App.newWind(schermata,event);
     }
 }

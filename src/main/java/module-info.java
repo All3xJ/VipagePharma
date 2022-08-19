@@ -42,6 +42,8 @@ module com.vipagepharma {
     opens com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConsegne to javafx.fxml;
     exports com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni;
     opens com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni to javafx.fxml;
+    exports com.vipagepharma.addettoAzienda.gestioneConsegne.risoluzioneProblemaConsegna;
+    opens com.vipagepharma.addettoAzienda.gestioneConsegne.risoluzioneProblemaConsegna to javafx.fxml;
     exports com.vipagepharma.addettoAzienda.entity;
     opens com.vipagepharma.addettoAzienda.entity to javafx.base;
 

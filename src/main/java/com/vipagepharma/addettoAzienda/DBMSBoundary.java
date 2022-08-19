@@ -1,7 +1,9 @@
 package com.vipagepharma.addettoAzienda;
 
+import com.vipagepharma.addettoAzienda.entity.Consegna;
 import com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConsegne.VisualizzaStoricoConsegneControl;
 import com.vipagepharma.corriere.gestioneConsegne.visualizzaConsegne.VisualizzaConsegneControl;
+import com.vipagepharma.farmacia.entity.Prenotazione;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -246,7 +248,7 @@ public class DBMSBoundary {
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery("select ref_id_uf, id_p, data_consegna from prenotazione where problema = 1");
+            resultSet = statement.executeQuery("select ref_id_uf, id_p, data_consegna, ref_id_f from prenotazione where problema = 1");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -306,5 +308,60 @@ public class DBMSBoundary {
             throw new RuntimeException(e);
         }
     }
+
+    public static ResultSet getLottiNonConsegnati(Consegna consegna){
+        ResultSet resultSet;
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            resultSet = statement.executeQuery("select l.qty,l.ref_id_l from lotto_ordinato l, prenotazione p where l.ref_id_p=p.id_p and p.ref_id_uf = " + consegna.idFarmacia.get() + " and p.id_p="+consegna.idOrdine.get());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+    public static void carica(ResultSet lottiNonConsegnati) throws SQLException { //ricarica i lotti non consegnati RISOLUZIONE PROBLEMA CONSEGNA
+        ResultSet resultSet;
+        int qtyDaRiaggiungere = 0;
+        String idLotto = null;
+        while (lottiNonConsegnati.next()) {
+            try{
+                Connection connection = connectAzienda();
+                Statement statement = connection.createStatement();
+                qtyDaRiaggiungere = lottiNonConsegnati.getInt("qty");
+                idLotto = lottiNonConsegnati.getString("ref_id_l");
+                statement.executeUpdate("Update lotto set qty = qty +" + qtyDaRiaggiungere + " where id_l = " + idLotto);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public static ResultSet creaOrdine(String id_farmacia, int id_corriere, String id_farmaco) throws SQLException { //RISOLUZINE PROBLEMA CONSEGNA
+        ResultSet resultSet;
+
+        Connection connection = connectAzienda();
+        Statement statement = connection.createStatement();
+        java.util.Date date = new java.util.Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
+        String strDataOdierna = formatter.format(date);
+        System.out.println("insert into prenotazione (ref_id_uf, ref_id_ua, isConsegnato, data_consegna, ref_id_f) values (" + id_farmacia + "," + id_corriere +"," + 0 + ", str_to_date('"+strDataOdierna+"','%d-%m-%Y')  ,"+ id_farmaco+")");
+        statement.executeUpdate("insert into prenotazione (ref_id_uf, ref_id_ua, isConsegnato, data_consegna, ref_id_f) values (" + id_farmacia + "," + id_corriere +"," + 0 + ", str_to_date('"+strDataOdierna+"','%d-%m-%Y')  ,"+ id_farmaco+")");
+        resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() as id_p");
+
+        return resultSet;
+    }
+
+    public static void aggiornaLottiOrdinati(int idprenotazione, ResultSet lottiNonConsegnati) throws SQLException {
+        int idLotto = 0;
+        while (lottiNonConsegnati.next()) {
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            idLotto = lottiNonConsegnati.getInt("ref_id_l");
+            statement.executeUpdate("Update lotto_ordinato set ref_id_p = " + idprenotazione + " where ref_id_l="+idLotto);
+        }
+    }
+
 
 }

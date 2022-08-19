@@ -33,6 +33,10 @@ public class FirmaConsegnaControl {
 
         //ordine.setFilePDF(file);
         this.creaPDF(ordine);
+        App.setRoot("gestioneConsegne/firmaConsegna/AvvisoOperazioneRiuscita");
+    }
+
+    public void premutoOk() throws IOException {
         App.setRoot("gestioneConsegne/visualizzaConsegne/SchermataConsegneOdierne");
     }
 

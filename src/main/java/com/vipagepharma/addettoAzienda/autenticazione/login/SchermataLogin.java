@@ -36,7 +36,7 @@ public class SchermataLogin implements Initializable {
 		System.out.println(username.getText());
 		System.out.println(password.getText());
 		LoginControl logCtrl = new LoginControl(username,password);
-		logCtrl.start();
+		logCtrl.start(event);
     }
 
 	@FXML

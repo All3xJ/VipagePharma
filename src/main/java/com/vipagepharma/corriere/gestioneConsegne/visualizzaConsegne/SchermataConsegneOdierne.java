@@ -21,6 +21,8 @@ import java.util.ResourceBundle;
 
 public class SchermataConsegneOdierne implements Initializable {
 
+    public static String schermataPrecedente;
+
     @FXML
     private TableColumn<Ordine, String> nomeFarmacia_column;
 
@@ -97,7 +99,7 @@ public class SchermataConsegneOdierne implements Initializable {
     }
 
     public void premeIndietro(MouseEvent mouseEvent) throws IOException {
-        VisualizzaConsegneControl.visualConCtrlRef.premutoIndietro();
+        VisualizzaConsegneControl.visualConCtrlRef.premutoIndietro(schermataPrecedente);
     }
 
     public void premeLogout(MouseEvent mouseEvent) throws IOException {

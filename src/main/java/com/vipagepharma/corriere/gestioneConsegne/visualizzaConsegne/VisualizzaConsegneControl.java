@@ -25,6 +25,7 @@ public class VisualizzaConsegneControl {
 
     public void start() throws IOException, SQLException {
         this.riempiObservableList(ordini);
+        SchermataConsegneOdierne.schermataPrecedente="SchermataPrincipale";
         App.setRoot("gestioneConsegne/visualizzaConsegne/SchermataConsegneOdierne");
     }
 
@@ -46,7 +47,7 @@ public class VisualizzaConsegneControl {
         App.setRoot("SchermataPrincipale");
     }
 
-    public void premutoIndietro() throws IOException {
-        App.setRoot("SchermataPrincipale");
+    public void premutoIndietro(String schermataPrecedente) throws IOException {
+        App.setRoot(schermataPrecedente);
     }
 }

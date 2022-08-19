@@ -1,6 +1,7 @@
 package com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni;
 
 import com.vipagepharma.addettoAzienda.entity.Consegna;
+import com.vipagepharma.addettoAzienda.gestioneConsegne.risoluzioneProblemaConsegna.RisoluzioneProblemaConsegnaControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -68,7 +69,8 @@ public class SchermataElencoSegnalazioni implements Initializable {
                     }
 
                     private void premeVisualizzaErrore(Consegna entry,ActionEvent event) throws IOException {
-                        VisualizzaSegnalazioniControl.visConsCtrlRef.premutoVisualizzaErrore("gestioneConsegne/risoluzioneProblemaConsegna/AvvisoProblemaOrdine",event);
+                        RisoluzioneProblemaConsegnaControl risProbConCtrl = new RisoluzioneProblemaConsegnaControl(entry);
+                        risProbConCtrl.start(event);
                     }
 
                     @Override

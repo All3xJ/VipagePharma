@@ -12,13 +12,15 @@ public class Consegna {
     public StringProperty idFarmacia = new SimpleStringProperty();
     public StringProperty idOrdine = new SimpleStringProperty();
     public StringProperty dataConsegna = new SimpleStringProperty();
+    public String idFarmaco;
 
     public String ricevutaPath;
 
-    public Consegna(String id_farmacia, String id_ordine, String data_consegna) {
+    public Consegna(String id_farmacia, String id_ordine, String data_consegna, String id_farmaco) {
         this.idFarmacia.set(id_farmacia);
         this.idOrdine.set(id_ordine);
         this.dataConsegna.set(data_consegna);
+        this.idFarmaco=id_farmaco;
     }
 
     public Consegna(String id_farmacia, String id_ordine, String data_consegna, Blob ricevutaPDF) throws IOException, SQLException {

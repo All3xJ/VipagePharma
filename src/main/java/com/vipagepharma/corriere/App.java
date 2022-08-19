@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
 
 /**
@@ -41,7 +43,7 @@ public class App extends Application {
     }
 
     public static void newWind(String fxml, ActionEvent event) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(com.vipagepharma.corriere.App.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         popup_stage = new Stage();
         Scene newscene = new Scene(root1, 720,480);
@@ -49,12 +51,13 @@ public class App extends Application {
         popup_stage.setScene(newscene);
         popup_stage.initModality(Modality.WINDOW_MODAL);
         popup_stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+        popup_stage.initStyle(StageStyle.UNDECORATED);
         popup_stage.show();
     }
 
 
     public static void newWind(String fxml, MouseEvent event) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(com.vipagepharma.corriere.App.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         popup_stage = new Stage();
         Scene newscene = new Scene(root1, 720,480);
@@ -62,6 +65,7 @@ public class App extends Application {
         popup_stage.setScene(newscene);
         popup_stage.initModality(Modality.WINDOW_MODAL);
         popup_stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+        popup_stage.initStyle(StageStyle.UNDECORATED);
         popup_stage.show();
     }
 
