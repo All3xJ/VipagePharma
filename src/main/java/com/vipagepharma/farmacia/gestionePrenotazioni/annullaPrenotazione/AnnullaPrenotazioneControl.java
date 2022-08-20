@@ -36,8 +36,6 @@ public class AnnullaPrenotazioneControl {
             qtyLotti.add(lottiOrdinati.getString("qty"));
             idLotti.add(lottiOrdinati.getString("ref_id_l"));
         }
-        System.out.println(qtyLotti);
-        System.out.println(idLotti);
         DBMSBoundary.eliminaOrdineERicaricaFarmaci(idPrenotazione,idLotti,qtyLotti);
         lottiOrdinati.close();
         App.popup_stage.close();

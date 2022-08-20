@@ -63,7 +63,6 @@ public class PrenotaFarmaciControl {
         ResultSet corrieri = DBMSBoundary.getCorrieri();
         this.scegliCorriere(corrieri);
         this.id_farmacia = Integer.parseInt(Utente.getID());
-        System.out.println("Farmacia:" + this.id_farmacia +"\nQty richiesta:" + this.qtyRichiesta + "\nData consegna :" + this.data_consegna + "\nCorriere selezionato: " + this.id_corriere + "\nFlag Scadenza:"+ this.flag_scadenza);
         checkDisponibilitaEScegliLotti();
         if(Integer.parseInt(this.qtyDisponibile) >= Integer.parseInt(this.qtyRichiesta)){
 
@@ -97,8 +96,8 @@ public class PrenotaFarmaciControl {
     private void checkDisponibilitaEScegliLotti() throws SQLException {  //posso calcolare sia la disponibilitá che i lotti con un metodo
         int qtyTotale = Integer.parseInt(this.qtyRichiesta);
         int qtyLottiTot = 0;
-        while(lotti.next() && qtyLottiTot < qtyTotale && this.lotti.getDate(4).toLocalDate().isBefore(this.data_consegna)){  //esco dal loop appena la data di disp > data consegna richiesta
-            if(this.lotti.getDate(5).toLocalDate().isAfter(this.data_scadenza_min)){
+        while(lotti.next() && qtyLottiTot < qtyTotale && this.lotti.getDate("data_di_disponibilita").toLocalDate().isBefore(this.data_consegna)){  //esco dal loop appena la data di disp > data consegna richiesta
+            if(this.lotti.getDate("data_di_scadenza").toLocalDate().isAfter(this.data_scadenza_min)){
                 this.idLotti.add(this.lotti.getInt(1));
                 int qtyLotto = this.lotti.getInt(3);
                 qtyLottiTot += qtyLotto;
@@ -124,8 +123,8 @@ public class PrenotaFarmaciControl {
     private void calcProxDisponibilitaEScegliLotti() throws SQLException {
         int qtyMancante = Integer.parseInt(this.qtyRichiesta) - Integer.parseInt(this.qtyDisponibile);
         int qtyLottiTot = 0;
-        this.new_idLotti.add(this.lotti.getInt(1));
-        int qtyLotto1 = this.lotti.getInt(3);
+        this.new_idLotti.add(this.lotti.getInt("id_l"));
+        int qtyLotto1 = this.lotti.getInt("qty");
         qtyLottiTot += qtyLotto1;
         if(qtyLottiTot > qtyMancante){
             this.new_qtyLotti.add(qtyMancante - (qtyLottiTot - qtyLotto1));
@@ -134,8 +133,8 @@ public class PrenotaFarmaciControl {
             this.new_qtyLotti.add(qtyLotto1);
         }
         while(this.lotti.next() && qtyLottiTot<qtyMancante){
-            this.new_idLotti.add(this.lotti.getInt(1));
-            int qtyLotto = this.lotti.getInt(3);
+            this.new_idLotti.add(this.lotti.getInt("id_l"));
+            int qtyLotto = this.lotti.getInt("qty");
             qtyLottiTot += qtyLotto;
             if(qtyLottiTot > qtyMancante){
                 this.new_qtyLotti.add(qtyMancante - (qtyLottiTot - qtyLotto));

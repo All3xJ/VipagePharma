@@ -58,6 +58,4 @@ public class SchermataPrenotazione implements Initializable {
     public void premeIndetro(MouseEvent event) {
 
     }
-
-
 }

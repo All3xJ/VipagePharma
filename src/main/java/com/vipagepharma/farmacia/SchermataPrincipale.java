@@ -26,7 +26,7 @@ public class SchermataPrincipale {
 	}
 
 	@FXML
-	void premeScaricaFarmaci(MouseEvent event) throws IOException{
+	void premeScaricaFarmaci(MouseEvent event) throws IOException, SQLException {
 		ScaricoFarmaciControl scarfarmCtrl = new ScaricoFarmaciControl();
 		scarfarmCtrl.start();
 	}

@@ -2,11 +2,13 @@ package com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import com.vipagepharma.farmacia.App;
+import com.vipagepharma.farmacia.DBMSBoundary;
 import com.vipagepharma.farmacia.entity.Prenotazione;
 import com.vipagepharma.farmacia.gestionePrenotazioni.annullaPrenotazione.AnnullaPrenotazioneControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.caricoPrenotazione.CaricoPrenotazioneControl;
@@ -48,7 +50,6 @@ public class SchermataElencoPrenotazioni implements Initializable{
 
 	@Override
 	public void initialize(URL url, ResourceBundle resbound){
-
 		this.idprenotazione_column.setCellValueFactory(new PropertyValueFactory<>("idPrenotazione"));
 		this.nomefarmaco_column.setCellValueFactory(new PropertyValueFactory<>("nomeFarmaco"));
 		this.dataconsegna_column.setCellValueFactory(new PropertyValueFactory<>("dataConsegna"));
@@ -109,6 +110,8 @@ public class SchermataElencoPrenotazioni implements Initializable{
 									this.premeModifica(prenotazione);
 								} catch (IOException e) {
 									throw new RuntimeException(e);
+								} catch (SQLException e) {
+									throw new RuntimeException(e);
 								}
 							}
                         });
@@ -124,7 +127,7 @@ public class SchermataElencoPrenotazioni implements Initializable{
 						carPreCtrl.start();
 					}
 
-					private void premeModifica(Prenotazione prenotazione) throws IOException {
+					private void premeModifica(Prenotazione prenotazione) throws IOException, SQLException {
 						ModificaPrenotazioneControl modPreCtrl = new ModificaPrenotazioneControl(prenotazione);
 						modPreCtrl.start();
 					}
