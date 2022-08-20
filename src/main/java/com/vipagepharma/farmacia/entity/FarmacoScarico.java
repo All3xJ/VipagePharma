@@ -1,9 +1,11 @@
 package com.vipagepharma.farmacia.entity;
 
 
+import java.util.ArrayList;
+
 public class FarmacoScarico {
     private String id;
-    private String id_l;
+    private ArrayList<String> id_lotti;
     private String qty;
     private int isBanco;
     private String nome ;
@@ -11,7 +13,8 @@ public class FarmacoScarico {
 
     public FarmacoScarico(String id,String id_l,String nome,String qty,int isBanco){
         this.id = id;
-        this.id_l = id_l;
+        this.id_lotti = new ArrayList<>();
+        this.id_lotti.add(id_l);
         this.nome = nome;
         this.isBanco = isBanco;
         this.qty = qty;
@@ -22,8 +25,8 @@ public class FarmacoScarico {
             return this;
         return null;
     }
-    public String getId_l(){
-        return this.id_l;
+    public ArrayList<String> getIdLotti(){
+        return this.id_lotti;
     }
     public String getQty(){
         return this.qty;
@@ -34,5 +37,9 @@ public class FarmacoScarico {
 
     public String getId(){
         return id;
+    }
+
+    public void addIdLotto(String id_l) {
+        this.addIdLotto(id_l);
     }
 }
