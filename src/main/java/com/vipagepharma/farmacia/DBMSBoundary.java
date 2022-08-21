@@ -111,12 +111,12 @@ public class DBMSBoundary {
     }
 
 
-    public static ResultSet getInventario(){
+    public static ResultSet getInventario(String id_farmacia){
         ResultSet resultSet;
         try{
             Connection connection = connectFarmacia();
             Statement statement = connection.createStatement();
-            resultSet = statement .executeQuery("select * from farmaco");
+            resultSet = statement .executeQuery("select * from farmaco where ref_id_uf =" + id_farmacia);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -358,6 +358,16 @@ public class DBMSBoundary {
             throw new RuntimeException(e);
         }
         return resultSet;
+    }
+
+    public static void scaricaFarmaci(String id_farmacia,String id_farmaco,String id_lotto,String qty){
+        try{
+            Connection connection = connectFarmacia();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("update farmaco set qty = qty -" + qty + " where ref_id_uf ="+ id_farmacia + " and ref_id_f =" + id_farmaco +" and ref_id_l ="+ id_lotto);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

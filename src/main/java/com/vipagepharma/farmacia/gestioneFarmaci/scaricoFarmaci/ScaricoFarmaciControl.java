@@ -3,9 +3,8 @@ package com.vipagepharma.farmacia.gestioneFarmaci.scaricoFarmaci;
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
 import com.vipagepharma.farmacia.SchermataPrincipale;
-import com.vipagepharma.farmacia.entity.Farmaco;
 import com.vipagepharma.farmacia.entity.FarmacoScarico;
-import com.vipagepharma.farmacia.entity.Prenotazione;
+import com.vipagepharma.farmacia.entity.Utente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.input.MouseEvent;
@@ -14,12 +13,13 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class ScaricoFarmaciControl {
 
     public static ScaricoFarmaciControl scarFarmCtrl;
-    LinkedList<FarmacoScarico> farmaci;
+    private LinkedList<FarmacoScarico> farmaci;
 
     public ObservableList<String> tvObservableList = FXCollections.observableArrayList();
     public ObservableList<String> tvObservableList2 = FXCollections.observableArrayList();
@@ -36,24 +36,35 @@ public class ScaricoFarmaciControl {
     }
 
     public void riempiObservableList() throws SQLException {
-        ResultSet inventario = DBMSBoundary.getInventario();
+        ResultSet inventario = DBMSBoundary.getInventario(Utente.getID());
         try {
             this.tvObservableList.clear();
             while (true) {
                 if (!inventario.next()) break;
-                if(!tvObservableList.contains(inventario.getString("nome"))) {
+                if((!tvObservableList.contains(inventario.getString("nome")) && (!inventario.getString("qty").equals("0")))) {
                     this.tvObservableList.add(inventario.getString("nome"));
                     this.farmaci.add(new FarmacoScarico(inventario.getString("ref_id_f"), inventario.getString("ref_id_l"), inventario.getString("nome"), inventario.getString("qty"), inventario.getInt("isBanco")));
                 }
                 else{
-                    FarmacoScarico farmaco = getFarmacoScarico(inventario.getString("nome"));
-                    farmaco.addIdLotto(inventario.getString("ref_id_l"));
+                    if(!inventario.getString("qty").equals("0")) {
+                        FarmacoScarico farmaco = getFarmacoScarico(inventario.getString("nome"));
+                        farmaco.addIdLotto(inventario.getString("ref_id_l"));
+                        farmaco.addQty(inventario.getString("qty"));
+                    }
                 }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         inventario.close();
+    }
+
+    public void riempiObservableList2(String nome){
+        this.tvObservableList2.clear();
+        ArrayList<String> id = this.getFarmacoScarico(nome).getIdLotti();
+        for(int i = 0; i < id.size();++i){
+            this.tvObservableList2.add(id.get(i));
+        }
     }
 
     public void premutoIndietro() throws IOException {
@@ -65,17 +76,20 @@ public class ScaricoFarmaciControl {
         App.setRoot("SchermataPrincipale");
     }
 
-    public void premutoScarica(String nome, String qty, LocalDate data, MouseEvent event) throws IOException {
+    public void premutoScarica(String nome, String idLotto, String qty, MouseEvent event) throws IOException {
         FarmacoScarico farmaco = this.getFarmacoScarico(nome);
         try {
-            if (Integer.parseInt(farmaco.getQty()) < Integer.parseInt(qty)) {
+            if (farmaco.getQtyLotto(idLotto) < Integer.parseInt(qty)) {
                 App.newWind("gestioneFarmaci/scaricoFarmaci/AvvisoErroreDati", event);
+                return;
             }
-            System.out.println(farmaco.getId() + "\n" + qty + "\n" + data);
         } catch (Exception e) {
             App.newWind("gestioneFarmaci/scaricoFarmaci/AvvisoErroreDati", event);
+            return;
         }
-
+        DBMSBoundary.scaricaFarmaci(Utente.getID(),farmaco.getId(),idLotto,qty);
+        AvvisoScaricoRiuscito.farmaco = farmaco;
+        App.newWind("gestioneFarmaci/scaricoFarmaci/AvvisoScaricoRiuscito",event);
     }
         public void premutoOk() throws IOException {
             App.popup_stage.close();
