@@ -2,14 +2,18 @@ package com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import com.vipagepharma.farmacia.App;
+import com.vipagepharma.farmacia.DBMSBoundary;
 import com.vipagepharma.farmacia.entity.Prenotazione;
 import com.vipagepharma.farmacia.gestionePrenotazioni.annullaPrenotazione.AnnullaPrenotazioneControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.caricoPrenotazione.CaricoPrenotazioneControl;
+import com.vipagepharma.farmacia.gestionePrenotazioni.modificaContratti.ModificaContrattiControl;
+import com.vipagepharma.farmacia.gestionePrenotazioni.modificaPrenotazione.ModificaPrenotazioneControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,7 +50,6 @@ public class SchermataElencoPrenotazioni implements Initializable{
 
 	@Override
 	public void initialize(URL url, ResourceBundle resbound){
-
 		this.idprenotazione_column.setCellValueFactory(new PropertyValueFactory<>("idPrenotazione"));
 		this.nomefarmaco_column.setCellValueFactory(new PropertyValueFactory<>("nomeFarmaco"));
 		this.dataconsegna_column.setCellValueFactory(new PropertyValueFactory<>("dataConsegna"));
@@ -97,7 +100,13 @@ public class SchermataElencoPrenotazioni implements Initializable{
 								}
 							}else if (nomeButton.equals("Modifica")){
 								Prenotazione prenotazione = getTableView().getItems().get(getIndex());
-								this.premeModifica(prenotazione);
+								try {
+									this.premeModifica(prenotazione);
+								} catch (IOException e) {
+									throw new RuntimeException(e);
+								} catch (SQLException e) {
+									throw new RuntimeException(e);
+								}
 							}
                         });
                     }
@@ -112,8 +121,9 @@ public class SchermataElencoPrenotazioni implements Initializable{
 						carPreCtrl.start();
 					}
 
-					private void premeModifica(Prenotazione entry) {
-
+					private void premeModifica(Prenotazione prenotazione) throws IOException, SQLException {
+						ModificaPrenotazioneControl modPreCtrl = new ModificaPrenotazioneControl(prenotazione);
+						modPreCtrl.start();
 					}
 
 					@Override

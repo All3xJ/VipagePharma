@@ -1,14 +1,24 @@
 package com.vipagepharma.farmacia.gestioneFarmaci.controlloScorte;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
-public class AvvisoEsaurimentoScorte {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class AvvisoEsaurimentoScorte implements Initializable {
     @FXML
-    void premutoPrenota(MouseEvent mouseEvent){
+    private Text testo_esaurimento_scorte;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        testo_esaurimento_scorte.setText(ControlloScorteControl.conScCtrl.getText());
     }
-
-    public void premePrenota(MouseEvent mouseEvent) {
+    @FXML
+    public void premePrenota(MouseEvent mouseEvent) throws IOException {
+        ControlloScorteControl.conScCtrl.premutoPrenota();
     }
 }

@@ -9,6 +9,7 @@ public class Farmaco {
     private final StringProperty nomeFarmaco = new SimpleStringProperty();
 
     private final StringProperty principioAttivo = new SimpleStringProperty();
+    private final StringProperty qty = new SimpleStringProperty();
 
     public boolean isBanco;
 
@@ -33,6 +34,17 @@ public class Farmaco {
 
     public final void setId(String value) {
         this.idFarmaco.set(value);
+    }
+    public final StringProperty qtyProperty() {
+        return this.qty;
+    }
+
+    public final String getQty() {
+        return this.qty.get();
+    }
+
+    public final void setQty(String value) {
+        this.qty.set(value);
     }
 
     public final StringProperty principioAttivoProperty() {

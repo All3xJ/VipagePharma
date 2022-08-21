@@ -29,6 +29,10 @@ module com.vipagepharma {
     opens com.vipagepharma.farmacia.gestionePrenotazioni.annullaPrenotazione to javafx.fxml;
     exports com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci;
     opens com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci to javafx.fxml;
+    exports com.vipagepharma.farmacia.gestionePrenotazioni.modificaPrenotazione;
+    opens com.vipagepharma.farmacia.gestionePrenotazioni.modificaPrenotazione to javafx.fxml;
+    exports com.vipagepharma.farmacia.gestioneFarmaci.controlloScorte;
+    opens com.vipagepharma.farmacia.gestioneFarmaci.controlloScorte to javafx.fxml;
     exports com.vipagepharma.farmacia.entity;
     opens com.vipagepharma.farmacia.entity to javafx.base;
 

@@ -1,11 +1,18 @@
 package com.vipagepharma.farmacia.gestioneFarmaci.scaricoFarmaci;
 
+import com.vipagepharma.farmacia.entity.FarmacoScarico;
+import com.vipagepharma.farmacia.gestioneFarmaci.controlloScorte.ControlloScorteControl;
+import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
-public class AvvisoScaricoRiuscito {
-    public void premeLogout(MouseEvent mouseEvent) {
-    }
+import java.io.IOException;
 
-    public void premeOk(MouseEvent mouseEvent) {
+public class AvvisoScaricoRiuscito {
+
+    public static FarmacoScarico farmaco;
+    @FXML
+    public void premeOk(MouseEvent mouseEvent) throws IOException {
+        ControlloScorteControl conScCtrl = new ControlloScorteControl();
+        conScCtrl.start(farmaco,mouseEvent);
     }
 }

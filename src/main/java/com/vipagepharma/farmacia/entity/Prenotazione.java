@@ -12,29 +12,34 @@ public class Prenotazione {
 
     private final StringProperty dataConsegna = new SimpleStringProperty();
     private boolean isConsegnato;
+    private String idFarmaco;
     private String idFarmacia;
-
-    public Farmaco farmaco;
-
+    private String idCorriere;
+    private int qty;
+    private boolean isBanco;
     public LinkedList<Lotto> lotti = new LinkedList<>();
 
-    public Prenotazione(String idPrenotazione, String nomeFarmaco, String dataConsegna , String idFarmacia,String idFarmaco,boolean isBanco,int isConsegnato){
+    public Prenotazione(String idCorriere ,String idPrenotazione, String nomeFarmaco, String dataConsegna , String idFarmacia,String idFarmaco,int isConsegnato,int qty){
         this.setId(idPrenotazione);
         this.setNomeFarmaco(nomeFarmaco);
         this.setDataConsegna(dataConsegna);
         this.idFarmacia = idFarmacia;
-        this.farmaco=new Farmaco(idFarmaco,isBanco);
+        this.idFarmaco = idFarmaco;
+        this.idCorriere= idCorriere;
+        this.qty = qty;
         if(isConsegnato == 1)
             this.isConsegnato = true;
         else
             this.isConsegnato = false;
     }
 
-    public Prenotazione(String idPrenotazione, String nomeFarmaco, String dataConsegna , String idFarmacia,String idFarmaco,int isConsegnato){
+    public Prenotazione(String idPrenotazione, String nomeFarmaco, String dataConsegna , String idFarmacia,String idFarmaco,boolean isBanco,int isConsegnato){
         this.setId(idPrenotazione);
         this.setNomeFarmaco(nomeFarmaco);
         this.setDataConsegna(dataConsegna);
         this.idFarmacia = idFarmacia;
+        this.idFarmaco = idFarmaco;
+        this.isBanco = isBanco;
         if(isConsegnato == 1)
             this.isConsegnato = true;
         else
@@ -57,11 +62,20 @@ public class Prenotazione {
         return this.isConsegnato;
     }
     public String getIdFarmaco(){
-        return this.farmaco.getIdFarmaco();
+        return this.idFarmaco;
+    }
+    public boolean getIsBanco(){
+        return this.isBanco;
+    }
+    public String getIdCorriere(){
+        return this.idCorriere;
     }
 
     public String getIdFarmacia(){
         return this.idFarmacia;
+    }
+    public int getQty(){
+        return this.qty;
     }
 
     public final StringProperty idPrenotazioneProperty() {

@@ -127,12 +127,12 @@ public class DBMSBoundary {
     }
 
 
-    public static ResultSet getInventario(){
+    public static ResultSet getInventario(String id_farmacia){
         ResultSet resultSet;
         try{
             Connection connection = connectFarmacia();
             Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery("select ref_id_f ,qty ,isBanco  from farmaco");
+            resultSet = statement.executeQuery("select * from farmaco where ref_id_uf =" + id_farmacia);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -160,26 +160,43 @@ public class DBMSBoundary {
         return resultSet;
     }
 
-    public static ResultSet getPrenotazioniEInfoFarmaci(String id_farmacia){
+    public static ResultSet getPrenotazioni(String id_farmacia){
         ResultSet resultSet;
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             //resultSet = statement .executeQuery("SELECT p.id_p, f.nome, p.data_consegna FROM prenotazione p, farmaco f, lotto l, lotto_ordinato lo WHERE p.isConsegnato = 0 and p.ref_id_uf =" + id_farmacia +" and p.id_p=lo.ref_id_p and lo.ref_id_l=l.id_l and l.ref_id_f=f.id_f");  //prenotazioni per la medesima farmacia e non ancora contrassegnati come consegnati
-            resultSet = statement.executeQuery("SELECT p.id_p, p.ref_id_uf,f.id_f, f.nome, p.data_consegna ,p.isConsegnato FROM prenotazione p, farmaco f WHERE p.ref_id_uf =" + id_farmacia +" and p.ref_id_f=f.id_f");
+            resultSet = statement.executeQuery("SELECT p.ref_id_ua,p.id_p, p.ref_id_uf,f.id_f, f.nome, p.data_consegna ,p.isConsegnato,p.qty FROM prenotazione p, farmaco f WHERE p.ref_id_uf =" + id_farmacia +" and p.ref_id_f=f.id_f");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return resultSet;
     }
 
-    public static void eliminaOrdineERicaricaFarmaci(String id_prenotazione,ArrayList<String> id_l,ArrayList<String> qty) {
-        try {
+    public static Connection annullaConRollback(String id_prenotazione,ArrayList<String> id_l,ArrayList<String> qty){
+        Connection connection = connectAzienda();
+        try{
+            Statement statement = connection.createStatement();
+            connection.setAutoCommit(false);
+            statement.executeUpdate("DELETE FROM lotto_ordinato WHERE ref_id_p = "+ id_prenotazione);
+            for(int i = 0 ; i< id_l.size();++i) {
+                statement.executeUpdate("UPDATE lotto set qty = qty + " + qty.get(i)+" WHERE id_l =" + id_l.get(i));
+            }
+            statement.executeUpdate("DELETE FROM prenotazione  WHERE id_p = " + id_prenotazione);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return connection;
+    }
+
+    public static void eliminaOrdineERicaricaFarmaci(String id_prenotazione,ArrayList<String> id_l,ArrayList<String> qty){
+
+        try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("DELETE FROM lotto_ordinato WHERE ref_id_p = " + id_prenotazione);
-            for (int i = 0; i < id_l.size(); ++i) {
-                statement.executeUpdate("UPDATE lotto set qty = qty + " + qty.get(i) + " WHERE id_l =" + id_l.get(i));
+            statement.executeUpdate("DELETE FROM lotto_ordinato WHERE ref_id_p = "+ id_prenotazione);
+            for(int i = 0 ; i< id_l.size();++i) {
+                statement.executeUpdate("UPDATE lotto set qty = qty + " + qty.get(i)+" WHERE id_l =" + id_l.get(i));
             }
             statement.executeUpdate("DELETE FROM prenotazione  WHERE id_p = " + id_prenotazione);
         } catch (Exception e) {
@@ -188,15 +205,16 @@ public class DBMSBoundary {
     }
 
 
-    public static void creaPrenotazioneEScarica(int id_farmacia, int id_corriere,int id_farmaco,LocalDate data_consegna, ArrayList<Integer> id_lotti, ArrayList <Integer> qty_lotti){
+    public static void creaPrenotazioneEScarica(int id_farmacia, int id_corriere,int id_farmaco,LocalDate data_consegna, ArrayList<Integer> id_lotti, ArrayList <Integer> qty_lotti,int qty){
         try{ //crea prenotazione
             Connection connection = connectAzienda();
-            PreparedStatement statement1 = connection.prepareStatement("insert into prenotazione(ref_id_uf, ref_id_ua,ref_id_f, isConsegnato, data_consegna) values (?,?,?,?,?)");
+            PreparedStatement statement1 = connection.prepareStatement("insert into prenotazione(ref_id_uf, ref_id_ua,ref_id_f, isConsegnato, data_consegna,qty) values (?,?,?,?,?,?)");
             statement1.setInt(1,id_farmacia);
             statement1.setInt(2,id_corriere);
             statement1.setInt(3,id_farmaco);
             statement1.setInt(4, 0);
             statement1.setDate(5,Date.valueOf(data_consegna));
+            statement1.setInt(6,qty);
             statement1.executeUpdate();
             Statement statement2 = connection.createStatement() ;
             ResultSet rsId = statement2.executeQuery("SELECT LAST_INSERT_ID() as id");
@@ -216,11 +234,49 @@ public class DBMSBoundary {
         }
     }
 
+    public static void modificaPrenotazioneEAggiornaLotti(int id_prenotazione,int id_farmacia, int id_corriere,int id_farmaco,LocalDate data_consegna, ArrayList<Integer> id_lotti, ArrayList <Integer> qty_lotti,int qty){
+        try{ //crea prenotazione
+            Connection connection = connectAzienda();
+            PreparedStatement statement1 = connection.prepareStatement("insert into prenotazione(id_p,ref_id_uf, ref_id_ua,ref_id_f, isConsegnato, data_consegna,qty) values (?,?,?,?,?,?,?)");
+            statement1.setInt(1,id_prenotazione);
+            statement1.setInt(2,id_farmacia);
+            statement1.setInt(3,id_corriere);
+            statement1.setInt(4,id_farmaco);
+            statement1.setInt(5, 0);
+            statement1.setDate(6,Date.valueOf(data_consegna));
+            statement1.setInt(7,qty);
+            statement1.executeUpdate();
+            Statement statement2 = connection.createStatement() ;
+            for(int i=0; i<id_lotti.size(); ++i) {
+                statement2.executeUpdate("update lotto set qty = qty - " + String.valueOf(qty_lotti.get(i)) + " where id_l = " + id_lotti.get(i));
+                PreparedStatement statement3 = connection.prepareStatement("insert into lotto_ordinato(ref_id_l, ref_id_p, isCaricato, qty) values(?,?,?,?)");
+                statement3.setInt(1,id_lotti.get(i));
+                statement3.setInt(2,id_prenotazione);
+                statement3.setInt(3,0);
+                statement3.setInt(4,qty_lotti.get(i));
+                statement3.executeUpdate();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static ResultSet getLotti(String id_farmaco){
         ResultSet resultSet;
         try{ //getLotti
             Connection connection = connectAzienda();
-            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            resultSet = statement.executeQuery("select * from lotto where ref_id_f = " + id_farmaco);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+    public static ResultSet getLotti(String id_farmaco,Connection con){
+        ResultSet resultSet;
+        try{ //getLotti
+            Statement statement = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
             resultSet = statement.executeQuery("select * from lotto where ref_id_f = " + id_farmaco);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -233,7 +289,7 @@ public class DBMSBoundary {
         try{ //getLotti
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            resultSet = statement.executeQuery("select lo.ref_id_l ,l.data_di_scadenza,lo.qty from lotto_ordinato lo,lotto l where lo.ref_id_l = l.id_l and lo.ref_id_p = " + id_prenotazione);
+            resultSet = statement.executeQuery("select lo.ref_id_l ,l.data_di_scadenza,l.data_di_disponibilita,lo.qty from lotto_ordinato lo,lotto l where lo.ref_id_l = l.id_l and lo.ref_id_p = " + id_prenotazione);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -244,7 +300,7 @@ public class DBMSBoundary {
         ResultSet resultSet;
         try{
             Connection connection = connectAzienda();
-            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY );
             resultSet = statement.executeQuery("select id_ua from utente where isCorriere = 1");
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -382,6 +438,17 @@ public class DBMSBoundary {
             throw new RuntimeException(e);
         }
     }
+
+    public static void scaricaFarmaci(String id_farmacia,String id_farmaco,String id_lotto,String qty){
+        try{
+            Connection connection = connectFarmacia();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("update farmaco set qty = qty -" + qty + " where ref_id_uf ="+ id_farmacia + " and ref_id_f =" + id_farmaco +" and ref_id_l ="+ id_lotto);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 } // class ends
 
