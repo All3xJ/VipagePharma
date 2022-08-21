@@ -64,14 +64,14 @@
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="410.0" layoutX="308.0" layoutY="174.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="691.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cff3f2" height="52.0" layoutX="377.0" layoutY="193.0" stroke="#b9b9b9" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="561.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cff3f2" height="95.0" layoutX="377.0" layoutY="193.0" stroke="#b9b9b9" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="561.0" />
             <Button layoutX="603.0" layoutY="494.0" mnemonicParsing="false" onMouseClicked="#premeConferma" prefHeight="50.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Conferma">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Text fx:id="testo_riepilogo_contratto" layoutX="442.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="418.0"> <!-- Nome_farmaco -->
+            <Text fx:id="testo_riepilogo_contratto" layoutX="387.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="540.0"> <!-- Nome_farmaco -->
                <font>
-                  <Font name="Arial Bold" size="30.0" />
+                  <Font size="17.0" />
                </font>
             </Text>
             <Text layoutX="513.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nuova quantità:">
@@ -79,7 +79,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Text>
-            <TextField layoutX="676.0" layoutY="352.0" prefHeight="35.0" prefWidth="95.0" />
+            <TextField fx:id="qty_text" layoutX="675.0" layoutY="356.0" prefHeight="27.0" prefWidth="84.0" />
       </children>
     </AnchorPane>
   </children>

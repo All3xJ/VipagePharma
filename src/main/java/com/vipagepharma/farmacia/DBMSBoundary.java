@@ -173,27 +173,15 @@ public class DBMSBoundary {
         return resultSet;
     }
 
-    public static void eliminaOrdineERicaricaFarmaci(String id_prenotazione,ArrayList<String> id_l,ArrayList<String> qty){
-        try{
+    public static void eliminaOrdineERicaricaFarmaci(String id_prenotazione,ArrayList<String> id_l,ArrayList<String> qty) {
+        try {
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("DELETE FROM lotto_ordinato WHERE ref_id_p = "+ id_prenotazione);
-            for(int i = 0 ; i< id_l.size();++i) {
-                statement.executeUpdate("UPDATE lotto set qty = qty + " + qty.get(i)+" WHERE id_l =" + id_l.get(i));
+            statement.executeUpdate("DELETE FROM lotto_ordinato WHERE ref_id_p = " + id_prenotazione);
+            for (int i = 0; i < id_l.size(); ++i) {
+                statement.executeUpdate("UPDATE lotto set qty = qty + " + qty.get(i) + " WHERE id_l =" + id_l.get(i));
             }
             statement.executeUpdate("DELETE FROM prenotazione  WHERE id_p = " + id_prenotazione);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
-    public static void aggiornaContratto(String id_farmaco, String id_farmacia, String quantita){
-        ResultSet resultSet;
-        try{
-            Connection connection = connectAzienda();
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("update contratto set qty_settimanale = "+ quantita +" where ref_id_f = " + id_farmaco + " and ref_id_uf = " +  id_farmacia );
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -351,11 +339,22 @@ public class DBMSBoundary {
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            resultSet = statement.executeQuery("select * from contratto where ref_id_uf = " +id_farmacia);
+            resultSet = statement.executeQuery("select * from contratto, farmaco where id_f=ref_id_f and ref_id_uf = " +id_farmacia);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return resultSet;
+    }
+
+    public static void aggiornaContratto(String id_farmaco, String id_farmacia, String quantita){
+        ResultSet resultSet;
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("update contratto set qty_settimanale = "+ quantita +" where ref_id_f = " + id_farmaco + " and ref_id_uf = " +  id_farmacia );
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static ResultSet getConsegneOdierneNonCaricate(String IDFarmacia){// faccio PRIMA check prenotazione per vedere se è stato caricato...

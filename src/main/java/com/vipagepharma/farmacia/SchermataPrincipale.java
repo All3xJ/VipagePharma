@@ -32,7 +32,7 @@ public class SchermataPrincipale {
 	}
 
 	@FXML
-	void premeModificaContratti(MouseEvent event) throws IOException{
+	void premeModificaContratti(MouseEvent event) throws IOException, SQLException {
 		ModificaContrattiControl modcontraCtrl = new ModificaContrattiControl();
 		modcontraCtrl.start();
 	}
