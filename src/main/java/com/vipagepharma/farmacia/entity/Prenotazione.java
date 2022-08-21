@@ -52,7 +52,7 @@ public class Prenotazione {
         if (o instanceof Prenotazione)
             p = (Prenotazione) o;
 
-        if (this.idPrenotazione.get().equals(p.idPrenotazione.get()) && this.nomeFarmaco.get().equals(p.nomeFarmaco.get()) && this.dataConsegna.get().equals(p.dataConsegna.get()) && this.isConsegnato==p.isConsegnato && farmaco.getIdFarmaco().equals(p.farmaco.getIdFarmaco()) && this.idFarmacia.equals(p.idFarmacia))
+        if (this.idPrenotazione.get().equals(p.idPrenotazione.get()) && this.nomeFarmaco.get().equals(p.nomeFarmaco.get()) && this.dataConsegna.get().equals(p.dataConsegna.get()) && this.isConsegnato==p.isConsegnato && this.getIdFarmaco().equals(p.getIdFarmaco()) && this.idFarmacia.equals(p.idFarmacia))
             return true;
         else
             return false;

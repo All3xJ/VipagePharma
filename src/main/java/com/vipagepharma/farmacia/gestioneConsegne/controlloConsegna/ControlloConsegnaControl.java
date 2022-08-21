@@ -30,7 +30,7 @@ public class ControlloConsegnaControl {
     }
 
     public void start() throws SQLException, IOException {
-        if(orario.getHour() == 11){
+        if(orario.getHour() == 17){
             String idFarmacia = Utente.getID();
             ResultSet consegneNonCaricate = DBMSBoundary.getConsegneOdierneNonCaricate (idFarmacia);
             prenotazioniMancatoCarico = new LinkedList<>();
@@ -120,7 +120,7 @@ public class ControlloConsegnaControl {
     public void premutoConfermaCarico(Prenotazione prenotazioneProbl){
         App.popup_stage.close();
         System.out.println("sizeee: "+prenotazioneProbl.lotti.size());
-        DBMSBoundary.aggiungiCarico(prenotazioneProbl.getIdFarmaco(),prenotazioneProbl.getNomeFarmaco(),prenotazioneProbl.getIdFarmacia(),prenotazioneProbl.farmaco.isBanco,prenotazioneProbl.lotti);
+        DBMSBoundary.aggiungiCarico(prenotazioneProbl.getIdFarmaco(),prenotazioneProbl.getNomeFarmaco(),prenotazioneProbl.getIdFarmacia(),prenotazioneProbl.getIsBanco(),prenotazioneProbl.lotti);
         DBMSBoundary.confermaCarico(prenotazioneProbl.lotti,prenotazioneProbl.getIdPrenotazione());
         System.out.println(prenotazioneProbl.getIdPrenotazione()+"bi");
         this.faiListe();
