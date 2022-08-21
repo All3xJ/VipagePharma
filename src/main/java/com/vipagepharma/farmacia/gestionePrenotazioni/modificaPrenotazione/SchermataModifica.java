@@ -6,6 +6,7 @@ import com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci.PrenotaFarm
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -14,6 +15,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class SchermataModifica implements Initializable {
@@ -28,7 +30,17 @@ public class SchermataModifica implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        testo_nome_farmaco.setText(ModificaPrenotazioneControl.modificaPrenotazioneControl.getPrenotazione().getIdFarmaco());
+        this.qty.setText(String.valueOf(ModificaPrenotazioneControl.modificaPrenotazioneControl.getPrenotazione().getQty()));
+        this.data_consegna.setValue(LocalDate.parse(ModificaPrenotazioneControl.modificaPrenotazioneControl.getPrenotazione().getDataConsegna()));
+        this.testo_nome_farmaco.setText(ModificaPrenotazioneControl.modificaPrenotazioneControl.getPrenotazione().getNomeFarmaco());
+        this.data_consegna.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+
+                setDisable(empty || date.compareTo(today) < 0 );
+            }
+        });
     }
 
     public void premeInvia(ActionEvent event) throws SQLException, IOException {
@@ -38,7 +50,7 @@ public class SchermataModifica implements Initializable {
     @FXML
     public void premeRadioButton(MouseEvent event){
         if(this.flag_scadenza == 0){
-            flag_scadenza = 1;
+            this.flag_scadenza = 1;
         }
         else{
             this.flag_scadenza = 0;

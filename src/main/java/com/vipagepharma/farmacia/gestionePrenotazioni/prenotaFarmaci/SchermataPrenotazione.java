@@ -30,8 +30,8 @@ public class SchermataPrenotazione implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        testo_nome_farmaco.setText(PrenotaFarmaciControl.getControl().getFarmaco());
-        data_consegna.setDayCellFactory(picker -> new DateCell() {
+        this.testo_nome_farmaco.setText(PrenotaFarmaciControl.getControl().getFarmaco());
+        this.data_consegna.setDayCellFactory(picker -> new DateCell() {
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
                 LocalDate today = LocalDate.now();

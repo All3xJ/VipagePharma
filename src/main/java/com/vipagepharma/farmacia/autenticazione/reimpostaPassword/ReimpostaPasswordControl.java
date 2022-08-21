@@ -53,7 +53,7 @@ public class ReimpostaPasswordControl {
         App.setRoot(schermata);
     }
     private boolean checkPass(){
-        if(this.password.equals(this.confermaPassword))
+        if(this.password.equals(this.confermaPassword) && !this.password.equals(""))
             return true;
         return false;
     }

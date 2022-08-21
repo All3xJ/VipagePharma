@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ModificaPrenotazioneControl {
     public static ModificaPrenotazioneControl modificaPrenotazioneControl;
@@ -41,10 +42,10 @@ public class ModificaPrenotazioneControl {
         this.qtyRichiesta = Integer.parseInt(qtyRichiesta);
         this.flag_scadenza = flag_scadenza;
         this.data_scadenza_min = calcDataScadenzaMin();
-        this.checkDisponibilitaRollback(event);
+        this.checkDisponibilita(event);
     }
 
-    private void checkDisponibilitaRollback(ActionEvent event) throws SQLException, IOException {
+    private void checkDisponibilita(ActionEvent event) throws SQLException, IOException {
         String idPrenotazione = prenotazione.getIdPrenotazione();
         ResultSet lottiOrdinati = DBMSBoundary.getLottiOrdinati(idPrenotazione);
         ArrayList<String> qtyLotti = new ArrayList<>();
@@ -53,9 +54,9 @@ public class ModificaPrenotazioneControl {
             qtyLotti.add(lottiOrdinati.getString("qty"));
             idLotti.add(lottiOrdinati.getString("ref_id_l"));
         }
-        this.con = DBMSBoundary.annullaConRollback(idPrenotazione,idLotti,qtyLotti);
-        //lottiOrdinati.close();
-        this.lotti = DBMSBoundary.getLotti(prenotazione.getIdFarmaco(),this.con);
+        LinkedList<Object> risultato = DBMSBoundary.getLotti(idPrenotazione,idLotti,qtyLotti,prenotazione.getIdFarmaco());
+        this.lotti = (ResultSet) risultato.get(1);
+        this.con = (Connection) risultato.get(0);
         if(this.controllaEScegliNuoviLotti()){
             App.newWind("gestionePrenotazioni/modificaPrenotazione/AvvisoConfermaModifica",event);
         }
@@ -93,7 +94,7 @@ public class ModificaPrenotazioneControl {
     }
     public void premutoNo(MouseEvent event) throws IOException, SQLException {
         this.con.rollback();
-        App.setRoot("gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni");
+        App.setRoot("gestionePrenotazioni/modificaPrenotazione/SchermataModifica");
         App.popup_stage.close();
     }
 

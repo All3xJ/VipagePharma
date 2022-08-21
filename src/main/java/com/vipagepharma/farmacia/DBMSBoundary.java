@@ -273,15 +273,25 @@ public class DBMSBoundary {
         return resultSet;
     }
 
-    public static ResultSet getLotti(String id_farmaco,Connection con){
+    public static LinkedList<Object> getLotti(String id_prenotazione,ArrayList<String> id_l,ArrayList<String> qty,String id_farmaco){
+        LinkedList<Object> lotti = new LinkedList<>();
         ResultSet resultSet;
         try{ //getLotti
-            Statement statement = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            connection.setAutoCommit(false);
+            statement.executeUpdate("DELETE FROM lotto_ordinato WHERE ref_id_p = "+ id_prenotazione);
+            for(int i = 0 ; i< id_l.size();++i) {
+                statement.executeUpdate("UPDATE lotto set qty = qty + " + qty.get(i)+" WHERE id_l =" + id_l.get(i));
+            }
+            statement.executeUpdate("DELETE FROM prenotazione  WHERE id_p = " + id_prenotazione);
             resultSet = statement.executeQuery("select * from lotto where ref_id_f = " + id_farmaco);
+            lotti.add(connection);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        return resultSet;
+        lotti.add(resultSet);
+        return lotti;
     }
 
     public static ResultSet getLottiOrdinati(String id_prenotazione){
