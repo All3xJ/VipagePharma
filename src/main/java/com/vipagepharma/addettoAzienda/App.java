@@ -1,7 +1,9 @@
 package com.vipagepharma.addettoAzienda;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -10,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
@@ -27,6 +30,13 @@ public class App extends Application {
         scene = new Scene(loadFXML("autenticazione/login/SchermataLogin"), 1280, 800);
         scene.getRoot().setStyle("-fx-font-family: 'Arial'");
         stage.setScene(scene);
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
         stage.show();
     }
 

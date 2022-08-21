@@ -1,7 +1,7 @@
 package com.vipagepharma.addettoAzienda.autenticazione.registrazione;
 
 import com.vipagepharma.addettoAzienda.App;
-import com.vipagepharma.farmacia.DBMSBoundary;
+import com.vipagepharma.addettoAzienda.DBMSBoundary;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -35,15 +35,15 @@ public class RegistrazioneControl {
         this.password = password;
         this.confermaPassword = confermaPassword;
         if(!this.checkPassword()){
-            com.vipagepharma.farmacia.App.newWind("autenticazione/registrazione/AvvisoPasswordErrate",event);
+            App.newWind("autenticazione/registrazione/AvvisoPasswordErrate",event);
         }
         else{
             if(!checkFormattazioneEmail()){
-                com.vipagepharma.farmacia.App.newWind("autenticazione/registrazione/AvvisoMailErrata",event);
+                App.newWind("autenticazione/registrazione/AvvisoMailErrata",event);
             }
             else {
-                if (!com.vipagepharma.farmacia.DBMSBoundary.verificaMail(this.email)) {
-                    com.vipagepharma.farmacia.App.newWind("autenticazione/registrazione/AvvisoMailNonDisponibile",event);
+                if (!DBMSBoundary.verificaMail(this.email)) {
+                    App.newWind("autenticazione/registrazione/AvvisoMailNonDisponibile",event);
                 }
                 else {
                     String key = this.generaKey();
@@ -51,7 +51,7 @@ public class RegistrazioneControl {
                     if (resultSet.next()) {
                         String id = resultSet.getString("id");
                         this.invioEmail(email,id,key);
-                        com.vipagepharma.farmacia.App.newWind("autenticazione/registrazione/AvvisoOperazioneRiuscita",event);
+                        App.newWind("autenticazione/registrazione/AvvisoOperazioneRiuscita",event);
                     }
 
                 }

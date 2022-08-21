@@ -3,6 +3,8 @@ package com.vipagepharma.farmacia.entity;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import java.util.LinkedList;
+
 public class Prenotazione {
     private final StringProperty idPrenotazione = new SimpleStringProperty();
 
@@ -10,27 +12,52 @@ public class Prenotazione {
 
     private final StringProperty dataConsegna = new SimpleStringProperty();
     private boolean isConsegnato;
-
-    private String idFarmaco;
     private String idFarmacia;
 
-    public Prenotazione(String idPrenotazione, String nomeFarmaco, String dataConsegna , String idFarmacia,String idFarmaco,int isConsegnato){
+    public Farmaco farmaco;
+
+    public LinkedList<Lotto> lotti = new LinkedList<>();
+
+    public Prenotazione(String idPrenotazione, String nomeFarmaco, String dataConsegna , String idFarmacia,String idFarmaco,boolean isBanco,int isConsegnato){
         this.setId(idPrenotazione);
         this.setNomeFarmaco(nomeFarmaco);
         this.setDataConsegna(dataConsegna);
         this.idFarmacia = idFarmacia;
-        this.idFarmaco = idFarmaco;
+        this.farmaco=new Farmaco(idFarmaco,isBanco);
         if(isConsegnato == 1)
             this.isConsegnato = true;
         else
             this.isConsegnato = false;
     }
 
+    public Prenotazione(String idPrenotazione, String nomeFarmaco, String dataConsegna , String idFarmacia,String idFarmaco,int isConsegnato){
+        this.setId(idPrenotazione);
+        this.setNomeFarmaco(nomeFarmaco);
+        this.setDataConsegna(dataConsegna);
+        this.idFarmacia = idFarmacia;
+        if(isConsegnato == 1)
+            this.isConsegnato = true;
+        else
+            this.isConsegnato = false;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        Prenotazione p = null;
+        if (o instanceof Prenotazione)
+            p = (Prenotazione) o;
+
+        if (this.idPrenotazione.get().equals(p.idPrenotazione.get()) && this.nomeFarmaco.get().equals(p.nomeFarmaco.get()) && this.dataConsegna.get().equals(p.dataConsegna.get()) && this.isConsegnato==p.isConsegnato && farmaco.getIdFarmaco().equals(p.farmaco.getIdFarmaco()) && this.idFarmacia.equals(p.idFarmacia))
+            return true;
+        else
+            return false;
+    }
+
     public boolean getIsConsegnato(){
         return this.isConsegnato;
     }
     public String getIdFarmaco(){
-        return this.idFarmaco;
+        return this.farmaco.getIdFarmaco();
     }
 
     public String getIdFarmacia(){

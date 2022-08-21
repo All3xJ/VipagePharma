@@ -67,5 +67,7 @@ module com.vipagepharma {
     opens com.vipagepharma.corriere.gestioneConsegne.visualizzaConsegne to javafx.fxml;
     exports com.vipagepharma.corriere.entity;
     opens com.vipagepharma.corriere.entity to javafx.base;
+    exports com.vipagepharma.farmacia.gestioneConsegne.controlloConsegna;
+    opens com.vipagepharma.farmacia.gestioneConsegne.controlloConsegna to javafx.fxml;
 
 }

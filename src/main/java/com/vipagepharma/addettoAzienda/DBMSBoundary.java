@@ -199,18 +199,6 @@ public class DBMSBoundary {
         return resultSet;
     }
 
-    public static ResultSet getConsegneOdierneNonCaricate(){
-        ResultSet resultSet;
-        try{
-            Connection connection = connectAzienda();
-            Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery("select * from lotto_ordinato where isCaricato = 0");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return resultSet;
-    }
-
     public static void setFlagProblema(String id_prenotazione, int boo){
         ResultSet resultSet;
         try{

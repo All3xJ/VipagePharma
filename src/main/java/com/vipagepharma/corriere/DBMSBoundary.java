@@ -31,7 +31,7 @@ public class DBMSBoundary {
         Connection connection = null;
         try {
             // below two lines are used for connectivity.
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, pass);
         }
         catch (Exception e) {

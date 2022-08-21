@@ -1,7 +1,7 @@
 package com.vipagepharma.corriere.autenticazione.registrazione;
 
 import com.vipagepharma.corriere.App;
-import com.vipagepharma.farmacia.DBMSBoundary;
+import com.vipagepharma.corriere.DBMSBoundary;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 

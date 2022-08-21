@@ -40,6 +40,7 @@ public class RisoluzioneProblemaConsegnaControl {
         ResultSet lottiNonConsegnati = DBMSBoundary.getLottiNonConsegnati(this.consegna);
         DBMSBoundary.carica(lottiNonConsegnati);
         App.newWind("gestioneConsegne/risoluzioneProblemaConsegna/AvvisoOperazioneRiuscita",event);
+        // la flag di fix problema lo fa al click di ok di questo avviso
     }
 
     public void premutoCompletaOrdine(MouseEvent event) throws SQLException, IOException {
@@ -52,6 +53,7 @@ public class RisoluzioneProblemaConsegnaControl {
             int idprenotazione = newprenotazione.getInt("id_p");
             DBMSBoundary.aggiornaLottiOrdinati(idprenotazione,lottiNonConsegnati);
             App.newWind("gestioneConsegne/risoluzioneProblemaConsegna/AvvisoOperazioneRiuscita",event);
+            // la flag di fix problema lo fa al click di ok di questo avviso
         }
     }
 

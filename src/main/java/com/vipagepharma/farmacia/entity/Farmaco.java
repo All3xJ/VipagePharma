@@ -10,10 +10,17 @@ public class Farmaco {
 
     private final StringProperty principioAttivo = new SimpleStringProperty();
 
+    public boolean isBanco;
+
     public Farmaco(String idFarmaco, String nomeFarmaco, String principioAttivo){
         this.setId(idFarmaco);
         this.setNomeFarmaco(nomeFarmaco);
         this.setPrincipioAttivo(principioAttivo);
+    }
+
+    public Farmaco(String idFarmaco, boolean isBanco){
+        this.setId(idFarmaco);
+        this.isBanco=isBanco;
     }
 
     public final StringProperty idFarmacoProperty() {

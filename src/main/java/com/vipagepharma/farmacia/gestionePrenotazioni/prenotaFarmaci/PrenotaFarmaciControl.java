@@ -94,7 +94,7 @@ public class PrenotaFarmaciControl {
     }
 
 
-    private void checkDisponibilitaEScegliLotti() throws SQLException {  //posso calcolare sia la disponibilitá che i lotti con un metodo
+    private void checkDisponibilitaEScegliLotti() throws SQLException {  // fa calcolo disponibilita PER LA DATA CHE FARMACISTA HA SCELTO E PER LA QTY CHE FARMACISTA HA SCELTO, E SCEGLIE I LOTTI (SEMPRE SE LA QTY È ABBASTANZA.... SE NON È ABBASTANZA INVOCA PROX METODO)
         int qtyTotale = Integer.parseInt(this.qtyRichiesta);
         int qtyLottiTot = 0;
         while(lotti.next() && qtyLottiTot < qtyTotale && this.lotti.getDate(4).toLocalDate().isBefore(this.data_consegna)){  //esco dal loop appena la data di disp > data consegna richiesta
@@ -121,7 +121,7 @@ public class PrenotaFarmaciControl {
     }
 
     // DA SISTEMARE
-    private void calcProxDisponibilitaEScegliLotti() throws SQLException {
+    private void calcProxDisponibilitaEScegliLotti() throws SQLException {  // se metodo precedente ha visto che la qty per quella data è < di quella che il farmacista voleva, allora QUESTO METODO CALCOLA LA PROX DATA PIU VICINA DISPONIBILE PER AVERE LA QTY DATA, EEEEEE SCEGLIEEE LOTTIIIII
         int qtyMancante = Integer.parseInt(this.qtyRichiesta) - Integer.parseInt(this.qtyDisponibile);
         int qtyLottiTot = 0;
         this.new_idLotti.add(this.lotti.getInt(1));

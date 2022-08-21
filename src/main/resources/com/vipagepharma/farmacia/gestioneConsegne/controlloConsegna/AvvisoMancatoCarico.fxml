@@ -37,19 +37,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: f5f5f5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.caricoPrenotazione.AvvisoCaricoParziale">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: f5f5f5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestioneConsegne.controlloConsegna.AvvisoMancatoCarico">
    <children>
       <Text fill="RED" layoutX="272.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold" size="30.0" />
          </font>
       </Text>
-      <Text fx:id="testo_carico_parziale" layoutX="113.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="501.18359375"> <!-- "La consegna id_consegna prevista per oggi è stata caricata parzialmente"-->
+      <Text fx:id="testo_mancato_carico" layoutX="150.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="436.18359375"> <!-- "La consegna id_consegna prevista per oggi non è stata ancora caricata"-->
          <font>
             <Font name="Arial" size="20.0" />
          </font>
       </Text>
-      <Button alignment="CENTER" layoutX="255.0" layoutY="308.0" mnemonicParsing="false" onMouseClicked="#premeSegnalaUnProblema" prefHeight="40.0" prefWidth="227.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Segnala un problema">
+      <Button alignment="CENTER" layoutX="425.0" layoutY="348.0" mnemonicParsing="false" onMouseClicked="#premeSegnalaUnProblema" prefHeight="40.0" prefWidth="227.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Segnala un problema">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="Ok1" alignment="CENTER" layoutX="86.0" layoutY="348.0" mnemonicParsing="false" onMouseClicked="#premeConfermaCarico" prefHeight="40.0" prefWidth="227.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Conferma carico">
          <font>
             <Font name="Arial" size="20.0" />
          </font>

@@ -1,6 +1,9 @@
 package com.vipagepharma.farmacia;
 
+import com.vipagepharma.farmacia.entity.Lotto;
+
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -22,6 +25,19 @@ public class DBMSBoundary {
             // below two lines are used for connectivity.
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url + dbFarmacia, user, pass);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return connection;
+    } // function ends
+
+    public static Connection connectDBMS(){
+        Connection connection = null;
+        try {
+            // below two lines are used for connectivity.
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(url, user, pass);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -116,7 +132,7 @@ public class DBMSBoundary {
         try{
             Connection connection = connectFarmacia();
             Statement statement = connection.createStatement();
-            resultSet = statement .executeQuery("select ref_id_f ,qty ,isBanco  from farmaco");
+            resultSet = statement.executeQuery("select ref_id_f ,qty ,isBanco  from farmaco");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -212,8 +228,6 @@ public class DBMSBoundary {
         }
     }
 
-
-
     public static ResultSet getLotti(String id_farmaco){
         ResultSet resultSet;
         try{ //getLotti
@@ -292,6 +306,46 @@ public class DBMSBoundary {
         }
     }
 
+    public static void confermaCarico(LinkedList <Lotto> lotti, String id_prenotazione){
+        for (int i=0; i< lotti.size(); ++i){
+            try{
+                Connection connection = connectAzienda();
+                Statement statement = connection.createStatement();
+                statement.executeUpdate("Update lotto_ordinato set isCaricato = 1 where ref_id_p = " +id_prenotazione + " and ref_id_l = " + lotti.get(i).getLotto());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public static void aggiungiCarico(String id_farmaco, String nome_farmaco, String id_farmacia, boolean isBanco, LinkedList<Lotto> lotti){
+
+        System.out.println("size: "+lotti.size());
+        for (int i=0; i< lotti.size(); ++i){
+            try{
+                Connection connection = connectFarmacia();
+                PreparedStatement statement = connection.prepareStatement("insert into farmaco (ref_id_f, ref_id_l, ref_id_uf, nome, data_scadenza, qty, isBanco) values (?,?,?,?,?,?,?)");
+                statement.setInt(1,Integer.parseInt(id_farmaco));
+                statement.setInt(2,Integer.parseInt(lotti.get(i).getLotto()));
+                statement.setInt(3,Integer.parseInt(id_farmacia));
+                statement.setString(4,nome_farmaco);
+                statement.setDate(5,Date.valueOf(lotti.get(i).getDataScadenza()));
+                statement.setInt(6,Integer.parseInt(lotti.get(i).getQty()));
+                statement.setBoolean(7,isBanco);
+                try {
+                    statement.executeUpdate();
+                } catch(Exception e){
+                    Statement statement2 = connection.createStatement();
+                    System.out.println("Sto aggiungendo: "+lotti.get(i).getQty());
+                    statement2.executeUpdate("update farmaco set qty=qty+"+lotti.get(i).getQty()+" where  ref_id_f="+id_farmaco+" and ref_id_l="+lotti.get(i).getLotto()+" and ref_id_uf="+id_farmacia);
+                }
+            } catch (Exception e) {
+                //throw new RuntimeException(e);
+
+            }
+        }
+    }
+
     public static ResultSet getContratti(String id_farmacia){ //diversa da quella dell'addetto
         ResultSet resultSet;
         try{
@@ -304,7 +358,31 @@ public class DBMSBoundary {
         return resultSet;
     }
 
+    public static ResultSet getConsegneOdierneNonCaricate(String IDFarmacia){// faccio PRIMA check prenotazione per vedere se è stato caricato...
+        ResultSet resultSet;
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            java.util.Date date = new java.util.Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
+            String strDataOdierna = formatter.format(date);
+            resultSet = statement.executeQuery("select * from lotto_ordinato lo, prenotazione p, lotto l, farmaco f where p.id_p=lo.ref_id_p and f.id_f=l.ref_id_f and p.data_consegna = str_to_date('"+strDataOdierna+"','%d-%m-%Y') and lo.ref_id_l=l.id_l and p.ref_id_uf="+IDFarmacia +" and id_p IN (select ref_id_p from lotto_ordinato lo, prenotazione p, lotto l, farmaco f where p.id_p=lo.ref_id_p and f.id_f=l.ref_id_f and p.data_consegna = str_to_date('"+strDataOdierna+"','%d-%m-%Y') and lo.ref_id_l=l.id_l and p.ref_id_uf="+IDFarmacia+" group by ref_id_p having count(*)!=sum(isCaricato))");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
 
+    public static void setFlagProblema(String id_prenotazione, int boo){
+        ResultSet resultSet;
+        try{
+            Connection connection = connectAzienda();
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("Update prenotazione set problema = "+boo+" where id_p = " + id_prenotazione);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 } // class ends
 
