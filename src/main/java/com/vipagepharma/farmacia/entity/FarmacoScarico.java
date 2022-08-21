@@ -35,9 +35,9 @@ public class FarmacoScarico {
     }
 
     public String getId(){
-        return id;
+        return this.id;
     }
-
+    public String getNome(){return this.nome;}
     public void addIdLotto(String id_l) {
         this.id_lotti.add(id_l);
     }

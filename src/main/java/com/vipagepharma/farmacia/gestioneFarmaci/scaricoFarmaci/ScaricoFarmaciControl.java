@@ -91,10 +91,10 @@ public class ScaricoFarmaciControl {
         AvvisoScaricoRiuscito.farmaco = farmaco;
         App.newWind("gestioneFarmaci/scaricoFarmaci/AvvisoScaricoRiuscito",event);
     }
-        public void premutoOk() throws IOException {
-            App.popup_stage.close();
-            App.setRoot("gestioneFarmaci/scaricoFarmaci/SchermataScarico");
-        }
+    public void premutoOk() throws IOException {
+        App.popup_stage.close();
+        App.setRoot("gestioneFarmaci/scaricoFarmaci/SchermataScarico");
+    }
     public FarmacoScarico getFarmacoScarico(String nome){
         FarmacoScarico farmaco = null;
         for (int i = 0; i < this.farmaci.size(); ++i) {
