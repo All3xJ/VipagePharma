@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: f5f5f5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestioneConsegne.controlloConsegna.AvvisoMancatoCarico">
+   <children>
+      <Text fill="RED" layoutX="272.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="testo_mancato_carico" layoutX="150.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="436.18359375"> <!-- "La consegna id_consegna prevista per oggi non è stata ancora caricata"-->
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Button alignment="CENTER" layoutX="425.0" layoutY="348.0" mnemonicParsing="false" onMouseClicked="#premeSegnalaUnProblema" prefHeight="40.0" prefWidth="227.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Segnala un problema">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="Ok1" alignment="CENTER" layoutX="86.0" layoutY="348.0" mnemonicParsing="false" onMouseClicked="#premeConfermaCarico" prefHeight="40.0" prefWidth="227.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Conferma carico">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
