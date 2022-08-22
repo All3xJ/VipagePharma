@@ -49,6 +49,12 @@ public class FarmacoScarico {
         System.out.println(this.qty);
     }
 
+    public void aggiornaQtyRimanente(int qty){
+        int qtyRimanente = Integer.parseInt(this.qty);
+        qtyRimanente -= qty;
+        this.qty = String.valueOf(qtyRimanente);
+    }
+
     public int getQtyLotto(String idLotto){
         int index = this.id_lotti.indexOf(idLotto);
         return Integer.parseInt(qty_lotti.get(index));
