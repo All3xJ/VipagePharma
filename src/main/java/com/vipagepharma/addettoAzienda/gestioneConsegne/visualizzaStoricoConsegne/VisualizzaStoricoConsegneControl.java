@@ -44,6 +44,7 @@ public class VisualizzaStoricoConsegneControl {
         }try {
             while (true) {
                 if (!this.consegne.next()) break;
+
                 this.tvObservableList.add(new Consegna(this.consegne.getString("ref_id_uf"),this.consegne.getString("id_p"),this.consegne.getString("data_consegna"),this.consegne.getBlob("ricevuta_pdf")));
             }
         } catch (SQLException e) {
@@ -68,6 +69,7 @@ public class VisualizzaStoricoConsegneControl {
                 e2.printStackTrace();
             }
         }
+        contatorePagineConsegne=0;
     }
 
     public void premutoMostraAltro() throws SQLException, IOException {

@@ -3,7 +3,7 @@ package com.vipagepharma.farmacia.gestioneFarmaci.scaricoFarmaci;
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
 import com.vipagepharma.farmacia.SchermataPrincipale;
-import com.vipagepharma.farmacia.entity.FarmacoScarico;
+import com.vipagepharma.farmacia.entity.Farmaco;
 import com.vipagepharma.farmacia.entity.Utente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +19,7 @@ import java.util.LinkedList;
 public class ScaricoFarmaciControl {
 
     public static ScaricoFarmaciControl scarFarmCtrl;
-    private LinkedList<FarmacoScarico> farmaci;
+    private LinkedList<Farmaco> farmaci;
 
     public ObservableList<String> tvObservableList = FXCollections.observableArrayList();
     public ObservableList<String> tvObservableList2 = FXCollections.observableArrayList();
@@ -43,11 +43,11 @@ public class ScaricoFarmaciControl {
                 if (!inventario.next()) break;
                 if((!tvObservableList.contains(inventario.getString("nome")) && (!inventario.getString("qty").equals("0")))) {
                     this.tvObservableList.add(inventario.getString("nome"));
-                    this.farmaci.add(new FarmacoScarico(inventario.getString("ref_id_f"), inventario.getString("ref_id_l"), inventario.getString("nome"), inventario.getString("qty"), inventario.getInt("isBanco")));
+                    this.farmaci.add(new Farmaco(inventario.getString("ref_id_f"), inventario.getString("ref_id_l"), inventario.getString("nome"), inventario.getString("qty"), inventario.getInt("isBanco")));
                 }
                 else{
                     if(!inventario.getString("qty").equals("0")) {
-                        FarmacoScarico farmaco = getFarmacoScarico(inventario.getString("nome"));
+                        Farmaco farmaco = getFarmaco(inventario.getString("nome"));
                         farmaco.addIdLotto(inventario.getString("ref_id_l"));
                         farmaco.addQty(inventario.getString("qty"));
                     }
@@ -61,7 +61,7 @@ public class ScaricoFarmaciControl {
 
     public void riempiObservableList2(String nome){
         this.tvObservableList2.clear();
-        ArrayList<String> id = this.getFarmacoScarico(nome).getIdLotti();
+        ArrayList<String> id = this.getFarmaco(nome).getIdLotti();
         for(int i = 0; i < id.size();++i){
             this.tvObservableList2.add(id.get(i));
         }
@@ -77,7 +77,7 @@ public class ScaricoFarmaciControl {
     }
 
     public void premutoScarica(String nome, String idLotto, String qty, MouseEvent event) throws IOException {
-        FarmacoScarico farmaco = this.getFarmacoScarico(nome);
+        Farmaco farmaco = this.getFarmaco(nome);
         try {
             if (farmaco.getQtyLotto(idLotto) < Integer.parseInt(qty)) {
                 App.newWind("gestioneFarmaci/scaricoFarmaci/AvvisoErroreDati", event);
@@ -95,8 +95,8 @@ public class ScaricoFarmaciControl {
         App.popup_stage.close();
         App.setRoot("gestioneFarmaci/scaricoFarmaci/SchermataScarico");
     }
-    public FarmacoScarico getFarmacoScarico(String nome){
-        FarmacoScarico farmaco = null;
+    public Farmaco getFarmaco(String nome){
+        Farmaco farmaco = null;
         for (int i = 0; i < this.farmaci.size(); ++i) {
             if (farmaco == null) {
                 farmaco = this.farmaci.get(i).getFarmacoScarico(nome);

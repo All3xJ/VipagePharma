@@ -33,6 +33,8 @@ module com.vipagepharma {
     opens com.vipagepharma.farmacia.gestionePrenotazioni.modificaPrenotazione to javafx.fxml;
     exports com.vipagepharma.farmacia.gestioneFarmaci.controlloScorte;
     opens com.vipagepharma.farmacia.gestioneFarmaci.controlloScorte to javafx.fxml;
+    exports com.vipagepharma.farmacia.gestioneConsegne.controlloConsegna;
+    opens com.vipagepharma.farmacia.gestioneConsegne.controlloConsegna to javafx.fxml;
     exports com.vipagepharma.farmacia.entity;
     opens com.vipagepharma.farmacia.entity to javafx.base;
 
@@ -71,7 +73,7 @@ module com.vipagepharma {
     opens com.vipagepharma.corriere.gestioneConsegne.visualizzaConsegne to javafx.fxml;
     exports com.vipagepharma.corriere.entity;
     opens com.vipagepharma.corriere.entity to javafx.base;
-    exports com.vipagepharma.farmacia.gestioneConsegne.controlloConsegna;
-    opens com.vipagepharma.farmacia.gestioneConsegne.controlloConsegna to javafx.fxml;
+    exports com.vipagepharma.corriere.gestioneConsegne.uploadFirme;
+    opens com.vipagepharma.corriere.gestioneConsegne.uploadFirme to javafx.fxml;
 
 }

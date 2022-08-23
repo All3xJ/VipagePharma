@@ -5,6 +5,7 @@ import com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConsegn
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.time.LocalDate;
 import java.text.SimpleDateFormat;
@@ -359,10 +360,14 @@ public class DBMSBoundary {
         Connection connection = connectAzienda();
         Statement statement = connection.createStatement();
         java.util.Date date = new java.util.Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.add(Calendar.DATE, 1);
+        date = c.getTime();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
-        String strDataOdierna = formatter.format(date);
+        String strDataGiornoSuccessivo = formatter.format(date);
         //System.out.println("insert into prenotazione (ref_id_uf, ref_id_ua, isConsegnato, data_consegna, ref_id_f) values (" + id_farmacia + "," + id_corriere +"," + 0 + ", str_to_date('"+strDataOdierna+"','%d-%m-%Y')  ,"+ id_farmaco+")");
-        statement.executeUpdate("insert into prenotazione (ref_id_uf, ref_id_ua, isConsegnato, data_consegna, ref_id_f) values (" + id_farmacia + "," + id_corriere +"," + 0 + ", str_to_date('"+strDataOdierna+"','%d-%m-%Y')  ,"+ id_farmaco+")");
+        statement.executeUpdate("insert into prenotazione (ref_id_uf, ref_id_ua, isConsegnato, data_consegna, ref_id_f) values (" + id_farmacia + "," + id_corriere +"," + 0 + ", str_to_date('"+strDataGiornoSuccessivo+"','%d-%m-%Y')  ,"+ id_farmaco+")");
         resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() as id_p");
 
         return resultSet;
