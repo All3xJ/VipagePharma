@@ -77,7 +77,7 @@ public class SchermataModificaContratti implements Initializable {
                     }
 
                     private void premeModifica(Contratto entry) throws IOException {
-                        SchermataRiepilogoContratto.contratto = entry;
+                        ModificaContrattiControl.modifContraCtrl.premutoModifica(entry);
                         App.setRoot("gestionePrenotazioni/modificaContratti/SchermataRiepilogoContratto");
                     }
 

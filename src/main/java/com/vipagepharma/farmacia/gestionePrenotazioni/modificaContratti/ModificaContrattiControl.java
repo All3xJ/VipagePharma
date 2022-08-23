@@ -63,4 +63,8 @@ public class ModificaContrattiControl {
         App.setRoot("SchermataPrincipale");
         SchermataPrincipale.schermataPrecedente="gestionePrenotazioni/modificaContratti/SchermataModificaContratti";
     }
+
+    public void premutoModifica(Contratto contr){
+        SchermataRiepilogoContratto.contratto = contr;
+    }
 }

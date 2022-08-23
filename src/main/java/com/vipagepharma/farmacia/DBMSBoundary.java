@@ -421,7 +421,7 @@ public class DBMSBoundary {
             java.util.Date date = new java.util.Date();
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
             String strDataOdierna = formatter.format(date);
-            resultSet = statement.executeQuery("select * from lotto_ordinato lo, prenotazione p, lotto l, farmaco f where p.id_p=lo.ref_id_p and f.id_f=l.ref_id_f and p.data_consegna = str_to_date('"+strDataOdierna+"','%d-%m-%Y') and lo.ref_id_l=l.id_l and p.ref_id_uf="+IDFarmacia +" and id_p IN (select ref_id_p from lotto_ordinato lo, prenotazione p, lotto l, farmaco f where p.id_p=lo.ref_id_p and f.id_f=l.ref_id_f and p.data_consegna = str_to_date('"+strDataOdierna+"','%d-%m-%Y') and lo.ref_id_l=l.id_l and p.ref_id_uf="+IDFarmacia+" group by ref_id_p having count(*)!=sum(isCaricato))");
+            resultSet = statement.executeQuery("select * from lotto_ordinato lo, prenotazione p, lotto l, farmaco f where p.id_p=lo.ref_id_p and isConsegnato=1 and f.id_f=l.ref_id_f and p.data_consegna = str_to_date('"+strDataOdierna+"','%d-%m-%Y') and lo.ref_id_l=l.id_l and p.ref_id_uf="+IDFarmacia +" and id_p IN (select ref_id_p from lotto_ordinato lo, prenotazione p, lotto l, farmaco f where p.id_p=lo.ref_id_p and f.id_f=l.ref_id_f and p.data_consegna = str_to_date('"+strDataOdierna+"','%d-%m-%Y') and lo.ref_id_l=l.id_l and isConsegnato=1 and p.ref_id_uf="+IDFarmacia+" group by ref_id_p having count(*)!=sum(isCaricato))");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

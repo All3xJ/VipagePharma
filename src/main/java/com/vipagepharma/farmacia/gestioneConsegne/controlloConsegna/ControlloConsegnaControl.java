@@ -30,7 +30,7 @@ public class ControlloConsegnaControl {
     }
 
     public void start() throws SQLException, IOException {
-        if(orario.getHour() == 17){
+        if(orario.getHour() == 20){
             String idFarmacia = Utente.getID();
             ResultSet consegneNonCaricate = DBMSBoundary.getConsegneOdierneNonCaricate (idFarmacia);
             prenotazioniMancatoCarico = new LinkedList<>();

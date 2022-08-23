@@ -19,8 +19,7 @@ public class SchermataPrincipale {
 		VisualizzaPrenotazioniControl visualprenCtrl = new VisualizzaPrenotazioniControl();
 		visualprenCtrl.start();
 	}
-	@FXML
-	void premeRicercaFarmaci(MouseEvent event) throws IOException{
+	public void premePrenotaFarmaci(MouseEvent mouseEvent) throws IOException {
 		RicercaFarmacoControl ricfarmCtrl = new RicercaFarmacoControl();
 		ricfarmCtrl.start();
 	}
