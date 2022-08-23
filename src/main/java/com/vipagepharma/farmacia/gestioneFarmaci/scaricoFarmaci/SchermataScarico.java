@@ -4,7 +4,7 @@ import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
 import com.vipagepharma.farmacia.SchermataPrincipale;
 import com.vipagepharma.farmacia.entity.Farmaco;
-import com.vipagepharma.farmacia.entity.FarmacoScarico;
+import com.vipagepharma.farmacia.entity.Farmaco;
 import com.vipagepharma.farmacia.entity.Prenotazione;
 import com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni.VisualizzaPrenotazioniControl;
 import javafx.beans.InvalidationListener;
