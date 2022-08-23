@@ -165,8 +165,10 @@ public class DBMSBoundary {
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            //resultSet = statement .executeQuery("SELECT p.id_p, f.nome, p.data_consegna FROM prenotazione p, farmaco f, lotto l, lotto_ordinato lo WHERE p.isConsegnato = 0 and p.ref_id_uf =" + id_farmacia +" and p.id_p=lo.ref_id_p and lo.ref_id_l=l.id_l and l.ref_id_f=f.id_f");  //prenotazioni per la medesima farmacia e non ancora contrassegnati come consegnati
-            resultSet = statement.executeQuery("SELECT p.ref_id_ua,p.id_p, p.ref_id_uf,f.id_f, f.nome, p.data_consegna ,p.isConsegnato,p.qty FROM prenotazione p, farmaco f WHERE p.ref_id_uf =" + id_farmacia +" and p.ref_id_f=f.id_f");
+            java.util.Date date = new java.util.Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
+            String strDataOdierna = formatter.format(date);
+            resultSet = statement.executeQuery("SELECT p.ref_id_ua,p.id_p, p.ref_id_uf,f.id_f, f.nome, p.data_consegna ,p.isConsegnato,p.qty FROM prenotazione p, farmaco f WHERE p.ref_id_uf =" + id_farmacia +" and p.ref_id_f=f.id_f" + " and p.data_consegna >=  str_to_date('"+strDataOdierna+"','%d-%m-%Y')");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

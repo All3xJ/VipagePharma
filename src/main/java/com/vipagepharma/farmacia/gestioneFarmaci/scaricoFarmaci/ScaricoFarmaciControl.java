@@ -88,6 +88,7 @@ public class ScaricoFarmaciControl {
             return;
         }
         DBMSBoundary.scaricaFarmaci(Utente.getID(),farmaco.getId(),idLotto,qty);
+        farmaco.aggiornaQtyRimanente(Integer.parseInt(qty));
         AvvisoScaricoRiuscito.farmaco = farmaco;
         App.newWind("gestioneFarmaci/scaricoFarmaci/AvvisoScaricoRiuscito",event);
     }
