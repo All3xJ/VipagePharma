@@ -33,31 +33,52 @@
 -->
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: f5f5f5;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.addettoAzienda.gestioneConsegne.risoluzioneProblemaConsegna.SchermataProblemaOrdine">
-   <children>
-      <Text fill="RED" layoutX="273.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE" textAlignment="CENTER">
-         <font>
-            <Font name="Arial Bold" size="30.0" />
-         </font>
-      </Text>
-      <Text fx:id="testo_problema_ordine" layoutX="126.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="485.73046875"> <!-- //La consegna prevista per la farmacia id_farmacia ha avuto qualche problema -->
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Text>
-      <Button alignment="CENTER" layoutX="126.0" layoutY="328.0" mnemonicParsing="false" onMouseClicked="#premeRimborsa" prefHeight="40.0" prefWidth="154.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Rimborsa">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Button>
-      <Button alignment="CENTER" layoutX="451.0" layoutY="328.0" mnemonicParsing="false" onMouseClicked="#premeCompletaOrdine" prefHeight="40.0" prefWidth="154.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Completa ordine">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Button>
-   </children>
-</Pane>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.addettoAzienda.gestioneConsegne.risoluzioneProblemaConsegna.SchermataProblemaOrdine">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+            <Button fx:id="buttonHome" alignment="CENTER" contentDisplay="CENTER" layoutX="603.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font></Button>
+            <Button fx:id="buttonIndietro" alignment="CENTER" layoutX="61.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" textAlignment="CENTER" AnchorPane.leftAnchor="116.0">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font></Button>
+            <Button fx:id="buttonLogout" alignment="CENTER" layoutX="491.0" layoutY="686.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Logout" textAlignment="CENTER" AnchorPane.rightAnchor="116.0">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font></Button>
+            <ImageView fitHeight="225.0" fitWidth="230.0" layoutX="30.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="410.0" layoutX="305.0" layoutY="174.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="691.0" />
+            <Text fx:id="testo_problema_ordine" layoutX="414.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="485.73046875">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Text>
+            <Button alignment="CENTER" layoutX="385.0" layoutY="468.0" mnemonicParsing="false" onMouseClicked="#premeRimborsa" prefHeight="60.0" prefWidth="185.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Rimborsa">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="732.0" layoutY="468.0" mnemonicParsing="false" onMouseClicked="#premeCompletaOrdine" prefHeight="60.0" prefWidth="185.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Completa ordine">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Button>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

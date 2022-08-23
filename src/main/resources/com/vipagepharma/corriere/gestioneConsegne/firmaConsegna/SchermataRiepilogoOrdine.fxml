@@ -41,7 +41,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox  stylesheets="@../../../main.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.corriere.gestioneConsegne.firmaConsegna.SchermataRiepilogoOrdine">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../../../main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.corriere.gestioneConsegne.firmaConsegna.SchermataRiepilogoOrdine">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
@@ -49,7 +49,7 @@
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button layoutX="116.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeIndietro" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
+            <Button alignment="CENTER" layoutX="116.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeIndietro" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
@@ -66,10 +66,10 @@
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <TableView fx:id="riepilogoordine_table" styleClass="table-view" layoutX="188.0" layoutY="283.0" prefHeight="136.0" prefWidth="939.0">
+            <TableView fx:id="riepilogoordine_table" layoutX="188.0" layoutY="283.0" prefHeight="136.0" prefWidth="939.0" styleClass="table-view">
               <columns>
-                <TableColumn fx:id="idconsegna_column" minWidth="20.0" styleClass="colonna" prefWidth="227.59654235839844" text="ID consegna" />
-                <TableColumn fx:id="idfarmacia_column" minWidth="0.0" styleClass="colonna" prefWidth="236.0" text="ID farmacia" />
+                <TableColumn fx:id="idconsegna_column" minWidth="20.0" prefWidth="227.59654235839844" styleClass="colonna" text="ID consegna" />
+                <TableColumn fx:id="idfarmacia_column" minWidth="0.0" prefWidth="236.0" styleClass="colonna" text="ID farmacia" />
                   <TableColumn fx:id="dataconsegna_column" prefWidth="256.0" styleClass="colonna" text="Data di consegna" />
                   <TableColumn fx:id="qty_column" minWidth="0.0" prefWidth="226.0" styleClass="colonna" text="Quantità" />
               </columns>
