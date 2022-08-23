@@ -119,6 +119,12 @@ public class Farmaco {
         return Integer.parseInt(qty_lotti.get(index));
     }
 
+    public void aggiornaQtyRimanente(int qty){
+        int qtyRimanente = Integer.parseInt(this.qtyScarico);
+        qtyRimanente -= qty;
+        this.qtyScarico = String.valueOf(qtyRimanente);
+    }
+
     public Farmaco getFarmacoScarico(String nome){
         if(this.nome.equals(nome))
             return this;

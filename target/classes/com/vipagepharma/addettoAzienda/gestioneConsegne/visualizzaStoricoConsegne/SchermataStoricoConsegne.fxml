@@ -50,12 +50,12 @@
                   <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <Button layoutX="603.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeHome" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
+            <Button alignment="CENTER" layoutX="603.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeHome" prefHeight="60.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Home">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="177.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeIndietro" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
+            <Button alignment="CENTER" layoutX="177.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeIndietro" prefHeight="60.0" prefWidth="120.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -65,7 +65,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <TableView fx:id="storico_table" styleClass="table-view" layoutX="315.0" layoutY="173.0" prefHeight="385.0" prefWidth="685.0">
+            <TableView fx:id="storico_table" layoutX="315.0" layoutY="173.0" prefHeight="385.0" prefWidth="685.0" styleClass="table-view">
               <columns>
                 <TableColumn fx:id="idordine_column" prefWidth="135.0" styleClass="colonna" text="ID consegna" />
                   <TableColumn fx:id="idfarmacia_column" prefWidth="160.0" styleClass="colonna" text="ID farmacia" />
@@ -73,7 +73,7 @@
                   <TableColumn fx:id="visualizzaricevuta_column" prefWidth="206.0" styleClass="colonna" />
               </columns>
             </TableView>
-            <Button layoutX="850.0" layoutY="571.0" mnemonicParsing="false" onMouseClicked="#premeMostraAltro" prefHeight="40.0" prefWidth="150.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Mostra altro">
+            <Button alignment="CENTER" layoutX="850.0" layoutY="571.0" mnemonicParsing="false" onMouseClicked="#premeMostraAltro" prefHeight="40.0" prefWidth="150.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Mostra altro">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
