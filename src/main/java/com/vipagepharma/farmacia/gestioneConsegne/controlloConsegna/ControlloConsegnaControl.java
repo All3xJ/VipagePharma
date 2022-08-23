@@ -30,11 +30,16 @@ public class ControlloConsegnaControl {
     }
 
     public void start() throws SQLException, IOException {
-        if(orario.getHour() == 20){
+        if (orario.getHour() == 20) {
             String idFarmacia = Utente.getID();
-            ResultSet consegneNonCaricate = DBMSBoundary.getConsegneOdierneNonCaricate (idFarmacia);
-            prenotazioniMancatoCarico = new LinkedList<>();
-            idprenotazioniCaricoParziale = new LinkedList<>();
+            ResultSet consegneNonCaricate = DBMSBoundary.getConsegneOdierneNonCaricate(idFarmacia);
+            this.prenotazioniMancatoCarico = new LinkedList<>();
+            this.idprenotazioniCaricoParziale = new LinkedList<>();
+            this.checkCaricoParziale(consegneNonCaricate);
+        }
+    }
+
+    public void checkCaricoParziale(ResultSet consegneNonCaricate) throws SQLException, IOException {
             while(consegneNonCaricate.next()) {
                 System.out.println(consegneNonCaricate.getString("ref_id_p")+" "+consegneNonCaricate.getString("ref_id_l"));
                 if (consegneNonCaricate.getInt("isCaricato") == 1){
@@ -71,7 +76,7 @@ public class ControlloConsegnaControl {
 
             this.faiListe();
 
-        }
+
     }
 
 

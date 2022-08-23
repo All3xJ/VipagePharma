@@ -2,7 +2,7 @@ package com.vipagepharma.corriere.gestioneConsegne.uploadFirme;
 
 import com.vipagepharma.corriere.gestioneConsegne.downloadConsegne.DownloadConsegneControl;
 import javafx.fxml.FXML;
-import org.w3c.dom.events.MouseEvent;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
