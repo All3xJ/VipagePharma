@@ -345,11 +345,6 @@ public class DBMSBoundary {
     }
 
     public static void aggiungiCarico(String id_farmacia, String id_farmaco, String nome_farmaco,LinkedList<String> id_lotti, LinkedList<String>date_scadenza, LinkedList<String> quantita,boolean isBanco){
-        int isBancoo;
-        if(isBanco)
-            isBancoo=1;
-        else
-            isBancoo=0;
         for (int i=0; i< id_lotti.size(); ++i){
             try{
                 Connection connection = connectFarmacia();
@@ -360,10 +355,15 @@ public class DBMSBoundary {
                 statement.setString(4,nome_farmaco);
                 statement.setDate(5,Date.valueOf(date_scadenza.get(i)));
                 statement.setInt(6,Integer.parseInt(quantita.get(i)));
-                statement.setInt(7,isBancoo);
-                statement.executeUpdate();
+                statement.setBoolean(7,isBanco);
+                try {
+                    statement.executeUpdate();
+                } catch(Exception e){
+                    Statement statement2 = connection.createStatement();
+                    statement2.executeUpdate("update farmaco set quantita=quantita+"+quantita.get(i)+" where  id_farmaco="+id_farmaco+" and id_lotto="+id_lotti.get(i)+" and id_utente_farmacia="+id_farmacia);
+                }
             } catch (Exception e) {
-                throw new RuntimeException(e);
+                //throw new RuntimeException(e);
             }
         }
     }
@@ -403,7 +403,6 @@ public class DBMSBoundary {
                 }
             } catch (Exception e) {
                 //throw new RuntimeException(e);
-
             }
         }
     }
