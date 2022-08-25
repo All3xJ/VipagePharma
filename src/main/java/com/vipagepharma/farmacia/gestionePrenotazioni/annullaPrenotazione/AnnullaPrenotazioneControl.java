@@ -33,7 +33,7 @@ public class AnnullaPrenotazioneControl {
         ArrayList<String> qtyLotti = new ArrayList<>();
         ArrayList<String> idLotti = new ArrayList<>();
         while(lottiOrdinati.next()){
-            qtyLotti.add(lottiOrdinati.getString("qty"));
+            qtyLotti.add(lottiOrdinati.getString("quantita"));
             idLotti.add(lottiOrdinati.getString("id_lotto"));
         }
         DBMSBoundary.eliminaOrdineERicaricaFarmaci(idPrenotazione,idLotti,qtyLotti);

@@ -41,15 +41,15 @@ public class ScaricoFarmaciControl {
             this.tvObservableList.clear();
             while (true) {
                 if (!inventario.next()) break;
-                if((!tvObservableList.contains(inventario.getString("nome")) && (!inventario.getString("qty").equals("0")))) {
+                if((!tvObservableList.contains(inventario.getString("nome")) && (!inventario.getString("quantita").equals("0")))) {
                     this.tvObservableList.add(inventario.getString("nome"));
-                    this.farmaci.add(new Farmaco(inventario.getString("id_farmaco"), inventario.getString("id_lotto"), inventario.getString("nome"), inventario.getString("qty"), inventario.getInt("isBanco")));
+                    this.farmaci.add(new Farmaco(inventario.getString("id_farmaco"), inventario.getString("id_lotto"), inventario.getString("nome"), inventario.getString("quantita"), inventario.getInt("isBanco")));
                 }
                 else{
-                    if(!inventario.getString("qty").equals("0")) {
+                    if(!inventario.getString("quantita").equals("0")) {
                         Farmaco farmaco = getFarmaco(inventario.getString("nome"));
                         farmaco.addIdLotto(inventario.getString("id_lotto"));
-                        farmaco.addQty(inventario.getString("qty"));
+                        farmaco.addQty(inventario.getString("quantita"));
                     }
                 }
             }

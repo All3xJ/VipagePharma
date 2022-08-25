@@ -44,7 +44,7 @@ public class PrenotazioneFarmaciDaBancoControl {
         while(qty < qtyTotale){
             lotti.next();
             this.idLotti.add(lotti.getInt("id_lotto"));
-            int qtyLotto = lotti.getInt("qty");
+            int qtyLotto = lotti.getInt("quantita_ordinabile");
             qty += qtyLotto;
             if(qty > qtyTotale){
                 qtyLotti.add(qtyTotale - (qty - qtyLotto));

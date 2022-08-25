@@ -130,7 +130,7 @@ public class DBMSBoundary {
             java.util.Date date = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
             String strDataOdierna = formatter.format(date);
-            resultSet = statement.executeQuery("select p.id_prenotazione, u.nome, p.data_consegna, p.id_utente_farmacia, sum(l.qty) as qty from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u, vipagepharma_azienda.lotto_ordinato l where p.id_utente_farmacia = u.id_utente_farmacia and p.id_utente_azienda = "+id_corriere+" and p.data_consegna = str_to_date('"+strDataOdierna+"','%d-%m-%Y') and l.id_prenotazione=p.id_prenotazione and p.isConsegnato=0 group by p.id_prenotazione, u.nome, p.data_consegna, p.id_utente_farmacia");
+            resultSet = statement.executeQuery("select p.id_prenotazione, u.nome, p.data_consegna, p.id_utente_farmacia, sum(l.quantita) as quantita from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u, vipagepharma_azienda.lotto_ordinato l where p.id_utente_farmacia = u.id_utente_farmacia and p.id_utente_azienda = "+id_corriere+" and p.data_consegna = str_to_date('"+strDataOdierna+"','%d-%m-%Y') and l.id_prenotazione=p.id_prenotazione and p.isConsegnato=0 group by p.id_prenotazione, u.nome, p.data_consegna, p.id_utente_farmacia");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

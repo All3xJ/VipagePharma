@@ -62,7 +62,7 @@ public class FirmaConsegnaControl {
 
     private void aggiungiTitolo(Document d, Ordine o) throws DocumentException, IOException {
         Paragraph titolo = new Paragraph();
-        Image img = Image.getInstance("/home/allexj/Downloads/LOGO.png");
+        Image img = Image.getInstance("src/main/java/com/vipagepharma/corriere/22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png");
         img.scalePercent(40,40);
         img.setAlignment(Element.ALIGN_CENTER);
         titolo.add(img);

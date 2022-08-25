@@ -57,11 +57,13 @@ public class SchermataScarico implements Initializable {
 
 
     public void premeHome(MouseEvent mouseEvent) throws IOException {
-        ScaricoFarmaciControl.scarFarmCtrl.premutoHome("gestioneFarmaci/scaricoFarmaci/SchermataScarico");
+        SchermataPrincipale.schermataPrecedente="gestioneFarmaci/scaricoFarmaci/SchermataScarico";
+        App.setRoot("SchermataPrincipale");
     }
 
     public void premeIndietro(MouseEvent mouseEvent) throws IOException {
-        ScaricoFarmaciControl.scarFarmCtrl.premutoIndietro();
+        SchermataPrincipale.schermataPrecedente="gestioneFarmaci/scaricoFarmaci/SchermataScarico";
+        App.setRoot("SchermataPrincipale");
     }
 
     public void premeLogout(MouseEvent mouseEvent) throws IOException {

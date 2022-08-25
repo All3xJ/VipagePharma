@@ -51,7 +51,7 @@ public class ModificaPrenotazioneControl {
         ArrayList<String> qtyLotti = new ArrayList<>();
         ArrayList<String> idLotti = new ArrayList<>();
         while(lottiOrdinati.next()){
-            qtyLotti.add(lottiOrdinati.getString("qty"));
+            qtyLotti.add(lottiOrdinati.getString("quantita"));
             idLotti.add(lottiOrdinati.getString("id_lotto"));
         }
         LinkedList<Object> risultato = DBMSBoundary.getLotti(idPrenotazione,idLotti,qtyLotti,prenotazione.getIdFarmaco());
@@ -68,8 +68,8 @@ public class ModificaPrenotazioneControl {
 
     private boolean controllaEScegliNuoviLotti() throws SQLException {
         int qtyLottiTot = 0;
-        while (this.lotti.next() && qtyLottiTot < this.qtyRichiesta && this.lotti.getDate("data_di_disponibilita").toLocalDate().isBefore(this.data_consegna)) {  //esco dal loop appena la data di disp > data consegna richiesta
-            if (this.lotti.getDate("data_di_scadenza").toLocalDate().isAfter(this.data_scadenza_min)) {
+        while (this.lotti.next() && qtyLottiTot < this.qtyRichiesta && this.lotti.getDate("data_disponibilita").toLocalDate().isBefore(this.data_consegna)) {  //esco dal loop appena la data di disp > data consegna richiesta
+            if (this.lotti.getDate("data_scadenza").toLocalDate().isAfter(this.data_scadenza_min)) {
                 this.idLotti.add(this.lotti.getInt(1));
                 int qtyLotto = this.lotti.getInt(3);
                 qtyLottiTot += qtyLotto;
@@ -158,7 +158,7 @@ public class ModificaPrenotazioneControl {
         else if(this.data_consegna.isBefore(LocalDate.parse(prenotazione.getDataConsegna()))) {
             ResultSet lotti_ordinati = DBMSBoundary.getLottiOrdinati(prenotazione.getIdPrenotazione());
             while(lotti_ordinati.next()){
-                if(lotti_ordinati.getDate("data_di_disponibilita").toLocalDate().isBefore(this.data_consegna)){
+                if(lotti_ordinati.getDate("data_disponibilita").toLocalDate().isBefore(this.data_consegna)){
                     App.newWind("gestionePrenotazioni/modificaPrenotazione/AvvisoModificaErrata",event);      //CASO IN CUI VUOLE I FARMACI IN UNA DATA ANTECEDENTE E I FARMACI DI PRIMA NON SONO PIU DISPONIBILI
                     return;
                 }

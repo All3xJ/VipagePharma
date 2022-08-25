@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
+import com.vipagepharma.farmacia.SchermataPrincipale;
 import com.vipagepharma.farmacia.entity.Prenotazione;
 import com.vipagepharma.farmacia.gestionePrenotazioni.annullaPrenotazione.AnnullaPrenotazioneControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.caricoPrenotazione.CaricoPrenotazioneControl;
@@ -154,11 +155,13 @@ public class SchermataElencoPrenotazioni implements Initializable{
     }
 
     public void premeHome(MouseEvent mouseEvent) throws IOException {
-		VisualizzaPrenotazioniControl.visualPrenCtrlRef.premutoHome("gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni");
+		SchermataPrincipale.schermataPrecedente="gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni";
+		App.setRoot("SchermataPrincipale");
     }
 
 	public void premeIndietro(MouseEvent mouseEvent) throws IOException {
-		VisualizzaPrenotazioniControl.visualPrenCtrlRef.premutoIndietro();
+		SchermataPrincipale.schermataPrecedente="gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni";
+		App.setRoot("SchermataPrincipale");
 	}
 
 	public void premeLogout(MouseEvent mouseEvent) throws IOException {

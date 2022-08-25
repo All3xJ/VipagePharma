@@ -47,7 +47,7 @@ public class ControlloConsegnaControl {
                     if (!idprenotazioniCaricoParziale.contains(consegneNonCaricate.getString("id_prenotazione")))  // se non c'è già la stessa prenotazione nella lista
                         idprenotazioniCaricoParziale.add(consegneNonCaricate.getString("id_prenotazione"));
                 } else{
-                    Lotto lot = new Lotto(consegneNonCaricate.getString("id_lotto"),consegneNonCaricate.getString("data_di_scadenza"),consegneNonCaricate.getString("qty"));
+                    Lotto lot = new Lotto(consegneNonCaricate.getString("id_lotto"),consegneNonCaricate.getString("data_scadenza"),consegneNonCaricate.getString("quantita_ordinabile"));
                     Prenotazione pren = new Prenotazione(consegneNonCaricate.getString("id_prenotazione"),consegneNonCaricate.getString("nome"),consegneNonCaricate.getString("data_consegna"),consegneNonCaricate.getString("p.id_utente_farmacia"),consegneNonCaricate.getString("id_farmaco"),consegneNonCaricate.getBoolean("isBanco"),consegneNonCaricate.getInt("isConsegnato"));
                     pren.lotti.add(lot);
 

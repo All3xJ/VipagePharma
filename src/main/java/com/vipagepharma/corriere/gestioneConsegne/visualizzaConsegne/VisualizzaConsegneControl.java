@@ -34,7 +34,7 @@ public class VisualizzaConsegneControl {
             this.tvObservableList.clear();
             while (true) {
                 if (!ordini.next()) break;
-                this.tvObservableList.add(new Ordine(ordini.getString("id_prenotazione"),ordini.getString("nome"),ordini.getString("id_utente_farmacia"),ordini.getString("qty"),ordini.getString("data_consegna")));
+                this.tvObservableList.add(new Ordine(ordini.getString("id_prenotazione"),ordini.getString("nome"),ordini.getString("id_utente_farmacia"),ordini.getString("quantita"),ordini.getString("data_consegna")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

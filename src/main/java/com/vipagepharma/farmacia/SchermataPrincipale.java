@@ -1,18 +1,31 @@
 package com.vipagepharma.farmacia;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 import com.vipagepharma.farmacia.gestionePrenotazioni.visualizzaPrenotazioni.VisualizzaPrenotazioniControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco.RicercaFarmacoControl;
 import com.vipagepharma.farmacia.gestionePrenotazioni.modificaContratti.ModificaContrattiControl;
 import com.vipagepharma.farmacia.gestioneFarmaci.scaricoFarmaci.ScaricoFarmaciControl;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
-public class SchermataPrincipale {
+public class SchermataPrincipale implements Initializable {
+	@Override
+	public void initialize(URL url, ResourceBundle resbound){
+		if(schermataPrecedente == null){
+			btnIndietro.setVisible(false);
+		}
+	}
 
 	public static String schermataPrecedente;
+
+	@FXML
+	private Button btnIndietro;
 
 	@FXML
     void premeVisualizzaPrenotazioni(MouseEvent event) throws IOException, SQLException {
