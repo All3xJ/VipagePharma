@@ -34,7 +34,7 @@ public class VisualizzaSegnalazioniControl {
             this.tvObservableList.clear();
             while (true) {
                 if (!consegneConSegnalazione.next()) break;
-                this.tvObservableList.add(new Consegna(consegneConSegnalazione.getString("ref_id_uf"),consegneConSegnalazione.getString("id_p"),consegneConSegnalazione.getString("data_consegna"),consegneConSegnalazione.getString("ref_id_f"),consegneConSegnalazione.getString("nome")));
+                this.tvObservableList.add(new Consegna(consegneConSegnalazione.getString("id_utente_farmacia"),consegneConSegnalazione.getString("id_prenotazione"),consegneConSegnalazione.getString("data_consegna"),consegneConSegnalazione.getString("id_farmaco"),consegneConSegnalazione.getString("nome")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

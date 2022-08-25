@@ -27,10 +27,10 @@ public class PrenotazioneFarmaciDaBancoControl {
             ResultSet contratti = DBMSBoundary.getContratti();
             ResultSet corrieri = DBMSBoundary.getCorrieri();
             while(contratti.next()){
-                String id_farmaco = contratti.getString("ref_id_f");
+                String id_farmaco = contratti.getString("id_farmaco");
                 ResultSet lotti = DBMSBoundary.getLotti(id_farmaco);
                 scegliLottiECorriere(lotti,corrieri,contratti);
-                DBMSBoundary.creaPrenotazioneDaBancoEScarica(contratti.getInt("ref_id_uf"),this.id_corriere,Integer.parseInt(id_farmaco),data.plusWeeks(1),idLotti,qtyLotti);
+                DBMSBoundary.creaPrenotazioneDaBancoEScarica(contratti.getInt("id_utente_farmacia"),this.id_corriere,Integer.parseInt(id_farmaco),data.plusWeeks(1),idLotti,qtyLotti);
                 lotti.close();
             }
             contratti.close();
@@ -43,7 +43,7 @@ public class PrenotazioneFarmaciDaBancoControl {
         int qtyTotale = contratti.getInt("qty_settimanale");
         while(qty < qtyTotale){
             lotti.next();
-            this.idLotti.add(lotti.getInt("id_l"));
+            this.idLotti.add(lotti.getInt("id_lotto"));
             int qtyLotto = lotti.getInt("qty");
             qty += qtyLotto;
             if(qty > qtyTotale){
@@ -57,7 +57,7 @@ public class PrenotazioneFarmaciDaBancoControl {
             int len = corrieri.getRow();
             int index = ThreadLocalRandom.current().nextInt(1, len + 1);
             if(corrieri.absolute(index)){
-                this.id_corriere = corrieri.getInt("id_ua");
+                this.id_corriere = corrieri.getInt("id_utente_azienda");
             }
         }
         corrieri.close();

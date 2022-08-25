@@ -45,7 +45,7 @@ public class DBMSBoundary {
         try {
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select u.* from utente u where u.id_ua = " + id + " and u.isCorriere = 1 and u.password = " + "'" + pass + "'" );
+            ResultSet resultSet = statement.executeQuery("select u.* from utente u where u.id_utente_azienda = " + id + " and u.isCorriere = 1 and u.password = " + "'" + pass + "'" );
             esito = resultSet.next();
         }
         catch (SQLException e){
@@ -87,7 +87,7 @@ public class DBMSBoundary {
         try {
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("update utente set password = " + "'" + password + "'" + " where id_ua =" + id);
+            statement.executeUpdate("update utente set password = " + "'" + password + "'" + " where id_utente_azienda =" + id);
         }
         catch (SQLException e){
             e.printStackTrace();
@@ -99,7 +99,7 @@ public class DBMSBoundary {
         try {
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from utente where id_ua = " + id + " and chiave_recupero = " + "'" + key + "'");
+            ResultSet resultSet = statement.executeQuery("select * from utente where id_utente_azienda = " + id + " and chiave_recupero = " + "'" + key + "'");
             esito = resultSet.next();
         }
         catch (SQLException e){
@@ -116,7 +116,7 @@ public class DBMSBoundary {
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("update lotto_ordinato set isCaricato = " + isCaricato + "where ref_id_l = " +  id_lotto +  " and ref_id_p = " +  id_prenotazione);
+            statement.executeUpdate("update lotto_ordinato set isCaricato = " + isCaricato + "where id_lotto = " +  id_lotto +  " and id_prenotazione = " +  id_prenotazione);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -130,7 +130,7 @@ public class DBMSBoundary {
             java.util.Date date = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
             String strDataOdierna = formatter.format(date);
-            resultSet = statement.executeQuery("select p.id_p, u.nome, p.data_consegna, p.ref_id_uf, sum(l.qty) as qty from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u, vipagepharma_azienda.lotto_ordinato l where p.ref_id_uf = u.id_uf and p.ref_id_ua = "+id_corriere+" and p.data_consegna = str_to_date('"+strDataOdierna+"','%d-%m-%Y') and l.ref_id_p=p.id_p and p.isConsegnato=0 group by p.id_p, u.nome, p.data_consegna, p.ref_id_uf");
+            resultSet = statement.executeQuery("select p.id_prenotazione, u.nome, p.data_consegna, p.id_utente_farmacia, sum(l.qty) as qty from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u, vipagepharma_azienda.lotto_ordinato l where p.id_utente_farmacia = u.id_utente_farmacia and p.id_utente_azienda = "+id_corriere+" and p.data_consegna = str_to_date('"+strDataOdierna+"','%d-%m-%Y') and l.id_prenotazione=p.id_prenotazione and p.isConsegnato=0 group by p.id_prenotazione, u.nome, p.data_consegna, p.id_utente_farmacia");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -142,7 +142,7 @@ public class DBMSBoundary {
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("update prenotazione set isConsegnato = 1 where id_p = " + id_prenotazione);
+            statement.executeUpdate("update prenotazione set isConsegnato = 1 where id_prenotazione = " + id_prenotazione);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -154,12 +154,12 @@ public class DBMSBoundary {
         /*try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("update prenotazione set ricevuta_pdf = " + ricevuta + " where id_p = " + id_prenotazione);
+            statement.executeUpdate("update prenotazione set ricevuta_pdf = " + ricevuta + " where id_prenotazione = " + id_prenotazione);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }*/
         Connection connection = connectAzienda();
-        String sql = "update prenotazione set ricevuta_pdf = ? where id_p = ?";
+        String sql = "update prenotazione set ricevuta_pdf = ? where id_prenotazione = ?";
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(sql);

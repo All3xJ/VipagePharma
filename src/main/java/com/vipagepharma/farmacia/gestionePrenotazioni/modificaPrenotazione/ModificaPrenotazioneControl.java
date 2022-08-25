@@ -52,7 +52,7 @@ public class ModificaPrenotazioneControl {
         ArrayList<String> idLotti = new ArrayList<>();
         while(lottiOrdinati.next()){
             qtyLotti.add(lottiOrdinati.getString("qty"));
-            idLotti.add(lottiOrdinati.getString("ref_id_l"));
+            idLotti.add(lottiOrdinati.getString("id_lotto"));
         }
         LinkedList<Object> risultato = DBMSBoundary.getLotti(idPrenotazione,idLotti,qtyLotti,prenotazione.getIdFarmaco());
         this.lotti = (ResultSet) risultato.get(1);
@@ -134,7 +134,7 @@ public class ModificaPrenotazioneControl {
         while(lotti_ordinati.next()){
             lotti.beforeFirst();
             while(lotti.next()){
-                if(lotti.getInt("id_l")==lotti_ordinati.getInt("ref_id_l")){
+                if(lotti.getInt("id_l")==lotti_ordinati.getInt("id_lotto")){
                     int newqty = lotti.getInt("qty") + lotti_ordinati.getInt("qty");
                     lotti.updateInt("qty",newqty);
                     lotti.getInt("qty");

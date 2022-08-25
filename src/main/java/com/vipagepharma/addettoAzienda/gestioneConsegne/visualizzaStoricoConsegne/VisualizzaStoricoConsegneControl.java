@@ -45,7 +45,7 @@ public class VisualizzaStoricoConsegneControl {
             while (true) {
                 if (!this.consegne.next()) break;
 
-                this.tvObservableList.add(new Consegna(this.consegne.getString("ref_id_uf"),this.consegne.getString("id_p"),this.consegne.getString("data_consegna"),this.consegne.getBlob("ricevuta_pdf")));
+                this.tvObservableList.add(new Consegna(this.consegne.getString("id_utente_farmacia"),this.consegne.getString("id_prenotazione"),this.consegne.getString("data_consegna"),this.consegne.getBlob("ricevuta_pdf")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

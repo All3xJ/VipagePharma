@@ -50,7 +50,7 @@ public class RisoluzioneProblemaConsegnaControl {
         int corriere = this.scegliCorriere(corrieri);
         ResultSet newprenotazione = DBMSBoundary.creaOrdine(consegna.getIdFarmacia(),corriere,consegna.idFarmaco);
         if (newprenotazione.next()) {
-            int idprenotazione = newprenotazione.getInt("id_p");
+            int idprenotazione = newprenotazione.getInt("id_prenotazione");
             DBMSBoundary.aggiornaLottiOrdinati(idprenotazione,lottiNonConsegnati);
             App.newWind("gestioneConsegne/risoluzioneProblemaConsegna/AvvisoOperazioneRiuscita",event);
             // la flag di fix problema lo fa al click di ok di questo avviso
@@ -62,10 +62,10 @@ public class RisoluzioneProblemaConsegnaControl {
             int len = corrieri.getRow();
             int index = ThreadLocalRandom.current().nextInt(1, len + 1);
             if(corrieri.absolute(index)){
-                return corrieri.getInt("id_ua");
+                return corrieri.getInt("id_utente_azienda");
             }
         }
         corrieri.close();
-        return corrieri.getInt("id_ua");
+        return corrieri.getInt("id_utente_azienda");
     }
 }

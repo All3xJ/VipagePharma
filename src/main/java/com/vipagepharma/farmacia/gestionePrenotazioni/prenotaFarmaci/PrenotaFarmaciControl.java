@@ -123,7 +123,7 @@ public class PrenotaFarmaciControl {
     private void calcProxDisponibilitaEScegliLotti() throws SQLException {  // se metodo precedente ha visto che la qty per quella data è < di quella che il farmacista voleva, allora QUESTO METODO CALCOLA LA PROX DATA PIU VICINA DISPONIBILE PER AVERE LA QTY DATA, EEEEEE SCEGLIEEE LOTTIIIII
         int qtyMancante = Integer.parseInt(this.qtyRichiesta) - Integer.parseInt(this.qtyDisponibile);
         int qtyLottiTot = 0;
-        this.new_idLotti.add(this.lotti.getInt("id_l"));
+        this.new_idLotti.add(this.lotti.getInt("id_lotto"));
         int qtyLotto1 = this.lotti.getInt("qty");
         qtyLottiTot += qtyLotto1;
         if(qtyLottiTot > qtyMancante){
@@ -133,7 +133,7 @@ public class PrenotaFarmaciControl {
             this.new_qtyLotti.add(qtyLotto1);
         }
         while(this.lotti.next() && qtyLottiTot<qtyMancante){
-            this.new_idLotti.add(this.lotti.getInt("id_l"));
+            this.new_idLotti.add(this.lotti.getInt("id_lotto"));
             int qtyLotto = this.lotti.getInt("qty");
             qtyLottiTot += qtyLotto;
             if(qtyLottiTot > qtyMancante){
@@ -169,7 +169,7 @@ public class PrenotaFarmaciControl {
             int len = corrieri.getRow();
             int index = ThreadLocalRandom.current().nextInt(1, len + 1);
             if(corrieri.absolute(index)){
-                this.id_corriere = corrieri.getInt("id_ua");
+                this.id_corriere = corrieri.getInt("id_utente_azienda");
             }
         }
         corrieri.close();

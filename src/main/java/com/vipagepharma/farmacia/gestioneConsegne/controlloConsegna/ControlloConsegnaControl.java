@@ -41,14 +41,14 @@ public class ControlloConsegnaControl {
 
     public void checkCaricoParziale(ResultSet consegneNonCaricate) throws SQLException, IOException {
             while(consegneNonCaricate.next()) {
-                System.out.println(consegneNonCaricate.getString("ref_id_p")+" "+consegneNonCaricate.getString("ref_id_l"));
+                System.out.println(consegneNonCaricate.getString("id_prenotazione")+" "+consegneNonCaricate.getString("id_lotto"));
                 if (consegneNonCaricate.getInt("isCaricato") == 1){
 
-                    if (!idprenotazioniCaricoParziale.contains(consegneNonCaricate.getString("ref_id_p")))  // se non c'è già la stessa prenotazione nella lista
-                        idprenotazioniCaricoParziale.add(consegneNonCaricate.getString("ref_id_p"));
+                    if (!idprenotazioniCaricoParziale.contains(consegneNonCaricate.getString("id_prenotazione")))  // se non c'è già la stessa prenotazione nella lista
+                        idprenotazioniCaricoParziale.add(consegneNonCaricate.getString("id_prenotazione"));
                 } else{
-                    Lotto lot = new Lotto(consegneNonCaricate.getString("ref_id_l"),consegneNonCaricate.getString("data_di_scadenza"),consegneNonCaricate.getString("qty"));
-                    Prenotazione pren = new Prenotazione(consegneNonCaricate.getString("id_p"),consegneNonCaricate.getString("nome"),consegneNonCaricate.getString("data_consegna"),consegneNonCaricate.getString("p.ref_id_uf"),consegneNonCaricate.getString("ref_id_f"),consegneNonCaricate.getBoolean("isBanco"),consegneNonCaricate.getInt("isConsegnato"));
+                    Lotto lot = new Lotto(consegneNonCaricate.getString("id_lotto"),consegneNonCaricate.getString("data_di_scadenza"),consegneNonCaricate.getString("qty"));
+                    Prenotazione pren = new Prenotazione(consegneNonCaricate.getString("id_prenotazione"),consegneNonCaricate.getString("nome"),consegneNonCaricate.getString("data_consegna"),consegneNonCaricate.getString("p.id_utente_farmacia"),consegneNonCaricate.getString("id_farmaco"),consegneNonCaricate.getBoolean("isBanco"),consegneNonCaricate.getInt("isConsegnato"));
                     pren.lotti.add(lot);
 
                     if (!prenotazioniMancatoCarico.contains(pren)) { // dovrebbe funzionare il contains visto che ho fatto override di equals

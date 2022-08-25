@@ -65,7 +65,7 @@ public class CaricoPrenotazioneControl {
                 if (!lotti_ordinati.next()) break;
                 SchermataRiepilogoCarico.qty_prevista += lotti_ordinati.getInt("qty");
                 System.out.println(lotti_ordinati.getString("data_di_scadenza"));
-                this.tvObservableList.add(new Lotto(lotti_ordinati.getString("ref_id_l"),lotti_ordinati.getString("data_di_scadenza"),lotti_ordinati.getString("qty")));
+                this.tvObservableList.add(new Lotto(lotti_ordinati.getString("id_lotto"),lotti_ordinati.getString("data_di_scadenza"),lotti_ordinati.getString("qty")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

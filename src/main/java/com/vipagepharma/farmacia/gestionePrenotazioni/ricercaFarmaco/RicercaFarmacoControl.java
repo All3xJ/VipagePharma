@@ -39,7 +39,7 @@ public class RicercaFarmacoControl {
             this.tvObservableList.clear();
             while (true) {
                 if (!farmaci.next()) break;
-                this.tvObservableList.add(new Farmaco(farmaci.getString("id_f"),farmaci.getString("nome"),farmaci.getString("principio_attivo")));
+                this.tvObservableList.add(new Farmaco(farmaci.getString("id_farmaco"),farmaci.getString("nome"),farmaci.getString("principio_attivo")));
             }
             this.farmaci.close();
         } catch (SQLException e) {

@@ -27,14 +27,14 @@ public class ProduzioneFarmaciControl {
                 if (farmaci.getInt("isBanco") == 1) {
                     int qtyContratti = 0;
                     while (contratti.next()) {
-                        if (contratti.getInt("ref_id_f") == farmaci.getInt("id_f")) {
+                        if (contratti.getInt("id_farmaco") == farmaci.getInt("id_farmaco")) {
                             qtyContratti += contratti.getInt("qty_settimanale");
                         }
                     }
-                    DBMSBoundary.creaLotto(farmaci.getInt("id_f"), LocalDate.now().plusMonths(farmaci.getInt("mesi_scadenza")), LocalDate.now(), qty, qtyContratti);
+                    DBMSBoundary.creaLotto(farmaci.getInt("id_farmaco"), LocalDate.now().plusMonths(farmaci.getInt("mesi_scadenza")), LocalDate.now(), qty, qtyContratti);
                     contratti.beforeFirst();
                 } else {
-                    DBMSBoundary.creaLotto(farmaci.getInt("id_f"), LocalDate.now().plusMonths(farmaci.getInt("mesi_scadenza")), LocalDate.now(), qty, 0);
+                    DBMSBoundary.creaLotto(farmaci.getInt("id_farmaco"), LocalDate.now().plusMonths(farmaci.getInt("mesi_scadenza")), LocalDate.now(), qty, 0);
                 }
             }
             farmaci.close();
