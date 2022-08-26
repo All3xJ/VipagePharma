@@ -20,10 +20,13 @@ public class PrenotazioneFarmaciDaBancoControl {
     public PrenotazioneFarmaciDaBancoControl(){
         this.data = LocalDate.now();
         this.orario = LocalTime.now();
+        this.idLotti = new ArrayList<>();
+        this.qtyLotti = new ArrayList<>();
     }
 
     public void start() throws SQLException {
-        if((data.getDayOfWeek() == DayOfWeek.MONDAY) && orario.getHour() == 9){
+        //if((data.getDayOfWeek() == DayOfWeek.MONDAY) && orario.getHour() == 9){
+        if((data.getDayOfWeek() == DayOfWeek.FRIDAY) && orario.getHour() == 13){
             ResultSet contratti = DBMSBoundary.getContratti();
             ResultSet corrieri = DBMSBoundary.getCorrieri();
             while(contratti.next()){

@@ -28,13 +28,6 @@ public class RisoluzioneProblemaConsegnaControl {
         App.setRoot("gestioneConsegne/risoluzioneProblemaConsegna/SchermataProblemaOrdine");
     }
 
-    public void premutoOk() throws IOException {
-        DBMSBoundary.setFlagProblema(this.consegna.idOrdine.get(),0);
-        SchermataPrincipale.schermataPrecedente="gestioneConsegne/visualizzaSegnalazioni/SchermataElencoSegnalazioni";
-        App.setRoot("SchermataPrincipale");
-        App.popup_stage.close();
-    }
-
     public void premutoRimborsa(MouseEvent event) throws SQLException, IOException {
         ResultSet lottiNonConsegnati = DBMSBoundary.getLottiNonConsegnati(this.consegna);
         DBMSBoundary.carica(lottiNonConsegnati);
@@ -49,10 +42,17 @@ public class RisoluzioneProblemaConsegnaControl {
         ResultSet newprenotazione = DBMSBoundary.creaOrdine(consegna.getIdFarmacia(),corriere,consegna.idFarmaco,lottiNonConsegnati);
         if (newprenotazione.next()) {
             int idprenotazione = newprenotazione.getInt("id_prenotazione");
-            DBMSBoundary.aggiornaLottiOrdinati(idprenotazione,lottiNonConsegnati);
+            DBMSBoundary.aggiornaLottiOrdinati(idprenotazione,lottiNonConsegnati,this.consegna.idOrdine.get());
             App.newWind("gestioneConsegne/risoluzioneProblemaConsegna/AvvisoOperazioneRiuscita",event);
             // la flag di fix problema lo fa al click di ok di questo avviso
         }
+    }
+
+    public void premutoOk() throws IOException {
+        DBMSBoundary.setFlagProblema(this.consegna.idOrdine.get(),0);
+        SchermataPrincipale.schermataPrecedente="gestioneConsegne/visualizzaSegnalazioni/SchermataElencoSegnalazioni";
+        App.setRoot("SchermataPrincipale");
+        App.popup_stage.close();
     }
 
     private int scegliCorriere(ResultSet corrieri) throws SQLException {

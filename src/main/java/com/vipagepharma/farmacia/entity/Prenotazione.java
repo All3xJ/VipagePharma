@@ -46,7 +46,7 @@ public class Prenotazione {
             this.isConsegnato = false;
     }
 
-    @Override
+/*    @Override
     public boolean equals(Object o){
         Prenotazione p = null;
         if (o instanceof Prenotazione)
@@ -56,7 +56,20 @@ public class Prenotazione {
             return true;
         else
             return false;
+    }*/
+    @Override
+    public boolean equals(Object o) {
+        Prenotazione p = null;
+        if (o instanceof Prenotazione)
+            p = (Prenotazione) o;
+
+        if (this.idPrenotazione.get().equals(p.idPrenotazione.get()))
+            return true;
+        else
+            return false;
     }
+
+
 
     public boolean getIsConsegnato(){
         return this.isConsegnato;

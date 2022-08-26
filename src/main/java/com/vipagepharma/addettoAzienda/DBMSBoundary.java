@@ -299,20 +299,27 @@ public class DBMSBoundary {
 
     public static void creaPrenotazioneDaBancoEScarica(int id_farmacia, int id_corriere, int id_farmaco, LocalDate data_consegna, ArrayList<Integer> id_lotti, ArrayList <Integer> qty_lotti){
         try {
+            int qtyTot=0;
+            for (Integer qty_lottO:
+                 qty_lotti) {
+                qtyTot+=qty_lottO;
+                System.out.println(qty_lottO);
+            }
             Connection connection = connectAzienda();
-            PreparedStatement statement1 = connection.prepareStatement("insert into prenotazione(id_utente_farmacia, id_utente_azienda,id_farmaco, isConsegnato, data_consegna) values (?,?,?,?,?)");
+            PreparedStatement statement1 = connection.prepareStatement("insert into prenotazione(id_utente_farmacia, id_utente_azienda,id_farmaco, isConsegnato, data_consegna, quantita) values (?,?,?,?,?,?)");
             statement1.setInt(1, id_farmacia);
             statement1.setInt(2, id_corriere);
             statement1.setInt(3, id_farmaco);
             statement1.setInt(4, 0);
             statement1.setDate(5, Date.valueOf(data_consegna));
+            statement1.setInt(6, qtyTot);
             statement1.executeUpdate();
             Statement statement2 = connection.createStatement();
             ResultSet rsId = statement2.executeQuery("SELECT LAST_INSERT_ID() as id");
             rsId.next();
             int id_prenotazione = rsId.getInt("id");
             for (int i = 0; i < id_lotti.size(); ++i) {
-                statement2.executeUpdate("update lotto set qtyContratti = qtyContratti - " + String.valueOf(qty_lotti.get(i)) + " where id_lotto = " + id_lotti.get(i));
+                statement2.executeUpdate("update lotto set quantita_contratti = quantita_contratti - " + String.valueOf(qty_lotti.get(i)) + " where id_lotto = " + id_lotti.get(i));
                 PreparedStatement statement3 = connection.prepareStatement("insert into lotto_ordinato(id_lotto, id_prenotazione, isCaricato, quantita) values(?,?,?,?)");
                 statement3.setInt(1, id_lotti.get(i));
                 statement3.setInt(2, id_prenotazione);
@@ -330,7 +337,7 @@ public class DBMSBoundary {
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            resultSet = statement.executeQuery("select l.quantita,l.id_lotto from lotto_ordinato l, prenotazione p where l.id_prenotazione=p.id_prenotazione and p.id_utente_farmacia = " + consegna.idFarmacia.get() + " and p.id_prenotazione="+consegna.idOrdine.get());
+            resultSet = statement.executeQuery("select l.quantita,l.id_lotto from lotto_ordinato l, prenotazione p where l.isCaricato=0 and l.id_prenotazione=p.id_prenotazione and p.id_utente_farmacia = " + consegna.idFarmacia.get() + " and p.id_prenotazione="+consegna.idOrdine.get());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -357,8 +364,10 @@ public class DBMSBoundary {
     public static ResultSet creaOrdine(String id_farmacia, int id_corriere, String id_farmaco,ResultSet lottiNonCosegnati) throws SQLException { //RISOLUZINE PROBLEMA CONSEGNA
         ResultSet resultSet;
         int qty = 0;
-        while(!lottiNonCosegnati.next()){
+        System.out.println("suca");
+        while(lottiNonCosegnati.next()){
             qty += lottiNonCosegnati.getInt("quantita");
+            System.out.println(qty);
         }
         Connection connection = connectAzienda();
         Statement statement = connection.createStatement();
@@ -376,13 +385,14 @@ public class DBMSBoundary {
         return resultSet;
     }
 
-    public static void aggiornaLottiOrdinati(int idprenotazione, ResultSet lottiNonConsegnati) throws SQLException {
+    public static void aggiornaLottiOrdinati(int idprenotazione, ResultSet lottiNonConsegnati, String idoldprenotazione) throws SQLException {
         int idLotto = 0;
         while (lottiNonConsegnati.next()) {
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
             idLotto = lottiNonConsegnati.getInt("id_lotto");
-            statement.executeUpdate("Update lotto_ordinato set id_prenotazione = " + idprenotazione + " where id_lotto="+idLotto);
+            System.out.println(idprenotazione+" "+idLotto);
+            statement.executeUpdate("Update lotto_ordinato set id_prenotazione = " + idprenotazione + " where id_lotto="+idLotto+" and id_prenotazione="+idoldprenotazione);
         }
     }
 

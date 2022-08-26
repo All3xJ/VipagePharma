@@ -47,13 +47,13 @@ public class ControlloConsegnaControl {
                     if (!idprenotazioniCaricoParziale.contains(consegneNonCaricate.getString("id_prenotazione")))  // se non c'è già la stessa prenotazione nella lista
                         idprenotazioniCaricoParziale.add(consegneNonCaricate.getString("id_prenotazione"));
                 } else{
-                    Lotto lot = new Lotto(consegneNonCaricate.getString("id_lotto"),consegneNonCaricate.getString("data_scadenza"),consegneNonCaricate.getString("quantita_ordinabile"));
+                    Lotto lot = new Lotto(consegneNonCaricate.getString("id_lotto"),consegneNonCaricate.getString("data_scadenza"),consegneNonCaricate.getString("lo.quantita"));
                     Prenotazione pren = new Prenotazione(consegneNonCaricate.getString("id_prenotazione"),consegneNonCaricate.getString("nome"),consegneNonCaricate.getString("data_consegna"),consegneNonCaricate.getString("p.id_utente_farmacia"),consegneNonCaricate.getString("id_farmaco"),consegneNonCaricate.getBoolean("isBanco"),consegneNonCaricate.getInt("isConsegnato"));
                     pren.lotti.add(lot);
 
                     if (!prenotazioniMancatoCarico.contains(pren)) { // dovrebbe funzionare il contains visto che ho fatto override di equals
                       prenotazioniMancatoCarico.add(pren);  // se entra qua quindi se non c'è gia la stessa prenotaz nella lista allora la aggiunge
-                    System.out.println("aggiunto lotto num: "+lot.getLotto());
+                    System.out.println("aaggiunto lotto num: "+lot.getLotto());
                     }else {
                         int index = prenotazioniMancatoCarico.indexOf(pren);    // dovrebbe funzionare indexOf, visto che lavora con equals e ho fatto override di equals dentro Prenotazione
                         prenotazioniMancatoCarico.get(index).lotti.add(lot);    // se invece la prenotaz gia c'era, aggiunge solo il lotto
