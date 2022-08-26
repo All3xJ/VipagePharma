@@ -25,8 +25,7 @@ public class PrenotazioneFarmaciDaBancoControl {
     }
 
     public void start() throws SQLException {
-        //if((data.getDayOfWeek() == DayOfWeek.MONDAY) && orario.getHour() == 9){
-        if((data.getDayOfWeek() == DayOfWeek.FRIDAY) && orario.getHour() == 13){
+        if((data.getDayOfWeek() == DayOfWeek.MONDAY) && orario.getHour() == 9){
             ResultSet contratti = DBMSBoundary.getContratti();
             ResultSet corrieri = DBMSBoundary.getCorrieri();
             while(contratti.next()){
