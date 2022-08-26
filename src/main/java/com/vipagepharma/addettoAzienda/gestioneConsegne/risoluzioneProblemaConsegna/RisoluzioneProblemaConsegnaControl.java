@@ -21,11 +21,11 @@ public class RisoluzioneProblemaConsegnaControl {
 
     public RisoluzioneProblemaConsegnaControl(Consegna consegna){
         this.consegna=consegna;
-        this.risProbConsCtrlRef=this;
+        risProbConsCtrlRef=this;
     }
 
-    public void start(ActionEvent event) throws IOException {
-        App.newWind("gestioneConsegne/risoluzioneProblemaConsegna/SchermataProblemaOrdine",event);
+    public void start() throws IOException {
+        App.setRoot("gestioneConsegne/risoluzioneProblemaConsegna/SchermataProblemaOrdine");
     }
 
     public void premutoOk() throws IOException {
@@ -36,7 +36,6 @@ public class RisoluzioneProblemaConsegnaControl {
     }
 
     public void premutoRimborsa(MouseEvent event) throws SQLException, IOException {
-        App.popup_stage.close();
         ResultSet lottiNonConsegnati = DBMSBoundary.getLottiNonConsegnati(this.consegna);
         DBMSBoundary.carica(lottiNonConsegnati);
         App.newWind("gestioneConsegne/risoluzioneProblemaConsegna/AvvisoOperazioneRiuscita",event);
@@ -44,11 +43,10 @@ public class RisoluzioneProblemaConsegnaControl {
     }
 
     public void premutoCompletaOrdine(MouseEvent event) throws SQLException, IOException {
-        App.popup_stage.close();
         ResultSet lottiNonConsegnati = DBMSBoundary.getLottiNonConsegnati(this.consegna);
         ResultSet corrieri = DBMSBoundary.getCorrieri();
         int corriere = this.scegliCorriere(corrieri);
-        ResultSet newprenotazione = DBMSBoundary.creaOrdine(consegna.getIdFarmacia(),corriere,consegna.idFarmaco);
+        ResultSet newprenotazione = DBMSBoundary.creaOrdine(consegna.getIdFarmacia(),corriere,consegna.idFarmaco,lottiNonConsegnati);
         if (newprenotazione.next()) {
             int idprenotazione = newprenotazione.getInt("id_prenotazione");
             DBMSBoundary.aggiornaLottiOrdinati(idprenotazione,lottiNonConsegnati);

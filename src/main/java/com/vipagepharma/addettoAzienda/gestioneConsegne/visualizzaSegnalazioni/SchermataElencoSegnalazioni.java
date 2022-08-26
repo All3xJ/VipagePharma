@@ -63,7 +63,7 @@ public class SchermataElencoSegnalazioni implements Initializable {
                             if (nomeButton.equals("Visualizza errore")){
                                 Consegna consegna = getTableView().getItems().get(getIndex());
                                 try {
-                                    this.premeVisualizzaErrore(consegna,event);
+                                    this.premeVisualizzaErrore(consegna);
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }
@@ -71,9 +71,9 @@ public class SchermataElencoSegnalazioni implements Initializable {
                         });
                     }
 
-                    private void premeVisualizzaErrore(Consegna entry,ActionEvent event) throws IOException {
+                    private void premeVisualizzaErrore(Consegna entry) throws IOException {
                         RisoluzioneProblemaConsegnaControl risProbConCtrl = new RisoluzioneProblemaConsegnaControl(entry);
-                        risProbConCtrl.start(event);
+                        risProbConCtrl.start();
                     }
 
                     @Override

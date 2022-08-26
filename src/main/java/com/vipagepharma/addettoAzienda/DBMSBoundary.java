@@ -47,7 +47,7 @@ public class DBMSBoundary {
         Connection connection = null;
         try {
             // below two lines are used for connectivity.
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, pass);
         }
         catch (Exception e) {
@@ -354,9 +354,12 @@ public class DBMSBoundary {
         }
     }
 
-    public static ResultSet creaOrdine(String id_farmacia, int id_corriere, String id_farmaco) throws SQLException { //RISOLUZINE PROBLEMA CONSEGNA
+    public static ResultSet creaOrdine(String id_farmacia, int id_corriere, String id_farmaco,ResultSet lottiNonCosegnati) throws SQLException { //RISOLUZINE PROBLEMA CONSEGNA
         ResultSet resultSet;
-
+        int qty = 0;
+        while(!lottiNonCosegnati.next()){
+            qty += lottiNonCosegnati.getInt("quantita");
+        }
         Connection connection = connectAzienda();
         Statement statement = connection.createStatement();
         java.util.Date date = new java.util.Date();
@@ -367,9 +370,9 @@ public class DBMSBoundary {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
         String strDataGiornoSuccessivo = formatter.format(date);
         //System.out.println("insert into prenotazione (id_utente_farmacia, id_utente_azienda, isConsegnato, data_consegna, id_farmaco) values (" + id_farmacia + "," + id_corriere +"," + 0 + ", str_to_date('"+strDataOdierna+"','%d-%m-%Y')  ,"+ id_farmaco+")");
-        statement.executeUpdate("insert into prenotazione (id_utente_farmacia, id_utente_azienda, isConsegnato, data_consegna, id_farmaco) values (" + id_farmacia + "," + id_corriere +"," + 0 + ", str_to_date('"+strDataGiornoSuccessivo+"','%d-%m-%Y')  ,"+ id_farmaco+")");
+        statement.executeUpdate("insert into prenotazione (id_utente_farmacia, id_utente_azienda, isConsegnato, data_consegna, id_farmaco,quantita) values (" + id_farmacia + "," + id_corriere +"," + 0 + ", str_to_date('"+strDataGiornoSuccessivo+"','%d-%m-%Y')  ,"+ id_farmaco+" , " + String.valueOf(qty)+")");
         resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() as id_prenotazione");
-
+        lottiNonCosegnati.beforeFirst();
         return resultSet;
     }
 
