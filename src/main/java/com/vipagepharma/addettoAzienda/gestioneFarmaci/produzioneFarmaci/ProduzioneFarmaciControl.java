@@ -13,11 +13,11 @@ public class ProduzioneFarmaciControl {
     private LocalDate data;
     private LocalTime orario;
 
-    public ProduzioneFarmaciControl(){
+    public ProduzioneFarmaciControl() {
         this.data = LocalDate.now();
         this.orario = LocalTime.now();
     }
-/*
+
     public void start() throws SQLException {
         if ((data.getDayOfWeek() == DayOfWeek.MONDAY) && orario.getHour() == 8) {
             ResultSet farmaci = DBMSBoundary.getFarmaci();
@@ -41,8 +41,8 @@ public class ProduzioneFarmaciControl {
             contratti.close();
         }
     }
-    */
-    public void start() throws SQLException {
+}
+    /*public void start() throws SQLException {
         for(int i = 0;i<9;++i) {
             if ((data.getDayOfWeek() == DayOfWeek.SUNDAY) && orario.getHour() == 12) {
                 ResultSet farmaci = DBMSBoundary.getFarmaci();
@@ -68,3 +68,4 @@ public class ProduzioneFarmaciControl {
         }
     }
 }
+*/
