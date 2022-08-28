@@ -32,8 +32,9 @@ public class PrenotazioneFarmaciDaBancoControl {
                 String id_farmaco = contratti.getString("id_farmaco");
                 ResultSet lotti = DBMSBoundary.getLotti(id_farmaco);
                 scegliLottiECorriere(lotti,corrieri,contratti);
-                DBMSBoundary.creaPrenotazioneDaBancoEScarica(contratti.getInt("id_utente_farmacia"),this.id_corriere,Integer.parseInt(id_farmaco),data.plusWeeks(1),idLotti,qtyLotti);
-                lotti.close();
+                DBMSBoundary.creaPrenotazioneDaBancoEScarica(contratti.getInt("id_utente_farmacia"),this.id_corriere,Integer.parseInt(id_farmaco),data.plusWeeks(1),this.idLotti,this.qtyLotti);
+                this.idLotti.clear();
+                this.qtyLotti.clear();
             }
             contratti.close();
             corrieri.close();
@@ -42,17 +43,18 @@ public class PrenotazioneFarmaciDaBancoControl {
 
     private void scegliLottiECorriere(ResultSet lotti,ResultSet corrieri,ResultSet contratti) throws SQLException {
         int qty = 0;
-        int qtyTotale = contratti.getInt("qty_settimanale");
+        int qtyTotale = contratti.getInt("quantita_settimanale");
         while(qty < qtyTotale){
             lotti.next();
-            this.idLotti.add(lotti.getInt("id_lotto"));
-            int qtyLotto = lotti.getInt("quantita_ordinabile");
-            qty += qtyLotto;
-            if(qty > qtyTotale){
-                qtyLotti.add(qtyTotale - (qty - qtyLotto));
-            }
-            else{
-                qtyLotti.add(qtyLotto);
+            if(lotti.getInt("quantita_contratti")>0) {
+                this.idLotti.add(lotti.getInt("id_lotto"));
+                int qtyLotto = lotti.getInt("quantita_contratti");
+                qty += qtyLotto;
+                if (qty > qtyTotale) {
+                    qtyLotti.add(qtyTotale - (qty - qtyLotto));
+                } else {
+                    qtyLotti.add(qtyLotto);
+                }
             }
         }
         if(corrieri.last()){
@@ -62,6 +64,6 @@ public class PrenotazioneFarmaciDaBancoControl {
                 this.id_corriere = corrieri.getInt("id_utente_azienda");
             }
         }
-        corrieri.close();
+        corrieri.beforeFirst();
     }
 }

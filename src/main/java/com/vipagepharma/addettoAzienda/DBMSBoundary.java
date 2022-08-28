@@ -172,9 +172,9 @@ public class DBMSBoundary {
     public static void creaLotto(int id_farmaco, LocalDate dataScadenza, LocalDate dataDisponibilita, int quantita_ordinabile, int qtyContratti){
         try {
             Connection connection = connectAzienda();
-            dataDisponibilita = dataDisponibilita.plusMonths(2);
-            dataScadenza = dataScadenza.plusMonths(2);
-            PreparedStatement stmt = connection.prepareStatement("INSERT INTO lotto (id_farmaco , quantita_ordinabile,qty_contratti, data_di_disponibilitá, data_scadenza) VALUES(?,?,?,?,?)",ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            //dataDisponibilita = dataDisponibilita.plusMonths(2);
+            //dataScadenza = dataScadenza.plusMonths(2);
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO lotto (id_farmaco , quantita_ordinabile,quantita_contratti, data_disponibilita, data_scadenza) VALUES(?,?,?,?,?)",ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             stmt.setInt(1,id_farmaco);
             stmt.setInt(2,quantita_ordinabile);
             stmt.setInt(3,qtyContratti);

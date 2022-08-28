@@ -36,7 +36,7 @@ public class ModificaContrattiControl {
             this.tvObservableList.clear();
             while (true) {
                 if (!contratti.next()) break;
-                this.tvObservableList.add(new Contratto(contratti.getString("nome"),contratti.getString("qty_settimanale"),contratti.getString("id_farmaco"),contratti.getString("principio_attivo")));
+                this.tvObservableList.add(new Contratto(contratti.getString("nome"),contratti.getString("quantita_settimanale"),contratti.getString("id_farmaco"),contratti.getString("principio_attivo")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

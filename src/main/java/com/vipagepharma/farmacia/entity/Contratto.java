@@ -13,9 +13,9 @@ public class Contratto {
 
     public String prinicipioAttivo;
 
-    public Contratto(String nomeFarmaco, String qty_settimanale, String IDFarmaco, String prinicipioAttivo){
+    public Contratto(String nomeFarmaco, String quantita_settimanale, String IDFarmaco, String prinicipioAttivo){
         this.nomeFarmaco.set(nomeFarmaco);
-        this.qtySettimanale.set(qty_settimanale);
+        this.qtySettimanale.set(quantita_settimanale);
         this.IDFarmaco = IDFarmaco;
         this.prinicipioAttivo=prinicipioAttivo;
     }

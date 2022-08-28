@@ -396,11 +396,12 @@ public class DBMSBoundary {
     }
 
     public static void confermaCaricoLotti(LinkedList <Lotto> lotti, String id_prenotazione){
-        for (int i=0; i< lotti.size(); ++i){
             try{
                 Connection connection = connectAzienda();
                 Statement statement = connection.createStatement();
-                statement.executeUpdate("Update lotto_ordinato set isCaricato = 1 where id_prenotazione = " +id_prenotazione + " and id_lotto = " + lotti.get(i).getLotto());
+                for (int i=0; i< lotti.size(); ++i) {
+                    statement.executeUpdate("Update lotto_ordinato set isCaricato = 1 where id_prenotazione = " + id_prenotazione + " and id_lotto = " + lotti.get(i).getLotto());
+                }
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -420,11 +421,10 @@ public class DBMSBoundary {
     }
 
     public static void aggiornaContratto(String id_farmaco, String id_farmacia, String quantita){
-        ResultSet resultSet;
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("update contratto set qty_settimanale = "+ quantita +" where id_farmaco = " + id_farmaco + " and id_utente_farmacia = " +  id_farmacia );
+            statement.executeUpdate("update contratto set quantita_settimanale = "+ quantita +" where id_farmaco = " + id_farmaco + " and id_utente_farmacia = " +  id_farmacia );
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -446,7 +446,6 @@ public class DBMSBoundary {
     }
 
     public static void setFlagProblema(String id_prenotazione, int boo){
-        ResultSet resultSet;
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
@@ -466,13 +465,17 @@ public class DBMSBoundary {
         }
     }
 
-    public static void confermaCaricoPrenotazione(String id_prenotazione){
-        try{
-            Connection connection = connectAzienda();
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("update prenotazione set isCaricato = 1  where id_prenotazione = "+ id_prenotazione);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+    public static void confermaCarico(String id_prenotazione,LinkedList<Lotto> lotti){
+            try{
+                Connection connection = connectAzienda();
+                Statement statement = connection.createStatement();
+                for (int i=0; i< lotti.size(); ++i) {
+                    statement.executeUpdate("Update lotto_ordinato set isCaricato = 1 where id_prenotazione = " + id_prenotazione + " and id_lotto = " + lotti.get(i).getLotto());
+                }
+                statement.executeUpdate("update prenotazione set isCaricato = 1  where id_prenotazione = "+ id_prenotazione);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
