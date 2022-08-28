@@ -332,18 +332,6 @@ public class DBMSBoundary {
         return resultSet;
     }
 
-    public static void confermaConsegna(String id_prenotazione, LinkedList <String> id_lotti){
-        for (int i=0; i< id_lotti.size(); ++i){
-            try{
-                Connection connection = connectAzienda();
-                Statement statement = connection.createStatement();
-                statement.executeUpdate("Update lotto_ordinato set isCaricato = 1 where id_prenotazione = " +id_prenotazione + " and id_lotto = " + id_lotti.get(i));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-
     public static void aggiungiCarico(String id_farmacia, String id_farmaco, String nome_farmaco,LinkedList<String> id_lotti, LinkedList<String>date_scadenza, LinkedList<String> quantita,boolean isBanco){
         for (int i=0; i< id_lotti.size(); ++i){
             try{
@@ -405,7 +393,6 @@ public class DBMSBoundary {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-        }
     }
 
     public static ResultSet getContratti(String id_farmacia){ //diversa da quella dell'addetto
@@ -465,18 +452,17 @@ public class DBMSBoundary {
         }
     }
 
-    public static void confermaCarico(String id_prenotazione,LinkedList<Lotto> lotti){
+    public static void confermaCarico(String id_prenotazione,LinkedList<String> id_lotti){
             try{
                 Connection connection = connectAzienda();
                 Statement statement = connection.createStatement();
-                for (int i=0; i< lotti.size(); ++i) {
-                    statement.executeUpdate("Update lotto_ordinato set isCaricato = 1 where id_prenotazione = " + id_prenotazione + " and id_lotto = " + lotti.get(i).getLotto());
+                for (int i=0; i< id_lotti.size(); ++i) {
+                    statement.executeUpdate("Update lotto_ordinato set isCaricato = 1 where id_prenotazione = " +id_prenotazione + " and id_lotto = " + id_lotti.get(i));
                 }
                 statement.executeUpdate("update prenotazione set isCaricato = 1  where id_prenotazione = "+ id_prenotazione);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-        }
     }
 
 
