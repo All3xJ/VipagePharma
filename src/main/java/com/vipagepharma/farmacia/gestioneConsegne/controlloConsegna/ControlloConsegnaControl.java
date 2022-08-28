@@ -126,7 +126,7 @@ public class ControlloConsegnaControl {
         App.popup_stage.close();
         System.out.println("sizeee: "+prenotazioneProbl.lotti.size());
         DBMSBoundary.aggiungiCarico(prenotazioneProbl.getIdFarmaco(),prenotazioneProbl.getNomeFarmaco(),prenotazioneProbl.getIdFarmacia(),prenotazioneProbl.getIsBanco(),prenotazioneProbl.lotti);
-        DBMSBoundary.confermaCarico(prenotazioneProbl.lotti,prenotazioneProbl.getIdPrenotazione());
+        DBMSBoundary.confermaCaricoLotti(prenotazioneProbl.lotti,prenotazioneProbl.getIdPrenotazione());
         System.out.println(prenotazioneProbl.getIdPrenotazione()+"bi");
         this.faiListe();
     }

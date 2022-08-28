@@ -368,18 +368,6 @@ public class DBMSBoundary {
         }
     }
 
-    public static void confermaCarico(LinkedList <Lotto> lotti, String id_prenotazione){
-        for (int i=0; i< lotti.size(); ++i){
-            try{
-                Connection connection = connectAzienda();
-                Statement statement = connection.createStatement();
-                statement.executeUpdate("Update lotto_ordinato set isCaricato = 1 where id_prenotazione = " +id_prenotazione + " and id_lotto = " + lotti.get(i).getLotto());
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-
     public static void aggiungiCarico(String id_farmaco, String nome_farmaco, String id_farmacia, boolean isBanco, LinkedList<Lotto> lotti){
 
         System.out.println("size: "+lotti.size());
@@ -403,6 +391,18 @@ public class DBMSBoundary {
                 }
             } catch (Exception e) {
                 //throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public static void confermaCaricoLotti(LinkedList <Lotto> lotti, String id_prenotazione){
+        for (int i=0; i< lotti.size(); ++i){
+            try{
+                Connection connection = connectAzienda();
+                Statement statement = connection.createStatement();
+                statement.executeUpdate("Update lotto_ordinato set isCaricato = 1 where id_prenotazione = " +id_prenotazione + " and id_lotto = " + lotti.get(i).getLotto());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
         }
     }
