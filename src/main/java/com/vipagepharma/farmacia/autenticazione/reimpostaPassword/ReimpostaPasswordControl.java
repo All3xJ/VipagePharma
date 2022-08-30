@@ -14,6 +14,8 @@ public class ReimpostaPasswordControl {
     private String key;
     private String confermaPassword;
     private String password;
+
+    public static String errore;
     public static ReimpostaPasswordControl repassCtrlRef;
     public ReimpostaPasswordControl(){
         repassCtrlRef = this;
@@ -32,6 +34,7 @@ public class ReimpostaPasswordControl {
             App.setRoot("autenticazione/reimpostaPassword/SchermataNuovaPassword");
         }
         else{
+            errore="ID o Parola chiave errati!";
             App.newWind("autenticazione/reimpostaPassword/AvvisoOperazioneFallita",event);
         }
     }
@@ -40,7 +43,8 @@ public class ReimpostaPasswordControl {
         this.password = password;
         this.confermaPassword = confermaPassword;
         if(!this.checkPass()){
-            App.newWind("autenticazione/reimpostaPassword/AvvisoPasswordErrate",event);
+            errore="Le password devono coincidere!";
+            App.newWind("autenticazione/reimpostaPassword/AvvisoOperazioneFallita",event);
         }
         else{
             DBMSBoundary.aggiornaPassword(this.id,this.password);
