@@ -1,0 +1,34 @@
+Process
+=======
+compile
+
+Command Line
+============
+/home/allexj/Downloads/graalvm-ce-java17-22.2.0/bin/native-image -Djdk.internal.lambda.eagerlyInitialize=false --no-server -H:+SharedLibrary -H:+AddAllCharsets -H:+ReportExceptionStackTraces -H:-DeadlockWatchdogExitOnTimeout -H:DeadlockWatchdogInterval=0 -H:+RemoveSaturatedTypeFlows -H:+ExitAfterRelocatableImageWrite --features=org.graalvm.home.HomeFinderFeature --features=com.gluonhq.substrate.feature.GluonFeature -H:TempDirectory=/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp -H:EnableURLProtocols=http,https -H:ReflectionConfigurationFiles=/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/reflectionconfig-x86_64-linux.json -H:JNIConfigurationFiles=/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/jniconfig-x86_64-linux.json -H:ResourceConfigurationFiles=/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/resourceconfig-x86_64-linux.json -H:IncludeResourceBundles=com/sun/javafx/scene/control/skin/resources/controls,com/sun/javafx/scene/control/skin/resources/controls-nt,com.sun.javafx.tk.quantum.QuantumMessagesBundle -Dsvm.platform=org.graalvm.nativeimage.Platform$LINUX_AMD64 -cp /home/allexj/.m2/repository/com/gluonhq/substrate/0.0.55/substrate-0.0.55.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/classpathJar.jar your.mainClass
+
+Output
+======
+Warning: Ignoring server-mode native-image argument --no-server.
+WARNING: Unknown module: org.graalvm.nativeimage.llvm specified to --add-exports
+WARNING: Unknown module: org.graalvm.nativeimage.llvm specified to --add-exports
+WARNING: Unknown module: org.graalvm.nativeimage.llvm specified to --add-exports
+========================================================================================================================
+GraalVM Native Image: Generating 'your.mainclass' (shared library)...
+========================================================================================================================
+[1/7] Initializing...                                                                                    (0.0s @ 0.18GB)
+Error: Main entry point class 'your.mainClass' neither found on the classpath nor on the modulepath.
+classpath: '/home/allexj/.m2/repository/com/gluonhq/substrate/0.0.55/substrate-0.0.55.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/classpathJar.jar:/home/allexj/IdeaProjects/VipagePharma/target/classes:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/protobuf-java-3.19.4.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/itextpdf-5.5.13.3.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/activation-1.1.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/mail-1.5.0-b01.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/mysql-connector-java-8.0.30.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/javafx.base.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/javafx.controls.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/javafx.fxml.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/javafx.graphics.jar'
+modulepath: '/home/allexj/Downloads/graalvm-ce-java17-22.2.0/lib/svm/library-support.jar'
+com.oracle.svm.core.util.UserError$UserException: Main entry point class 'your.mainClass' neither found on the classpath nor on the modulepath.
+classpath: '/home/allexj/.m2/repository/com/gluonhq/substrate/0.0.55/substrate-0.0.55.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/classpathJar.jar:/home/allexj/IdeaProjects/VipagePharma/target/classes:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/protobuf-java-3.19.4.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/itextpdf-5.5.13.3.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/activation-1.1.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/mail-1.5.0-b01.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/mysql-connector-java-8.0.30.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/javafx.base.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/javafx.controls.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/javafx.fxml.jar:/home/allexj/IdeaProjects/VipagePharma/target/gluonfx/x86_64-linux/gvm/tmp/deps/javafx.graphics.jar'
+modulepath: '/home/allexj/Downloads/graalvm-ce-java17-22.2.0/lib/svm/library-support.jar'
+	at org.graalvm.nativeimage.builder/com.oracle.svm.core.util.UserError.abort(UserError.java:72)
+	at org.graalvm.nativeimage.builder/com.oracle.svm.hosted.NativeImageGeneratorRunner.buildImage(NativeImageGeneratorRunner.java:348)
+	at org.graalvm.nativeimage.builder/com.oracle.svm.hosted.NativeImageGeneratorRunner.build(NativeImageGeneratorRunner.java:585)
+	at org.graalvm.nativeimage.builder/com.oracle.svm.hosted.NativeImageGeneratorRunner.main(NativeImageGeneratorRunner.java:128)
+Error: Image build request failed with exit status 1
+
+
+Result
+======
+result: 1

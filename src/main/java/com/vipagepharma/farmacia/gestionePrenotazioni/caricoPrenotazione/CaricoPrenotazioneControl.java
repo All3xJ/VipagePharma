@@ -60,6 +60,7 @@ public class CaricoPrenotazioneControl {
 
     private void riempiObservableList() throws SQLException {
         this.lotti_ordinati = DBMSBoundary.getLottiOrdinati(this.id_prenotazione);
+        SchermataRiepilogoCarico.qty_prevista=0;
         try {
             this.tvObservableList.clear();
             while (true) {
