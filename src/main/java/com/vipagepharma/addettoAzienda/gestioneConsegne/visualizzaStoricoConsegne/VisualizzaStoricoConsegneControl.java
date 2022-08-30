@@ -41,6 +41,10 @@ public class VisualizzaStoricoConsegneControl {
         }else {
            // this.tvObservableList.clear();
             this.consegne = DBMSBoundary.getAltreConsegne();
+            if(this.consegne.next()==false){
+                this.tvObservableList.clear();
+            }
+            this.consegne.beforeFirst();
         }try {
             while (true) {
                 if (!this.consegne.next()) break;
