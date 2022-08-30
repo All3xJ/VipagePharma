@@ -61,6 +61,7 @@ public class CaricoPrenotazioneControl {
         this.lotti_ordinati = DBMSBoundary.getLottiOrdinati(this.id_prenotazione);
         try {
             this.tvObservableList.clear();
+            SchermataRiepilogoCarico.qty_prevista=0;
             while (true) {
                 if (!lotti_ordinati.next()) break;
                 SchermataRiepilogoCarico.qty_prevista += lotti_ordinati.getInt("quantita");

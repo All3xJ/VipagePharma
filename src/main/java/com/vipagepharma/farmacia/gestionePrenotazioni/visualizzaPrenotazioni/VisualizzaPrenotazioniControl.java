@@ -41,7 +41,7 @@ public class VisualizzaPrenotazioniControl {
             this.tvObservableList.clear();
         while (true) {
             if (!prenotazioni.next()) break;
-            this.tvObservableList.add(new Prenotazione(prenotazioni.getString("id_utente_azienda"),prenotazioni.getString("id_prenotazione"),prenotazioni.getString("nome"),prenotazioni.getString("data_consegna"),prenotazioni.getString("id_utente_farmacia"),prenotazioni.getString("id_farmaco"),prenotazioni.getInt("isConsegnato"),prenotazioni.getInt("quantita")));
+            this.tvObservableList.add(new Prenotazione(prenotazioni.getString("id_utente_azienda"),prenotazioni.getString("id_prenotazione"),prenotazioni.getString("nome"),prenotazioni.getString("data_consegna"),prenotazioni.getString("id_utente_farmacia"),prenotazioni.getString("id_farmaco"),prenotazioni.getInt("isConsegnato"),prenotazioni.getInt("quantita"),prenotazioni.getBoolean("isBanco")));
         }
         } catch (SQLException e) {
             throw new RuntimeException(e);

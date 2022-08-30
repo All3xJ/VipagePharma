@@ -168,7 +168,7 @@ public class DBMSBoundary {
             java.util.Date date = new java.util.Date();
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
             String strDataOdierna = formatter.format(date);
-            resultSet = statement.executeQuery("SELECT p.id_utente_azienda,p.id_prenotazione, p.id_utente_farmacia,f.id_farmaco, f.nome, p.data_consegna ,p.isConsegnato,p.quantita FROM prenotazione p, farmaco f WHERE p.id_utente_farmacia =" + id_farmacia +" and p.id_farmaco=f.id_farmaco" + " and p.isCaricato = 0 and p.data_consegna >=  str_to_date('"+strDataOdierna+"','%d-%m-%Y')");
+            resultSet = statement.executeQuery("SELECT p.id_utente_azienda,p.id_prenotazione, p.id_utente_farmacia,f.id_farmaco, f.nome, p.data_consegna ,p.isConsegnato,p.quantita,f.isBanco FROM prenotazione p, farmaco f WHERE p.id_utente_farmacia =" + id_farmacia +" and p.id_farmaco=f.id_farmaco" + " and p.isCaricato = 0 and p.data_consegna >=  str_to_date('"+strDataOdierna+"','%d-%m-%Y')");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -398,9 +398,9 @@ public class DBMSBoundary {
     public static ResultSet getContratti(String id_farmacia){ //diversa da quella dell'addetto
         ResultSet resultSet;
         try{
-            Connection connection = connectAzienda();
+            Connection connection = connectDBMS();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            resultSet = statement.executeQuery("select * from contratto c, farmaco f  where c.id_farmaco=f.id_farmaco and c.id_utente_farmacia = " +id_farmacia);
+            resultSet = statement.executeQuery("select * from vipagepharma_farmacia.contratto c, vipagepharma_azienda.farmaco f  where c.id_farmaco=f.id_farmaco and c.id_utente_farmacia = " +id_farmacia);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -409,7 +409,7 @@ public class DBMSBoundary {
 
     public static void aggiornaContratto(String id_farmaco, String id_farmacia, String quantita){
         try{
-            Connection connection = connectAzienda();
+            Connection connection = connectFarmacia();
             Statement statement = connection.createStatement();
             statement.executeUpdate("update contratto set quantita_settimanale = "+ quantita +" where id_farmaco = " + id_farmaco + " and id_utente_farmacia = " +  id_farmacia );
         } catch (Exception e) {

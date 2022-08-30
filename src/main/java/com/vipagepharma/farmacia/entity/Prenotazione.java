@@ -19,7 +19,7 @@ public class Prenotazione {
     private boolean isBanco;
     public LinkedList<Lotto> lotti = new LinkedList<>();
 
-    public Prenotazione(String idCorriere ,String idPrenotazione, String nomeFarmaco, String dataConsegna , String idFarmacia,String idFarmaco,int isConsegnato,int qty){
+    public Prenotazione(String idCorriere ,String idPrenotazione, String nomeFarmaco, String dataConsegna , String idFarmacia,String idFarmaco,int isConsegnato,int qty,boolean isBanco){
         this.setId(idPrenotazione);
         this.setNomeFarmaco(nomeFarmaco);
         this.setDataConsegna(dataConsegna);
@@ -27,6 +27,7 @@ public class Prenotazione {
         this.idFarmaco = idFarmaco;
         this.idCorriere= idCorriere;
         this.qty = qty;
+        this.isBanco=isBanco;
         if(isConsegnato == 1)
             this.isConsegnato = true;
         else

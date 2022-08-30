@@ -190,7 +190,7 @@ public class DBMSBoundary {
     public static ResultSet getContratti(){  // mettere che lo fa alle 9 e fa produzione alle 8 quindi invertiti.
         ResultSet resultSet = null;
         try {
-            Connection connection = connectAzienda();
+            Connection connection = connectFarmacia();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             resultSet = statement.executeQuery("select * from contratto");
         }
