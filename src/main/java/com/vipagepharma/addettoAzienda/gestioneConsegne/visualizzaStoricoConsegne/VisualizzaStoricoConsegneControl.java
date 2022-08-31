@@ -48,8 +48,8 @@ public class VisualizzaStoricoConsegneControl {
         }try {
             while (true) {
                 if (!this.consegne.next()) break;
-
-                this.tvObservableList.add(new Consegna(this.consegne.getString("id_utente_farmacia"),this.consegne.getString("id_prenotazione"),this.consegne.getString("data_consegna"),this.consegne.getBlob("ricevuta_pdf")));
+                if (this.consegne.getBlob("ricevuta_pdf")!=null)
+                    this.tvObservableList.add(new Consegna(this.consegne.getString("id_utente_farmacia"),this.consegne.getString("id_prenotazione"),this.consegne.getString("data_consegna"),this.consegne.getBlob("ricevuta_pdf")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

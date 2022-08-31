@@ -1,5 +1,8 @@
 package com.vipagepharma.corriere.gestioneConsegne.firmaConsegna.drawFirma;
 
+import com.itextpdf.text.DocumentException;
+import com.vipagepharma.corriere.gestioneConsegne.firmaConsegna.FirmaConsegnaControl;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -8,7 +11,11 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
- 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.JComponent;
  
 /**
@@ -78,25 +85,14 @@ public class DrawArea extends JComponent {
     repaint();
   }
  
-  public void red() {
-    // apply red color on g2 context
-    g2.setPaint(Color.red);
+  public void firma() throws IOException, DocumentException {
+    BufferedImage bi = (BufferedImage) this.image;
+    g2.drawImage(bi, null, 0, 0);
+    ImageIO.write(bi, "JPEG", new File("/tmp/foo.jpg"));
+    SwingPaint.theframe.dispose();
+    FirmaConsegnaControl.firmConsCtrlRef.firmato();
   }
- 
-  public void black() {
-    g2.setPaint(Color.black);
-  }
- 
-  public void magenta() {
-    g2.setPaint(Color.magenta);
-  }
- 
-  public void green() {
-    g2.setPaint(Color.green);
-  }
- 
-  public void blue() {
-    g2.setPaint(Color.blue);
-  }
+
+
  
 }

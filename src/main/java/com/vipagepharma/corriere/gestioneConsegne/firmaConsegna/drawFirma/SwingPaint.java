@@ -1,33 +1,34 @@
 package com.vipagepharma.corriere.gestioneConsegne.firmaConsegna.drawFirma;
 
+import com.itextpdf.text.DocumentException;
+
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
- 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
- 
+import java.io.IOException;
+
+import javax.swing.*;
+
 public class SwingPaint {
  
-  JButton clearBtn, blackBtn, blueBtn, greenBtn, redBtn, magentaBtn;
+  JButton clearBtn, firmaBtn;
   DrawArea drawArea;
+
+  public static JFrame theframe;
   ActionListener actionListener = new ActionListener() {
  
   public void actionPerformed(ActionEvent e) {
       if (e.getSource() == clearBtn) {
         drawArea.clear();
-      } else if (e.getSource() == blackBtn) {
-        drawArea.black();
-      } else if (e.getSource() == blueBtn) {
-        drawArea.blue();
-      } else if (e.getSource() == greenBtn) {
-        drawArea.green();
-      } else if (e.getSource() == redBtn) {
-        drawArea.red();
-      } else if (e.getSource() == magentaBtn) {
-        drawArea.magenta();
+      } else if (e.getSource() == firmaBtn) {
+        try {
+          drawArea.firma();
+        } catch (IOException ex) {
+          throw new RuntimeException(ex);
+        } catch (DocumentException ex) {
+          throw new RuntimeException(ex);
+        }
       }
     }
   };
@@ -39,6 +40,11 @@ public class SwingPaint {
   public void show() {
     // create main frame
     JFrame frame = new JFrame("Swing Paint");
+    theframe = frame;
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setUndecorated(true);
+    frame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+
     Container content = frame.getContentPane();
     // set layout on content pane
     content.setLayout(new BorderLayout());
@@ -51,25 +57,13 @@ public class SwingPaint {
     // create controls to apply colors and call clear feature
     JPanel controls = new JPanel();
  
-    clearBtn = new JButton("Clear");
+    clearBtn = new JButton("Pulisci");
     clearBtn.addActionListener(actionListener);
-    blackBtn = new JButton("Black");
-    blackBtn.addActionListener(actionListener);
-    blueBtn = new JButton("Blue");
-    blueBtn.addActionListener(actionListener);
-    greenBtn = new JButton("Green");
-    greenBtn.addActionListener(actionListener);
-    redBtn = new JButton("Red");
-    redBtn.addActionListener(actionListener);
-    magentaBtn = new JButton("Magenta");
-    magentaBtn.addActionListener(actionListener);
+    firmaBtn = new JButton("Firma");
+    firmaBtn.addActionListener(actionListener);
  
     // add to panel
-    controls.add(greenBtn);
-    controls.add(blueBtn);
-    controls.add(blackBtn);
-    controls.add(redBtn);
-    controls.add(magentaBtn);
+    controls.add(firmaBtn);
     controls.add(clearBtn);
  
     // add to content pane

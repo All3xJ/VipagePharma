@@ -8,6 +8,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.vipagepharma.corriere.gestioneConsegne.firmaConsegna.drawFirma.SwingPaint;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -19,6 +20,8 @@ import java.time.format.DateTimeFormatter;
 public class FirmaConsegnaControl {
 
     public static FirmaConsegnaControl firmConsCtrlRef;
+
+    private Ordine ordine;
 
     public FirmaConsegnaControl(){
         firmConsCtrlRef = this;
@@ -32,12 +35,28 @@ public class FirmaConsegnaControl {
     public void premutoFirma(Ordine ordine) throws DocumentException, IOException {
 
         //ordine.setFilePDF(file);
-        this.creaPDF(ordine);
-        App.setRoot("gestioneConsegne/firmaConsegna/AvvisoOperazioneRiuscita");
+
+
+
+
+        String[] ciao = new String[2];
+        new Thread(""){
+            public void run(){
+                SwingPaint.main(ciao);
+            }
+        }.start();
+
+        this.ordine=ordine;
     }
 
     public void premutoOk() throws IOException {
         App.setRoot("gestioneConsegne/visualizzaConsegne/SchermataConsegneOdierne");
+    }
+
+    public void firmato() throws DocumentException, IOException {
+        this.creaPDF(this.ordine);
+        App.newWind("gestioneConsegne/firmaConsegna/AvvisoOperazioneRiuscita");
+        this.ordine=null;
     }
 
     public void creaPDF(Ordine ordine) throws IOException, DocumentException {
@@ -48,6 +67,7 @@ public class FirmaConsegnaControl {
         this.aggiungiMetadati(document);
         this.aggiungiTitolo(document, ordine);
         this.creaTabella(document, ordine);
+        this.aggiungiFirma(document);
         document.close();
         //File file = new File("/tmp/ricevuta_" + foo + ".pdf");
         //byte[] fileContent = Files.readAllBytes(file.toPath());
@@ -87,14 +107,12 @@ public class FirmaConsegnaControl {
 
     private void creaTabella(Document d, Ordine o) throws DocumentException {
         Paragraph p = new Paragraph();
-        PdfPTable tabella = new PdfPTable(3);
+        PdfPTable tabella = new PdfPTable(2);
         Font fontCorpo = new Font(Font.FontFamily.TIMES_ROMAN, 13, Font.NORMAL, BaseColor.BLACK);
         insertCell(tabella, "Quantità", Element.ALIGN_CENTER, 1, fontCorpo);
         insertCell(tabella, "Nome Farmacia", Element.ALIGN_CENTER, 1, fontCorpo);
-        insertCell(tabella, "Firma", Element.ALIGN_CENTER, 1, fontCorpo);
         insertCell(tabella, o.qty.get(), Element.ALIGN_CENTER, 1, fontCorpo);
         insertCell(tabella, o.nomeFarmaciaConsegna.get(), Element.ALIGN_CENTER, 1, fontCorpo);
-        insertCell(tabella, "c", Element.ALIGN_CENTER, 1, fontCorpo);
 
         p.add(tabella);
         d.add(p);
@@ -115,5 +133,20 @@ public class FirmaConsegnaControl {
         //add the call to the table
         table.addCell(cell);
 
+    }
+
+
+    private void aggiungiFirma(Document d) throws DocumentException, IOException {
+        Paragraph titolo = new Paragraph();
+        Font fontTitolo = new Font(Font.FontFamily.HELVETICA, 15, Font.BOLD, BaseColor.BLACK);
+        Paragraph p1 = (new Paragraph("Firma del farmacista:", fontTitolo));
+        p1.setAlignment(Element.ALIGN_CENTER);
+        titolo.add(p1);
+        Image img = Image.getInstance("/tmp/foo.jpg");
+        img.scalePercent(40,40);
+        img.setAlignment(Element.ALIGN_CENTER);
+        titolo.add(img);
+        d.add(Chunk.NEWLINE);
+        d.add(titolo);
     }
 }
