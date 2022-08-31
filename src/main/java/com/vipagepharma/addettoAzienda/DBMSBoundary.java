@@ -133,7 +133,7 @@ public class DBMSBoundary {
         try {
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from utente where id_utente_azienda = " + id + " and chiave_recupero = " + "'" + key + "'");
+            ResultSet resultSet = statement.executeQuery("select * from utente where id_utente_azienda = " + id + " and isCorriere = 0 and chiave_recupero = " + "'" + key + "'");
             esito = resultSet.next();
         }
         catch (SQLException e){

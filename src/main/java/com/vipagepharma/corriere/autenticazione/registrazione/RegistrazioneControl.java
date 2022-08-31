@@ -3,7 +3,6 @@ package com.vipagepharma.corriere.autenticazione.registrazione;
 import com.vipagepharma.corriere.App;
 import com.vipagepharma.corriere.DBMSBoundary;
 import javafx.event.ActionEvent;
-import javafx.scene.input.MouseEvent;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -23,6 +22,7 @@ public class RegistrazioneControl {
     private String email;
     private String password;
     private String confermaPassword;
+    public static String errore;
     public static RegistrazioneControl regCtrlRef;
 
     public RegistrazioneControl(){
@@ -33,21 +33,24 @@ public class RegistrazioneControl {
         App.setRoot("autenticazione/registrazione/SchermataRegistrazione");
     }
 
-    public void premutoRegistra(String nome, String email, String password, String confermaPassword, ActionEvent event) throws IOException, SQLException, MessagingException {
+    public void premutoRegistra(String nome,String email,String password,String confermaPassword,ActionEvent event) throws IOException, SQLException, MessagingException {
         this.nome = nome;
         this.email = email;
         this.password = password;
         this.confermaPassword = confermaPassword;
         if(!this.checkPassword()){
-            App.newWind("autenticazione/registrazione/AvvisoPasswordErrate",event);
+            errore="Le password devono coincidere!";
+            App.newWind("autenticazione/registrazione/AvvisoOperazioneFallita",event);
         }
         else{
             if(!checkFormattazioneEmail()){
-                App.newWind("autenticazione/registrazione/AvvisoMailErrata",event);
+                errore="Formato dell'email non valido\nInserire formato valido\n(es. nome@example.com)";
+                App.newWind("autenticazione/registrazione/AvvisoOperazioneFallita",event);
             }
             else {
                 if (!DBMSBoundary.verificaMail(this.email)) {
-                    App.newWind("autenticazione/registrazione/AvvisoMailNonDisponibile",event);
+                    errore="La mail inserita è già registrata nel sistema";
+                    App.newWind("autenticazione/registrazione/AvvisoOperazioneFallita",event);
                 }
                 else {
                     String key = this.generaKey();
@@ -99,6 +102,7 @@ public class RegistrazioneControl {
     }
 
     public void premutoOk(String schermata) throws IOException {
+        App.popup_stage.close();
         App.setRoot(schermata);
     }
 

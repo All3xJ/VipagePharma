@@ -20,15 +20,11 @@ public class SchermataRegistrazione{
     @FXML
     private PasswordField password;
     @FXML
-    private PasswordField confermaPassword;
+    private PasswordField conferma_password;
     private final RegistrazioneControl registrazioneControl = RegistrazioneControl.regCtrlRef;
     @FXML
     void premeRegistra(ActionEvent event) throws IOException, SQLException, MessagingException {
-        registrazioneControl.premutoRegistra(this.nome.getText(),this.email.getText(),this.password.getText(),this.confermaPassword.getText(),event);
-    }
-    @FXML
-    void premeOK(MouseEvent event) throws IOException{
-        registrazioneControl.premutoOk("autenticazione/registrazione/SchermataRegistrazione");
+        registrazioneControl.premutoRegistra(this.nome.getText(),this.email.getText(),this.password.getText(),this.conferma_password.getText(),event);
     }
 
     @FXML
