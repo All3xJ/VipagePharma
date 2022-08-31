@@ -29,7 +29,7 @@ public class SchermataRegistrazione{
 
     @FXML
     void premeIndietro(MouseEvent event) throws IOException{
-        RegistrazioneControl.regCtrlRef.premutoIndietro();
+        RegistrazioneControl.regCtrlRef.premutoIndietro("autenticazione/login/SchermataLogin");
     }
 }
 

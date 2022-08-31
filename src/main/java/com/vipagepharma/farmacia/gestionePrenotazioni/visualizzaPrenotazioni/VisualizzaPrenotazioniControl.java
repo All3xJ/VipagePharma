@@ -49,14 +49,14 @@ public class VisualizzaPrenotazioniControl {
         this.prenotazioni.close();
     }
 
-    public void premutoIndietro() throws IOException {
+    public void premutoIndietro(String schermataPrecedente) throws IOException {
+        App.setRoot(schermataPrecedente);
+    }
+    public void premutoHome() throws IOException {
         App.setRoot("SchermataPrincipale");
     }
-
-    public void premutoHome(String schermataPrecedente) throws IOException {
-        SchermataPrincipale.schermataPrecedente=schermataPrecedente;
-        App.setRoot("SchermataPrincipale");
+    public void premutoLogout() throws IOException {
+        App.setRoot("autenticazione/login/SchermataLogin");
     }
-
 
 }

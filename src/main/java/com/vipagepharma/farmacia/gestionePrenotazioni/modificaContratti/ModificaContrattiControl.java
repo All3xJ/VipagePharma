@@ -52,16 +52,16 @@ public class ModificaContrattiControl {
     public void premutoIndietro(String schermataPrecedente) throws IOException {
         App.setRoot(schermataPrecedente);
     }
-
-    public void premutoHome(String schermataPrecedente) throws IOException {
-        SchermataPrincipale.schermataPrecedente=schermataPrecedente;
+    public void premutoHome() throws IOException {
         App.setRoot("SchermataPrincipale");
+    }
+    public void premutoLogout() throws IOException {
+        App.setRoot("autenticazione/login/SchermataLogin");
     }
 
     public void premutoOk() throws IOException {
         App.popup_stage.close();
         App.setRoot("SchermataPrincipale");
-        SchermataPrincipale.schermataPrecedente="gestionePrenotazioni/modificaContratti/SchermataModificaContratti";
     }
 
     public void premutoModifica(Contratto contr){

@@ -2,7 +2,7 @@ package com.vipagepharma.addettoAzienda;
 
 import com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni.VisualizzaSegnalazioniControl;
 import com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaStoricoConsegne.VisualizzaStoricoConsegneControl;
-import com.vipagepharma.addettoAzienda.App;
+import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -10,7 +10,6 @@ import java.sql.SQLException;
 
 public class SchermataPrincipale {
 
-    public static String schermataPrecedente;
 
 	public void premeVisualizzaSegnalazioni(MouseEvent mouseEvent) throws IOException, SQLException {
         VisualizzaSegnalazioniControl visConseCtrl = new VisualizzaSegnalazioniControl();
@@ -22,13 +21,7 @@ public class SchermataPrincipale {
         visStoConsCtrl.start();
     }
 
-    public void premeHome(MouseEvent mouseEvent)  {
-    }
-
-    public void premeIndietro(MouseEvent mouseEvent) throws IOException {
-        App.setRoot(schermataPrecedente);
-    }
-
+    @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
         App.setRoot("autenticazione/login/SchermataLogin");
     }

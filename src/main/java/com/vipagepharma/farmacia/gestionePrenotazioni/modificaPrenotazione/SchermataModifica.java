@@ -1,8 +1,5 @@
 package com.vipagepharma.farmacia.gestionePrenotazioni.modificaPrenotazione;
 
-import com.vipagepharma.corriere.App;
-import com.vipagepharma.farmacia.SchermataPrincipale;
-import com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci.PrenotaFarmaciControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -56,17 +53,16 @@ public class SchermataModifica implements Initializable {
             this.flag_scadenza = 0;
         }
     }
-
+    @FXML
     public void premeHome(MouseEvent event) throws IOException {
-        SchermataPrincipale.schermataPrecedente = "gestionePrenotazioni/modificaPrenotazione/SchermataModifica";
-        App.setRoot("SchermataPrincipale");
+        ModificaPrenotazioneControl.modificaPrenotazioneControl.premutoHome();
     }
-
-    public void premeIndetro(MouseEvent event) {
-
+    @FXML
+    public void premeIndetro(MouseEvent event) throws IOException {
+        ModificaPrenotazioneControl.modificaPrenotazioneControl.premutoIndietro("gestionePrenotazioni/modificaPrenotazione/SchermataModifica");
     }
-
+    @FXML
     public void premeLogout(MouseEvent event) throws IOException {
-        App.setRoot("autenticazione/login/SchermataPrincipale");
+        ModificaPrenotazioneControl.modificaPrenotazioneControl.premutoLogout();
     }
 }

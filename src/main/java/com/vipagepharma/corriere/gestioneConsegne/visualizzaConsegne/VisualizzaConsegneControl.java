@@ -25,7 +25,6 @@ public class VisualizzaConsegneControl {
 
     public void start() throws IOException, SQLException {
         this.riempiObservableList(ordini);
-        SchermataConsegneOdierne.schermataPrecedente="SchermataPrincipale";
         App.setRoot("gestioneConsegne/visualizzaConsegne/SchermataConsegneOdierne");
     }
 
@@ -42,12 +41,13 @@ public class VisualizzaConsegneControl {
         ordini.close();
     }
 
-    public void premutoHome(String schermataPrecedente) throws IOException {
-        SchermataPrincipale.schermataPrecedente = schermataPrecedente;
-        App.setRoot("SchermataPrincipale");
-    }
-
     public void premutoIndietro(String schermataPrecedente) throws IOException {
         App.setRoot(schermataPrecedente);
+    }
+    public void premutoHome() throws IOException {
+        App.setRoot("SchermataPrincipale");
+    }
+    public void premutoLogout() throws IOException {
+        App.setRoot("autenticazione/login/SchermataLogin");
     }
 }

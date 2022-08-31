@@ -41,10 +41,7 @@ public class SchermataPrenotazione implements Initializable {
         });
     }
 
-    @FXML
-    public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        App.setRoot("autenticazione/login/SchermataLogin");
-    }
+
 
     public void premeInvia(ActionEvent event) throws SQLException, IOException {
         PrenotaFarmaciControl.getControl().premutoInvia(data_consegna.getValue(),qty.getText(),this.flag_scadenza,event);
@@ -59,13 +56,16 @@ public class SchermataPrenotazione implements Initializable {
             this.flag_scadenza = 0;
         }
     }
-
-    public void premeHome(MouseEvent event) throws IOException {
-        SchermataPrincipale.schermataPrecedente = "gestionePrenotazioni/prenotaFarmaci/SchermataPrenotazione";
-        App.setRoot("SchermataPrincipale");
+    @FXML
+    public void premeLogout(MouseEvent mouseEvent) throws IOException {
+        PrenotaFarmaciControl.getControl().premutoLogout();
     }
-
-    public void premeIndetro(MouseEvent event) {
-
+    @FXML
+    public void premeHome(MouseEvent event) throws IOException {
+        PrenotaFarmaciControl.getControl().premutoHome();
+    }
+    @FXML
+    public void premeIndetro(MouseEvent event) throws IOException {
+        PrenotaFarmaciControl.getControl().premutoIndietro("gestionePrenotazione/prenotaFarmaci/SchermataListaFarmaci");
     }
 }

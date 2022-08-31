@@ -16,8 +16,6 @@ import java.util.ResourceBundle;
 
 public class SchermataPrincipale implements Initializable {
 
-    public static String schermataPrecedente;
-
     @FXML
     private Button uploadfirme_button;
 
@@ -47,15 +45,8 @@ public class SchermataPrincipale implements Initializable {
         UploadFirmeControl upFirCtrl = new UploadFirmeControl();
         upFirCtrl.start(mouseEvent);
     }
-
-    public void premeHome(MouseEvent mouseEvent)  {
-    }
-
-    public void premeIndietro(MouseEvent mouseEvent) {
-
-    }
-
+    @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        App.setRoot("autenticazione/login/SchermataLogin");
+        App.setRoot("autenticazione/login/SchermataPrincipale");
     }
 }

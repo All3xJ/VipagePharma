@@ -81,15 +81,18 @@ public class VisualizzaStoricoConsegneControl {
         this.start();
     }
 
-    public void premutoHome(String schermataPrecedente) throws IOException {
+    public void premutoHome() throws IOException {
         contatorePagineConsegne=0;
-        SchermataPrincipale.schermataPrecedente = schermataPrecedente;
         App.setRoot("SchermataPrincipale");
     }
 
 
-    public void premutoIndietro() throws IOException {
+    public void premutoIndietro(String schermataPrecedente) throws IOException {
         contatorePagineConsegne=0;
-        App.setRoot("SchermataPrincipale");
+        App.setRoot(schermataPrecedente);
+    }
+    public void premutoLogout() throws IOException {
+        contatorePagineConsegne=0;
+        App.setRoot("autenticazione/login/SchermataLogin");
     }
 }

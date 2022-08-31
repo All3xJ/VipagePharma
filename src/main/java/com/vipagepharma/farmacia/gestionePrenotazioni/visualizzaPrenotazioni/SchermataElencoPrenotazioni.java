@@ -153,18 +153,16 @@ public class SchermataElencoPrenotazioni implements Initializable{
         this.prenotazioni_table.getColumns().add(colBtn);
 
     }
-
+	@FXML
     public void premeHome(MouseEvent mouseEvent) throws IOException {
-		SchermataPrincipale.schermataPrecedente="gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni";
-		App.setRoot("SchermataPrincipale");
+		VisualizzaPrenotazioniControl.visualPrenCtrlRef.premutoHome();
     }
-
+	@FXML
 	public void premeIndietro(MouseEvent mouseEvent) throws IOException {
-		SchermataPrincipale.schermataPrecedente="gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni";
-		App.setRoot("SchermataPrincipale");
+		VisualizzaPrenotazioniControl.visualPrenCtrlRef.premutoIndietro("SchermataPrincipale");
 	}
-
+	@FXML
 	public void premeLogout(MouseEvent mouseEvent) throws IOException {
-		App.setRoot("autenticazione/login/SchermataLogin");
+		VisualizzaPrenotazioniControl.visualPrenCtrlRef.premutoLogout();
 	}
 }

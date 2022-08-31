@@ -101,16 +101,16 @@ public class SchermataModificaContratti implements Initializable {
 
     }
 
-
+    @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        App.setRoot("autenticazione/login/SchermataLogin");
+        ModificaContrattiControl.modifContraCtrl.premutoLogout();
     }
-
+    @FXML
     public void premeIndietro(MouseEvent mouseEvent) throws IOException {
         ModificaContrattiControl.modifContraCtrl.premutoIndietro("SchermataPrincipale");
     }
-
+    @FXML
     public void premeHome(MouseEvent mouseEvent) throws IOException {
-        ModificaContrattiControl.modifContraCtrl.premutoHome("gestionePrenotazioni/modificaContratti/SchermataModificaContratti");
+        ModificaContrattiControl.modifContraCtrl.premutoHome();
     }
 }

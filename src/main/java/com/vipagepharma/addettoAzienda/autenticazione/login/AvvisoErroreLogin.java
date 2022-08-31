@@ -12,16 +12,4 @@ public class AvvisoErroreLogin{
     public void premeOk(MouseEvent event) throws IOException {
         loginControl.premutoOk();
     }
-    @FXML
-    public void premeIndietro(MouseEvent event) throws IOException{
-
-    }
-    @FXML
-    public void premeHome(MouseEvent event) throws IOException{
-
-    }
-    @FXML
-    public void premeLogout(MouseEvent event) throws IOException{
-
-    }
 }

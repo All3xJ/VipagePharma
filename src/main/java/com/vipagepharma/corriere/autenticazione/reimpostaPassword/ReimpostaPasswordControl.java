@@ -19,7 +19,6 @@ public class ReimpostaPasswordControl {
         repassCtrlRef = this;
     }
     public void start() throws IOException {
-        SchermataReimpostaPassword.schermataPrecedente = "autenticazione/login/SchermataLogin";
         App.setRoot("autenticazione/reimpostaPassword/SchermataReimpostaPassword");
     }
 
@@ -28,7 +27,6 @@ public class ReimpostaPasswordControl {
         if(esito){
             this.id = id;
             this.key = key;
-            SchermataNuovaPassword.schermataPrecedente = "autenticazione/reimpostaPassword/SchermataReimpostaPassword";
             App.setRoot("autenticazione/reimpostaPassword/SchermataNuovaPassword");
         }
         else{

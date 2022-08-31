@@ -142,8 +142,8 @@ public class RegistrazioneControl {
         return key;
     }
 
-    public void premutoIndietro() throws IOException {
-        App.setRoot("autenticazione/login/SchermataLogin");
+    public void premutoIndietro(String schermataPrecedente) throws IOException {
+        App.setRoot(schermataPrecedente);
     }
 
 }

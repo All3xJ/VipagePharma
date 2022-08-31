@@ -180,6 +180,16 @@ public class PrenotaFarmaciControl {
         App.setRoot("SchermataPrincipale");
     }
 
+    public void premutoIndietro(String schermataPrecedente) throws IOException {
+        App.setRoot(schermataPrecedente);
+    }
+    public void premutoHome() throws IOException {
+        App.setRoot("SchermataPrincipale");
+    }
+    public void premutoLogout() throws IOException {
+        App.setRoot("autenticazione/login/SchermataLogin");
+    }
+
 
     public String getFarmaco(){
         return this.nome_farmaco;

@@ -50,7 +50,6 @@ public class RisoluzioneProblemaConsegnaControl {
 
     public void premutoOk() throws IOException {
         DBMSBoundary.setFlagProblema(this.consegna.idOrdine.get(),0);
-        SchermataPrincipale.schermataPrecedente="gestioneConsegne/visualizzaSegnalazioni/SchermataElencoSegnalazioni";
         App.setRoot("SchermataPrincipale");
         App.popup_stage.close();
     }

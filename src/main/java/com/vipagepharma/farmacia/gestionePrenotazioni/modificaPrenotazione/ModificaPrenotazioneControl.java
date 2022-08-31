@@ -3,7 +3,9 @@ package com.vipagepharma.farmacia.gestionePrenotazioni.modificaPrenotazione;
 import com.vipagepharma.farmacia.App;
 import com.vipagepharma.farmacia.DBMSBoundary;
 import com.vipagepharma.farmacia.entity.Prenotazione;
+import com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci.PrenotaFarmaciControl;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -115,6 +117,16 @@ public class ModificaPrenotazioneControl {
         else{
             return data_consegna;
         }
+    }
+
+    public void premutoIndietro(String schermataPrecedente) throws IOException {
+        App.setRoot(schermataPrecedente);
+    }
+    public void premutoHome() throws IOException {
+        App.setRoot("SchermataPrincipale");
+    }
+    public void premutoLogout() throws IOException {
+        App.setRoot("autenticazione/login/SchermataLogin");
     }
 
     public Prenotazione getPrenotazione(){

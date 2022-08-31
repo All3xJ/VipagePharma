@@ -96,16 +96,16 @@ public class SchermataConsegneOdierne implements Initializable {
 
     }
 
-
+    @FXML
     public void premeHome(MouseEvent mouseEvent) throws IOException {
-        VisualizzaConsegneControl.visualConCtrlRef.premutoHome("gestioneConsegne/visualizzaConsegne/SchermataConsegneOdierne");
+        VisualizzaConsegneControl.visualConCtrlRef.premutoHome();
     }
-
+    @FXML
     public void premeIndietro(MouseEvent mouseEvent) throws IOException {
         VisualizzaConsegneControl.visualConCtrlRef.premutoIndietro(schermataPrecedente);
     }
-
+    @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        App.setRoot("autenticazione/login/SchermataLogin");
+        VisualizzaConsegneControl.visualConCtrlRef.premutoLogout();
     }
 }

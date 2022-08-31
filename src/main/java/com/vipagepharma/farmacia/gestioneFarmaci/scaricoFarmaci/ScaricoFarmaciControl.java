@@ -30,7 +30,6 @@ public class ScaricoFarmaciControl {
 
     public void start() throws IOException, SQLException {
         farmaci = new LinkedList<>();
-        SchermataScarico.schermataPrecedente = "SchermataPrincipale";
         this.riempiObservableList();
         App.setRoot("gestioneFarmaci/scaricoFarmaci/SchermataScarico");
     }
@@ -67,14 +66,7 @@ public class ScaricoFarmaciControl {
         }
     }
 
-    public void premutoIndietro() throws IOException {
-        App.setRoot(SchermataScarico.schermataPrecedente);
-    }
 
-    public void premutoHome(String schermataPrecedente) throws IOException {
-        SchermataPrincipale.schermataPrecedente=schermataPrecedente;
-        App.setRoot("SchermataPrincipale");
-    }
 
     public void premutoScarica(String nome, String idLotto, String qty, MouseEvent event) throws IOException {
         Farmaco farmaco = this.getFarmaco(nome);
@@ -106,5 +98,15 @@ public class ScaricoFarmaciControl {
             }
         }
         return farmaco;
+    }
+
+    public void premutoIndietro(String schermataPrecedente) throws IOException {
+        App.setRoot(schermataPrecedente);
+    }
+    public void premutoHome() throws IOException {
+        App.setRoot("SchermataPrincipale");
+    }
+    public void premutoLogout() throws IOException {
+        App.setRoot("autenticazione/login/SchermataLogin");
     }
 }

@@ -75,12 +75,13 @@ public class CaricoPrenotazioneControl {
     }
 
 
-    public void premutoIndietro() throws IOException {
-        App.setRoot("gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni");
+    public void premutoIndietro(String schermataPrecedente) throws IOException {
+        App.setRoot(schermataPrecedente);
     }
-
-    public void premutoHome(String schermataPrecedente) throws IOException {
-        SchermataPrincipale.schermataPrecedente=schermataPrecedente;
+    public void premutoHome() throws IOException {
         App.setRoot("SchermataPrincipale");
+    }
+    public void premutoLogout() throws IOException {
+        App.setRoot("autenticazione/login/SchermataLogin");
     }
 }

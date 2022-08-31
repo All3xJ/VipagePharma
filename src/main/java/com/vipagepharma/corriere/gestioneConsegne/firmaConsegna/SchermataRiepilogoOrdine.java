@@ -40,14 +40,17 @@ public class SchermataRiepilogoOrdine implements Initializable {
         this.qty_column.setCellValueFactory(new PropertyValueFactory<Ordine,String >("qty"));
         this.riepilogoordine_table.getItems().add(ordine);
     }
-
-    public void premeHome(MouseEvent mouseEvent) {
+    @FXML
+    public void premeHome(MouseEvent mouseEvent) throws IOException {
+        FirmaConsegnaControl.firmConsCtrlRef.premutoHome();
     }
-
-    public void premeIndietro(MouseEvent mouseEvent) {
+    @FXML
+    public void premeIndietro(MouseEvent mouseEvent) throws IOException {
+        FirmaConsegnaControl.firmConsCtrlRef.premutoIndietro("gestioneConsegne/firmaConsegna/SchermataConsegneOdierne");
     }
-
-    public void premeLogout(MouseEvent mouseEvent) {
+    @FXML
+    public void premeLogout(MouseEvent mouseEvent) throws IOException {
+        FirmaConsegnaControl.firmConsCtrlRef.premutoLogout();
     }
 
     public void premeFirma(MouseEvent mouseEvent) throws DocumentException, IOException {

@@ -1,16 +1,10 @@
 package com.vipagepharma.farmacia.gestionePrenotazioni.ricercaFarmaco;
 
-import com.vipagepharma.farmacia.App;
-import com.vipagepharma.farmacia.SchermataPrincipale;
-import com.vipagepharma.farmacia.gestioneFarmaci.scaricoFarmaci.ScaricoFarmaciControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import java.io.IOException;
-
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 
 public class SchermataRicercaFarmaco {
@@ -24,17 +18,15 @@ public class SchermataRicercaFarmaco {
     }
     @FXML
     public void premeIndietro(MouseEvent mouseEvent) throws IOException{
-        SchermataPrincipale.schermataPrecedente="gestioneFarmaci/ricercaFarmaco/SchermataRicercaFarmaco";
-        App.setRoot("SchermataPrincipale");
+        RicercaFarmacoControl.getControl().premutoIndietro("SchermataPrincipale");
     }
     @FXML
     public void premeHome(MouseEvent mouseEvent) throws IOException {
-        SchermataPrincipale.schermataPrecedente="gestioneFarmaci/ricercaFarmaco/SchermataRicercaFarmaco";
-        App.setRoot("SchermataPrincipale");
+        RicercaFarmacoControl.getControl().premutoHome();
     }
 
     @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        App.setRoot("autenticazione/login/SchermataLogin");
+        RicercaFarmacoControl.getControl().premutoLogout();
     }
 }

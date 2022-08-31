@@ -116,4 +116,13 @@ public class FirmaConsegnaControl {
         table.addCell(cell);
 
     }
+    public void premutoIndietro(String schermataPrecedente) throws IOException {
+        App.setRoot(schermataPrecedente);
+    }
+    public void premutoHome() throws IOException {
+        App.setRoot("SchermataPrincipale");
+    }
+    public void premutoLogout() throws IOException {
+        App.setRoot("autenticazione/login/SchermataLogin");
+    }
 }

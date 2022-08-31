@@ -14,15 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
-public class SchermataPrincipale implements Initializable {
-	@Override
-	public void initialize(URL url, ResourceBundle resbound){
-		if(schermataPrecedente == null){
-			btnIndietro.setVisible(false);
-		}
-	}
-
-	public static String schermataPrecedente;
+public class SchermataPrincipale {
 
 	@FXML
 	private Button btnIndietro;
@@ -48,14 +40,7 @@ public class SchermataPrincipale implements Initializable {
 		ModificaContrattiControl modcontraCtrl = new ModificaContrattiControl();
 		modcontraCtrl.start();
 	}
-
-    public void premeHome(MouseEvent mouseEvent){
-    }
-
-	public void premeIndietro(MouseEvent mouseEvent) throws IOException {
-		App.setRoot(schermataPrecedente);
-	}
-
+	@FXML
 	public void premeLogout(MouseEvent mouseEvent) throws IOException {
 		App.setRoot("autenticazione/login/SchermataLogin");
 	}

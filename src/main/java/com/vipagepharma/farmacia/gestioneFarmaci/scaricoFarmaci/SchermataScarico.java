@@ -26,8 +26,6 @@ import java.util.*;
 
 public class SchermataScarico implements Initializable {
 
-    public static String schermataPrecedente;
-
     @FXML
     private ComboBox<String> tendinaFarmaci;
 
@@ -55,19 +53,17 @@ public class SchermataScarico implements Initializable {
 
 
 
-
+    @FXML
     public void premeHome(MouseEvent mouseEvent) throws IOException {
-        SchermataPrincipale.schermataPrecedente="gestioneFarmaci/scaricoFarmaci/SchermataScarico";
-        App.setRoot("SchermataPrincipale");
+        ScaricoFarmaciControl.scarFarmCtrl.premutoHome();
     }
-
+    @FXML
     public void premeIndietro(MouseEvent mouseEvent) throws IOException {
-        SchermataPrincipale.schermataPrecedente="gestioneFarmaci/scaricoFarmaci/SchermataScarico";
-        App.setRoot("SchermataPrincipale");
+        ScaricoFarmaciControl.scarFarmCtrl.premutoIndietro("SchermataPrincipale");
     }
-
+    @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        App.setRoot("autenticazione/login/SchermataLogin");
+        ScaricoFarmaciControl.scarFarmCtrl.premutoLogout();
     }
 
     public void premeScarica(MouseEvent mouseEvent) throws IOException {

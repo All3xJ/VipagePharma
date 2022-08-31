@@ -32,14 +32,15 @@ public class SchermataRiepilogoContratto implements Initializable {
     void premeConferma(MouseEvent event) throws IOException {
         ModificaContrattiControl.modifContraCtrl.premutoConferma(this.qty_text.getText(),contratto);
     }
-
-    public void premeLogout(MouseEvent mouseEvent) {
+    @FXML
+    public void premeLogout(MouseEvent mouseEvent) throws IOException {
+        ModificaContrattiControl.modifContraCtrl.premutoLogout();
     }
-
+    @FXML
     public void premeHome(MouseEvent mouseEvent) throws IOException {
-        ModificaContrattiControl.modifContraCtrl.premutoHome("gestionePrenotazioni/modificaContratti/SchermataRiepilogoContratto");
+        ModificaContrattiControl.modifContraCtrl.premutoHome();
     }
-
+    @FXML
     public void premeIndietro(MouseEvent mouseEvent) throws IOException {
         ModificaContrattiControl.modifContraCtrl.premutoIndietro("gestionePrenotazioni/modificaContratti/SchermataModificaContratti");
     }

@@ -9,7 +9,6 @@ import java.io.IOException;
 
 public class SchermataNuovaPassword {
 
-    public static String schermataPrecedente;
     @FXML
     private PasswordField password;
     @FXML
@@ -22,7 +21,7 @@ public class SchermataNuovaPassword {
 
     @FXML
     void premeIndietro(MouseEvent event) throws IOException{
-        ReimpostaPasswordControl.repassCtrlRef.premutoIndietro(schermataPrecedente);
+        ReimpostaPasswordControl.repassCtrlRef.premutoIndietro("autenticazione/reimpostaPassword/SchermataReimpostaPassword");
     }
 }
 

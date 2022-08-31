@@ -102,18 +102,18 @@ public class SchermataStoricoConsegne implements Initializable {
 
     }
 
-
+    @FXML
     public void premeHome(MouseEvent mouseEvent) throws IOException {
-        VisualizzaStoricoConsegneControl.visStoConsCtrlRef.premutoHome("gestioneConsegne/visualizzaStoricoConsegne/SchermataStoricoConsegne.java");
+        VisualizzaStoricoConsegneControl.visStoConsCtrlRef.premutoHome();
     }
-
+    @FXML
     public void premeIndietro(MouseEvent mouseEvent) throws IOException {
-        VisualizzaStoricoConsegneControl.visStoConsCtrlRef.premutoIndietro();
+        VisualizzaStoricoConsegneControl.visStoConsCtrlRef.premutoIndietro("schermataprecedente");
     }
-
+    @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
         VisualizzaStoricoConsegneControl.contatorePagineConsegne=0;
-        App.setRoot("autenticazione/login/SchermataLogin");
+        VisualizzaStoricoConsegneControl.visStoConsCtrlRef.premutoLogout();
     }
 
     public void premeMostraAltro(MouseEvent mouseEvent) throws SQLException, IOException {

@@ -121,15 +121,16 @@ public class SchermataRiepilogoCarico implements Initializable {
     public void premeConferma(MouseEvent event) throws IOException {
         CaricoPrenotazioneControl.carPrenCtrl.premutoConferma(lotti_selezionati,qty_selezionati,date_scadenza_selezionate,event);
     }
+    @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        App.setRoot("autenticazione/login/SchermataLogin");
+        CaricoPrenotazioneControl.carPrenCtrl.premutoLogout();
     }
-
+    @FXML
     public void premeIndietro(MouseEvent mouseEvent) throws IOException {
-        CaricoPrenotazioneControl.carPrenCtrl.premutoIndietro();
+        CaricoPrenotazioneControl.carPrenCtrl.premutoIndietro("gestionePrenotazioni/caricoPrenotazione/SchermataElencoPrenotazioni");
     }
-
+    @FXML
     public void premeHome(MouseEvent mouseEvent) throws IOException {
-        CaricoPrenotazioneControl.carPrenCtrl.premutoHome("gestionePrenotazioni/caricoPrenotazione/SchermataRiepilogoCarico");
+        CaricoPrenotazioneControl.carPrenCtrl.premutoHome();
     }
 }
