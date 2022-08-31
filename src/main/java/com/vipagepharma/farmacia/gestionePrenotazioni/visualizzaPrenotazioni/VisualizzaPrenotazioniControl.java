@@ -46,7 +46,7 @@ public class VisualizzaPrenotazioniControl {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        this.prenotazioni.close();
+        //this.prenotazioni.close();
     }
 
     public void premutoIndietro() throws IOException {

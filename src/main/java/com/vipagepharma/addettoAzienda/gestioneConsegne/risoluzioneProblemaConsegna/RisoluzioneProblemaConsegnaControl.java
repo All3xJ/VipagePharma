@@ -63,7 +63,7 @@ public class RisoluzioneProblemaConsegnaControl {
                 return corrieri.getInt("id_utente_azienda");
             }
         }
-        corrieri.close();
+        //corrieri.close();
         return corrieri.getInt("id_utente_azienda");
     }
 }

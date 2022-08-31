@@ -56,7 +56,7 @@ public class VisualizzaStoricoConsegneControl {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        this.consegne.close();
+        //this.consegne.close();
     }
 
     public void premutoVisualizzaRicevuta(Consegna consegna) throws IOException {

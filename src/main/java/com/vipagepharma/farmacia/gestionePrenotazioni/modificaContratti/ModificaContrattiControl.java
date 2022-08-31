@@ -41,7 +41,7 @@ public class ModificaContrattiControl {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        this.contratti.close();
+        //this.contratti.close();
     }
 
     public void premutoConferma(String qty, Contratto contratto) throws IOException {

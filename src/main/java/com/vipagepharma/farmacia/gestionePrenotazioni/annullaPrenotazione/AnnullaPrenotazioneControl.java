@@ -37,7 +37,7 @@ public class AnnullaPrenotazioneControl {
             idLotti.add(lottiOrdinati.getString("id_lotto"));
         }
         DBMSBoundary.eliminaOrdineERicaricaFarmaci(idPrenotazione,idLotti,qtyLotti);
-        lottiOrdinati.close();
+        //lottiOrdinati.close();
         App.popup_stage.close();
         App.newWind("gestionePrenotazioni/annullaPrenotazione/AvvisoOperazioneRiuscita",event);
 
