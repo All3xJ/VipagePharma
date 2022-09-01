@@ -46,7 +46,7 @@ public class SchermataRiepilogoOrdine implements Initializable {
     }
     @FXML
     public void premeIndietro(MouseEvent mouseEvent) throws IOException {
-        FirmaConsegnaControl.firmConsCtrlRef.premutoIndietro("gestioneConsegne/firmaConsegna/SchermataConsegneOdierne");
+        FirmaConsegnaControl.firmConsCtrlRef.premutoIndietro("gestioneConsegne/visualizzaConsegne/SchermataConsegneOdierne");
     }
     @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {

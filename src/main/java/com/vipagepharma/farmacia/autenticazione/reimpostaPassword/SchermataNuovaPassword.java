@@ -22,7 +22,7 @@ public class SchermataNuovaPassword {
 
     @FXML
     void premeIndietro(MouseEvent event) throws IOException{
-        ReimpostaPasswordControl.repassCtrlRef.premutoIndietro(schermataPrecedente);
+        ReimpostaPasswordControl.repassCtrlRef.premutoIndietro("autenticazione/reimpostaPassword/SchermataReimpostaPassword");
     }
 }
 

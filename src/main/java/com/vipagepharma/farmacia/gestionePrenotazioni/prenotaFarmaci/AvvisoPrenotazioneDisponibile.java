@@ -18,9 +18,9 @@ public class AvvisoPrenotazioneDisponibile implements Initializable {
     private String farmaco;
 
     private void init(){
-        this.data = PrenotaFarmaciControl.getControl().getData();
-        this.qty  = PrenotaFarmaciControl.getControl().getQty();
-        this.farmaco = PrenotaFarmaciControl.getControl().getFarmaco();
+        this.data = PrenotaFarmaciControl.controlRef.getData();
+        this.qty  = PrenotaFarmaciControl.controlRef.getQty();
+        this.farmaco = PrenotaFarmaciControl.controlRef.getFarmaco();
     }
 
     @Override
@@ -30,7 +30,7 @@ public class AvvisoPrenotazioneDisponibile implements Initializable {
     }
     @FXML
     public void premeConferma(MouseEvent mouseEvent) throws IOException {
-        PrenotaFarmaciControl.getControl().premutoConferma(mouseEvent);
+        PrenotaFarmaciControl.controlRef.premutoConferma(mouseEvent);
     }
 
 

@@ -10,6 +10,6 @@ public class AvvisoOperazioneRiuscita {
 
     @FXML
     public void premeOk() throws IOException {
-        PrenotaFarmaciControl.getControl().premutoOk();
+        PrenotaFarmaciControl.controlRef.premutoOk();
     }
 }

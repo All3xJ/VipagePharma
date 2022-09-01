@@ -47,6 +47,6 @@ public class SchermataPrincipale implements Initializable {
     }
     @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        App.setRoot("autenticazione/login/SchermataPrincipale");
+        App.setRoot("autenticazione/login/SchermataLogin");
     }
 }

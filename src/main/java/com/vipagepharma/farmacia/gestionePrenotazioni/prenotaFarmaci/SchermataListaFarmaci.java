@@ -101,15 +101,15 @@ public class SchermataListaFarmaci implements Initializable{
 
     @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        PrenotaFarmaciControl.getControl().premutoLogout();
+        RicercaFarmacoControl.getControl().premutoLogout();
     }
 
     @FXML
     public void premeHome(MouseEvent event) throws IOException {
-        PrenotaFarmaciControl.getControl().premutoHome();
+        RicercaFarmacoControl.getControl().premutoHome();
     }
     @FXML
     public void premeIndietro(MouseEvent event) throws IOException {
-        PrenotaFarmaciControl.getControl().premutoIndietro("gestionePrenotazioni/ricercaFarmaco/SchermataRicercaFarmaco");
+        RicercaFarmacoControl.getControl().premutoIndietro("gestionePrenotazioni/ricercaFarmaco/SchermataRicercaFarmaco");
     }
 }

@@ -30,11 +30,11 @@ public class AvvisoMancataDisponibilita implements Initializable {
 
 
     private void init(){
-        this.data = PrenotaFarmaciControl.getControl().getData();
-        this.qty  = PrenotaFarmaciControl.getControl().getQty();
-        this.newData = PrenotaFarmaciControl.getControl().getNewData();
-        this.qtyMancante  = PrenotaFarmaciControl.getControl().getQtyMancante();
-        this.farmaco = PrenotaFarmaciControl.getControl().getFarmaco();
+        this.data = PrenotaFarmaciControl.controlRef.getData();
+        this.qty  = PrenotaFarmaciControl.controlRef.getQty();
+        this.newData = PrenotaFarmaciControl.controlRef.getNewData();
+        this.qtyMancante  = PrenotaFarmaciControl.controlRef.getQtyMancante();
+        this.farmaco = PrenotaFarmaciControl.controlRef.getFarmaco();
     }
 
 
@@ -60,6 +60,6 @@ public class AvvisoMancataDisponibilita implements Initializable {
     }
     @FXML
     public void premeConferma(MouseEvent event) throws IOException {
-        PrenotaFarmaciControl.getControl().premutoConferma(this.opzione,event);
+        PrenotaFarmaciControl.controlRef.premutoConferma(this.opzione,event);
     }
 }

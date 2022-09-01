@@ -16,7 +16,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class PrenotaFarmaciControl {
 
-    private static PrenotaFarmaciControl controlRef;
+    public static PrenotaFarmaciControl controlRef;
     private String nome_farmaco;
     private int id_farmaco;
     private int id_corriere;
@@ -37,9 +37,6 @@ public class PrenotaFarmaciControl {
 
     public PrenotaFarmaciControl(){
         controlRef = this;
-    }
-    public static PrenotaFarmaciControl getControl(){
-        return controlRef;
     }
 
 

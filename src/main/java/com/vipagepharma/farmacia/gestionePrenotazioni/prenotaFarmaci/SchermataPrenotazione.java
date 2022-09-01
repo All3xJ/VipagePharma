@@ -30,7 +30,7 @@ public class SchermataPrenotazione implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.testo_nome_farmaco.setText(PrenotaFarmaciControl.getControl().getFarmaco());
+        this.testo_nome_farmaco.setText(PrenotaFarmaciControl.controlRef.getFarmaco());
         this.data_consegna.setDayCellFactory(picker -> new DateCell() {
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
@@ -44,7 +44,7 @@ public class SchermataPrenotazione implements Initializable {
 
 
     public void premeInvia(ActionEvent event) throws SQLException, IOException {
-        PrenotaFarmaciControl.getControl().premutoInvia(data_consegna.getValue(),qty.getText(),this.flag_scadenza,event);
+        PrenotaFarmaciControl.controlRef.premutoInvia(data_consegna.getValue(),qty.getText(),this.flag_scadenza,event);
     }
 
     @FXML
@@ -58,14 +58,14 @@ public class SchermataPrenotazione implements Initializable {
     }
     @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        PrenotaFarmaciControl.getControl().premutoLogout();
+        PrenotaFarmaciControl.controlRef.premutoLogout();
     }
     @FXML
     public void premeHome(MouseEvent event) throws IOException {
-        PrenotaFarmaciControl.getControl().premutoHome();
+        PrenotaFarmaciControl.controlRef.premutoHome();
     }
     @FXML
     public void premeIndetro(MouseEvent event) throws IOException {
-        PrenotaFarmaciControl.getControl().premutoIndietro("gestionePrenotazione/prenotaFarmaci/SchermataListaFarmaci");
+        PrenotaFarmaciControl.controlRef.premutoIndietro("gestionePrenotazioni/prenotaFarmaci/SchermataListaFarmaci");
     }
 }
