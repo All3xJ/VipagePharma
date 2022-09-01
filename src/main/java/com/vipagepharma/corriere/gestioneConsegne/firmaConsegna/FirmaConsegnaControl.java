@@ -8,13 +8,10 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.vipagepharma.corriere.gestioneConsegne.firmaConsegna.drawFirma.SwingPaint;
 import javafx.application.Platform;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -43,7 +40,7 @@ public class FirmaConsegnaControl {
 
         new Thread(""){
             public void run(){
-                SwingPaint.main(ciao);
+                PannelloFirma.main(ciao);
             }
         }.start();
 
@@ -55,7 +52,7 @@ public class FirmaConsegnaControl {
         App.popup_stage.close();
     }
 
-    public void firmato() throws DocumentException, IOException {
+    public void premutoConferma() throws DocumentException, IOException {
         this.creaPDF(this.ordine);
         Platform.runLater(new Runnable() {
             @Override public void run() {
@@ -70,13 +67,13 @@ public class FirmaConsegnaControl {
     }
 
     public void creaPDF(Ordine ordine) throws IOException, DocumentException {
-        Document document = new Document(PageSize.A4, 20, 20, 20, 20);
+        Document document = new Document(PageSize.A5, 20, 20, 20, 20);
         String foo = String.valueOf(ordine.idPrenotazione.get());
         PdfWriter.getInstance(document, new FileOutputStream("/tmp/ricevuta_" + foo + ".pdf"));
         document.open();
         this.aggiungiMetadati(document);
         this.aggiungiTitolo(document, ordine);
-        this.creaTabella(document, ordine);
+        //this.creaTabella(document, ordine);
         this.aggiungiFirma(document);
         document.close();
         //File file = new File("/tmp/ricevuta_" + foo + ".pdf");
@@ -93,29 +90,29 @@ public class FirmaConsegnaControl {
     private void aggiungiTitolo(Document d, Ordine o) throws DocumentException, IOException {
         Paragraph titolo = new Paragraph();
         Image img = Image.getInstance("src/main/java/com/vipagepharma/corriere/22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png");
-        img.scalePercent(40,40);
+        img.scalePercent(60,60);
         img.setAlignment(Element.ALIGN_CENTER);
         titolo.add(img);
         Font fontTitolo = new Font(Font.FontFamily.HELVETICA, 24, Font.BOLD, BaseColor.BLACK);
-        Paragraph p1 = (new Paragraph("Ricevuta di consegna ordine", fontTitolo));
+        Paragraph p1 = (new Paragraph("Ricevuta di consegna ordine\n\n", fontTitolo));
         p1.setAlignment(Element.ALIGN_CENTER);
         titolo.add(p1);
-        d.add(Chunk.NEWLINE);
         Font fontSottotitolo = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD, BaseColor.BLACK);
         LocalDateTime myDateObj = LocalDateTime.now();
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        Paragraph p2 = new Paragraph("Questa ricevuta è stata generata in data " + myDateObj.format(myFormatObj) + "\ned è relativa all' ordine n. " + String.valueOf(o.idPrenotazione.get()), fontSottotitolo);
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        DateTimeFormatter myFormatObj2 = DateTimeFormatter.ofPattern("HH:mm");
+        Paragraph p2 = new Paragraph("Questa ricevuta è stata generata in data " + myDateObj.format(myFormatObj)+" alle ore "+ myDateObj.format(myFormatObj2)+". La farmacia '"+o.nomeFarmaciaConsegna.get()+"' ha firmato l'avvenuta consegna dell'ordine n. " + String.valueOf(o.idPrenotazione.get()), fontSottotitolo);
         p2.setAlignment(Element.ALIGN_CENTER);
         titolo.add(p2);
         d.add(titolo);
         int i = 0;
-        while (i < 3) {
+        while (i < 2) {
             d.add(Chunk.NEWLINE);
             i++;
         }
     }
 
-    private void creaTabella(Document d, Ordine o) throws DocumentException {
+/*    private void creaTabella(Document d, Ordine o) throws DocumentException {
         Paragraph p = new Paragraph();
         PdfPTable tabella = new PdfPTable(2);
         Font fontCorpo = new Font(Font.FontFamily.TIMES_ROMAN, 13, Font.NORMAL, BaseColor.BLACK);
@@ -127,7 +124,7 @@ public class FirmaConsegnaControl {
         p.add(tabella);
         d.add(p);
 
-    }
+    }*/
 
     private void insertCell(PdfPTable table, String text, int align, int colspan, Font font) {
         //create a new cell with the specified Text and Font
@@ -153,7 +150,7 @@ public class FirmaConsegnaControl {
         p1.setAlignment(Element.ALIGN_CENTER);
         titolo.add(p1);
         Image img = Image.getInstance("/tmp/foo.jpg");
-        img.scalePercent(40,40);
+        img.scalePercent(50,50);
         img.setAlignment(Element.ALIGN_CENTER);
         titolo.add(img);
         d.add(Chunk.NEWLINE);

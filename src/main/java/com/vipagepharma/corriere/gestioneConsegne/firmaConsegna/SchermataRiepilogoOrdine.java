@@ -24,7 +24,7 @@ public class SchermataRiepilogoOrdine implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resbound) {
-        this.testo_riepilogo_ordine.setText("Consegna n. "+ordine.getIdPrenotazione()+ " da consegnare alla farmacia '"+ordine.getNomeFarmaciaConsegna()+"' in data "+ordine.getDataConsegna());
+        this.testo_riepilogo_ordine.setText("Firmando si dichiara l'avvenuta consegna dell'ordine \nn. "+ordine.getIdPrenotazione()+ " destinato alla farmacia '"+ordine.getNomeFarmaciaConsegna()+"'\nin data "+ordine.getDataConsegna());
 
     }
 

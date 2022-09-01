@@ -68,7 +68,7 @@
                   <Font name="Arial" size="20.0" />
                </font></Button>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cff3f2" height="134.0" layoutX="352.0" layoutY="237.0" stroke="#b9b9b9" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="607.0" />
-            <Text fx:id="testo_riepilogo_ordine" layoutX="387.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="540.0">
+            <Text fx:id="testo_riepilogo_ordine" layoutX="386.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="540.0">
                <font>
                   <Font size="20.0" />
                </font>
