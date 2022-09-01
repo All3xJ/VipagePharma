@@ -15,7 +15,6 @@ public class Consegna {
     public String idFarmaco;
 
     public StringProperty nomeFarmacia = new SimpleStringProperty();
-
     public String ricevutaPath;
 
     public Consegna(String id_farmacia, String id_ordine, String data_consegna, String id_farmaco, String nome_farmacia) {
@@ -26,11 +25,12 @@ public class Consegna {
         this.nomeFarmacia.set(nome_farmacia);
     }
 
-    public Consegna(String id_farmacia, String id_ordine, String data_consegna, Blob ricevutaPDF) throws IOException, SQLException {
+    public Consegna(String id_farmacia, String id_ordine, String data_consegna, Blob ricevutaPDF, String nomeFarmacia) throws IOException, SQLException {
         this.idFarmacia.set(id_farmacia);
         this.idOrdine.set(id_ordine);
         this.dataConsegna.set(data_consegna);
         this.setRicevuta(ricevutaPDF);
+        this.nomeFarmacia.set(nomeFarmacia);
     }
 
     private void setRicevuta(Blob ricevutaPDF) throws IOException, SQLException {

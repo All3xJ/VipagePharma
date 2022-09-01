@@ -17,7 +17,7 @@ public class SchermataProblemaOrdine implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resbound) {
-        this.testo_problema_ordine.setText("La consegna n. "+RisoluzioneProblemaConsegnaControl.risProbConsCtrlRef.consegna.idOrdine.get()+ " prevista per la farmacia "+RisoluzioneProblemaConsegnaControl.risProbConsCtrlRef.consegna.nomeFarmacia.get()+" ha avuto qualche problema!");
+        this.testo_problema_ordine.setText("La consegna n. "+RisoluzioneProblemaConsegnaControl.risProbConsCtrlRef.consegna.idOrdine.get()+ " prevista per la farmacia '"+RisoluzioneProblemaConsegnaControl.risProbConsCtrlRef.consegna.nomeFarmacia.get()+"' ha avuto qualche problema!");
 
     }
 
