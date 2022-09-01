@@ -68,7 +68,7 @@
             <TableView fx:id="storico_table" layoutX="315.0" layoutY="173.0" prefHeight="385.0" prefWidth="685.0" styleClass="table-view">
               <columns>
                 <TableColumn fx:id="idordine_column" prefWidth="135.0" styleClass="colonna" text="ID consegna" />
-                  <TableColumn fx:id="idfarmacia_column" prefWidth="160.0" styleClass="colonna" text="ID farmacia" />
+                  <TableColumn fx:id="nomefarmacia_column" prefWidth="160.0" styleClass="colonna" text="Nome farmacia" />
                   <TableColumn fx:id="dataconsegna_column" prefWidth="162.0" styleClass="colonna" text="Data consegna" />
                   <TableColumn fx:id="visualizzaricevuta_column" prefWidth="206.0" styleClass="colonna" />
               </columns>

@@ -38,7 +38,7 @@ public class VisualizzaConsegneControl {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        ordini.close();
+        //ordini.close();
     }
 
     public void premutoIndietro(String schermataPrecedente) throws IOException {

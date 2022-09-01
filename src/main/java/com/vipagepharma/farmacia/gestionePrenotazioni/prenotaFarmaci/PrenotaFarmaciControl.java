@@ -113,7 +113,7 @@ public class PrenotaFarmaciControl {
         else{
             this.qtyDisponibile = qtyRichiesta;
         }
-        this.lotti.close();
+        //this.lotti.close();
     }
 
     // DA SISTEMARE
@@ -169,7 +169,7 @@ public class PrenotaFarmaciControl {
                 this.id_corriere = corrieri.getInt("id_utente_azienda");
             }
         }
-        corrieri.close();
+        //corrieri.close();
     }
 
     public void premutoOk() throws IOException {

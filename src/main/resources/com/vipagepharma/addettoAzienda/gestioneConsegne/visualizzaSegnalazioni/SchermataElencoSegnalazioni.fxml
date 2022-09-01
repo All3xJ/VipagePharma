@@ -63,8 +63,8 @@
             </Button>
             <TableView fx:id="segnalazioni_table" layoutX="320.0" layoutY="166.0" prefHeight="410.0" prefWidth="674.0" styleClass="table-view">
               <columns>
-                <TableColumn fx:id="nomefarmacia_column" prefWidth="168.0" styleClass="colonna" text="Nome farmacia" />
-                  <TableColumn fx:id="idordine_column" prefWidth="139.0" styleClass="colonna" text="ID ordine " />
+                <TableColumn fx:id="idordine_column" prefWidth="168.0" styleClass="colonna" text="ID ordine" />
+                  <TableColumn fx:id="nomefarmacia_column" prefWidth="139.0" styleClass="colonna" text="Nome farmacia" />
                 <TableColumn fx:id="dataconsegna_column" minWidth="0.0" prefWidth="160.0" styleClass="colonna" text="Data consegna" />
                   <TableColumn editable="false" prefWidth="103.60113525390625" visible="false" />
                   <TableColumn fx:id="visualizzaerrore_column" prefWidth="206.0" styleClass="colonna" />

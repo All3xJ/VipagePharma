@@ -55,7 +55,7 @@ public class ScaricoFarmaciControl {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        inventario.close();
+        //inventario.close();
     }
 
     public void riempiObservableList2(String nome){

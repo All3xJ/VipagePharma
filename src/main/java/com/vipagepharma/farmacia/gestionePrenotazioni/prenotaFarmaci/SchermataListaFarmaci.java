@@ -40,7 +40,9 @@ public class SchermataListaFarmaci implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resbound){
+/*
         this.idFarmaco_column.setCellValueFactory(new PropertyValueFactory<>("idFarmaco"));
+*/
         this.nomeFarmaco_column.setCellValueFactory(new PropertyValueFactory<>("nomeFarmaco"));
         this.principioAttivo_column.setCellValueFactory(new PropertyValueFactory<>("principioAttivo"));
 

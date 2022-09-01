@@ -246,9 +246,9 @@ public class DBMSBoundary {
     public static ResultSet getConsegneRecenti(){
         ResultSet resultSet;
         try{
-            Connection connection = connectAzienda();
+            Connection connection = connectDBMS();
             Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery("Select id_prenotazione, id_utente_farmacia, data_consegna, ricevuta_pdf from prenotazione where ricevuta_pdf IS NOT NULL and isConsegnato = 1 order by data_consegna desc limit 10"); //vedere se funziona sintassi
+            resultSet = statement.executeQuery("Select u.nome, p.id_prenotazione, p.id_utente_farmacia, p.data_consegna, p.ricevuta_pdf from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u where u.id_utente_farmacia=p.id_utente_farmacia and ricevuta_pdf IS NOT NULL and  isConsegnato = 1 order by data_consegna desc limit 10"); //vedere se funziona sintassi
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -260,9 +260,9 @@ public class DBMSBoundary {
         int base = VisualizzaStoricoConsegneControl.contatorePagineConsegne * 10;
         ResultSet resultSet;
         try{
-            Connection connection = connectAzienda();
+            Connection connection = connectDBMS();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            resultSet = statement.executeQuery("Select id_prenotazione, id_utente_farmacia, data_consegna, ricevuta_pdf from prenotazione where isConsegnato=1 and ricevuta_pdf IS NOT NULL order by data_consegna  desc limit " + base + ", 10"); //vedere se funziona sintassi
+            resultSet = statement.executeQuery("Select u.nome, p.id_prenotazione, p.id_utente_farmacia, p.data_consegna, p.ricevuta_pdf from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u where u.id_utente_farmacia=p.id_utente_farmacia and isConsegnato=1 and ricevuta_pdf IS NOT NULL order by data_consegna  desc limit " + base + ", 10"); //vedere se funziona sintassi
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
