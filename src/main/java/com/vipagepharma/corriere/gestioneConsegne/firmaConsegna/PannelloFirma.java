@@ -137,7 +137,7 @@ class DrawArea extends JComponent {
     });
   }
 
-  protected void paintComponent(Graphics g) {
+  public void paintComponent(Graphics g) {
     if (image == null) {
       // image to draw null ==> we create
       image = createImage(getSize().width, getSize().height);
