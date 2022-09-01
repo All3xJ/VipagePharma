@@ -9,6 +9,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.vipagepharma.corriere.gestioneConsegne.firmaConsegna.drawFirma.SwingPaint;
+import javafx.application.Platform;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -37,9 +38,9 @@ public class FirmaConsegnaControl {
         //ordine.setFilePDF(file);
 
 
-
-
         String[] ciao = new String[2];
+
+
         new Thread(""){
             public void run(){
                 SwingPaint.main(ciao);
@@ -51,11 +52,20 @@ public class FirmaConsegnaControl {
 
     public void premutoOk() throws IOException {
         App.setRoot("gestioneConsegne/visualizzaConsegne/SchermataConsegneOdierne");
+        App.popup_stage.close();
     }
 
     public void firmato() throws DocumentException, IOException {
         this.creaPDF(this.ordine);
-        App.newWind("gestioneConsegne/firmaConsegna/AvvisoOperazioneRiuscita");
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                try {
+                    App.newWind("gestioneConsegne/firmaConsegna/AvvisoOperazioneRiuscita");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
         this.ordine=null;
     }
 
