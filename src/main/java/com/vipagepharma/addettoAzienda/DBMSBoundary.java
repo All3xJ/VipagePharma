@@ -248,7 +248,7 @@ public class DBMSBoundary {
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery("Select id_prenotazione, id_utente_farmacia, data_consegna, ricevuta_pdf from prenotazione where isConsegnato = 1 order by data_consegna desc limit 10"); //vedere se funziona sintassi
+            resultSet = statement.executeQuery("Select id_prenotazione, id_utente_farmacia, data_consegna, ricevuta_pdf from prenotazione where ricevuta_pdf IS NOT NULL and isConsegnato = 1 order by data_consegna desc limit 10"); //vedere se funziona sintassi
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -262,7 +262,7 @@ public class DBMSBoundary {
         try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            resultSet = statement.executeQuery("Select id_prenotazione, id_utente_farmacia, data_consegna, ricevuta_pdf from prenotazione where isConsegnato=1 order by data_consegna  desc limit " + base + ", 10"); //vedere se funziona sintassi
+            resultSet = statement.executeQuery("Select id_prenotazione, id_utente_farmacia, data_consegna, ricevuta_pdf from prenotazione where isConsegnato=1 and ricevuta_pdf IS NOT NULL order by data_consegna  desc limit " + base + ", 10"); //vedere se funziona sintassi
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

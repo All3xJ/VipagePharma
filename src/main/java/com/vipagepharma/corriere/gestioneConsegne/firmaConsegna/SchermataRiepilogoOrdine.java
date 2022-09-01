@@ -53,6 +53,7 @@ public class SchermataRiepilogoOrdine implements Initializable {
         FirmaConsegnaControl.firmConsCtrlRef.premutoLogout();
     }
 
+    @FXML
     public void premeFirma(MouseEvent mouseEvent) throws DocumentException, IOException {
         FirmaConsegnaControl.firmConsCtrlRef.premutoFirma(ordine);
     }

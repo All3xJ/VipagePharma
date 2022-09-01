@@ -2,14 +2,18 @@ package com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni;
 
 import com.vipagepharma.addettoAzienda.entity.Consegna;
 import com.vipagepharma.addettoAzienda.gestioneConsegne.risoluzioneProblemaConsegna.RisoluzioneProblemaConsegnaControl;
+import com.vipagepharma.corriere.gestioneConsegne.firmaConsegna.FirmaConsegnaControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
 import java.io.IOException;
@@ -34,6 +38,7 @@ public class SchermataElencoSegnalazioni implements Initializable {
     private TableColumn<Consegna, Void> visualizzaerrore_column;
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle resbound){
         this.nomefarmacia_column.setCellValueFactory(new PropertyValueFactory<Consegna,String >("nomeFarmacia"));
@@ -42,6 +47,7 @@ public class SchermataElencoSegnalazioni implements Initializable {
 
         this.segnalazioni_table.setItems(VisualizzaSegnalazioniControl.visConsCtrlRef.tvObservableList);
         this.addButtonToTable("Visualizza errore",this.visualizzaerrore_column);
+
     }
 
 
@@ -94,6 +100,18 @@ public class SchermataElencoSegnalazioni implements Initializable {
 
         this.segnalazioni_table.getColumns().add(colBtn);
 
+    }
+
+    public void premeHome(MouseEvent mouseEvent) throws IOException {
+        VisualizzaSegnalazioniControl.visConsCtrlRef.premutoHome();
+    }
+    @FXML
+    public void premeIndietro(MouseEvent mouseEvent) throws IOException {
+        VisualizzaSegnalazioniControl.visConsCtrlRef.premutoIndietro("SchermataPrincipale");
+    }
+    @FXML
+    public void premeLogout(MouseEvent mouseEvent) throws IOException {
+        VisualizzaSegnalazioniControl.visConsCtrlRef.premutoLogout();
     }
 
 }

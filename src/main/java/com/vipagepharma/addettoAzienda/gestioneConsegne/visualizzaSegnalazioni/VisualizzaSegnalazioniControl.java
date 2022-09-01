@@ -41,4 +41,15 @@ public class VisualizzaSegnalazioniControl {
         }
         this.consegneConSegnalazione.close();
     }
+
+    public void premutoHome() throws IOException {
+        App.setRoot("SchermataPrincipale");
+    }
+
+    public void premutoIndietro(String schermataPrecedente) throws IOException {
+        App.setRoot(schermataPrecedente);
+    }
+    public void premutoLogout() throws IOException {
+        App.setRoot("autenticazione/login/SchermataLogin");
+    }
 }
