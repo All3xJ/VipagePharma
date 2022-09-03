@@ -248,6 +248,7 @@ public class DBMSBoundary {
             java.util.Date date = new java.util.Date();
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
             String strDataOdierna = formatter.format(date);
+            System.out.println("sono qua"); // se avvine la connessione ma giusto giusto dopo va via prima di executequery, essenzialmente va in wait finchè non c'è di nuovo la connessione..... timeout è dopo diversi minuti e dopo spunta una exception che viene catturata dal secondo catch..  che lancia la runtimeexception visto che gli ho detto di fare throw runtimeexcp. quindi semplicemente fallisce e ba il flusso della control che ha fatto partire sto metodo non continua visto che è arrivata l'eccezione
             resultSet = statement.executeQuery("SELECT p.id_utente_azienda,p.id_prenotazione, p.id_utente_farmacia,f.id_farmaco, f.nome, p.data_consegna ,p.isConsegnato,p.quantita,f.isBanco FROM prenotazione p, farmaco f WHERE p.id_utente_farmacia =" + id_farmacia +" and p.id_farmaco=f.id_farmaco" + " and p.isCaricato = 0 and p.data_consegna >=  str_to_date('"+strDataOdierna+"','%d-%m-%Y')");
         } catch (RuntimeException e){
             if (connection==null) {
