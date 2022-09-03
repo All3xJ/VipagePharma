@@ -2,7 +2,6 @@ package com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni;
 
 import com.vipagepharma.addettoAzienda.entity.Consegna;
 import com.vipagepharma.addettoAzienda.gestioneConsegne.risoluzioneProblemaConsegna.RisoluzioneProblemaConsegnaControl;
-import com.vipagepharma.corriere.gestioneConsegne.firmaConsegna.FirmaConsegnaControl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

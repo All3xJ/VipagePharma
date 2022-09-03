@@ -1,7 +1,9 @@
 package com.vipagepharma.farmacia;
 
+import com.vipagepharma.farmacia.comunicazioneDBMSFallita.ComunicazioneDBMSFallitaControl;
 import com.vipagepharma.farmacia.entity.Lotto;
 
+import java.io.IOException;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -160,17 +162,25 @@ public class DBMSBoundary {
         return resultSet;
     }
 
-    public static ResultSet getPrenotazioni(String id_farmacia){
-        ResultSet resultSet;
+    public static ResultSet getPrenotazioni(String id_farmacia) throws IOException {
+        ResultSet resultSet = null;
+        Connection connection = null;
         try{
-            Connection connection = connectAzienda();
+            connection = connectAzienda();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             java.util.Date date = new java.util.Date();
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
             String strDataOdierna = formatter.format(date);
             resultSet = statement.executeQuery("SELECT p.id_utente_azienda,p.id_prenotazione, p.id_utente_farmacia,f.id_farmaco, f.nome, p.data_consegna ,p.isConsegnato,p.quantita,f.isBanco FROM prenotazione p, farmaco f WHERE p.id_utente_farmacia =" + id_farmacia +" and p.id_farmaco=f.id_farmaco" + " and p.isCaricato = 0 and p.data_consegna >=  str_to_date('"+strDataOdierna+"','%d-%m-%Y')");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (RuntimeException e){
+            if (connection==null) {
+                ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
+                ComunicazioneDBMSFallitaControl.comDBFalLCtrl.start();
+                System.out.println("ouuuuu");
+                throw new RuntimeException();
+            }
+        } catch (Exception e){
+            throw new RuntimeException();
         }
         return resultSet;
     }

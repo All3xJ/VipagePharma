@@ -3,9 +3,12 @@ package com.vipagepharma.corriere;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import com.vipagepharma.corriere.comunicazioneDBMSFallita.ComunicazioneDBMSFallitaControl;
 
 public class DBMSBoundary {
     private static final String url = "jdbc:mysql://vipagesite.duckdns.org:3306/";
@@ -122,17 +125,25 @@ public class DBMSBoundary {
         }
     }
 
-    public static ResultSet getConsegneOdierne(String id_corriere){
-        ResultSet resultSet;
-        try{
-            Connection connection = connectDBMS();
+    public static ResultSet getConsegneOdierne(String id_corriere) throws IOException {
+        ResultSet resultSet = null;
+        Connection connection=null;
+        try {
+            connection = connectDBMS();
             Statement statement = connection.createStatement();
             java.util.Date date = new Date();
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
             String strDataOdierna = formatter.format(date);
-            resultSet = statement.executeQuery("select p.id_prenotazione, u.nome, p.data_consegna, p.id_utente_farmacia, sum(l.quantita) as quantita from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u, vipagepharma_azienda.lotto_ordinato l where p.id_utente_farmacia = u.id_utente_farmacia and p.id_utente_azienda = "+id_corriere+" and p.data_consegna = str_to_date('"+strDataOdierna+"','%d-%m-%Y') and l.id_prenotazione=p.id_prenotazione and p.isConsegnato=0 group by p.id_prenotazione, u.nome, p.data_consegna, p.id_utente_farmacia");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+            resultSet = statement.executeQuery("select p.id_prenotazione, u.nome, p.data_consegna, p.id_utente_farmacia, sum(l.quantita) as quantita from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u, vipagepharma_azienda.lotto_ordinato l where p.id_utente_farmacia = u.id_utente_farmacia and p.id_utente_azienda = " + id_corriere + " and p.data_consegna = str_to_date('" + strDataOdierna + "','%d-%m-%Y') and l.id_prenotazione=p.id_prenotazione and p.isConsegnato=0 group by p.id_prenotazione, u.nome, p.data_consegna, p.id_utente_farmacia");
+        } catch (RuntimeException e){
+            if (connection==null) {
+                ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
+                ComunicazioneDBMSFallitaControl.comDBFalLCtrl.start();
+                System.out.println("ouuuuu");
+                throw new RuntimeException();
+            }
+        } catch (Exception e){
+            throw new RuntimeException();
         }
         return resultSet;
     }
