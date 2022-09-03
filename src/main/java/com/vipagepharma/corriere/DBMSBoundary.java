@@ -17,96 +17,150 @@ public class DBMSBoundary {
     private static final String dbAzienda = "vipagepharma_azienda";
 
 
-    public static Connection connectAzienda(){
+    public static Connection connectAzienda() throws IOException {
         Connection connection = null;
         try {
             // below two lines are used for connectivity.
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url + dbAzienda, user, pass);
         }
-        catch (Exception e) {
-            e.printStackTrace();
+        catch (RuntimeException e){
+            if (connection==null) {
+                ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
+                ComunicazioneDBMSFallitaControl.comDBFalLCtrl.start();
+                System.out.println("ouuuuu");
+            }
+            throw new RuntimeException();
+        } catch (Exception e){
+            throw new RuntimeException();
         }
         return connection;
     } // function ends
 
-    public static Connection connectDBMS(){
+    public static Connection connectDBMS() throws IOException {
         Connection connection = null;
         try {
             // below two lines are used for connectivity.
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, pass);
         }
-        catch (Exception e) {
-            e.printStackTrace();
+        catch (RuntimeException e){
+            if (connection==null) {
+                ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
+                ComunicazioneDBMSFallitaControl.comDBFalLCtrl.start();
+                System.out.println("ouuuuu");
+            }
+            throw new RuntimeException();
+        } catch (Exception e){
+            throw new RuntimeException();
         }
         return connection;
     } // function ends
 
-    public static boolean effettuaLogin(String id,String pass){
+    public static boolean effettuaLogin(String id,String pass) throws IOException {
         boolean esito = false;
+        Connection connection=null;
         try {
-            Connection connection = connectAzienda();
+             connection = connectAzienda();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select u.* from utente u where u.id_utente_azienda = " + id + " and u.isCorriere = 1 and u.password = " + "'" + pass + "'" );
             esito = resultSet.next();
         }
-        catch (SQLException e){
-            return false;
+        catch (RuntimeException e){
+            if (connection==null) {
+                ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
+                ComunicazioneDBMSFallitaControl.comDBFalLCtrl.start();
+                System.out.println("ouuuuu");
+            }
+            throw new RuntimeException();
+        } catch (Exception e){
+            throw new RuntimeException();
         }
         return esito;
     }
 
-    public static boolean verificaMail(String mail){
+    public static boolean verificaMail(String mail) throws IOException {
         boolean esito = true;
+        Connection connection=null;
         try {
-            Connection connection = connectAzienda();
+             connection = connectAzienda();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from utente where email = " + "'" + mail + "'");
             esito = !resultSet.next();
         }
-        catch (SQLException e){
-            e.printStackTrace();
+        catch (RuntimeException e){
+            if (connection==null) {
+                ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
+                ComunicazioneDBMSFallitaControl.comDBFalLCtrl.start();
+                System.out.println("ouuuuu");
+            }
+            throw new RuntimeException();
+        } catch (Exception e){
+            throw new RuntimeException();
         }
         return esito;
     }
 
-    public static ResultSet registra(String nome,String mail, String pass, String chiave_recupero){
+    public static ResultSet registra(String nome,String mail, String pass, String chiave_recupero) throws IOException {
         ResultSet resultSet = null;
+        Connection connection=null;
         try {
-            Connection connection = connectAzienda();
+             connection = connectAzienda();
             Statement statement = connection.createStatement();
             statement.executeUpdate("INSERT INTO utente(nome, password, chiave_recupero, email,isCorriere)" +
                     "VALUES("+"'"+nome+"','" + pass+"','"+ chiave_recupero+"','"+ mail+"',1"+")");
             resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() as id");
         }
-        catch (SQLException e){
-            e.printStackTrace();
+        catch (RuntimeException e){
+            if (connection==null) {
+                ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
+                ComunicazioneDBMSFallitaControl.comDBFalLCtrl.start();
+                System.out.println("ouuuuu");
+            }
+            throw new RuntimeException();
+        } catch (Exception e){
+            throw new RuntimeException();
         }
         return resultSet;
     }
 
-    public static void aggiornaPassword(String id,String password){
+    public static void aggiornaPassword(String id,String password) throws IOException {
+        Connection connection=null;
         try {
-            Connection connection = connectAzienda();
+             connection = connectAzienda();
             Statement statement = connection.createStatement();
             statement.executeUpdate("update utente set password = " + "'" + password + "'" + " where id_utente_azienda =" + id);
         }
-        catch (SQLException e){
-            e.printStackTrace();
+        catch (RuntimeException e){
+            if (connection==null) {
+                ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
+                ComunicazioneDBMSFallitaControl.comDBFalLCtrl.start();
+                System.out.println("ouuuuu");
+            }
+            throw new RuntimeException();
+        } catch (Exception e){
+            throw new RuntimeException();
         }
     }
 
-    public static boolean verificaKey(String id,String key){
+    public static boolean verificaKey(String id,String key) throws IOException {
         boolean esito = false;
+        Connection connection=null;
         try {
-            Connection connection = connectAzienda();
+             connection = connectAzienda();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("select * from utente where id_utente_azienda = " + id + " and isCorriere = 1 and chiave_recupero = " + "'" + key + "'");
             esito = resultSet.next();
         }
-        catch (SQLException e){
-            e.printStackTrace();
+        catch (RuntimeException e){
+            if (connection==null) {
+                ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
+                ComunicazioneDBMSFallitaControl.comDBFalLCtrl.start();
+                System.out.println("ouuuuu");
+            }
+            throw new RuntimeException();
+        } catch (Exception e){
+            throw new RuntimeException();
         }
         return esito;
     }
@@ -140,28 +194,37 @@ public class DBMSBoundary {
                 ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
                 ComunicazioneDBMSFallitaControl.comDBFalLCtrl.start();
                 System.out.println("ouuuuu");
-                throw new RuntimeException();
             }
+            throw new RuntimeException();
         } catch (Exception e){
             throw new RuntimeException();
         }
         return resultSet;
     }
 
-    public static void contrassegnaOrdineFirmato(String id_prenotazione){
+    public static void contrassegnaOrdineFirmato(String id_prenotazione) throws IOException {
         ResultSet resultSet;
+        Connection connection=null;
         try{
-            Connection connection = connectAzienda();
+             connection = connectAzienda();
             Statement statement = connection.createStatement();
             statement.executeUpdate("update prenotazione set isConsegnato = 1 where id_prenotazione = " + id_prenotazione);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (RuntimeException e){
+            if (connection==null) {
+                ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
+                ComunicazioneDBMSFallitaControl.comDBFalLCtrl.start();
+                System.out.println("ouuuuu");
+            }
+            throw new RuntimeException();
+        } catch (Exception e){
+            throw new RuntimeException();
         }
 
     }
 
-    public static void salvaRicevuta(String id_prenotazione, String ricevutaPath){
+    public static void salvaRicevuta(String id_prenotazione, String ricevutaPath) throws IOException {
         ResultSet resultSet;
+        Connection connection=null;
         /*try{
             Connection connection = connectAzienda();
             Statement statement = connection.createStatement();
@@ -169,7 +232,7 @@ public class DBMSBoundary {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }*/
-        Connection connection = connectAzienda();
+         connection = connectAzienda();
         String sql = "update prenotazione set ricevuta_pdf = ? where id_prenotazione = ?";
         PreparedStatement statement = null;
         try {
@@ -181,10 +244,15 @@ public class DBMSBoundary {
 
         // sends the statement to the database server
         statement.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+        }catch (RuntimeException e){
+            if (connection==null) {
+                ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
+                ComunicazioneDBMSFallitaControl.comDBFalLCtrl.start();
+                System.out.println("ouuuuu");
+            }
+            throw new RuntimeException();
+        } catch (Exception e){
+            throw new RuntimeException();
         }
 
     }

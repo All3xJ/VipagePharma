@@ -115,14 +115,14 @@ public class ControlloConsegnaControl {
 
     }
 
-    public void premutoSegnalaUnProblema(String idPrenotazioneProbl){
+    public void premutoSegnalaUnProblema(String idPrenotazioneProbl) throws IOException {
         App.popup_stage.close();
         DBMSBoundary.setFlagProblema(idPrenotazioneProbl,1);
         System.out.println(idPrenotazioneProbl+"ci");
         this.faiListe();
     }
 
-    public void premutoConfermaCarico(Prenotazione prenotazioneProbl){
+    public void premutoConfermaCarico(Prenotazione prenotazioneProbl) throws IOException {
         App.popup_stage.close();
         System.out.println("sizeee: "+prenotazioneProbl.lotti.size());
         DBMSBoundary.aggiungiCarico(prenotazioneProbl.getIdFarmaco(),prenotazioneProbl.getNomeFarmaco(),prenotazioneProbl.getIdFarmacia(),prenotazioneProbl.getIsBanco(),prenotazioneProbl.lotti);

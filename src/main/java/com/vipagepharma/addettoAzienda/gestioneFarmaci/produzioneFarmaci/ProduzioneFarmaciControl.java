@@ -2,6 +2,7 @@ package com.vipagepharma.addettoAzienda.gestioneFarmaci.produzioneFarmaci;
 
 import com.vipagepharma.addettoAzienda.DBMSBoundary;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.DayOfWeek;
@@ -18,7 +19,7 @@ public class ProduzioneFarmaciControl {
         this.orario = LocalTime.now();
     }
 
-    public void start() throws SQLException {
+    public void start() throws SQLException, IOException {
         if ((data.getDayOfWeek() == DayOfWeek.MONDAY) && orario.getHour() == 8) {
             ResultSet farmaci = DBMSBoundary.getFarmaci();
             ResultSet contratti = DBMSBoundary.getContratti();

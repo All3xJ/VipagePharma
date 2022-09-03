@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,11 +22,11 @@ public class AvvisoMancatoCarico implements Initializable {
         this.testo_mancato_carico.setText("La consegna n. "+prenotazioneProblematica.getIdPrenotazione()+ " prevista per oggi non è ancora stata caricata");
     }
 
-    public void premeSegnalaUnProblema(MouseEvent mouseEvent) {
+    public void premeSegnalaUnProblema(MouseEvent mouseEvent) throws IOException {
         ControlloConsegnaControl.contrConsCtrlRef.premutoSegnalaUnProblema(prenotazioneProblematica.getIdPrenotazione());
     }
 
-    public void premeConfermaCarico(MouseEvent mouseEvent) {
+    public void premeConfermaCarico(MouseEvent mouseEvent) throws IOException {
         ControlloConsegnaControl.contrConsCtrlRef.premutoConfermaCarico(prenotazioneProblematica);
     }
 }
