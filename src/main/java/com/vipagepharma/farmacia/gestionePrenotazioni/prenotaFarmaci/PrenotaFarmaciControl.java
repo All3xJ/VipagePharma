@@ -66,7 +66,7 @@ public class PrenotaFarmaciControl {
             App.newWind("gestionePrenotazioni/prenotaFarmaci/AvvisoPrenotazioneDisponibile",event);
         }
         else{
-            App.newWind("gestionePrenotazioni/prenotaFarmaci/AvvisoMancataDisponibilita",event);
+            App.setRoot("gestionePrenotazioni/prenotaFarmaci/SchermataMancataDisponibilita");
         }
     }
 

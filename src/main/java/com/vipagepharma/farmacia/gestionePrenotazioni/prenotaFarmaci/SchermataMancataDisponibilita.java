@@ -3,7 +3,6 @@ package com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
@@ -11,7 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AvvisoMancataDisponibilita implements Initializable {
+public class SchermataMancataDisponibilita implements Initializable {
 
     @FXML
     private Text testo_mancata_disponibilita;
@@ -61,5 +60,17 @@ public class AvvisoMancataDisponibilita implements Initializable {
     @FXML
     public void premeConferma(MouseEvent event) throws IOException {
         PrenotaFarmaciControl.controlRef.premutoConferma(this.opzione,event);
+    }
+    @FXML
+    public void premeIndietro(MouseEvent event) throws  IOException{
+        PrenotaFarmaciControl.controlRef.premutoIndietro("gestionePrenotazioni/prenotaFarmaci/SchermataPrenotazione");
+    }
+    @FXML
+    public void premeLogout(MouseEvent event) throws  IOException{
+        PrenotaFarmaciControl.controlRef.premutoLogout();
+    }
+    @FXML
+    public void premeHome(MouseEvent event) throws  IOException{
+        PrenotaFarmaciControl.controlRef.premutoHome();
     }
 }
