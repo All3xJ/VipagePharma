@@ -37,7 +37,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../../../main.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.modificaContratti.SchermataModificaContratti">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../../../main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.modificaContratti.SchermataModificaContratti">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
@@ -63,9 +63,9 @@
             </Button>
             <TableView fx:id="contratti_table" layoutX="373.0" layoutY="199.0" prefHeight="345.0" prefWidth="575.0" styleClass="table-view">
               <columns>
-                <TableColumn fx:id="nomefarmaco_column" prefWidth="219.0" styleClass="colonna" text="Nome farmaco" />
-                  <TableColumn fx:id="qty_column" prefWidth="185.0" styleClass="colonna" text="Qty settimanale" />
-                  <TableColumn fx:id="modifica_column" minWidth="0.0" prefWidth="170.0" styleClass="colonna" />
+                <TableColumn fx:id="nomefarmaco_column" prefWidth="219.0" sortable="false" styleClass="colonna" text="Nome farmaco" />
+                  <TableColumn fx:id="qty_column" prefWidth="185.0" sortable="false" styleClass="colonna" text="Qty settimanale" />
+                  <TableColumn fx:id="modifica_column" minWidth="0.0" prefWidth="170.0" sortable="false" styleClass="colonna" />
               </columns>
             </TableView>
          </children>

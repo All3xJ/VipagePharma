@@ -47,7 +47,7 @@ public class PrenotaFarmaciControl {
     }
 
 
-    public void premutoInvia(LocalDate data_consegna, String qtyRichiesta , int flag_scadenza, ActionEvent event) throws SQLException, IOException {
+    public void premutoInvia(LocalDate data_consegna, String qtyRichiesta , int flag_scadenza) throws SQLException, IOException {
         this.data_consegna = data_consegna;
         this.qtyRichiesta = qtyRichiesta;
         this.flag_scadenza = flag_scadenza;
@@ -63,7 +63,7 @@ public class PrenotaFarmaciControl {
         checkDisponibilitaEScegliLotti();
         if(Integer.parseInt(this.qtyDisponibile) >= Integer.parseInt(this.qtyRichiesta)){
 
-            App.newWind("gestionePrenotazioni/prenotaFarmaci/AvvisoPrenotazioneDisponibile",event);
+            App.setRoot("gestionePrenotazioni/prenotaFarmaci/SchermataPrenotazioneDisponibile");
         }
         else{
             App.setRoot("gestionePrenotazioni/prenotaFarmaci/SchermataMancataDisponibilita");
@@ -72,7 +72,6 @@ public class PrenotaFarmaciControl {
 
     public void premutoConferma(MouseEvent event) throws IOException {
         DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia,this.id_corriere,this.id_farmaco, this.data_consegna,this.idLotti,this.qtyLotti,Integer.parseInt(this.qtyRichiesta));
-        App.popup_stage.close();
         App.newWind("gestionePrenotazioni/prenotaFarmaci/AvvisoOperazioneRiuscita",event);
 
     }
@@ -85,7 +84,6 @@ public class PrenotaFarmaciControl {
             DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia, this.id_corriere,this.id_farmaco, this.data_consegna, this.idLotti, this.qtyLotti, Integer.parseInt(this.qtyDisponibile));
             DBMSBoundary.creaPrenotazioneEScarica(this.id_farmacia, this.id_corriere,this.id_farmaco, this.new_data_consegna, this.new_idLotti, this.new_qtyLotti, Integer.parseInt(this.qtyMancante));
         }
-        App.popup_stage.close();
         App.newWind("gestionePrenotazioni/prenotaFarmaci/AvvisoOperazioneRiuscita",event);
     }
 

@@ -88,6 +88,7 @@ public class VisualizzaStoricoConsegneControl {
 
     public void premutoIndietro(String schermataPrecedente) throws IOException {
         contatorePagineConsegne=0;
+        System.out.println(schermataPrecedente);
         App.setRoot(schermataPrecedente);
     }
     public void premutoLogout() throws IOException {

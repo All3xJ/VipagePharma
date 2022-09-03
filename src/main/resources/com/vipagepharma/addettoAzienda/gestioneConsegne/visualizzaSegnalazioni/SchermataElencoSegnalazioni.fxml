@@ -37,7 +37,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../../../main.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni.SchermataElencoSegnalazioni">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../../../main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni.SchermataElencoSegnalazioni">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
@@ -63,11 +63,11 @@
             </Button>
             <TableView fx:id="segnalazioni_table" layoutX="320.0" layoutY="166.0" prefHeight="410.0" prefWidth="674.0" styleClass="table-view">
               <columns>
-                <TableColumn fx:id="idordine_column" prefWidth="168.0" styleClass="colonna" text="ID ordine" />
-                  <TableColumn fx:id="nomefarmacia_column" prefWidth="139.0" styleClass="colonna" text="Nome farmacia" />
-                <TableColumn fx:id="dataconsegna_column" minWidth="0.0" prefWidth="160.0" styleClass="colonna" text="Data consegna" />
+                <TableColumn fx:id="idordine_column" prefWidth="168.0" sortable="false" styleClass="colonna" text="ID ordine" />
+                  <TableColumn fx:id="nomefarmacia_column" prefWidth="139.0" sortable="false" styleClass="colonna" text="Nome farmacia" />
+                <TableColumn fx:id="dataconsegna_column" minWidth="0.0" prefWidth="160.0" sortable="false" styleClass="colonna" text="Data consegna" />
                   <TableColumn editable="false" prefWidth="103.60113525390625" visible="false" />
-                  <TableColumn fx:id="visualizzaerrore_column" prefWidth="206.0" styleClass="colonna" />
+                  <TableColumn fx:id="visualizzaerrore_column" prefWidth="206.0" sortable="false" styleClass="colonna" />
               </columns>
             </TableView>
          </children>

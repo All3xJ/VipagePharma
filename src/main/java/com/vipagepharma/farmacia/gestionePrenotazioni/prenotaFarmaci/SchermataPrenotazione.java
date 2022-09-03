@@ -44,7 +44,7 @@ public class SchermataPrenotazione implements Initializable {
 
 
     public void premeInvia(ActionEvent event) throws SQLException, IOException {
-        PrenotaFarmaciControl.controlRef.premutoInvia(data_consegna.getValue(),qty.getText(),this.flag_scadenza,event);
+        PrenotaFarmaciControl.controlRef.premutoInvia(data_consegna.getValue(),qty.getText(),this.flag_scadenza);
     }
 
     @FXML

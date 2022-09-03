@@ -108,11 +108,10 @@ public class SchermataStoricoConsegne implements Initializable {
     }
     @FXML
     public void premeIndietro(MouseEvent mouseEvent) throws IOException {
-        VisualizzaStoricoConsegneControl.visStoConsCtrlRef.premutoIndietro("schermataprecedente");
+        VisualizzaStoricoConsegneControl.visStoConsCtrlRef.premutoIndietro("SchermataPrincipale");
     }
     @FXML
     public void premeLogout(MouseEvent mouseEvent) throws IOException {
-        VisualizzaStoricoConsegneControl.contatorePagineConsegne=0;
         VisualizzaStoricoConsegneControl.visStoConsCtrlRef.premutoLogout();
     }
 

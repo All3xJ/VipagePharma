@@ -32,16 +32,12 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../../../main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci.SchermataListaFarmaci">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../../../main.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci.SchermataListaFarmaci">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
@@ -67,9 +63,9 @@
             </Button>
             <TableView fx:id="farmaci_table" layoutX="295.0" layoutY="175.0" prefHeight="446.0" prefWidth="719.0" style="-fx-alignment: CENTER;" styleClass="table-view">
               <columns>
-                  <TableColumn fx:id="nomeFarmaco_column" minWidth="20.0" prefWidth="221.0" resizable="false" styleClass="colonna" text="Farmaco" />
-                  <TableColumn fx:id="principioAttivo_column" prefWidth="327.0" resizable="false" styleClass="colonna" text="Principio attivo" />
-                  <TableColumn fx:id="prenota_column" prefWidth="170.0" resizable="false" styleClass="colonna" />
+                  <TableColumn fx:id="nomeFarmaco_column" minWidth="20.0" prefWidth="221.0" resizable="false" sortable="false" styleClass="colonna" text="Farmaco" />
+                  <TableColumn fx:id="principioAttivo_column" prefWidth="327.0" resizable="false" sortable="false" styleClass="colonna" text="Principio attivo" />
+                  <TableColumn fx:id="prenota_column" prefWidth="170.0" resizable="false" sortable="false" styleClass="colonna" />
               </columns>
             </TableView>
          </children>

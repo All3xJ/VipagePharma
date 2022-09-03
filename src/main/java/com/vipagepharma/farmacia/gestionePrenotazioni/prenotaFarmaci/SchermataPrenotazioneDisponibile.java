@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AvvisoPrenotazioneDisponibile implements Initializable {
+public class SchermataPrenotazioneDisponibile implements Initializable {
 
     @FXML
     private Text testo_prenotazione_disponibile;
@@ -33,5 +33,16 @@ public class AvvisoPrenotazioneDisponibile implements Initializable {
         PrenotaFarmaciControl.controlRef.premutoConferma(mouseEvent);
     }
 
-
+    @FXML
+    public void premeIndietro(MouseEvent mouseEvent) throws IOException {
+        PrenotaFarmaciControl.controlRef.premutoIndietro("gestionePrenotazioni/prenotaFarmaci/SchermataPrenotazione");
+    }
+    @FXML
+    public void premeHome(MouseEvent mouseEvent) throws IOException {
+        PrenotaFarmaciControl.controlRef.premutoHome();
+    }
+    @FXML
+    public void premeLogout(MouseEvent mouseEvent) throws IOException {
+        PrenotaFarmaciControl.controlRef.premutoLogout();
+    }
 }

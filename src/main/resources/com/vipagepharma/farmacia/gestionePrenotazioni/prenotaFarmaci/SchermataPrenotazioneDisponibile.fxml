@@ -33,7 +33,6 @@
 -->
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -42,19 +41,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci.SchermataMancataDisponibilita">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.gestionePrenotazioni.prenotaFarmaci.SchermataPrenotazioneDisponibile">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1280.0" prefWidth="1280.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="410.0" layoutX="308.0" layoutY="174.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="691.0" />
-            <Text fill="RED" layoutX="561.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE">
+            <Text fill="#16fc22" layoutX="561.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENZIONE" textAlignment="CENTER">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Text fx:id="testo_mancata_disponibilita" layoutX="396.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="514.3359375"> <!-- La quantità di nome_farmaco richiesta non è totalmente disponibile per il gg/mm/aaaa-->
+            <Text fx:id="testo_prenotazione_disponibile" layoutX="400.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="514.3359375"> <!-- La quantità di nome_farmaco richiesta non è totalmente disponibile per il gg/mm/aaaa-->
                <font>
                   <Font name="Arial" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="482.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vuoi confermare la prenotazione?" textAlignment="CENTER" wrappingWidth="343.28271484375">
+               <font>
+                  <Font size="20.0" />
                </font>
             </Text>
             <ImageView fitHeight="225.0" fitWidth="230.0" layoutX="30.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
@@ -67,16 +71,6 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <RadioButton fx:id="opzione1" layoutX="361.0" layoutY="399.0" mnemonicParsing="false" onMouseClicked="#selezionaOpzione1">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="opzione2" layoutX="361.0" layoutY="440.0" mnemonicParsing="false" onMouseClicked="#selezionaOpzione2">
-               <font>
-                  <Font name="Arial" size="20.0" />
-               </font>
-            </RadioButton>
             <Button layoutX="150.0" layoutY="686.0" mnemonicParsing="false" onMouseClicked="#premeIndietro" prefHeight="60.0" prefWidth="120.0" style="-fx-background-color: cff3f2; -fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: b9b9b9;" text="Indietro" AnchorPane.leftAnchor="116.0">
                <font>
                   <Font size="20.0" />
