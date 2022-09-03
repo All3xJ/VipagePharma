@@ -142,7 +142,7 @@ public class PrenotaFarmaciControl {
         }
         this.qtyMancante = String.valueOf(qtyMancante);
         this.lotti.previous();
-        this.new_data_consegna = this.lotti.getDate(4).toLocalDate();
+        this.new_data_consegna = this.lotti.getDate("data_disponibilita").toLocalDate();
     }
 
     private LocalDate calcDataScadenzaMin(){

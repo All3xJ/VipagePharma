@@ -63,7 +63,7 @@
                   <Image url="@../../../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <Button alignment="CENTER" layoutX="750.0" layoutY="357.0" mnemonicParsing="false" onAction="#premeInvio" prefHeight="50.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Invio">
+            <Button alignment="CENTER" layoutX="750.0" layoutY="357.0" mnemonicParsing="false" defaultButton="true" onAction="#premeInvio" prefHeight="50.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Invio">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>

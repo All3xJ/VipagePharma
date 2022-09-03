@@ -72,8 +72,8 @@ public class ModificaPrenotazioneControl {
         int qtyLottiTot = 0;
         while (this.lotti.next() && qtyLottiTot < this.qtyRichiesta && this.lotti.getDate("data_disponibilita").toLocalDate().isBefore(this.data_consegna)) {  //esco dal loop appena la data di disp > data consegna richiesta
             if (this.lotti.getDate("data_scadenza").toLocalDate().isAfter(this.data_scadenza_min)) {
-                this.idLotti.add(this.lotti.getInt(1));
-                int qtyLotto = this.lotti.getInt(3);
+                this.idLotti.add(this.lotti.getInt("id_lotto"));
+                int qtyLotto = this.lotti.getInt("quantita_ordinabile");
                 qtyLottiTot += qtyLotto;
                 if (qtyLottiTot > this.qtyRichiesta) {
                     this.qtyLotti.add(this.qtyRichiesta - (qtyLottiTot - qtyLotto));
