@@ -2,6 +2,7 @@ package com.vipagepharma.addettoAzienda.gestionePrenotazioni.prenotazioneFarmaci
 
 import com.vipagepharma.addettoAzienda.DBMSBoundary;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.DayOfWeek;
@@ -24,7 +25,7 @@ public class PrenotazioneFarmaciDaBancoControl {
         this.qtyLotti = new ArrayList<>();
     }
 
-    public void start() throws SQLException {
+    public void start() throws SQLException, IOException {
         if((data.getDayOfWeek() == DayOfWeek.MONDAY) && orario.getHour() == 9){
             ResultSet contratti = DBMSBoundary.getContratti();
             ResultSet corrieri = DBMSBoundary.getCorrieri();

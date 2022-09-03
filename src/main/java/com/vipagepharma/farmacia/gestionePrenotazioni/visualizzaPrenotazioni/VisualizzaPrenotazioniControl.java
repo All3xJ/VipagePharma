@@ -35,7 +35,7 @@ public class VisualizzaPrenotazioniControl {
         return Utente.getID();
     }
 
-    public void riempiObservableList(String IDFarmacia) throws SQLException {
+    public void riempiObservableList(String IDFarmacia) throws SQLException, IOException {
         this.prenotazioni = DBMSBoundary.getPrenotazioni(IDFarmacia);
         try {
             this.tvObservableList.clear();

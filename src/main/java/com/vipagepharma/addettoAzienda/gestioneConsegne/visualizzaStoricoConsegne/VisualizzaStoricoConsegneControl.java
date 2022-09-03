@@ -34,7 +34,7 @@ public class VisualizzaStoricoConsegneControl {
         App.setRoot("gestioneConsegne/visualizzaStoricoConsegne/SchermataStoricoConsegne");
     }
 
-    private void riempiObservableList() throws SQLException {
+    private void riempiObservableList() throws SQLException, IOException {
         if (contatorePagineConsegne==0) {
             this.tvObservableList.clear();
             this.consegne = DBMSBoundary.getConsegneRecenti();

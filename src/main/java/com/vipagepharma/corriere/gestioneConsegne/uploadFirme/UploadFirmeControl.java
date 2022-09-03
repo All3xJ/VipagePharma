@@ -19,7 +19,7 @@ public class UploadFirmeControl {
     }
 
     public void start(MouseEvent mouseEvent) throws IOException {
-        for (Ordine ordine: VisualizzaConsegneControl.visualConCtrlRef.tvObservableList) {
+        for (Ordine ordine: VisualizzaConsegneControl.visualConCtrlRef.ordiniFirmati) {
             if (ordine.filePDF!=null){
                 DBMSBoundary.contrassegnaOrdineFirmato(ordine.idPrenotazione.get());
                 DBMSBoundary.salvaRicevuta(ordine.idPrenotazione.get(), ordine.filePDF);

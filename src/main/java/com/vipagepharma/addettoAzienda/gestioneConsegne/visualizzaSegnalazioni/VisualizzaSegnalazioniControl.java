@@ -28,7 +28,7 @@ public class VisualizzaSegnalazioniControl {
         App.setRoot("gestioneConsegne/visualizzaSegnalazioni/SchermataElencoSegnalazioni");
     }
 
-    private void riempiObservableList() throws SQLException {
+    private void riempiObservableList() throws SQLException, IOException {
         this.consegneConSegnalazione = DBMSBoundary.getElencoConsegneConSegnalazioni();
         try {
             this.tvObservableList.clear();

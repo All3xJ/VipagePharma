@@ -34,7 +34,7 @@ public class ScaricoFarmaciControl {
         App.setRoot("gestioneFarmaci/scaricoFarmaci/SchermataScarico");
     }
 
-    public void riempiObservableList() throws SQLException {
+    public void riempiObservableList() throws SQLException, IOException {
         ResultSet inventario = DBMSBoundary.getInventario(Utente.getID());
         try {
             this.tvObservableList.clear();

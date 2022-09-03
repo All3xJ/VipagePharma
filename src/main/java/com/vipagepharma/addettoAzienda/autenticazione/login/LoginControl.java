@@ -35,7 +35,7 @@ public class LoginControl{
                 try {
                     controlPre.start();
                     controlProd.start();
-                } catch (SQLException e) {
+                } catch (SQLException | IOException e) {
                     throw new RuntimeException(e);
                 }
             }

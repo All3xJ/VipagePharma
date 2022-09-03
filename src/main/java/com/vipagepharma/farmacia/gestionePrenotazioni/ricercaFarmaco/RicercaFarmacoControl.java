@@ -33,7 +33,7 @@ public class RicercaFarmacoControl {
     }
     //ROBE TABELLA
 
-    private void riempiObservableList(String nome_o_principio_attivo) throws SQLException {
+    private void riempiObservableList(String nome_o_principio_attivo) throws SQLException, IOException {
         this.farmaci = DBMSBoundary.getFarmaco(nome_o_principio_attivo);
         try {
             this.tvObservableList.clear();

@@ -30,7 +30,7 @@ public class ModificaContrattiControl {
         App.setRoot("gestionePrenotazioni/modificaContratti/SchermataModificaContratti");
     }
 
-    public void riempiObservableList(String IDFarmacia) throws SQLException {
+    public void riempiObservableList(String IDFarmacia) throws SQLException, IOException {
         this.contratti = DBMSBoundary.getContratti(IDFarmacia);
         try {
             this.tvObservableList.clear();

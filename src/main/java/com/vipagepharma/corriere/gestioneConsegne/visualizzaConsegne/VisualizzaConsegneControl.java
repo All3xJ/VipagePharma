@@ -10,6 +10,8 @@ import javafx.collections.ObservableList;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class VisualizzaConsegneControl {
 
@@ -18,6 +20,8 @@ public class VisualizzaConsegneControl {
     public static ResultSet ordini;
 
     public ObservableList<Ordine> tvObservableList = FXCollections.observableArrayList();
+
+    public LinkedList<Ordine> ordiniFirmati = new LinkedList<>();
 
     public VisualizzaConsegneControl(){
         visualConCtrlRef=this;
@@ -39,6 +43,17 @@ public class VisualizzaConsegneControl {
             throw new RuntimeException(e);
         }
         //ordini.close();
+    }
+
+    public void rimuoviOrdineFirmato(String idOrdineFirmato){
+
+        for (Ordine ordine: this.tvObservableList) {
+            if (ordine.idPrenotazione.get().equals(idOrdineFirmato)){
+                this.ordiniFirmati.add(ordine);
+                this.tvObservableList.remove(ordine);
+                break;
+            }
+        }
     }
 
     public void premutoIndietro(String schermataPrecedente) throws IOException {

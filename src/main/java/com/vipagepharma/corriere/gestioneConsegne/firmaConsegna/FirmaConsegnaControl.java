@@ -8,6 +8,7 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.vipagepharma.corriere.gestioneConsegne.visualizzaConsegne.VisualizzaConsegneControl;
 import javafx.application.Platform;
 
 import java.io.FileOutputStream;
@@ -48,8 +49,10 @@ public class FirmaConsegnaControl {
     }
 
     public void premutoOk() throws IOException {
+        VisualizzaConsegneControl.visualConCtrlRef.rimuoviOrdineFirmato(ordine.idPrenotazione.get());
         App.setRoot("gestioneConsegne/visualizzaConsegne/SchermataConsegneOdierne");
         App.popup_stage.close();
+        this.ordine=null;
     }
 
     public void premutoConferma() throws DocumentException, IOException {
@@ -63,7 +66,6 @@ public class FirmaConsegnaControl {
                 }
             }
         });
-        this.ordine=null;
     }
 
     public void creaPDF(Ordine ordine) throws IOException, DocumentException {

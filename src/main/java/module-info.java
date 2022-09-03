@@ -6,6 +6,7 @@ module com.vipagepharma {
     requires java.desktop;
     requires mail;
     requires activation;
+    requires mysql.connector.java;
 
     exports com.vipagepharma.farmacia;
     opens com.vipagepharma.farmacia to javafx.fxml;
@@ -35,6 +36,8 @@ module com.vipagepharma {
     opens com.vipagepharma.farmacia.gestioneFarmaci.controlloScorte to javafx.fxml;
     exports com.vipagepharma.farmacia.gestioneConsegne.controlloConsegna;
     opens com.vipagepharma.farmacia.gestioneConsegne.controlloConsegna to javafx.fxml;
+    exports com.vipagepharma.farmacia.comunicazioneDBMSFallita;
+    opens com.vipagepharma.farmacia.comunicazioneDBMSFallita to javafx.fxml;
     exports com.vipagepharma.farmacia.entity;
     opens com.vipagepharma.farmacia.entity to javafx.base;
 
@@ -54,6 +57,8 @@ module com.vipagepharma {
     opens com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni to javafx.fxml;
     exports com.vipagepharma.addettoAzienda.gestioneConsegne.risoluzioneProblemaConsegna;
     opens com.vipagepharma.addettoAzienda.gestioneConsegne.risoluzioneProblemaConsegna to javafx.fxml;
+    exports com.vipagepharma.addettoAzienda.comunicazioneDBMSFallita;
+    opens com.vipagepharma.addettoAzienda.comunicazioneDBMSFallita to javafx.fxml;
     exports com.vipagepharma.addettoAzienda.entity;
     opens com.vipagepharma.addettoAzienda.entity to javafx.base;
 
@@ -77,5 +82,7 @@ module com.vipagepharma {
     opens com.vipagepharma.corriere.entity to javafx.base;
     exports com.vipagepharma.corriere.gestioneConsegne.uploadFirme;
     opens com.vipagepharma.corriere.gestioneConsegne.uploadFirme to javafx.fxml;
+    exports com.vipagepharma.corriere.comunicazioneDBMSFallita;
+    opens com.vipagepharma.corriere.comunicazioneDBMSFallita to javafx.fxml;
 
 }
