@@ -98,7 +98,7 @@ public class DBMSBoundary {
             }
             throw new RuntimeException();
         } catch (Exception e){
-            throw new RuntimeException();
+            esito=false;
         }
         return esito;
     }
