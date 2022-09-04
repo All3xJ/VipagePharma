@@ -59,7 +59,7 @@ public class SchermataModifica implements Initializable {
     }
     @FXML
     public void premeIndetro(MouseEvent event) throws IOException {
-        ModificaPrenotazioneControl.modificaPrenotazioneControl.premutoIndietro("gestionePrenotazioni/modificaPrenotazione/SchermataModifica");
+        ModificaPrenotazioneControl.modificaPrenotazioneControl.premutoIndietro("gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni");
     }
     @FXML
     public void premeLogout(MouseEvent event) throws IOException {
