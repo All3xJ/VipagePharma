@@ -54,5 +54,10 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Button>
+      <Text layoutX="80.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premendo 'OK' verrà effettuato un controllo sulle scorte rimanenti" textAlignment="CENTER">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
    </children>
 </Pane>
