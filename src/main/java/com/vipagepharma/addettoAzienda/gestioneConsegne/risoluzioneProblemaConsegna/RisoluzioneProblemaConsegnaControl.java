@@ -31,6 +31,7 @@ public class RisoluzioneProblemaConsegnaControl {
     public void premutoRimborsa(MouseEvent event) throws SQLException, IOException {
         ResultSet lottiNonConsegnati = DBMSBoundary.getLottiNonConsegnati(this.consegna);
         DBMSBoundary.carica(lottiNonConsegnati);
+        DBMSBoundary.setFlagProblema(this.consegna.idOrdine.get(),0);
         App.newWind("gestioneConsegne/risoluzioneProblemaConsegna/AvvisoOperazioneRiuscita",event);
         // la flag di fix problema lo fa al click di ok di questo avviso
     }
@@ -43,13 +44,13 @@ public class RisoluzioneProblemaConsegnaControl {
         if (newprenotazione.next()) {
             int idprenotazione = newprenotazione.getInt("id_prenotazione");
             DBMSBoundary.aggiornaLottiOrdinati(idprenotazione,lottiNonConsegnati,this.consegna.idOrdine.get());
+            DBMSBoundary.setFlagProblema(this.consegna.idOrdine.get(),0);
             App.newWind("gestioneConsegne/risoluzioneProblemaConsegna/AvvisoOperazioneRiuscita",event);
             // la flag di fix problema lo fa al click di ok di questo avviso
         }
     }
 
     public void premutoOk() throws IOException {
-        DBMSBoundary.setFlagProblema(this.consegna.idOrdine.get(),0);
         App.setRoot("SchermataPrincipale");
         App.popup_stage.close();
     }
