@@ -62,8 +62,8 @@ public class App extends Application {
         newscene.getRoot().setStyle("-fx-font-family: 'Arial'");
         popup_stage.setScene(newscene);
         popup_stage.initModality(Modality.WINDOW_MODAL);
-        //popup_stage.initOwner(stage_APP);
-        popup_stage.initStyle(StageStyle.UNDECORATED);
+        popup_stage.initOwner(stage_APP);
+        //popup_stage.initStyle(StageStyle.UNDECORATED);
         popup_stage.show();
     }
 
@@ -76,7 +76,7 @@ public class App extends Application {
         popup_stage.setScene(newscene);
         popup_stage.initModality(Modality.WINDOW_MODAL);
         popup_stage.initOwner(((Node)event.getSource()).getScene().getWindow());
-        popup_stage.initStyle(StageStyle.UNDECORATED);
+        //popup_stage.initStyle(StageStyle.UNDECORATED);
         popup_stage.show();
     }
 
@@ -90,7 +90,7 @@ public class App extends Application {
         popup_stage.setScene(newscene);
         popup_stage.initModality(Modality.WINDOW_MODAL);
         popup_stage.initOwner(((Node)event.getSource()).getScene().getWindow());
-        popup_stage.initStyle(StageStyle.UNDECORATED);
+        //popup_stage.initStyle(StageStyle.UNDECORATED);
         popup_stage.show();
     }
 

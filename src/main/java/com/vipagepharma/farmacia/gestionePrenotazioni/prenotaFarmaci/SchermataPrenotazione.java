@@ -26,7 +26,7 @@ public class SchermataPrenotazione implements Initializable {
     private Text testo_nome_farmaco;
 
 
-    private int flag_scadenza = 0;
+    private int flag_scadenza = 1;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -48,7 +48,7 @@ public class SchermataPrenotazione implements Initializable {
     }
 
     @FXML
-    public void premeRadioButton(MouseEvent event){
+    public void premeCheckBox(MouseEvent event){
         if(this.flag_scadenza == 0){
             flag_scadenza = 1;
         }

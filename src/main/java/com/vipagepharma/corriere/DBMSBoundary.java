@@ -74,7 +74,9 @@ public class DBMSBoundary {
             }
             throw new RuntimeException();
         } catch (Exception e){
-            throw new RuntimeException();
+            e.printStackTrace();
+            return false;
+            //throw new RuntimeException();
         }
         return esito;
     }
@@ -96,7 +98,8 @@ public class DBMSBoundary {
             }
             throw new RuntimeException();
         } catch (Exception e){
-            throw new RuntimeException();
+            e.printStackTrace();
+            //throw new RuntimeException();
         }
         return esito;
     }
@@ -119,7 +122,8 @@ public class DBMSBoundary {
             }
             throw new RuntimeException();
         } catch (Exception e){
-            throw new RuntimeException();
+            e.printStackTrace();
+            //throw new RuntimeException();
         }
         return resultSet;
     }

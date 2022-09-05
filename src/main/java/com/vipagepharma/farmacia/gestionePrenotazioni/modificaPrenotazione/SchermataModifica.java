@@ -23,7 +23,7 @@ public class SchermataModifica implements Initializable {
     private TextField qty;
     @FXML
     private Text testo_nome_farmaco;
-    private int flag_scadenza = 0;
+    private int flag_scadenza = 1;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -45,7 +45,7 @@ public class SchermataModifica implements Initializable {
     }
 
     @FXML
-    public void premeRadioButton(MouseEvent event){
+    public void premeCheckBox(MouseEvent event){
         if(this.flag_scadenza == 0){
             this.flag_scadenza = 1;
         }
@@ -59,7 +59,7 @@ public class SchermataModifica implements Initializable {
     }
     @FXML
     public void premeIndetro(MouseEvent event) throws IOException {
-        ModificaPrenotazioneControl.modificaPrenotazioneControl.premutoIndietro("gestionePrenotazioni/modificaPrenotazione/SchermataModifica");
+        ModificaPrenotazioneControl.modificaPrenotazioneControl.premutoIndietro("gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni");
     }
     @FXML
     public void premeLogout(MouseEvent event) throws IOException {

@@ -67,12 +67,12 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <RadioButton fx:id="opzione1" layoutX="361.0" layoutY="399.0" mnemonicParsing="false" onMouseClicked="#selezionaOpzione1">
+            <RadioButton fx:id="opzione1" layoutX="345.0" layoutY="399.0" mnemonicParsing="false" onMouseClicked="#selezionaOpzione1">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="opzione2" layoutX="361.0" layoutY="440.0" mnemonicParsing="false" onMouseClicked="#selezionaOpzione2">
+            <RadioButton fx:id="opzione2" layoutX="345.0" layoutY="440.0" mnemonicParsing="false" onMouseClicked="#selezionaOpzione2">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>

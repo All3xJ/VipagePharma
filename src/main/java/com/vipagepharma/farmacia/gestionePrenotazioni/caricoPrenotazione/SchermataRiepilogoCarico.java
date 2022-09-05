@@ -127,7 +127,7 @@ public class SchermataRiepilogoCarico implements Initializable {
     }
     @FXML
     public void premeIndietro(MouseEvent mouseEvent) throws IOException {
-        CaricoPrenotazioneControl.carPrenCtrl.premutoIndietro("gestionePrenotazioni/caricoPrenotazione/SchermataElencoPrenotazioni");
+        CaricoPrenotazioneControl.carPrenCtrl.premutoIndietro("gestionePrenotazioni/visualizzaPrenotazioni/SchermataElencoPrenotazioni");
     }
     @FXML
     public void premeHome(MouseEvent mouseEvent) throws IOException {
