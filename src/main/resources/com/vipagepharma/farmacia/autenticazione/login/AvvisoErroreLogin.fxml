@@ -36,7 +36,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: f5f5f5;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.autenticazione.login.AvvisoErroreLogin">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" style="-fx-background-color: f5f5f5  ;--fx-border-color: blue; -fx-border-width: 1px;-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .75), 20, 0.19, 0, 0);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vipagepharma.farmacia.autenticazione.login.AvvisoErroreLogin">
    <children>
       <Text fill="RED" layoutX="305.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ERRORE" textAlignment="CENTER">
          <font>
