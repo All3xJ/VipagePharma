@@ -18,6 +18,7 @@ import java.io.IOException;
  */
 public class App extends Application {
 
+    public static Stage stage_APP;
     private static Scene scene;
 
     public static Stage popup_stage;
@@ -27,6 +28,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("autenticazione/login/SchermataLogin"), 1280, 800);
         scene.getRoot().setStyle("-fx-font-family: 'Arial'");
         stage.setScene(scene);
+        stage_APP = stage;
         stage.show();
     }
 
@@ -40,6 +42,19 @@ public class App extends Application {
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
+    }
+
+    public static void newWind(String fxml) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        popup_stage = new Stage();
+        Scene newscene = new Scene(root1, 720,480);
+        newscene.getRoot().setStyle("-fx-font-family: 'Arial'");
+        popup_stage.setScene(newscene);
+        popup_stage.initModality(Modality.WINDOW_MODAL);
+        popup_stage.initOwner(stage_APP);
+        //popup_stage.initStyle(StageStyle.UNDECORATED);
+        popup_stage.show();
     }
 
     public static void newWind(String fxml, ActionEvent event) throws IOException{
