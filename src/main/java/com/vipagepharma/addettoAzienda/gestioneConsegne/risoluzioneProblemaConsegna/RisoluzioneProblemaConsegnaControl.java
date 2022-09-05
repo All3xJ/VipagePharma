@@ -66,4 +66,14 @@ public class RisoluzioneProblemaConsegnaControl {
         //corrieri.close();
         return corrieri.getInt("id_utente_azienda");
     }
+    public void premutoHome() throws IOException {
+        App.setRoot("SchermataPrincipale");
+    }
+
+    public void premutoIndietro(String schermataPrecedente) throws IOException {
+        App.setRoot(schermataPrecedente);
+    }
+    public void premutoLogout() throws IOException {
+        App.setRoot("autenticazione/login/SchermataLogin");
+    }
 }

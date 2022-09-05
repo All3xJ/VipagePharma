@@ -31,6 +31,7 @@ public class ControlloConsegnaControl {
 
     public void start() throws SQLException, IOException {
         if (orario.getHour() == 20) {
+            System.out.println("ci semu");
             String idFarmacia = Utente.getID();
             ResultSet consegneNonCaricate = DBMSBoundary.getConsegneOdierneNonCaricate(idFarmacia);
             this.prenotazioniMancatoCarico = new LinkedList<>();

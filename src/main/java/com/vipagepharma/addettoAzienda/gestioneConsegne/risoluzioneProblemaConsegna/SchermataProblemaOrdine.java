@@ -1,5 +1,6 @@
 package com.vipagepharma.addettoAzienda.gestioneConsegne.risoluzioneProblemaConsegna;
 
+import com.vipagepharma.addettoAzienda.gestioneConsegne.visualizzaSegnalazioni.VisualizzaSegnalazioniControl;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
@@ -29,5 +30,16 @@ public class SchermataProblemaOrdine implements Initializable {
     @FXML
     void premeRimborsa(MouseEvent event) throws SQLException, IOException {
         RisoluzioneProblemaConsegnaControl.risProbConsCtrlRef.premutoRimborsa(event);
+    }
+    public void premeHome(MouseEvent mouseEvent) throws IOException {
+        RisoluzioneProblemaConsegnaControl.risProbConsCtrlRef.premutoHome();
+    }
+    @FXML
+    public void premeIndietro(MouseEvent mouseEvent) throws IOException {
+        RisoluzioneProblemaConsegnaControl.risProbConsCtrlRef.premutoIndietro("gestioneConsegne/visualizzaSegnalazioni/SchermataElencoSegnalazioni");
+    }
+    @FXML
+    public void premeLogout(MouseEvent mouseEvent) throws IOException {
+        RisoluzioneProblemaConsegnaControl.risProbConsCtrlRef.premutoLogout();
     }
 }
