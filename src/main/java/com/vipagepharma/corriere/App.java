@@ -42,21 +42,8 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-    public static void newWind(String fxml) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        popup_stage = new Stage();
-        Scene newscene = new Scene(root1, 720,480);
-        newscene.getRoot().setStyle("-fx-font-family: 'Arial'");
-        popup_stage.setScene(newscene);
-        popup_stage.initModality(Modality.WINDOW_MODAL);
-        //popup_stage.initOwner(stage_APP);
-        popup_stage.initStyle(StageStyle.UNDECORATED);
-        popup_stage.show();
-    }
-
     public static void newWind(String fxml, ActionEvent event) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(com.vipagepharma.farmacia.App.class.getResource(fxml + ".fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         popup_stage = new Stage();
         Scene newscene = new Scene(root1, 720,480);
@@ -64,13 +51,13 @@ public class App extends Application {
         popup_stage.setScene(newscene);
         popup_stage.initModality(Modality.WINDOW_MODAL);
         popup_stage.initOwner(((Node)event.getSource()).getScene().getWindow());
-        popup_stage.initStyle(StageStyle.UNDECORATED);
+        //popup_stage.initStyle(StageStyle.UNDECORATED);
         popup_stage.show();
     }
 
 
     public static void newWind(String fxml, MouseEvent event) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(com.vipagepharma.farmacia.App.class.getResource(fxml + ".fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         popup_stage = new Stage();
         Scene newscene = new Scene(root1, 720,480);
@@ -78,7 +65,7 @@ public class App extends Application {
         popup_stage.setScene(newscene);
         popup_stage.initModality(Modality.WINDOW_MODAL);
         popup_stage.initOwner(((Node)event.getSource()).getScene().getWindow());
-        popup_stage.initStyle(StageStyle.UNDECORATED);
+        //popup_stage.initStyle(StageStyle.UNDECORATED);
         popup_stage.show();
     }
 

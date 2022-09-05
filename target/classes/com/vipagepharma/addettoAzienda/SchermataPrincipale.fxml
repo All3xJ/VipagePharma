@@ -50,11 +50,11 @@
                   <Image url="@../22b6dd45a8834880a7e4b3e0d2d6645e-removebg-preview.png" />
                </image>
             </ImageView>
-            <Button fx:id="bottoneVisualizzaSegnalzioni" alignment="CENTER" layoutX="510.0" layoutY="240.0" mnemonicParsing="false" onMouseClicked="#premeVisualizzaSegnalazioni" prefHeight="45.0" prefWidth="300.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Visualizza segnalazioni">
+            <Button fx:id="bottoneVisualizzaSegnalzioni" alignment="CENTER" layoutX="480.0" layoutY="252.0" mnemonicParsing="false" onMouseClicked="#premeVisualizzaSegnalazioni" prefHeight="45.0" prefWidth="320.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Visualizza segnalazioni">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <Button fx:id="bottoneVisualizzaStorico" alignment="CENTER" layoutX="510.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#premeVisualizzaStorico" prefHeight="45.0" prefWidth="300.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Visualizza storico consegne">
+            <Button fx:id="bottoneVisualizzaStorico" alignment="CENTER" layoutX="480.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#premeVisualizzaStorico" prefHeight="45.0" prefWidth="320.0" style="-fx-background-radius: 5px; -fx-border-radius: 5; -fx-background-color: cff3f2; -fx-border-color: b9b9b9;" text="Visualizza storico consegne">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
