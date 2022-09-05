@@ -18,7 +18,7 @@ public class AvvisoCaricoParziale implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resbound) {
-        this.testo_carico_parziale.setText("La consegna n. "+idprenotazioneProblematica+ " prevista per oggi non è ancora stata caricata");
+        this.testo_carico_parziale.setText("La consegna n. "+idprenotazioneProblematica+ " prevista per oggi è stata caricata parzialmente");
     }
 
     public void premeSegnalaUnProblema(MouseEvent mouseEvent) throws IOException {
