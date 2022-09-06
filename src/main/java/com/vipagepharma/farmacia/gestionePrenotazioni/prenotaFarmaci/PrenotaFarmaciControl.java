@@ -91,10 +91,10 @@ public class PrenotaFarmaciControl {
     private void checkDisponibilitaEScegliLotti() throws SQLException {  // fa calcolo disponibilita PER LA DATA CHE FARMACISTA HA SCELTO E PER LA QTY CHE FARMACISTA HA SCELTO, E SCEGLIE I LOTTI (SEMPRE SE LA QTY È ABBASTANZA.... SE NON È ABBASTANZA INVOCA PROX METODO)
         int qtyTotale = Integer.parseInt(this.qtyRichiesta);
         int qtyLottiTot = 0;
-        while(lotti.next() && qtyLottiTot < qtyTotale && this.lotti.getDate("data_disponibilita").toLocalDate().isBefore(this.data_consegna)){  //esco dal loop appena la data di disp > data consegna richiesta
+        while(lotti.next() && qtyLottiTot < qtyTotale && (this.lotti.getDate("data_disponibilita").toLocalDate().isBefore(this.data_consegna) || this.lotti.getDate("data_disponibilita").toLocalDate().isEqual(this.data_consegna))) {  //esco dal loop appena la data di disp > data consegna richiesta
             if(this.lotti.getDate("data_scadenza").toLocalDate().isAfter(this.data_scadenza_min)){
-                this.idLotti.add(this.lotti.getInt(1));
-                int qtyLotto = this.lotti.getInt(3);
+                this.idLotti.add(this.lotti.getInt("id_lotto"));
+                int qtyLotto = this.lotti.getInt("quantita_ordinabile");
                 qtyLottiTot += qtyLotto;
                 if(qtyLottiTot > qtyTotale){
                     this.qtyLotti.add(qtyTotale - (qtyLottiTot - qtyLotto));
@@ -104,7 +104,7 @@ public class PrenotaFarmaciControl {
                 }
             }
         }
-        if(qtyLottiTot <= qtyTotale){  //se dopo il loop non mi sono bastati i farmaci
+        if(qtyLottiTot < qtyTotale){  //se dopo il loop non mi sono bastati i farmaci
             this.qtyDisponibile = String.valueOf(qtyLottiTot);
             calcProxDisponibilitaEScegliLotti();
         }

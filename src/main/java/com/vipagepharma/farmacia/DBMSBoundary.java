@@ -365,7 +365,8 @@ public class DBMSBoundary {
             statement1.executeUpdate();
             Statement statement2 = connection.createStatement() ;
             for(int i=0; i<id_lotti.size(); ++i) {
-                statement2.executeUpdate("update lotto set quantita_ordinabile = quantita_ordinabile - " + String.valueOf(qty_lotti.get(i)) + " where id_lotto = " + id_lotti.get(i));
+                System.out.println("id_lotto: " + id_lotti.get(i)+ " ; qty da togliere: " +qty_lotti.get(i) );
+                statement2.executeUpdate("update lotto set quantita_ordinabile = quantita_ordinabile - " + qty_lotti.get(i) + " where id_lotto = " + id_lotti.get(i));
                 PreparedStatement statement3 = connection.prepareStatement("insert into lotto_ordinato(id_lotto, id_prenotazione, isCaricato, quantita) values(?,?,?,?)");
                 statement3.setInt(1,id_lotti.get(i));
                 statement3.setInt(2,id_prenotazione);
@@ -381,6 +382,7 @@ public class DBMSBoundary {
             }
             throw new RuntimeException();
         } catch (Exception e){
+            e.printStackTrace();
             throw new RuntimeException();
         }
     }
@@ -389,9 +391,9 @@ public class DBMSBoundary {
         ResultSet resultSet;
         Connection connection=null;
         try{ //getLotti
-             connection = connectAzienda();
+            connection = connectAzienda();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-            resultSet = statement.executeQuery("select * from lotto where id_farmaco = " + id_farmaco);
+            resultSet = statement.executeQuery("select * from lotto where quantita_ordinabile > 0 and id_farmaco = " + id_farmaco);
         } catch (RuntimeException e){
             if (connection==null) {
                 ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
@@ -400,6 +402,7 @@ public class DBMSBoundary {
             }
             throw new RuntimeException();
         } catch (Exception e){
+            e.printStackTrace();
             throw new RuntimeException();
         }
         return resultSet;
@@ -410,7 +413,7 @@ public class DBMSBoundary {
         ResultSet resultSet;
         Connection connection=null;
         try{ //getLotti
-             connection = connectAzienda();
+            connection = connectAzienda();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
             connection.setAutoCommit(false);
             statement.executeUpdate("DELETE FROM lotto_ordinato WHERE id_prenotazione = "+ id_prenotazione);
@@ -418,8 +421,11 @@ public class DBMSBoundary {
                 statement.executeUpdate("UPDATE lotto set quantita_ordinabile = quantita_ordinabile + " + qty.get(i)+" WHERE id_lotto =" + id_l.get(i));
             }
             statement.executeUpdate("DELETE FROM prenotazione  WHERE id_prenotazione = " + id_prenotazione);
-            resultSet = statement.executeQuery("select * from lotto where id_farmaco = " + id_farmaco);
+            resultSet = statement.executeQuery("select * from lotto where quantita_ordinabile > 0 and id_farmaco = " + id_farmaco);
             lotti.add(connection);
+            lotti.add(resultSet);
+            return lotti;
+
         } catch (RuntimeException e){
             if (connection==null) {
                 ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
@@ -427,20 +433,20 @@ public class DBMSBoundary {
                 System.out.println("ouuuuu");
             }
             throw new RuntimeException();
-        } catch (Exception e){
+        } catch (Exception e) {
+            e.printStackTrace();
             throw new RuntimeException();
         }
-        lotti.add(resultSet);
-        return lotti;
     }
 
     public static ResultSet getLottiOrdinati(String id_prenotazione) throws IOException {
         ResultSet resultSet;
         Connection connection=null;
         try{ //getLotti
-             connection = connectAzienda();
+            connection = connectAzienda();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            resultSet = statement.executeQuery("select lo.id_lotto ,l.data_scadenza,l.data_disponibilita,lo.quantita from lotto_ordinato lo,lotto l where lo.id_lotto = l.id_lotto and lo.id_prenotazione = " + id_prenotazione);
+            resultSet = statement.executeQuery("select lo.id_lotto ,l.data_scadenza,l.data_disponibilita,lo.quantita from lotto_ordinato lo,lotto l where lo.quantita>0 and lo.id_lotto = l.id_lotto and lo.id_prenotazione = " + id_prenotazione);
+            return resultSet;
         } catch (RuntimeException e){
             if (connection==null) {
                 ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
@@ -451,7 +457,7 @@ public class DBMSBoundary {
         } catch (Exception e){
             throw new RuntimeException();
         }
-        return resultSet;
+
     }
 
     public static ResultSet getCorrieri() throws IOException {
@@ -569,6 +575,7 @@ public class DBMSBoundary {
                 for (int i=0; i< lotti.size(); ++i) {
                     statement.executeUpdate("Update lotto_ordinato set isCaricato = 1 where id_prenotazione = " + id_prenotazione + " and id_lotto = " + lotti.get(i).getLotto());
                 }
+                statement.executeUpdate("update prenotazione set isCaricato = 1  where id_prenotazione = "+ id_prenotazione);
             } catch (RuntimeException e){
                 if (connection==null) {
                     ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();

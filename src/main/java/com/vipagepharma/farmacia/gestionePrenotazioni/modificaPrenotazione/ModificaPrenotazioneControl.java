@@ -70,19 +70,21 @@ public class ModificaPrenotazioneControl {
 
     private boolean controllaEScegliNuoviLotti() throws SQLException {
         int qtyLottiTot = 0;
-        while (this.lotti.next() && qtyLottiTot < this.qtyRichiesta && this.lotti.getDate("data_disponibilita").toLocalDate().isBefore(this.data_consegna)) {  //esco dal loop appena la data di disp > data consegna richiesta
+        while (this.lotti.next() && qtyLottiTot < this.qtyRichiesta && (this.lotti.getDate("data_disponibilita").toLocalDate().isBefore(this.data_consegna) || this.lotti.getDate("data_disponibilita").toLocalDate().isEqual(this.data_consegna))) {  //esco dal loop appena la data di disp > data consegna richiesta
             if (this.lotti.getDate("data_scadenza").toLocalDate().isAfter(this.data_scadenza_min)) {
                 this.idLotti.add(this.lotti.getInt("id_lotto"));
                 int qtyLotto = this.lotti.getInt("quantita_ordinabile");
                 qtyLottiTot += qtyLotto;
+                System.out.println("qtyLottiTot: "+qtyLottiTot+" ; qtyLotto: "+qtyLotto);
                 if (qtyLottiTot > this.qtyRichiesta) {
                     this.qtyLotti.add(this.qtyRichiesta - (qtyLottiTot - qtyLotto));
+                    System.out.println(this.qtyRichiesta-(qtyLottiTot-qtyLotto));
                 } else {
                     this.qtyLotti.add(qtyLotto);
                 }
             }
         }
-        if(qtyLottiTot > this.qtyRichiesta){
+        if(qtyLottiTot >= this.qtyRichiesta){
             return true;
         }
         return false;
@@ -90,6 +92,8 @@ public class ModificaPrenotazioneControl {
 
     public void premutoSi(MouseEvent event) throws IOException, SQLException {
         this.con.commit();
+        System.out.println(idLotti);
+        System.out.println(qtyLotti);
         DBMSBoundary.modificaPrenotazioneEAggiornaLotti(Integer.parseInt(prenotazione.getIdPrenotazione()),Integer.parseInt(prenotazione.getIdFarmacia()),Integer.parseInt(prenotazione.getIdCorriere()),Integer.parseInt(prenotazione.getIdFarmaco()),this.data_consegna,idLotti,qtyLotti,this.qtyRichiesta);
         App.popup_stage.close();
         App.newWind("gestionePrenotazioni/modificaPrenotazione/AvvisoOperazioneRiuscita",event);

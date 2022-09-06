@@ -41,6 +41,9 @@ public class SchermataModifica implements Initializable {
     }
 
     public void premeInvia(ActionEvent event) throws SQLException, IOException {
+        System.out.println(data_consegna.getValue());
+        System.out.println(qty.getText());
+        System.out.println(this.flag_scadenza);
         ModificaPrenotazioneControl.modificaPrenotazioneControl.premutoInvia(data_consegna.getValue(),qty.getText(),this.flag_scadenza,event);
     }
 
