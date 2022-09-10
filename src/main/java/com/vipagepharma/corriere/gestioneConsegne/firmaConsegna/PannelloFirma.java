@@ -56,7 +56,7 @@ public class PannelloFirma {
     JFrame frame = new JFrame("Swing Paint");
     theframe = frame;
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setUndecorated(true);
+    //frame.setUndecorated(true);
     frame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
 
     Container content = frame.getContentPane();
