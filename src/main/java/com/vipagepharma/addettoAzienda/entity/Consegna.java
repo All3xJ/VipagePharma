@@ -37,7 +37,6 @@ public class Consegna {
         BufferedInputStream is = new BufferedInputStream(ricevutaPDF.getBinaryStream());
         String path = "/tmp/ricevuta_"+this.idOrdine.get()+".pdf";
         FileOutputStream fos = new FileOutputStream(path);
-        // you can set the size of the buffer
         byte[] buffer = new byte[2048];
         int r = 0;
         while((r = is.read(buffer))!=-1) {

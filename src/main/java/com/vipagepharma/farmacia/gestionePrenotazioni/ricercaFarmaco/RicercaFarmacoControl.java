@@ -31,7 +31,6 @@ public class RicercaFarmacoControl {
     public void start() throws IOException {
         App.setRoot("gestionePrenotazioni/ricercaFarmaco/SchermataRicercaFarmaco");
     }
-    //ROBE TABELLA
 
     private void riempiObservableList(String nome_o_principio_attivo) throws SQLException, IOException {
         this.farmaci = DBMSBoundary.getFarmaco(nome_o_principio_attivo);
@@ -41,11 +40,9 @@ public class RicercaFarmacoControl {
                 if (!farmaci.next()) break;
                 this.tvObservableList.add(new Farmaco(farmaci.getString("id_farmaco"),farmaci.getString("nome"),farmaci.getString("principio_attivo")));
             }
-            //this.farmaci.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        //this.farmaci.close();
     }
 
     public void premutoInvio(String nome_o_principio_attivo) throws IOException, SQLException {

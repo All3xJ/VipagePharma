@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 public class SchermataLogin implements Initializable {
 
 	@FXML
-	private TextField username;  // il nome della variabile deve essere lo stesso dell'FXXXXXXID di Scene Builder
+	private TextField username;
 
 	@FXML
 	private PasswordField password;

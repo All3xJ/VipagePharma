@@ -42,7 +42,6 @@ public class VisualizzaConsegneControl {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        //ordini.close();
     }
 
     public void rimuoviOrdineFirmato(String idOrdineFirmato){

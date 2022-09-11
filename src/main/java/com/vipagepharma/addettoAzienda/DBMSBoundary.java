@@ -22,7 +22,6 @@ public class DBMSBoundary {
     public static Connection connectFarmacia() throws IOException {
         Connection connection = null;
         try {
-            // below two lines are used for connectivity.
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url + dbFarmacia, user, pass);
         }
@@ -37,12 +36,11 @@ public class DBMSBoundary {
             throw new RuntimeException();
         }
         return connection;
-    } // function ends
+    }
 
     public static Connection connectAzienda() throws IOException {
         Connection connection = null;
         try {
-            // below two lines are used for connectivity.
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url + dbAzienda, user, pass);
         }
@@ -57,12 +55,11 @@ public class DBMSBoundary {
             throw new RuntimeException();
         }
         return connection;
-    } // function ends
+    }
 
     public static Connection connectDBMS() throws IOException {
         Connection connection = null;
         try {
-            // below two lines are used for connectivity.
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, pass);
         }
@@ -77,7 +74,7 @@ public class DBMSBoundary {
             throw new RuntimeException();
         }
         return connection;
-    } // function ends
+    }
 
 
     public static ResultSet getFarmaci() throws IOException {
@@ -286,7 +283,7 @@ public class DBMSBoundary {
         }
     }
 
-    public static ResultSet getContratti() throws IOException {  // mettere che lo fa alle 9 e fa produzione alle 8 quindi invertiti.
+    public static ResultSet getContratti() throws IOException {
         ResultSet resultSet = null;
         Connection connection=null;
         try {
@@ -387,7 +384,7 @@ public class DBMSBoundary {
         try{
              connection = connectDBMS();
             Statement statement = connection.createStatement();
-            resultSet = statement.executeQuery("Select u.nome, p.id_prenotazione, p.id_utente_farmacia, p.data_consegna, p.ricevuta_pdf from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u where u.id_utente_farmacia=p.id_utente_farmacia and ricevuta_pdf IS NOT NULL and  isConsegnato = 1 order by data_consegna desc limit 10"); //vedere se funziona sintassi
+            resultSet = statement.executeQuery("Select u.nome, p.id_prenotazione, p.id_utente_farmacia, p.data_consegna, p.ricevuta_pdf from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u where u.id_utente_farmacia=p.id_utente_farmacia and ricevuta_pdf IS NOT NULL and  isConsegnato = 1 order by data_consegna desc limit 10");
         } catch (RuntimeException e){
             if (connection==null) {
                 ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
@@ -409,7 +406,7 @@ public class DBMSBoundary {
         try{
              connection = connectDBMS();
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            resultSet = statement.executeQuery("Select u.nome, p.id_prenotazione, p.id_utente_farmacia, p.data_consegna, p.ricevuta_pdf from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u where u.id_utente_farmacia=p.id_utente_farmacia and isConsegnato=1 and ricevuta_pdf IS NOT NULL order by data_consegna  desc limit " + base + ", 10"); //vedere se funziona sintassi
+            resultSet = statement.executeQuery("Select u.nome, p.id_prenotazione, p.id_utente_farmacia, p.data_consegna, p.ricevuta_pdf from vipagepharma_azienda.prenotazione p, vipagepharma_farmacia.utente u where u.id_utente_farmacia=p.id_utente_farmacia and isConsegnato=1 and ricevuta_pdf IS NOT NULL order by data_consegna  desc limit " + base + ", 10");
         } catch (RuntimeException e){
             if (connection==null) {
                 ComunicazioneDBMSFallitaControl cdfctrl = new ComunicazioneDBMSFallitaControl();
@@ -552,7 +549,6 @@ public class DBMSBoundary {
     public static ResultSet creaOrdine(String id_farmacia, int id_corriere, String id_farmaco,ResultSet lottiNonCosegnati) throws IOException { //RISOLUZINE PROBLEMA CONSEGNA
         ResultSet resultSet;
         int qty = 0;
-        System.out.println("suca");
         Connection connection=null;
         try{
         while(lottiNonCosegnati.next()){

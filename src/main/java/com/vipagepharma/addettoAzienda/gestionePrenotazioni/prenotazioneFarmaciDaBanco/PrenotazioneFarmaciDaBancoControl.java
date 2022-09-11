@@ -37,8 +37,7 @@ public class PrenotazioneFarmaciDaBancoControl {
                 this.idLotti.clear();
                 this.qtyLotti.clear();
             }
-            //contratti.close();
-            //corrieri.close();
+
         }
     }
 

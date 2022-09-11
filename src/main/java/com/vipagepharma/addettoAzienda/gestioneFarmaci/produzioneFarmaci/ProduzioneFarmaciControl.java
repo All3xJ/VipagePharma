@@ -38,8 +38,7 @@ public class ProduzioneFarmaciControl {
                     DBMSBoundary.creaLotto(farmaci.getInt("id_farmaco"), LocalDate.now().plusMonths(farmaci.getInt("mesi_scadenza")), LocalDate.now(), qty, 0);
                 }
             }
-            //farmaci.close();
-            //contratti.close();
+
         }
     }
 }

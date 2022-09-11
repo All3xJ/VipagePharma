@@ -14,7 +14,6 @@ public class ControlloScorteControl {
         conScCtrl = this;
     }
     public void start(Farmaco farmaco, MouseEvent event) throws IOException {
-        // id = farmaco.getId();
         this.farmaco = farmaco;
         String qtyRimanente = farmaco.getQtyScarico();
         System.out.print(qtyRimanente);

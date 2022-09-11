@@ -47,17 +47,7 @@ public class Prenotazione {
             this.isConsegnato = false;
     }
 
-/*    @Override
-    public boolean equals(Object o){
-        Prenotazione p = null;
-        if (o instanceof Prenotazione)
-            p = (Prenotazione) o;
 
-        if (this.idPrenotazione.get().equals(p.idPrenotazione.get()) && this.nomeFarmaco.get().equals(p.nomeFarmaco.get()) && this.dataConsegna.get().equals(p.dataConsegna.get()) && this.isConsegnato==p.isConsegnato && this.getIdFarmaco().equals(p.getIdFarmaco()) && this.idFarmacia.equals(p.idFarmacia))
-            return true;
-        else
-            return false;
-    }*/
     @Override
     public boolean equals(Object o) {
         Prenotazione p = null;

@@ -33,7 +33,6 @@ public class RisoluzioneProblemaConsegnaControl {
         DBMSBoundary.carica(lottiNonConsegnati);
         DBMSBoundary.setFlagProblema(this.consegna.idOrdine.get(),0);
         App.newWind("gestioneConsegne/risoluzioneProblemaConsegna/AvvisoOperazioneRiuscita",event);
-        // la flag di fix problema lo fa al click di ok di questo avviso
     }
 
     public void premutoCompletaOrdine(MouseEvent event) throws SQLException, IOException {
@@ -46,7 +45,6 @@ public class RisoluzioneProblemaConsegnaControl {
             DBMSBoundary.aggiornaLottiOrdinati(idprenotazione,lottiNonConsegnati,this.consegna.idOrdine.get());
             DBMSBoundary.setFlagProblema(this.consegna.idOrdine.get(),0);
             App.newWind("gestioneConsegne/risoluzioneProblemaConsegna/AvvisoOperazioneRiuscita",event);
-            // la flag di fix problema lo fa al click di ok di questo avviso
         }
     }
 
@@ -63,7 +61,6 @@ public class RisoluzioneProblemaConsegnaControl {
                 return corrieri.getInt("id_utente_azienda");
             }
         }
-        //corrieri.close();
         return corrieri.getInt("id_utente_azienda");
     }
     public void premutoHome() throws IOException {

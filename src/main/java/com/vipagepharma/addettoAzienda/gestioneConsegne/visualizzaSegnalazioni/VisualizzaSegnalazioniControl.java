@@ -39,7 +39,6 @@ public class VisualizzaSegnalazioniControl {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        //this.consegneConSegnalazione.close();
     }
 
     public void premutoHome() throws IOException {

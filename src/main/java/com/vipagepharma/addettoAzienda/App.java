@@ -16,9 +16,7 @@ import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
-/**
- * JavaFX App. piccolo appunto: questa App.java essenzialmente NON devo toccarla credo. gestisco TUTTO dagli altri.
- */
+
 public class App extends Application {
 
     public static Stage stage_APP;
@@ -42,13 +40,11 @@ public class App extends Application {
         stage.show();
     }
 
-    // questo è il metodo che gli altri .java richiamano passando la stringa del nome del fxml che si vuole avere
     public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
         scene.getRoot().setStyle("-fx-font-family: 'Arial'");
     }
 
-    // questo è il metodo richiamato dal metodo setRoot di questa stessa classe, letteralmente sopra di questo
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();

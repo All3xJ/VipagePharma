@@ -52,11 +52,11 @@ public class ControlloConsegnaControl {
                     Prenotazione pren = new Prenotazione(consegneNonCaricate.getString("id_prenotazione"),consegneNonCaricate.getString("nome"),consegneNonCaricate.getString("data_consegna"),consegneNonCaricate.getString("p.id_utente_farmacia"),consegneNonCaricate.getString("id_farmaco"),consegneNonCaricate.getBoolean("isBanco"),consegneNonCaricate.getInt("isConsegnato"));
                     pren.lotti.add(lot);
 
-                    if (!prenotazioniMancatoCarico.contains(pren)) { // dovrebbe funzionare il contains visto che ho fatto override di equals
+                    if (!prenotazioniMancatoCarico.contains(pren)) { // il contains funziona visto che ho fatto override di equals
                       prenotazioniMancatoCarico.add(pren);  // se entra qua quindi se non c'è gia la stessa prenotaz nella lista allora la aggiunge
                     System.out.println("aaggiunto lotto num: "+lot.getLotto());
                     }else {
-                        int index = prenotazioniMancatoCarico.indexOf(pren);    // dovrebbe funzionare indexOf, visto che lavora con equals e ho fatto override di equals dentro Prenotazione
+                        int index = prenotazioniMancatoCarico.indexOf(pren);    // indexOf funziona, visto che lavora con equals e ho fatto override di equals dentro Prenotazione
                         prenotazioniMancatoCarico.get(index).lotti.add(lot);    // se invece la prenotaz gia c'era, aggiunge solo il lotto
                         System.out.println("aggiunto lotto num: "+lot.getLotto());
                     }
@@ -69,7 +69,7 @@ public class ControlloConsegnaControl {
                 for (Prenotazione pren: prenotazioniMancatoCarico ) {
                     if (pren.getIdPrenotazione().equals(idpren)) { // se c'è una prenotazione che è in carico parziale, bisogna levarla dalla lista mancato carico
                         prenotazioniMancatoCarico.remove(pren);
-                        System.out.println("mcnia");
+                        System.out.println("mia");
                     }
                 }
             }

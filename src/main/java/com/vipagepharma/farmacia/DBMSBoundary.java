@@ -24,7 +24,6 @@ public class DBMSBoundary {
     public static Connection connectFarmacia() throws IOException {
         Connection connection = null;
         try {
-            // below two lines are used for connectivity.
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url + dbFarmacia, user, pass);
         }catch (RuntimeException e){
@@ -39,12 +38,11 @@ public class DBMSBoundary {
         }
 
         return connection;
-    } // function ends
+    }
 
     public static Connection connectDBMS() throws IOException {
         Connection connection = null;
         try {
-            // below two lines are used for connectivity.
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, pass);
         }
@@ -59,12 +57,11 @@ public class DBMSBoundary {
             throw new RuntimeException();
         }
         return connection;
-    } // function ends
+    }
 
     public static Connection connectAzienda() throws IOException {
         Connection connection = null;
         try {
-            // below two lines are used for connectivity.
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url + dbAzienda, user, pass);
         }
@@ -79,7 +76,7 @@ public class DBMSBoundary {
             throw new RuntimeException();
         }
         return connection;
-    } // function ends
+    }
 
     public static boolean effettuaLogin(String id,String pass) throws IOException {
         boolean esito = false;
@@ -252,7 +249,6 @@ public class DBMSBoundary {
             java.util.Date date = new java.util.Date();
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
             String strDataOdierna = formatter.format(date);
-            System.out.println("sono qua"); // se avvine la connessione ma giusto giusto dopo va via prima di executequery, essenzialmente va in wait finchè non c'è di nuovo la connessione..... timeout è dopo diversi minuti e dopo spunta una exception che viene catturata dal secondo catch..  che lancia la runtimeexception visto che gli ho detto di fare throw runtimeexcp. quindi semplicemente fallisce e ba il flusso della control che ha fatto partire sto metodo non continua visto che è arrivata l'eccezione
             resultSet = statement.executeQuery("SELECT p.id_utente_azienda,p.id_prenotazione, p.id_utente_farmacia,f.id_farmaco, f.nome, p.data_consegna ,p.isConsegnato,p.quantita,f.isBanco FROM prenotazione p, farmaco f WHERE p.id_utente_farmacia =" + id_farmacia +" and p.id_farmaco=f.id_farmaco" + " and p.isCaricato = 0 and p.data_consegna >=  str_to_date('"+strDataOdierna+"','%d-%m-%Y') order  by p.data_consegna asc");
         } catch (RuntimeException e){
             if (connection==null) {
@@ -626,7 +622,7 @@ public class DBMSBoundary {
         }
     }
 
-    public static ResultSet getConsegneOdierneNonCaricate(String IDFarmacia) throws IOException {// faccio PRIMA check prenotazione per vedere se è stato caricato...
+    public static ResultSet getConsegneOdierneNonCaricate(String IDFarmacia) throws IOException {
         ResultSet resultSet;
         Connection connection=null;
         try{
@@ -707,7 +703,7 @@ public class DBMSBoundary {
     }
 
 
-} // class ends
+}
 
 
 

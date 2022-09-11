@@ -20,7 +20,6 @@ public class DBMSBoundary {
     public static Connection connectAzienda() throws IOException {
         Connection connection = null;
         try {
-            // below two lines are used for connectivity.
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url + dbAzienda, user, pass);
         }
@@ -35,12 +34,11 @@ public class DBMSBoundary {
             throw new RuntimeException();
         }
         return connection;
-    } // function ends
+    }
 
     public static Connection connectDBMS() throws IOException {
         Connection connection = null;
         try {
-            // below two lines are used for connectivity.
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, pass);
         }
@@ -55,7 +53,7 @@ public class DBMSBoundary {
             throw new RuntimeException();
         }
         return connection;
-    } // function ends
+    }
 
     public static boolean effettuaLogin(String id,String pass) throws IOException {
         boolean esito = false;
@@ -229,13 +227,7 @@ public class DBMSBoundary {
     public static void salvaRicevuta(String id_prenotazione, String ricevutaPath) throws IOException {
         ResultSet resultSet;
         Connection connection=null;
-        /*try{
-            Connection connection = connectAzienda();
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("update prenotazione set ricevuta_pdf = " + ricevuta + " where id_prenotazione = " + id_prenotazione);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }*/
+
          connection = connectAzienda();
         String sql = "update prenotazione set ricevuta_pdf = ? where id_prenotazione = ?";
         PreparedStatement statement = null;
@@ -246,7 +238,6 @@ public class DBMSBoundary {
         statement.setBlob(1, inputStreamRicevuta);
         statement.setString(2, id_prenotazione);
 
-        // sends the statement to the database server
         statement.executeUpdate();
         }catch (RuntimeException e){
             if (connection==null) {

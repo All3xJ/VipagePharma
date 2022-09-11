@@ -71,7 +71,6 @@ public class CaricoPrenotazioneControl {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        //this.lotti_ordinati.close();
     }
 
 

@@ -48,7 +48,7 @@ public class LoginControl{
     public void start(ActionEvent actionEvent) throws IOException {
         if (DBMSBoundary.effettuaLogin(this.id.getText(),this.pass.getText())) {
             Utente.creaUtente(this.id.getText());
-            App.setRoot("SchermataPrincipale"); // se sono giuste le credenziali mi porta alla home
+            App.setRoot("SchermataPrincipale");
             this.timer.schedule(hourlyTask,1,1000*60*60);   // essenzialmente fa check ogni ora
         } else{
             App.newWind("autenticazione/login/AvvisoErroreLogin",actionEvent);
