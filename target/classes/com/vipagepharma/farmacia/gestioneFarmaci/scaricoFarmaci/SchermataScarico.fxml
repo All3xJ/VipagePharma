@@ -65,17 +65,17 @@
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="410.0" layoutX="308.0" layoutY="174.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 30; -fx-arc-width: 30;" width="691.0" />
-            <ComboBox fx:id="tendinaFarmaci" layoutX="356.0" layoutY="344.0" prefHeight="35.0" prefWidth="179.0" style="-fx-background-radius: 5; -fx-border-radius: 5;" visibleRowCount="8" />
-            <TextField fx:id="qty" layoutX="810.0" layoutY="344.0" prefHeight="35.0" prefWidth="87.0" style="-fx-background-radius: 5; -fx-border-radius: 5;" />
-            <Text layoutX="384.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome farmaco">
+            <ComboBox fx:id="tendinaFarmaci" layoutX="356.0" layoutY="345.0" prefHeight="35.0" prefWidth="179.0" style="-fx-background-radius: 5; -fx-border-radius: 5;" visibleRowCount="8" />
+            <TextField fx:id="qty" layoutX="805.0" layoutY="345.0" prefHeight="35.0" prefWidth="88.0" style="-fx-background-radius: 5; -fx-border-radius: 5;" />
+            <Text layoutX="384.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome farmaco" textAlignment="CENTER">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Text>
-            <Text layoutX="805.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantità" wrappingWidth="97.0">
+            <Text layoutX="800.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantità" textAlignment="CENTER" wrappingWidth="97.0">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Text>
-            <Text layoutX="600.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id Lotto" wrappingWidth="77.25">
+            <Text layoutX="618.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id Lotto" textAlignment="CENTER" wrappingWidth="77.25">
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Text>
@@ -83,7 +83,7 @@
                <font>
                   <Font name="Arial" size="20.0" />
                </font></Button>
-            <ComboBox fx:id="tendinaLotti" layoutX="560.0" layoutY="345.0" prefHeight="35.0" prefWidth="179.0" style="-fx-background-radius: 5; -fx-border-radius: 5;" visibleRowCount="8" />
+            <ComboBox fx:id="tendinaLotti" layoutX="567.0" layoutY="345.0" prefHeight="35.0" prefWidth="179.0" style="-fx-background-radius: 5; -fx-border-radius: 5;" visibleRowCount="8" />
       </children>
     </AnchorPane>
   </children>
