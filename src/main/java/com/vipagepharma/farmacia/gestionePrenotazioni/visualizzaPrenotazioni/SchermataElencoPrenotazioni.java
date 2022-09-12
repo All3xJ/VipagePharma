@@ -134,7 +134,7 @@ public class SchermataElencoPrenotazioni implements Initializable{
                         } else {
                             setGraphic(btn);
 							Prenotazione prenotazione = getTableView().getItems().get(getIndex());
-							if(LocalDate.parse(prenotazione.getDataConsegna()).isBefore(LocalDate.now().plusDays(2)) && (nomeButton.equals("Annulla") || nomeButton.equals("Modifica"))){
+							if(LocalDate.parse(prenotazione.getDataConsegna()).isBefore(LocalDate.now().plusDays(3)) && (nomeButton.equals("Annulla") || nomeButton.equals("Modifica"))){
 								btn.setDisable(true);
 							}
 							if(!prenotazione.getIsConsegnato() && nomeButton.equals("Carico")){
