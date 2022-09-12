@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.text.SimpleDateFormat;
 
 public class DBMSBoundary {
+    //private static final String url = "jdbc:mysql://vipagesite.duckdns.org:3306/";
     private static final String url = "jdbc:mysql://192.168.43.45:3306/";
     private static final String user = "pi";
     private static final String pass = "BubJbhvbj373838&#@!";
