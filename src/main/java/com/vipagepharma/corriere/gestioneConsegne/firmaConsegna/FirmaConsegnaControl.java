@@ -89,7 +89,7 @@ public class FirmaConsegnaControl {
     private void aggiungiTitolo(Document d, Ordine o) throws DocumentException, IOException {
         Paragraph titolo = new Paragraph();
         Image img = Image.getInstance("src/main/java/com/vipagepharma/corriere/hq_per_pdf.png");
-        img.scalePercent(60,60);
+        img.scalePercent(30,30);
         img.setAlignment(Element.ALIGN_CENTER);
         titolo.add(img);
         Font fontTitolo = new Font(Font.FontFamily.HELVETICA, 24, Font.BOLD, BaseColor.BLACK);
